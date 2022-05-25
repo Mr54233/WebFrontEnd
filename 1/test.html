@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>标题</title>
+    <meta name="keyword" content="这里放关键词，让搜索引擎爬的"/>
+    <meta name="Description" content="这里放各种描述，也是让引擎爬的"/>
+    <!-- <meta http-equiv="refresh" content="3;https://www.baidu.com"/> -->
+    <!-- ↑这个是等三秒跳到百度 -->
+
+</head>
+
+<body>
+    <a name="1">顶部</a><br>
+    <!-- 这里是页面顶部 -->
+
+    <hr color="#0000ff">
+    04排版标签
+    <hr>
+    <h1>h1标题</h1>
+    <h2>h2标题</h2>
+    <h3>h3标题</h3>
+    <h4>h4标题</h4>
+    <h5>h5标题</h5>
+    <h6>h6标题</h6>
+    <hr>
+
+    <p align="center">This is a paragraph</p>
+    <p>This is another paragraph</p>
+    <hr>
+
+    <p>自古情深留不住</p>
+	<hr align="center" size="2" width="500" color="#0000ff" noshade="" />
+    <!-- hr分隔符 -->
+	<p>总是套路得人心</p>
+    <hr>
+
+    This <br/> is a para<br/>graph with line breaks
+    <!-- br标签可以换行 -->
+    <hr>
+
+    <div>这里单独占一行</div>
+    <!-- div标签：可以把标签中的内容分割为独立的区块。必须单独占据一行。
+    span标签：和div的作用一致，但不换行。 -->
+    <span>1</span>
+    <span>2</span>
+    <span>这里就是连在一起的</span>
+    <hr>
+    
+    <pre>
+        pre告诉浏览器不要忽略       空格
+        和
+        换行
+    </pre>
+    <hr>
+
+    
+    转义字符<br>
+    &nbsp;：空格 nbsp （non-breaking spacing，不断打空格） <br>
+    &lt;：小于号 lt（less than） <br>
+    &gt;：大于号 gt（greater than） <br>
+    &amp;：符号& amp <br>
+    &quot;：双引号 quot <br>
+    &apos;：单引号 apos <br>
+    &copy;：版权© copy <br>
+    &trade;：商标™ trade <br>
+    &#32464;：文字绐。 其实，#32464是汉字绐的unicode编码。 <br>
+    
+    举例：这是一个HTML语言的&lt;p&gt;标签<br>
+    
+    O<sup>2</sup>    5<sub>3</sub>上下标 b为bottom <br>
+    <hr color="#0000ff">
+
+    05超链接
+    <hr>
+    超链接<br>
+    1：外部链接<br>
+    <div><a href="http://www.baidu.com" target="_blank">点我百度</a></div>
+    2：锚链接<br>
+    <div><a href="#1">点击这里回到顶部</a></div>
+    3：邮件链接<br>
+    <div><a href="mailto:1104879088@QQ.com">点击进入我的邮箱</a></div>
+    <hr>
+
+    
+    超链接的属性<br>
+    href：目标URL <br>
+    title：悬停文本。 <br>
+    name：主要用于设置一个锚点的名称。 <br>
+    target：告诉浏览器用什么方式来打开目标页面。target属性有以下几个值： <br>
+    <pre>
+        _self：在同一个网页中显示（默认值） <br>
+        _blank：在新的窗口中打开。 <br>
+        _parent：在父窗口中显示 <br>
+        _top：在顶级窗口中显示 <br>
+    </pre>
+    <a href="09_img.html" title="很好看哦">结婚照</a><br>
+    <a href="1.html" title="悬停文本" target="_blank">链接的内容</a><br>
+    blank就是“空白”的意思，就表示新建一个空白窗口。为啥有一个_ ，就是规定，无需解释。 <br>
+    也就是说，如果不写target=”_blank”那么就是在相同的标签页打开，如果写了target=”_blank”，就是在新的空白标签页中打开
+    <hr color="#0000ff">
+    
+
+    06图片
+    <hr>
+    <img src="img/1.jpg" width="100" height="100" title="鼠标悬停出现的文本" alt="图片报错时出现的东西"  />
+    <!-- html图片为引用而不是直接插入，所以需要先将图片上传到服务器本地 -->
+    <!-- ./为当前文件夹 ../为上一级文件夹 -->
+    <pre>
+    src：指图片的路径。英文名称 source。
+    width：图像的宽度。
+    height：图像的高度。等比例缩放只设置一个就行
+    title：提示性文本。鼠标悬停时出现的文本。
+    alt：当图片不可用（无法显示）的时候，代替图片显示的内容。alt是英语 alternate “替代”的意思，代表替换资源。
+    align属性：图片和周围文字的相对位置。属性取值可以是：bottom（默认）、center、top、left、right。
+    </pre>
+    <hr color="#0000ff">
+    
+
+    07标签<br>
+    <hr>
+    列表标签：ul ol dl <br><hr>
+    ul：unordered list，“无序列表”的意思。<br>
+    li：list item，“列表项”的意思。<br>
+    如下：<br>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <!-- li不能单独存在，必须包含于ul中 -->
+        <!-- li，ul可以嵌套存在 -->
+    </ul>
+    ul，li属性<br>
+    type="属性值"。属性值可以选： disc(实心原点，默认)，square(实心方点)，circle(空心圆)
+    <hr>
+    ol：ordered list ， 有序列表<br>
+    如下：<br>
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+    type="属性值"。属性值可以是：1(阿拉伯数字，默认)、a、A、i、I。结合start属性表示从几开始。
+    <ol type="A" start="2">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+    <hr>
+    dl：definition list ，定义列表<br>
+    没有属性，子元素只有dt和dd <br>
+    <pre>
+    dt：definition title 列表的标题，这个标签是必须的
+    dd：definition description 列表的列表项，如果不需要它，可以不加
+    dt、dd只能在dl里面；dl里面只能有dt、dd。
+    </pre>
+    <dl>
+        <dt>这个是标题，必须打的</dt>
+        <dd>这个是后续的列表项，不需要可以不加</dd>
+        <!-- dd是描述dt的。 -->
+    </dl>
+    例如：<br>
+    <dl>
+		<dt>北京</dt>
+		<dd>国家首都，政治文化中心</dd>
+		<dd>污染很严重，PM2.0天天爆表</dd>
+		<dt>上海</dt>
+		<dd>魔都，有外滩、东方明珠塔、黄浦江</dd>
+		<dt>广州</dt>
+		<dd>中国南大门，有珠江、小蛮腰</dd>
+	</dl>
+    <hr>
+    table：表格标签<br>
+    一个表格&lt;table&gt;是由每行&lt;tr&gt;组成的，每行是由每个单元格&lt;td&gt;组成的
+    tr为行，th为表名称即表头，td为数据
+    <table border="1" style="border-collapse:collapse;">
+
+        <tr>
+            <td>生命壹号</td>
+            <td>23</td>
+            <td>男</td>
+            <td>黄冈</td>
+        </tr>
+    
+        <tr>
+            <td>许嵩</td>
+            <td>29</td>
+            <td>男</td>
+            <td>安徽</td>
+        </tr>
+    
+        <tr>
+            <td>邓紫棋</td>
+            <td>23</td>
+            <td>女</td>
+            <td>香港</td>
+        </tr>
+
+        <hr>
+    </table>
+        <dl>
+            <dt>&lt;table&gt;的属性</dt>
+            <dd>border：边框。像素为单位。</dd>
+            <dd>style="border-collapse:collapse;"：单元格的线和表格的边框线合并（表格的两边框合并为一条）</dd>
+            <dd>width：宽度。像素为单位。</dd>
+            <dd>height：高度。像素为单位。</dd>
+            <dd>bordercolor：表格的边框颜色。</dd>
+            <dd>addgn：表格的水平对齐方式。属性值可以填：left right center。 注意：这里不是设置表格里内容的对齐方式，如果想设置内容的对齐方式，要对单元格标签&lt;td&gt;进行设置）</dd>
+            <dd>cellpadding：单元格内容到边的距离，像素为单位。默认情况下，文字是紧挨着左边那条线的，即默认情况下的值为0。 注意不是单元格内容到四条边的距离哈，而是到一条边的距离，默认是与左边那条线的距离。如果设置属性dir="rtl"，那就指的是内容到右边那条线的距离。</dd>
+            <dd>cellspacing：单元格和单元格之间的距离（外边距），像素为单位。默认情况下的值为0</dd>
+            <dd>bgcolor="#99cc66"：表格的背景颜色。</dd>
+            <dd>background="路径src/..."：背景图片。 背景图片的优先级大于背景颜色。</dd>
+            <dd>bordercolorddght：表格的上、左边框，以及单元格的右、下边框的颜色</dd>
+            <dd>bordercolordark：表格的右、下边框，以及单元格的上、左的边框的颜色 这两个属性的目的是为了设置3D的效果。</dd>
+            <dd>dir：公有属性，单元格内容的排列方式(direction)。 可以 取值：ltr：从左到右（left to right，默认），rtl：从右到左（right to left） 既然说dir是共有属性，如果把这个属性放在任意标签中，那表明这个标签的位置可能会从右开始排列。</dd>
+            <hr>
+
+            <dt>&lt;tr&gt;行标签属性</dt>
+            <dd>
+                <dt>dir：公有属性，设置这一行单元格内容的排列方式。可以取值：</dt>
+                    <dd>ltr：从左到右（left to right，默认）</dd>
+                    <dd>rtl：从右到左（right to left）</dd>
+                <dt>bgcolor：设置这一行的单元格的背景色。 注：没有background属性，即：无法设置这一行的背景图片，如果非要设置，可以用css实现。</dt>
+                <dt>height：一行的高度</dt>
+                <dt>align="center"：一行的内容水平居中显示，取值：left、center、right</dt>
+                <dt>valign="center"：一行的内容垂直居中，取值：top、middle、bottom</dt>
+                <hr>
+            </dd>
+
+            <dt>&lt;td&gt;：单元格</dt>
+            <dd>align：内容的横向对齐方式。属性值可以填：left right center。如果想让每个单元格的内容都居中，这个属性太麻烦了，以后用css来解决。</dd>
+            <dd>valign：内容的纵向对齐方式。属性值可以填：top middle bottom</dd>
+            <dd>width：绝对值或者相对值(%)</dd>
+            <dd>height：单元格的高度</dd>
+            <dd>bgcolor：设置这个单元格的背景色。</dd>
+            <dd>background：设置这个单元格的背景图片</dd>
+            <hr>
+
+            <dt>单元格合并</dt>
+            <dd>colspan：横向合并。例如colspan="2"表示当前单元格在水平方向上要占据两个单元格的位置。</dd>
+            <dd>rowspan：纵向合并。例如rowspan="2"表示当前单元格在垂直方向上要占据两个单元格的位置 。</dd>
+            <table border="1" style="border-collapse:collapse;" >
+                <tr>
+                    <td>许嵩</td>
+                    <td>29</td>
+                    <td>男</td>
+                    <td>安徽</td>
+                </tr>
+                <tr>
+                    <td>邓紫棋</td>
+                    <td>23</td>
+                    <!-- <td>女</td> -->
+                    <!-- 这一格得删掉才能合并，纵向单元格同理 -->
+
+                    <td colspan="2">香港</td>
+                </tr>
+            </table>
+            <br>
+            表格的thead标签、tbody标签、tfoot标签<br>
+            1、如果写了，那么这三个部分的代码顺序可以任意，浏览器显示的时候还是按照thead、tbody、tfoot的顺序依次来显示内容。如果不写thead、tbody、tfoot，那么浏览器解析并显示表格内容的时候是从按照代码的从上到下的顺序来显示。<br>
+            2、当表格非常大内容非常多的时候，如果用thead、tbody、tfoot标签的话，那么数据可以边获取边显示。如果不写，则必须等表格的内容全部从服务器获取完成才能显示出来。<br>
+            <br>
+                <table border="1">
+                    <tbody>
+                    <tr>
+                        <td>生命壹号</td>
+                        <td>23</td>
+                        <td>男</td>
+                        <td>黄冈</td>
+                    </tr>
+                    </tbody>
+            
+                    <tfoot>
+                    <tr>
+                        <td>许嵩</td>
+                        <td>29</td>
+                        <td>男</td>
+                        <td>安徽</td>
+                    </tr>
+                    </tfoot>
+            
+                    <thead>
+                    <tr>
+                        <td>邓紫棋</td>
+                        <td>23</td>
+                        <td>女</td>
+                        <td>香港</td>
+                    </tr>
+                    </thead>
+            
+                </table>
+            <hr>
+        </dl>
+
+        <iframe src="src/top.html" frameborder="0" scrolling="yes"></iframe>
+
+        <dl>iframe的属性：</dl>    
+            <dd>src="subframe/the_second.html"：内嵌的那个页面</dd>
+            <dd>width=800：宽度</dd>
+            <dd>height=“150：高度</dd>
+            <dd>scrolling="no"：是否需要滚动条。默认值是true。</dd>
+            <dd>name="mainFrame"：窗口名称。公有属性。</dd>
+            <br>
+
+            <iframe src="src/top.html" width="400" height="400" name="myframe"></iframe><br>
+            <a href="src/top.html" target="myframe">默认显示top页面</a><br>
+            <a href="src/left.html" target="myframe">点击进入left页面</a><br>
+            <a href="src/right.html" target="myframe">点击进入right页面</a><br>
+
+        <hr>
+        表单标签用&lt;form&gt;表示，用于与服务器的交互。表单就是收集用户信息的，就是让用户填写的、选择的。<br>
+        <form action=""></form>
+        <dl>表单属性：</dl>
+        <dd>name：表单的名称，用于JS来操作或控制表单时使用；</dd>
+        <dd>id：表单的名称，用于JS来操作或控制表单时使用；</dd>
+        <dd>action：指定表单数据的处理程序，一般是PHP，如：action=“login.php”</dd>
+        <dd>method：表单数据的提交方式，一般取值：get(默认)和post</dd>
+        <br>
+
+        input：输入标签（文本框）
+        <pre>
+            type="属性值"：文本类型。属性值可以是：
+                text（默认）
+                password：密码类型
+                radio：单选按钮，名字相同的按钮作为一组进行单选（单选按钮，天生是不能互斥的，如果想互斥，必须要有相同的name属性。name就是“名字”。 ）。非常像以前的收音机，按下去一个按钮，其他的就抬起来了。所以叫做radio。
+                checkbox：多选按钮，name 属性值相同的按钮作为一组进行选择。
+                checked：将单选按钮或多选按钮默认处于选中状态。当&lt;input&gt;标签设置为type="radio"或者type=checkbox时，可以用这个属性。属性值也是checked，可以省略。
+                hidden：隐藏框，在表单中包含不希望用户看见的信息
+                button：普通按钮，结合js代码进行使用。
+                submit：提交按钮，传送当前表单的数据给服务器或其他程序处理。这个按钮不需要写value自动就会有“提交”文字。这个按钮真的有提交功能。点击按钮后，这个表单就会被提交到form标签的action属性中指定的那个页面中去。
+                reset：重置按钮，清空当前表单的内容，并设置为最初的默认值
+                image：图片按钮，和提交按钮的功能完全一致，只不过图片按钮可以显示图片。
+                file：文件选择框。 提示：如果要限制上传文件的类型，需要配合JS来实现验证。对上传文件的安全检查：一是扩展名的检查，二是文件数据内容的检查。
+
+            value="内容"：文本框里的默认内容（已经被填好了的）
+
+            size="50"：表示文本框内可以显示五十个字符。一个英文或一个中文都算一个字符。 注意size属性值的单位不是像素哦。
+
+            readonly：文本框只读，不能编辑。因为它的属性值也是readonly，所以属性值可以不写。 用了这个属性之后，在google浏览器中，光标点不进去；在IE浏览器中，光标可以点进去，但是文字不能编辑。
+
+            disabled：文本框只读，不能编辑，光标点不进去。属性值可以不写。
+        </pre>
+        <form>
+            姓名：<input value="呵呵" >123<br>
+            昵称：<input value="哈哈" readonly=""><br>
+            名字：<input type="text" value="name" disabled=""><br>
+            密码：<input type="password" value="pwd" size="50"><br>
+            性别：<input type="radio" name="gender" id="radio1" value="male" checked="">男
+                  <input type="radio" name="gender" id="radio2" value="female" >女<br>
+                  <!-- name相同才可以，用radio才会二选一 -->
+            爱好：<input type="checkbox" name="love" value="eat">吃饭
+                  <input type="checkbox" name="love" value="sleep">睡觉
+                  <input type="checkbox" name="love" value="bat">打豆豆
+                  <!-- checkbox时，可以用这个属性。属性值也是checked，可以省略。 -->
+                  
+        </form>
+        <form>
+            <input type="button" value="普通按钮"><br>
+            <input type="submit"  value="提交按钮"><br>
+            <input type="reset" value="重置按钮"><br>
+            <input type="image" value="图片按钮1"><br>
+            <input type="image" src="img/1.jpg" width="400" value="图片按钮2"><br>
+            <input type="file" value="文件选择框">
+        </form>
+        <form>
+            <select>
+                <!-- <select>标签里面的每一项用<option>表示。select就是“选择”，option“选项”。 -->
+                <option>小学</option>
+                <option>初中</option>
+                <option>高中</option>
+                <option>大学</option>
+                <option selected="">研究生</option>
+            </select>
+            <br><br><br>
+    
+            <select size="3">
+                <option>小学</option>
+                <option>初中</option>
+                <option>高中</option>
+                <option>大学</option>
+                <option>研究生</option>
+            </select>
+            <br><br><br>
+    
+            <select multiple="">
+                <option>小学</option>
+                <option>初中</option>
+                <option selected="">高中</option>
+                <option selected="">大学</option>
+                <option>研究生</option>
+            </select>
+            <br><br><br>
+    
+        </form>
+        &lttextarea&gt  标签：多行文本输入框
+        text 就是“文本”，area 就是“区域”。
+        <ul>
+            <li>rows="4"：指定文本区域的行数。</li>
+            <li>cols="20"：指定文本区域的列数。</li>
+            <li>readonly：只读。</li>
+        </ul>
+        <form>
+            <textarea name="txtInfo" rows="4" cols="20">1、不爱摄影不懂设计的程序猿不是一个好的产品经理。</textarea>
+        </form>
+        表单的语义化<br>
+        比如，我们在注册一个网站的信息的时候，有一部分是必填信息，有一部分是选填信息，这个时候可以利用表单的语义化。
+        <form>
+
+            <fieldset>
+            <legend>账号信息</legend>
+            姓名：<input value="呵呵" >逗比<br>
+            密码：<input type="password" value="pwd" size="50"><br>
+            </fieldset>
+    
+            <fieldset>
+            <legend>其他信息</legend>
+            性别：<input type="radio" name="gender" value="male" checked="">男
+                  <input type="radio" name="gender" value="female" >女<br>
+            爱好：<input type="checkbox" name="love" value="eat">吃饭
+                  <input type="checkbox" name="love" value="sleep">睡觉
+                  <input type="checkbox" name="love" value="bat">打豆豆
+            </fieldset>
+        </form>
+        对于上面这样的单选框，我们只有点击那个单选框（小圆圈）才可以选中，点击“男”、“女”这两个文字时是无法选中的；于是，label标签派上了用场。<br>
+        本质上来讲，“男”、“女”这两个文字和input标签时没有关系的，而label就是解决这个问题的。我们可以通过label把input和汉字包裹起来作为整体。 <br>
+        <input type="radio" name="sex" id="1"/> <label for="1">男</label> 
+        <input type="radio" name="sex" id="2"/> <label for="2">女</label>
+
+</body>
+
+</html>

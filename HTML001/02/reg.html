@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+</head>
+<body>
+    <h1>用户注册</h1>
+    <hr>
+    <!-- 表单 -->
+    <!-- 注册用的表单：一个文本框输入用户名，一个输密码 -->
+    <p>text：单行文本框<br>
+        password：密码类型<br>
+        radio：单选按钮，名字相同的按钮作为一组进行单选（单选按钮，天生是不能互斥的，如果想互斥，必须要有相同的name属性。name就是“名字”。 ）。非常像以前的收音机，按下去一个按钮，其他的就抬起来了。所以叫做radio。<br>
+        checkbox：多选按钮，name 属性值相同的按钮作为一组进行选择。<br>
+        checked：将单选按钮或多选按钮默认处于选中状态。当&lt;input&gt;标签设置为type="radio"或者type=checkbox时，可以用这个属性。属性值也是checked，可以省略。<br>
+        hidden：隐藏框，在表单中包含不希望用户看见的信息<br>
+        button：普通按钮，结合js代码进行使用。<br>
+        submit：提交按钮，传送当前表单的数据给服务器或其他程序处理。这个按钮不需要写value自动就会有“提交”文字。这个按钮真的有提交功能。点击按钮后，这个表单就会被提交到form标签的action属性中指定的那个页面中去。<br>
+        reset：重置按钮，清空当前表单的内容，并设置为最初的默认值<br>
+        image：图片按钮，和提交按钮的功能完全一致，只不过图片按钮可以显示图片。<br>
+        file：文件选择框。 提示：如果要限制上传文件的类型，需要配合JS来实现验证。对上传文件的安全检查：一是扩展名的检查，二是文件数据内容的检查。<br>
+        <br>
+        textarea：多选文本框
+        <!-- <textarea name="名称" id="" cols="可见列数" rows="可见行数"></textarea> -->
+        select：下拉列表框
+        <!-- <select name="名称" id="" >
+            <option value="数据"></option>
+        </select> -->
+    </p>
+    <form action="index.html" method="post">
+        <!-- get方式：表单数据和地址放在一起，在地址栏里就能看到。格式为：地址？name属性=value属性&name属性=value属性。。。<br>
+        不安全
+        post方式：数据封装到数据包中去了，chromeF12 <br>
+        建议使用 -->
+        <p>用户名称：<input type="text" name="user_name" value=""><p>
+        <p>登录密码：<input type="password" name="login_pass" value="123"><p>
+        <p>
+            性别：
+            <input type="radio" name="gender" id="" value="1" checked="checked">男
+            <input type="radio" name="gender" id="" value="2">女
+        </p>
+        <p>
+            爱好：
+            <input type="checkbox" name="book" id="" value="1"  checked="checked">看书
+            <input type="checkbox" name="football " id="" value="1"  >踢球
+        </p>
+        <p>
+            头像：<!--文件域用来文件上传-->
+            <input type="file" name="photo" value="">
+        </p>
+        <p>
+            隐藏域：<!--隐藏域的表单数据不会显示-->
+            <input type="hidden" name="no" value="0001">
+        </p>
+        <p>政治面貌：
+            <select name="face" id="">
+                <option value="1">少先队员</option>
+                <option value="2" selected="selected">共青团员</option>
+                <option value="3">共产党员</option>
+            </select>
+        </p>
+        <p>
+            自我评价：
+            <textarea name="" id="" cols="20" rows="3" ></textarea>
+        </p>
+
+
+        <p>
+            <input type="submit" value="注册">
+            <input type="reset" name="" id="" value="重置按钮">
+            <input type="button" name="" id="" value="一般按钮">
+        </p>
+        
+    </form>
+    <p>
+        1,一般而言 表单必须要有name属性值，没有name属性值的话，这个元素的value数据不能提交。<br>
+        2，enabled属性 启用，disabled 禁用 disabled="disabled"<br>
+        文本框特有属性：readonly 只读 readonly="readonly"<br>
+        3,表单中多个表单元素在网页上的位置一般采用表格来进行定位<br>
+        4，其他标签 <br>
+            div ：层， 用于页面整体布局，本质上就是网页中的一个矩形<br>
+            dl-dt-dd:图文混排标签
+    </p>
+</body>
+</html>

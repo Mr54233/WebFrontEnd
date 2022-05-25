@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格标签的演练</title>
+</head>
+<body>
+    1，用表格显示数据<br>
+    2，使用表格仅需网页布局（几乎淘汰）<br>
+    3，页面局部布局，如表单表格form-table<br>
+    <br><br><br>
+    table：表格标签<br>
+    一个表格&lt;table&gt;是由每行&lt;tr&gt;组成的，每行是由每个单元格&lt;td&gt;组成的<br>
+    tr为行，th为表名称即表头，td为数据
+    <table ><!--border="1"-->
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>HTML分数</th>
+            <th>css分数</th>
+            <th>JavaScript分数</th>
+            <tr>
+                <tr>
+                    <td>001</td>
+                    <td>张三</td>
+                    <td>70</td>
+                    <td>80</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>李四</td>
+                    <td>80</td>
+                    <td>85</td>
+                    <td>90</td>
+                </tr>
+            </tr>
+        </tr>
+    </table>
+    <hr>
+
+    表格常用的属性：<br>
+    <dt>单元格合并</dt>
+            <dd>colspan：行合并。例如colspan="2"表示当前单元格在水平方向上要占据两个单元格的位置。</dd>
+            <dd>rowspan：列合并。例如rowspan="2"表示当前单元格在垂直方向上要占据两个单元格的位置 。</dd>
+            <hr>
+    <table border="1"><!--border只为好看-->
+        <tr>
+            <td>ok</td>
+            <td rowspan="2">ok</td>
+            <!-- 有行合并，对应几行中的td的数量就要对应减少 -->
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+        </tr>
+        <tr>
+            <td>ok</td>
+            <!-- <td>ok</td> -->
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+        </tr>
+        <tr>
+            <td>ok</td>
+            <td colspan="2">ok</td>
+            <!-- 有列合并，对应本行中的td的数量就要对应减少 -->
+            <!-- <td>ok</td> -->
+            <td>ok</td>
+            <td>ok</td>
+        </tr>
+        <tr>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+            <td>ok</td>
+        </tr>
+    </table>
+</body>
+</html>

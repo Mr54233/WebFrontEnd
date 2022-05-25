@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单</title>
+</head>
+<body>
+    表单：用户提交数据的地方<br>
+    表格的thead标签、tbody标签、tfoot标签<br>
+    1、如果写了，那么这三个部分的代码顺序可以任意，浏览器显示的时候还是按照thead、tbody、tfoot的顺序依次来显示内容。如果不写thead、tbody、tfoot，那么浏览器解析并显示表格内容的时候是从按照代码的从上到下的顺序来显示。<br>
+    2、当表格非常大内容非常多的时候，如果用thead、tbody、tfoot标签的话，那么数据可以边获取边显示。如果不写，则必须等表格的内容全部从服务器获取完成才能显示出来。<br>
+    <form action="提交数据的目标地址" method="提交方式"> <!--表单标签-->
+        <input type="类型名" name="数据名称" value="数据"> <!--表单元素-->
+    </form>
+</body>
+</html>
