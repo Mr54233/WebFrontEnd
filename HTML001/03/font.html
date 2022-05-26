@@ -13,27 +13,45 @@
         层中文字:斜体 
         段落文字:加粗*/
 
-        *{
+        /* *{
             font-family: 仿宋,'Times New Roman', Times, serif;
             font-size: 20px;
+        } */
+        *{
+            font:20px 仿宋,'Times New Roman', Times, serif;
+            color:#52cc33;
+            text-align: center;
         }
         div{
             font-style: italic;
+            border: 1px solid red;
+            text-decoration:underline;
         }
         p{
             font-weight: bold;
+            /* text-decoration: line-through; */
+        }
+        .old{
+            font: #999;
+            text-decoration: line-through;
+        }
+        .new{
+            font: red 30px;
         }
 
 
     </style>
 </head>
 <body>
-    roman
     <div>
-        演练文字 
+        演练文字 abc
     </div>
+    <!-- 10加删除线,5变大,颜色为红 -->
     <p>
-        正在上课
+        正在上课 ABC
+    </p>
+    <p>
+        单价:原价<span class="old">10</span>元,现价<span class="new">5</span>元
     </p>
 </body>
 </html>
