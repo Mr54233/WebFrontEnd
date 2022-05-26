@@ -32,3 +32,13 @@ p a{
     font-size: 24px;
     
 }
+/* 伪类选择器 */
+a{
+    color: #666;
+    text-decoration: none;
+}
+a:hover{
+    color: red;
+    text-decoration: underline;
+    font-size: 20px;
+}
