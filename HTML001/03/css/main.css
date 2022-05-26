@@ -1,0 +1,34 @@
+/*样式书写规范
+    选择器
+    {
+        css属性名:css属性值;
+        //......
+    }
+
+*/
+/* 通配符选择器 * */
+*{
+    margin: 0;/*外边距*/
+    padding: 0;/*内边距*/
+    font-size: 16px;
+    font-family: 宋体;
+}
+/* 标签选择器 */
+p{
+    color: pink;
+    border: 1px solid red;
+}
+/* 类选择器 */
+.big{
+    font-size: 30px;
+}
+/* id选择器:id名是自己定义的 */
+#test{
+    color: red;
+}
+/* 后代选择器 */
+p a{
+    color: yellow;
+    font-size: 24px;
+    
+}
