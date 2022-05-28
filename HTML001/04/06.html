@@ -7,16 +7,25 @@
     <title>多个选择器选取了同一个网页元素</title>
     <style>
         div{
-            color: red;
-        }
-        div{
             color: orange;
             font-size:40px ;
+        }
+        /* 权重0001 */
+        div{
+            color: red;
+        }
+        /* 权重0010 */
+        .one{
+            color: orange;
+        }
+        /* 权重0100 */
+        #div1{
+            color: green;
         }
     </style>
 </head>
 <body>
-    <div class="one">
+    <div class="one" id="div1">
         俄媒:乌前总统试图前往波兰
     </div>
 </body>

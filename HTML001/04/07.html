@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复合选择器的权重值计算</title>
+    <style>
+        /* 复合选择器,要把每个选择器拆出来,然后把权重值相加 */
+        /* 0001+0010=0011 */
+        .nav a{
+            color: #999;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        /* 将第一个超链接的文字颜色设置为粉红色 */
+        /* .first 0010 */
+        /* .nav .first 0020 */
+        .nav .first{
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <p><a href="#" class="first">百度</a></p>
+        <p><a href="#">博客园</a></p>
+        <p><a href="#">程序员网</a></p>
+    </div>
+</body>
+</html>
