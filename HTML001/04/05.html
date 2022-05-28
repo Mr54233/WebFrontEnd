@@ -9,14 +9,24 @@
         /* 文字颜色默认黑色 */
         /* 将段落中的文字设置成红色的 */
         /* p是div中的子标签,所以继承了父标签的一些css属性 */
-        p{
+        /* p{
             color: red;
+        } */
+        div{
+            color: red;
+            text-decoration: underline;
+            font-family: 宋体;
+        }
+        .left,.right{
+            display: inline-block;
+            width: 120px;
         }
     </Style>
 </head>
 <body>
     <div>
-        <p>天下武功,唯快不破</p>
+        <p class="left">天下武功,唯快不破</p>
+        <div class="right">琴棋书画</div>
     </div>
 </body>
 </html>
