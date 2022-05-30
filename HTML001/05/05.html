@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不撑大盒子</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        /* 块级元素没有设置宽度的话,宽度和父元素的宽度一致 */
+        div p{
+            height: 80px;
+            padding-left: 50px;
+            background-color: purple;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>123</p>
+    </div>
+</body>
+</html>
