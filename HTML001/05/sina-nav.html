@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新浪导航栏</title>
+    <style>
+        .box{
+            width: 100%;
+            height: 75px;
+            line-height: 75px;/*单行文字垂直居中,与高度相同*/
+            border: 0;
+            border-top: 3px solid #ff8500;
+            border-bottom: 1px solid #edeef0;
+        }
+        .box a{
+            height: 75px;
+            /*行内元素宽高无效
+            将行内元素设置成行内块元素:需要设置高度*/
+            display: inline-block;
+            /* 不设置宽度是为了超链接悬停后背景的宽度不是一个固定值 */
+            /* 背景的宽度由左右内边距撑大 */
+            padding:0 30px 0 ;
+            color:#4c4c4c;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .box a:hover{
+            background-color: #ccc;
+            color: #ff8500;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <a href="#">设为首页</a>
+        <a href="#">手机新浪网</a>
+        <a href="#">移动客户端</a>
+        <a href="#">登录</a>
+        <a href="#">微博</a>
+    </div>
+</body>
+</html>
