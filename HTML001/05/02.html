@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,53 @@
             width: 200px;
             height: 200px;
             background-color: red;
+            border: 3px dotted green;
+        }
+        /* 设置文本框的边框:只有下边框,下边框是细边框, */
+        input{
+            /* border-top: 0px;
+            border-bottom: 1px solid #000;
+            border-left: 0px;
+            border-right: 0px; */
+            /* 1,取消所有边框线 */
+            border: 0;
+            /* 2,设置下边框:细边框就是宽度为1px */
+            border-bottom: 1px solid black;
+        }
+        /* 使用css样式给表格添加边框线 */
+        /* table选择器是给整张表格加边框线 */
+        /* 还需要选取出表格中的单元格,再添加边框线 */
+        /* 当多个选择器中的css代码相同,此时可以使用交集选择器来简化代码 */
+
+        /* table{
+            border: 1px solid black;
+        }
+        td{
+            border: 1px solid black;
+        } */
+        table,td{
+            border: 1px solid black;
+        }
+        table{
+            border-collapse: collapse;
         }
     </style>
 </head>
 <body>
     <div></div>
+    <br>
+    <br>
+    <input type="text" name="user_name" id="">
+    <br><br><hr>
+    <table>
+        <tr>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>22</td>
+        </tr>
+    </table>
 </body>
 </html>
