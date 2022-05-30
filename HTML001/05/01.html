@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>网页布局的本质</title>
+    <Style>
+        /* 2,使用css来定义盒子的大小:宽度和高度,确定位置 */
+        /* 比如第一个部分在最上边,第二和第三部分在网页下边 */
+        /* 第二部分在左边,第三部分在右边 */
+        #one{
+            width: 100%;
+            height: 100px;
+            background-color: red;
+        }
+        #two{
+            width: 200px;
+            height: 600px;
+            background-color: green;
+            float: left;
+        }
+        #three{
+            /* width: 100%; */
+            height: 600px;
+            background-color: yellow;
+            float: right;
+        }
+    </Style>
 </head>
 <body>
-    
+    <!-- 1,将网页划分成一个一个的盒子:矩形 -->
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
 </body>
 </html>
