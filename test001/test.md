@@ -14,8 +14,11 @@ a标签:超链接
 + 邮件链接 href="mailto:1104879088@qq.com"
 img标签:图片 src=""
 ul ol li dl标签:无序列表,有序列表,列表项,定义列表(子元素为dt和dd)
-
-
+table标签:表格,tr为行,th为表头,td为数据,子元素为thead|tbody|tfoot
+iframe标签:内嵌框架,src="内嵌的页面"
+form标签:表单标签,用于收集用户信息就是让用户填写的,选择的
+input标签:输入框标签,属性值为text,password,radio,checkbox,checked,hidden,button,submit,reset,image,file
+textarea标签:多行文本框标签
 
 
 
