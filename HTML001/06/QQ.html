@@ -6,28 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>qq联系人</title>
     <style>
-        table{
-            border: 1px solid black ;
-            border-collapse: collapse;
+        *{
+            /* 取消元素默认的内外边距 */
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .contacts{
+            /* 最外边 大盒子: 宽度高度和位置 */
+            width: 180px;
+            height: 405px;
+            border: 1px solid #666;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .contacts .group h2{
+            border-bottom: 1px solid #333;
+            background-color: #ccc;
+        }
+        .contacts .group ul li{
+            padding: 10px 0;
+
+        }
+        /* 隐藏的样式 */
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div>
-        <table>
-            <tr>
-                <td>我的朋友</td>
-            </tr>
-            <tr>
-                <td>我的同学</td>
-            </tr>
-            <tr>
-                <td>我的家人</td>
-            </tr>
-            <tr>
-                <td>陌生人</td>
-            </tr>
-        </table>
+    <!-- 最外边时联系人大盒子,
+            里面有多个组盒子,
+                组盒子中有标题盒子和联系人列表盒子 -->
+    <div class="contacts">
+        <div class="group">
+            <h2>我的朋友</h2>
+            <ul class="show">
+                <li>张三</li>
+                <li>李四</li>
+                <li>王五</li>
+                <li>tom</li>
+                <li>rose</li>
+                <li>jack</li>
+            </ul>
+        </div>
+        <div class="group">
+            <h2>我的同学</h2>
+            <ul class="hide">
+                <li>测试</li>
+                <li>测试</li>
+                <li>测试</li>
+            </ul>
+        </div>
+        <div class="group">
+            <h2>我的家人</h2>
+            <ul class="hide">
+                <li>爸爸</li>
+                <li>妈妈</li>
+                <li>妹妹</li>
+            </ul>
+        </div>
+        <div class="group">
+            <h2>陌生人</h2>
+            <ul class="hide">
+                <li>陌生人1</li>
+                <li>陌生人2</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
