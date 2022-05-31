@@ -13,27 +13,44 @@
         .box{
             padding: 15px;
             width: 328px;
-            height: 228px;
+            height: 198px;
             border: 1px solid #ccc;
             /* 块级元素水平居中 */
             margin: 100px auto;
             background-image: url(../img/line.jpg);
         }
         .box h2{
-            width: 100%;
-            text-decoration: underline;
+            padding:5px 0 ;
+            /* width: 100%; */
+            /* text-decoration: underline; */
+            /* 因为下划线的宽度等于文字的宽度,所以不是下划线 */
+            /* 采用下边框线 */
+            border-bottom: 1px dotted #ccc;
+            
+        }
+        .box ul li{
+            height: 32px;
+            line-height: 32px;
+            /* 单行文本垂直居中 */
+            border-bottom: 1px dashed #ccc;
+            list-style: none;
+        }
+        .box ul li a{
+            color: #4c4c4c;
+            font-size: 12px;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="box">
-        <h2>最新文章/News Articles</h2>
+        <h2>最新文章/New Articles</h2>
         <ul>
-            <li><a href="#">测试</a></li>
-            <li><a href="#">测试</a></li>
-            <li><a href="#">测试</a></li>
-            <li><a href="#">测试</a></li>
-            <li><a href="#">测试</a></li>
+            <li><img src="../img/arr.jpg" alt=""><a href="#">北京招聘网页设计，平面设计，php</a></li>
+            <li><img src="../img/arr.jpg" alt=""><a href="#">体验javascript的魅力</a></li>
+            <li><img src="../img/arr.jpg" alt=""><a href="#">jquery世界来临</a></li>
+            <li><img src="../img/arr.jpg" alt=""><a href="#">网页设计师的梦想</a></li>
+            <li><img src="../img/arr.jpg" alt=""><a href="#">jquery中的链式编程是什么</a></li>
         </ul>
     </div>
 </body>
