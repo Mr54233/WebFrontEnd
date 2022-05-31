@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景图像</title>
+    <style>
+        /* 给one层添加背景图像:../images/sina.png */
+        .one{
+            width: 200px;
+            height: 200px;
+            /* background-color: pink; */
+            /* background-image: url(../img/sina.png); */
+            /* 背景图像的宽高小于容器的宽高,默认时重复背景图像的 */
+            /* background-repeat:no-repeat; */
+            /* 小背景图像显示在容器的垂直方向居中 */
+            /* background-position: 20px center; */
+            /* 简化定义背景图像 */
+            background: url(../img/sina.png) no-repeat 20px center pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+</body>
+</html>
