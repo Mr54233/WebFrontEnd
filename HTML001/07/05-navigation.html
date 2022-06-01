@@ -29,6 +29,28 @@
             height: 32px;
             background: url(../img/nav-bg.jpg) repeat-x;
         }
+        #nav li{
+            float: left;
+            height: 32px;
+            line-height: 32px;
+            /* 垂直居中 */
+        }
+        #nav li a{
+            color: #40510a;
+            text-decoration: none;
+            font-size: 12px;
+
+            display: block;
+            /* 转换为块,才可以设置宽高 */
+            width: 80px;
+            height: 32px;
+            /* background-color: red; */
+            background: url(../img/button1.jpg) no-repeat;
+            text-align: center;
+        }
+        #nav li a:hover{
+            background-image: url(../img/button2.jpg);
+        }
     </style>
 </head>
 <body>
@@ -38,12 +60,12 @@
         </div>
         <div id="nav">
             <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+                <li><a href="#">网站首页</a></li>
+                <li><a href="#">网站首页</a></li>
+                <li><a href="#">网站首页</a></li>
+                <li><a href="#">网站首页</a></li>
+                <li><a href="#">网站首页</a></li>
+                <li><a href="#">网站首页</a></li>
             </ul>
         </div>
     </div>
