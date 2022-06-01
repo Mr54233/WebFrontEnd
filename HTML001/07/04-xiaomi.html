@@ -10,20 +10,34 @@
             padding: 0;
             margin: 0;
         }
+        li{
+            list-style: none;
+        }
         #box{
             width: 819px;
             height: 410px;
+            margin: 0 auto;
             background-color: red;
         }
         #left{
+            float: left;
             width: 157px;
             height: 410px;
             background-color: orange;
         }
         #right{
-            width: 663px;
-            height: 140px;
+            float: right;
+            width: 662px;
+            height: 410px;
             background-color: green;
+        }
+        #right li{
+            float: left;
+            margin-left: 8px;
+            margin-bottom: 8px;
+            width: 157px;
+            height: 202px;
+            background-color: white;
         }
     </style>
 </head>
@@ -32,14 +46,14 @@
         <div id="left"></div>
         <!-- <div id="right"></div> -->
         <ul id="right">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
         </ul>
     </div>
 </body>
