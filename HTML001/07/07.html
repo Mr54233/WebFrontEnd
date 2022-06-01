@@ -12,13 +12,19 @@
             border: 1px solid red;
 
         }
+        /* 第一个子盒子和第二个子盒子都是标准流,从上往下排列 */
+        /* 第一个子盒子浮动和第二个不浮动,第一个盒子浮在第二个盒子上面层叠排列 */
+        /* 第一个子盒子不浮动和第二个浮动,从上往下排列 */
+        /* 第一个子盒子和第二个子盒子都浮动,同一行显示 */
         #one{
+            float: left;
             width: 200px;
             height: 100px;
             background-color: skyblue;
         }
         #two{
-            width: 200px;
+            /* float: left; */
+            width: 300px;
             height: 300px;
             background-color: green;
         }
