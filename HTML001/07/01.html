@@ -16,6 +16,21 @@
             height: 600px;
             background-color: green;
         }
+            #left{
+                width: 190px;
+                height: 100%;
+                background-color: skyblue;
+            }
+            #article{
+                width: 820px;
+                height: 100%;
+                background-color: yellow;
+            }
+            #right{
+                width: 330px;
+                height: 100%;
+                background-color: skyblue;
+            }
         #bottom{
             width: 100%;
             height: 200px;
@@ -26,7 +41,11 @@
 <body>
     布局的盒子一般采用id选择器,因为布局的盒子
     <div id="top"></div>
-    <div id="mid"></div>
+    <div id="mid">
+        <div id="left"></div>
+        <div id="article"></div>
+        <div id="right"></div>
+    </div>
     <div id="bottom">
         <a href="#">百度云</a>
         <a href="#">华为云</a>
