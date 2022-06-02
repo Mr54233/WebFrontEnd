@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绝对定位口诀-子绝父相</title>
+    <style>
+        /* 绝对定位的盒子一直要寻找到有定位的祖先元素 */
+        #box{
+            /* 如果父元素绝对定位,则父元素脱标了
+            后面的元素就会占领父元素原来的位置
+            这样就会影响整个页面的布局 
+            这种方式一般来说不可取 */
+            /* position: absolute; */
+            position: relative;
+            /* 父元素是相对定位,会保留父元素相对标准流的位置,
+            不会影响到后面元素的布局
+            子绝父相是经常用的布局技术 */
+            width: 600px;
+            height: 400px;
+            background-color: skyblue;
+            margin: 0 auto;
+        }
+        #one{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 绝对定位 */
+            /* 绝对定位的盒子脱标了 */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #two{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        #last{
+            width: 700px;
+            height: 500px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="one"></div>
+        <div id="two"></div>
+    </div>
+    <div id="last"></div>
+</body>
+</html>
