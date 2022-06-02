@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +7,11 @@
     <title>综合案例--淘宝轮播图</title>
     <style>
         *{
-            padding: 0;
             margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
         }
         .taobao{
             position: relative;
@@ -17,7 +20,9 @@
             height: 288px;
             margin: 100px auto;
         }
-        .arr-l{
+        /* 并集选择器简化代码 */
+        .arr-l,
+        .arr-r{
             width: 20px;
             height: 30px;
             line-height: 30px;
@@ -33,16 +38,61 @@
 
             /* border-radius: 15px; */
             /* 因为盒子呈现半圆效果,所以圆角边框要分四个角落分别设置 */
-            
+            /* border-top-right-radius: 15px; */
+            /* border-bottom-right-radius: 15px; */
+            /* border-radius: 左上角 右上角 右下角 左下角; */
+        }
+        .arr-l{
+            left: 0;
+            border-radius: 0 15px 15px 0;
+        }
+        .arr-r{
+            right: 0;
+            text-decoration: none;
+            border-radius: 15px 0 0 15px;
+        }
+        .taobao ul{
+            width: 40px;
+            height: 14px;
+
+            /* 绝对定位 */
+            position: absolute;
+            left: 50%;
+            margin-left: -20px;
+            bottom: 15px;
+
+            text-align: center;
+            background-color: #999;
+            border-radius: 7px;
+        }
+        .taobao ul li{
+            float: left;
+            width: 8px;
+            height: 8px;
+            margin: 3px 1px;
+
+            background-color: #fff;
+            border-radius: 4px;
+        }
+        .taobao .current{
+            background-color: #ff0000;
         }
     </style>
 </head>
 <body>
     <div class="taobao">
         <!-- 左边上翻一张的图片 -->
-        <a class="arr-l" href="#">&lt;</a>
-        <img src="../img/taobao.jpg" alt="" class="taobao">
-        <!-- <a class="arr-r" href="#">&gt;</a> -->
+        <a class="arr-l" href="#"> &lt; </a>
+        <img src="../img/taobao.jpg" alt="" >
+        <!-- 右边下翻一张的按钮 -->
+        <a class="arr-r" href="#"> &gt; </a>
+        <!-- 4个白色圆点 -->
+        <ul>
+            <li></li>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 </body>
 </html>
