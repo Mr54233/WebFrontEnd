@@ -11,15 +11,30 @@
             margin: 0;
         }
         .taobao{
+            position: relative;
+            /* 子绝父相 */
             width: 520px;
             height: 288px;
             margin: 100px auto;
+        }
+        .arr-l{
+            width: 20px;
+            height: 30px;
+            /* 透明背景 */
+            background: rgba(0,0,0,0.2);
+            /* 绝对定位 垂直居中*/
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
         }
     </style>
 </head>
 <body>
     <div class="taobao">
+        <!-- 左边上翻一张的图片 -->
+        <a class="arr-l" href="#">&lt;</a>
         <img src="../img/taobao.jpg" alt="" class="taobao">
+        <a class="arr-r" href="#">&gt;</a>
     </div>
 </body>
 </html>
