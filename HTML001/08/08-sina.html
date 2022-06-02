@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定定位</title>
+    <style>
+        #box{
+            width: 1002px;
+            height: 1760px;
+            /* background-color: #ff0000; */
+            margin: 0 auto;
+            margin-top: 44px;
+        }
+        .ad-l{
+            width: 120px;
+            height: 288px;
+            position: fixed;
+            top: 100px;
+            left: 20px;
+        }
+        .ad-r{
+            width: 120px;
+            height: 288px;
+            position: fixed;
+            top: 100px;
+            right: 20px;
+        }
+        .top{
+            width: 100%;
+            height: 44px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 一般将固定定位的盒子单独设计,不需要给他设计特殊的父元素 -->
+    <img src="../img/top.png" alt="" class="top">
+    <img src="../img/ad-l.png" alt="" class="ad-l">
+    <img src="../img/ad-r.png" alt="" class="ad-r">
+    <div id="box">
+        <img src="../img/box.png" alt="">
+    </div>
+</body>
+</html>
