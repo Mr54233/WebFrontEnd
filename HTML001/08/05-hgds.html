@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈根达斯广告图片</title>
+    <style>
+        #box{
+            position: relative;
+            /* 子绝父相 */
+            width: 310px;
+            height: 190px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            padding:10px
+        }
+        .one{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .two{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img class="one" src="../img/top_tu.gif" alt="">
+        <img src="../img/adv.jpg" alt="">
+        <img class="two" src="../img/br.gif" alt="">
+    </div>
+</body>
+</html>
