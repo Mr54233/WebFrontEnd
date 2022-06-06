@@ -15,6 +15,10 @@ body{
     font-size: 16px;
 }
 
+a{
+    text-decoration: none;
+}
+
 /* 设计版心:宽度,水平居中 */
 .w{
     width: 1200px;
@@ -89,3 +93,32 @@ body{
     margin: 30px 0;
     color: #999;
 }
+
+/* banner开始 */
+.banner{
+    width: 100%;
+    height: 420px;
+    background: #1c036b url(../images/banner2.png) no-repeat center top;
+}
+
+.subnav{
+    width: 150px;
+    height: 420px;
+    padding:0 20px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+    .subnav ul li{
+        height: 45px;
+        line-height: 45px;    
+    }
+
+    .subnav ul li a{
+        display: block;
+        /* float: left; */
+        color: #fff;
+    }
+
+    .subnav ul li a span{
+        float: right;
+    }
