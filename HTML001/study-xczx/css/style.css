@@ -6,5 +6,29 @@
 }
 /* 设计版心:宽度,水平居中 */
 .w{
+    width: 1200px;
     margin: 0 auto;
+}
+/* logo开始 */
+.header{
+    height: 42px;
+    padding: 30px 0;
+    background-color: red;
+}
+/* 四个内容部分 */
+.logo{
+    float: left;
+    height: 42px;
+}
+.nav{
+    float: left;
+    height: 40px;
+}
+.search{
+    float: left;
+    height: 42px;
+}
+.user{
+    float: right;
+    height: 42px;
 }
