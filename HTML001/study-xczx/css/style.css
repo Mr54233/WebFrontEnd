@@ -57,13 +57,13 @@ a{
         margin: 0 30px;
 
         color: #050505;
-        text-decoration: none;
         font-size: 18px;
     }
     .nav li a:hover{
         border-bottom: 2px solid #00a4ff;
     }
 
+/* 搜索开始 */
 .search{
     float: left;
     height: 42px;
@@ -121,4 +121,27 @@ a{
 
     .subnav ul li a span{
         float: right;
+    }
+
+    .subnav li a:hover{
+        color: #00a4ff;
+    }
+
+/* 我的课程表开始 */
+.course{
+    float: right;
+    width: 230px;
+    height: 300px;
+    margin-top: 50px;
+    background-color: #fff;
+}
+
+    .course h4{
+        height: 48px;
+        line-height: 48px;
+        background-color: #9bceea;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
     }
