@@ -59,20 +59,27 @@ body{
     .nav li a:hover{
         border-bottom: 2px solid #00a4ff;
     }
+
 .search{
     float: left;
     height: 42px;
     margin: 30px 0 30px 30px;
 }
+
     .search input{
         width: 340px;
         height: 40px;
         padding-left: 20px;
         border: 1px solid #00a4ff;
         color: #999;
+
     }
     .search button{
-        background-image: url(images/btn.png);
+        width: 50px;
+        height: 40px;
+        border: 1px solid #00a4ff;
+        color: #999;
+
     }
 .user{
     float: right;
