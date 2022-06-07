@@ -225,10 +225,29 @@ a{
         }
 
     .goods-r{
-        display: block;
         float: right;
         line-height: 60px;
         margin-right: 40px;
+    }
+    
+        .goods-r a{
         font-size: 14px;
         color: #00a4ff;
+        }
+
+/* 特卖推荐 */
+.course-list{
+
+}
+
+    .list-hd{
+        height: 60px;
+    }
+
+    .hd-left{
+        float: left;
+    }
+    
+    .hd-right{
+        float: right;
     }
