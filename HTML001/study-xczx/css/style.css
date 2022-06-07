@@ -275,7 +275,7 @@ a{
     }
 
 /* 内容 */
-    .list-bd li{
+    .list-bd ul li{
         float: left;
         width: 226px;
         height: 250px;
@@ -283,23 +283,28 @@ a{
         margin: 0 14px 14px 0;
     }
 
-    .list-bd li:hover{
+    .list-bd ul li:nth-child(5n){ 
+        /* 解决宽度溢出问题 */
+        margin-right: 0px;
+    }
+
+    .list-bd ul li:hover{
         box-shadow: 0px 5px 10px -1px rgb(0 0 0 /30%);
     }
-        .list-bd li img{
+        .list-bd ul li img{
             width: 226px;
         }
 
-        .list-bd li p{
+        .list-bd ul li p{
             margin: 10px;
             font-size: 14px;
         }
 
-        .list-bd li span{
+        .list-bd ul li span{
             color: #ff7c2b;
         }
 
-        .list-bd li div{
+        .list-bd ul li div{
             font-size: 12px;
             margin: 10px;
             color: #ccc;
