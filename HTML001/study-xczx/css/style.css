@@ -246,8 +246,52 @@ a{
 
     .hd-left{
         float: left;
+        font-size: 18px;
+        line-height: 60px;
+        padding: 0 10px;
     }
     
+        .hd-left a{
+            color: #494949;
+        }
+
     .hd-right{
         float: right;
+        line-height: 60px;
+        font-size: 14px;
     }
+
+        .hd-right a{
+            color: #ccc;
+        }
+
+.list-bd{
+    
+}
+
+    .list-bd li{
+        float: left;
+        width: 226px;
+        height: 250px;
+        box-shadow: 2px 2px 2px rgb(0 0 0 /20%);
+
+        margin: 0 14px 14px 0;
+    }
+
+        .list-bd li img{
+            width: 226px;
+        }
+
+        .list-bd li p{
+            margin: 10px;
+            font-size: 14px;
+        }
+
+        .list-bd li span{
+            color: #ff7c2b;
+        }
+        .list-bd li div{
+            font-size: 12px;
+            margin: 10px;
+            color: #ccc;
+        }
