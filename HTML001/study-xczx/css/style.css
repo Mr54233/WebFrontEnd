@@ -156,6 +156,10 @@ a{
         padding: 0 10px;
     }
 
+    .course-bd li{
+        margin: 0 18px;
+        padding-top: 15px;
+    }
     .course-bd a{
         display: block;
         width: 100%;
@@ -236,47 +240,47 @@ a{
         }
 
 /* 特卖推荐 */
-.course-list{
-
+.list-hd{
+    /* float: left; */
+    height: 60px;
 }
-        .list-hd{
-            height: 60px;
-        }
 
-    .hd-left{
+    .list-hd .left{
         float: left;
         font-size: 18px;
         line-height: 60px;
         padding: 0 10px;
+        color: #494949;
     }
-    
-        .hd-left a{
-            color: #494949;
-        }
 
-    .hd-right{
+    .list-hd .right{
         float: right;
         line-height: 60px;
-        font-size: 14px;
+        margin-left: 0px;
+        color: #a5a5a5;
+        font-size: 12px;
     }
 
-        .hd-right a{
-            color: #ccc;
+        .list-hd .right:hover{
+            color: #00a4ff;
         }
 
     .list-bd{
         height: 790px;
     }
+
 /* 内容 */
     .list-bd li{
         float: left;
         width: 226px;
         height: 250px;
-        box-shadow: 2px 2px 2px rgb(0 0 0 /20%);
-
+        background-color: #fff;
         margin: 0 14px 14px 0;
     }
 
+    .list-bd li:hover{
+        box-shadow: 0px 5px 10px -1px rgb(0 0 0 /30%);
+    }
         .list-bd li img{
             width: 226px;
         }
@@ -306,12 +310,16 @@ a{
 }
     .copyright{
         float: left;
-        width: 50%;
+        width: 465px;
     }
     
+    .copyright img{
+        padding: 33px 0 0 20px;
+    }
     .copyright p{
+        padding: 25px 0 0 20px;
         color: #999;
-        margin: 10px 0;
+        /* margin: 10px 0; */
         font-size: 12px;
     }
 
@@ -319,19 +327,26 @@ a{
         display: block;
         width: 118px;
         height: 34px;
-        border: 1px solid #00a4ff ;
+        /* border: 1px solid #00a4ff ; */
         line-height: 34px;
         text-align: center;
         color: #00a4ff;
     }
 
-
+    .copyright span {
+        display: block;
+        width: 118px;
+        height: 34px;
+        border: 1px solid #00a4ff;
+        margin: 15px 0 0 19px;
+    }
 
     .links{
         float: right;
     }
 
         .links dt{
+            font-weight: 700;
             margin-bottom: 20px;
             font-size: 18px;
             color: #333;
