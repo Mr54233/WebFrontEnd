@@ -214,6 +214,7 @@ a{
     }
     
     .goods-m{
+        
         float: left;
         /* height: 60px; */
         line-height: 60px;
@@ -222,6 +223,7 @@ a{
         .goods-m a{
             padding: 0 30px;
             color: #050505;
+            border-left: 1px solid #bfbfbf;
         }
 
         .goods-m a:hover{
@@ -242,7 +244,9 @@ a{
 /* 特卖推荐 */
 .list-hd{
     /* float: left; */
+    display: inline-block;
     height: 60px;
+    width: 100%;
 }
 
     .list-hd .left{
@@ -256,7 +260,8 @@ a{
     .list-hd .right{
         float: right;
         line-height: 60px;
-        margin-left: 0px;
+        /* margin-left: 0px; */
+        padding-right: 40px;
         color: #a5a5a5;
         font-size: 12px;
     }
