@@ -217,10 +217,18 @@ a{
 
         .goods-m a{
             padding: 0 30px;
+            color: #050505;
+        }
+
+        .goods-m a:hover{
+            color: #00a4ff;
         }
 
     .goods-r{
+        display: block;
         float: right;
         line-height: 60px;
         margin-right: 40px;
+        font-size: 14px;
+        color: #00a4ff;
     }
