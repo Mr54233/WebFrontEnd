@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动门</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        /* 1,css样式的要点:超链接不设置宽度,靠padding内边距撑大盒子 */
+        /* 2,超链接和子元素分别设置背景图片的左右两边 */
+        a{
+            height: 33px;
+            display: inline-block;
+            background: url(../img/to.png) left;
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+            line-height: 33px;
+            padding-left: 10px;
+        }
+        a span{
+            display: inline-block;
+            padding-right: 10px;
+            height: 33px;
+            background: url(../img/to.png) right;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <!-- 1,html代码的要点,超链接中不是直接放置文字,而是将文字放到超链接的子标签中 -->
+        <!-- 2,超链接显示滑动门的左边,子元素相当于滑动门的右边 -->
+        
+        <li>
+            <a href="#">
+                <span>首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span>客户与反馈</span>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>
