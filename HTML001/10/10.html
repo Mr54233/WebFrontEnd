@@ -8,13 +8,31 @@
     <style>
         li{
             list-style: none;
+        /* 1,在统一的选择器中设置背景图像和宽高 */
+            background: url(../img/jd.png) no-repeat;
+            width: 17px;
+            height: 24px;
+            padding-left: 20px;
         }
+        /* 2,在特定的选择器中使用background-position准确定位 */
+        .one{
+            background-position: 0 -67px;
+        }
+        .two{
+            background-position: 0 -98px;
+        }
+        /* .one{
+            background: url(../img/jd.png) no-repeat;
+        }
+        .two{
+            background: url(../img/jd.png) no-repeat;
+        } */
     </style>
 </head>
 <body>
     <ul>
-        <li>Android手机</li>
-        <li>iOS苹果手机</li>
+        <li class="one">Android手机</li>
+        <li class="two">iOS苹果手机</li>
     </ul>
 </body>
 </html>
