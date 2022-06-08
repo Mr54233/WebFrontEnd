@@ -7,15 +7,20 @@
     <title>鼠标悬停在图像上,显示出遮罩层</title>
     <style>
         .box{
+            position: relative;
             width: 222px;
             height: 220px;
             border: 1px solid red;
+            margin:100px auto;
         }
 
         .nav{
+            /* 一开始需要隐藏起来 */
+            display: none;
+            position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,.1);
+            background: rgba(0,0,0,.3);
         }
     </style>
 </head>
