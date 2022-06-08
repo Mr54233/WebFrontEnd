@@ -20,14 +20,22 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,.3);
+            background: rgba(0,0,0,.3) url(../img/arr.png) no-repeat center center;
+            
+        }
+        /* 鼠标悬停在图像上,显示遮罩层
+        点击遮罩层,完成跳转 */
+        .box a:hover .nav{
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="box">
-        <div class="nav"></div>
-        <img src="../img/3.jpg" alt="3.jpg">
+        <a href="#">
+            <div class="nav"></div>
+            <img src="../img/3.jpg" alt="3.jpg">
+        </a>
     </div>
 </body>
 </html>
