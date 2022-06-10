@@ -1,0 +1,128 @@
+/* 这里放通用的样式 */
+
+/* 字体图标 */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?7kkyc2');
+  src:  url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?7kkyc2') format('truetype'),
+  url('../fonts/icomoon.woff?7kkyc2') format('woff'),
+  url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icomoon{
+    font-family: 'icomoon';
+    font-size: 16px;
+    line-height: 26px;
+}
+
+/* 版心 */
+.w{
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* 顶部快捷导航 */
+.shortcut{
+  height: 31px;
+  background: #f1f1f1;
+  line-height: 31px;
+}
+.shortcut li{
+  float: left;
+}
+.style-red{
+  color: #c81623;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.shortcut .fr li:last-child a{
+  border: 0;
+}
+
+.spacer{
+  width: 1px;
+  height: 12px;
+  background: #666;
+  margin: 9px 12px 0;
+}
+
+/* header部分 */
+.header{
+  position: relative;
+  height: 105px;
+}
+/* logo开始 */
+.logo{
+  position: absolute;
+  top: 25px;
+  left: 0;
+  height: 56px;
+  width: 175px;
+}
+.logo a{
+  position: absolute;
+  height: 56px;
+  width: 175px;
+  background: url(../img/logo.png) no-repeat;
+  font-size: 0;
+  /* 隐藏内部文字 */
+}
+/* logo结束,search开始 */
+.search{
+  position: absolute;
+  top: 25px;
+  left: 348px;
+}
+.text{
+  float: left;
+  width: 455px;
+  height: 32px;
+  border: 2px solid #b1191a;
+  color: #ccc;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.btn{
+  float: left;
+  width: 82px;
+  height: 32px;
+  background-color: #b1191a;
+  color: #fff;
+  border: 0;
+  font-size: 16px;
+}
+.hotwords{
+  position: absolute;
+  left: 348px;
+  top: 65px;
+}
+.hotwords a{
+  margin: 0 10px;
+}
+/* .shopcar开始 */
+.shopcar{
+  position: absolute;
+  right: 64px;
+  top: 25px;
+  width: 138px;
+  height: 34px;
+  border: 1px solid #dfdfdf;
+  background-color: #f7f7f7;
+  line-height: 34px;
+  text-align: center;
+}
+.car{
+  font-family: 'icomoon';
+  color: #b1191a;
+}
+.arrow{
+  font-family: 'icomoon';
+  margin-left: 5px;
+}
