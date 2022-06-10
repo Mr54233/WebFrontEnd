@@ -45,7 +45,6 @@
 .shortcut .fr li:last-child a{
   border: 0;
 }
-
 .spacer{
   width: 1px;
   height: 12px;
@@ -58,6 +57,7 @@
   position: relative;
   height: 105px;
 }
+
 /* logo开始 */
 .logo{
   position: absolute;
@@ -74,6 +74,7 @@
   font-size: 0;
   /* 隐藏内部文字 */
 }
+
 /* logo结束,search开始 */
 .search{
   position: absolute;
@@ -106,6 +107,7 @@
 .hotwords a{
   margin: 0 10px;
 }
+
 /* .shopcar开始 */
 .shopcar{
   position: absolute;
@@ -126,3 +128,82 @@
   font-family: 'icomoon';
   margin-left: 5px;
 }
+.count{
+  position: absolute;
+  top: -5px;
+  /* left: 100px; */
+  background-color: red;
+  height: 14px;
+  padding: 1px 3px;
+  line-height: 14px;
+  color: #fff;
+  border-radius: 45% 45% 45% 0;
+}
+
+/* nav开始 */
+.nav{
+  height: 45px;
+  border-bottom: 2px solid #b1191a;
+}
+/* 左侧导航 */
+.dropdown{
+  height: 45px;
+  width: 209px;
+}
+.dropdown .dt{
+  background-color: #b1191a;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  line-height: 45px;
+}
+.dropdown .dd{
+  height: 380px;
+  background-color: #c81623;
+  margin-top: 2px;
+}
+.menu_item{
+  height: 25px;
+  line-height: 25px;
+  padding-left: 13px;
+  transition: all 0.3s;
+}
+.menu_item:hover{
+  background: rgba(0,0,0,0.2);
+  padding-left: 18px;
+}
+.menu_item a{
+  color: #fff;
+  font-size: 13px;
+}
+.menu_item a:hover{
+  color: #ff6700;
+}
+.menu_item .arrow2{
+  float: right;
+  font-family: 'icomoon';
+  color: #fff;
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+/* 右侧导航 */
+.navitems{
+  margin-left: 10px;
+}
+.navitems li{
+  float: left;
+}
+.navitems li a{
+  float: left;
+  display: block;
+  height: 45px;
+  padding: 0 25px;
+  line-height: 45px;
+  font-size: 16px;
+}
+.navitems li:hover a{
+  background-color: #c81623;
+  color: #fff;
+}
+
