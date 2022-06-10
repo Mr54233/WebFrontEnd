@@ -1,7 +1,50 @@
 /* 这里写首页index的样式 */
 .main{
     width: 980px;
-    height: 440px;
+    height: 370px;
     margin-left: 219px;
     margin-top: 10px;
+}
+/* 中间父级元素相对定位 */
+.focus{
+    position: relative;
+    height: 370px;
+    width: 720px;
+    background-color: purple;
+    background: purple;
+}
+/* 左右箭头 */
+.arrow_l,
+.arrow_r{
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    width: 24px;
+    height: 40px;
+    background: rgba(0,0,0,.3);
+    font-family: 'icomoon';
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+.arrow_r {
+    right: 0;
+}
+.circle{
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.circle li{
+    float: left;
+    width: 8px;
+    height: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 3px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.current{
+    background-color: #fff;
 }
