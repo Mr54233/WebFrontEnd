@@ -5,11 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>html5的语义化标签</title>
+    <style>
+        header,
+        nav,
+        footer{
+            width: 100%;
+            height: 70px;
+            background-color: green;
+            margin: 10px;;
+        }
+        article{
+            float: left;
+            width: 80%;
+            height: 500px;
+            background-color: red;
+        }
+        aside{
+            float: right;
+            width: 20%;
+            height: 500px;
+            background-color: orange;
+        }
+        footer{
+            clear: both;
+        }
+    </style>
 </head>
 <body>
-    <nav></nav>
-    <div class="nav"></div>
-    <header></header>
-    <div class="header"></div>
+    <!-- 搜索引擎不能很好的识别没有语义的div标签 -->
+    <!-- <div class="nav"></div>
+    <div class="header"></div> -->
+    <!-- 使用语义化标签的好处:
+    1,代码更简洁
+    2,搜索引擎可以识别 -->
+    <header>header</header>
+    <nav>nav</nav>
+    <article>
+        <section>1</section>
+        <section>2</section>
+    </article>
+    <aside>aside</aside>
+    <footer>
+        footer
+    </footer>
 </body>
 </html>
