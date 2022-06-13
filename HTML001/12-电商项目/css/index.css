@@ -48,3 +48,75 @@
 .current{
     background-color: #fff;
 }
+
+/* 大图右侧新闻栏 */
+.quciknews{
+    width: 250px;
+    height: 370px;
+}
+.news{
+    height: 158px;
+    border: 1px solid #d6d6d6;
+}
+.news_hd{
+    height: 30px;
+    border-bottom: 1px dotted #ccc;
+    padding: 0 15px;
+    font-size: 14px;
+    line-height: 30px;
+}
+.news_hd a{
+    float: right;
+    font-size: 12px;
+}
+.news_hd a span{
+    font-family: 'icomoon';
+    font-size: 14px;
+    vertical-align: middle; 
+}
+.news_bd{
+    padding: 10px 0 0 15px;
+}
+.news_bd li{
+    height: 22px;
+    width: 230px;
+}
+/* 中间生活服务 */
+.lifeservice{
+    overflow:hidden;
+    height: 138px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.lifeservice ul{
+    width: 250px;
+}
+.lifeservice li{
+    position: relative;
+    float: left;
+    width: 82px;
+    height: 46px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.lifeservice li a{
+    display: block;
+    overflow: hidden;
+}
+.lifeservice li p{
+    text-align: center;
+}
+.service_ico {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/icons.png) no-repeat;
+    margin: 1px auto;
+}
+.service_ico_huafei {
+    background-position: -17px -16px;
+}
+.service_ico_feiji {
+    width: 26px;
+    background-position: -78px -16px;
+}
