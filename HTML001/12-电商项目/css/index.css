@@ -120,3 +120,40 @@
     width: 26px;
     background-position: -78px -16px;
 }
+.bargain {
+    height: 70px;
+    margin-top: 2px;
+}
+
+/* 推荐服务模块开始 */
+.recommend{
+    height: 163px;
+    margin-top: 10px;
+}
+.recom_hd{
+    width: 200px;
+    height: 163px;
+    background-color: #5c5251;
+    text-align: center;
+}
+.recom_hd img{
+    margin: 30px 0 15px 0;
+}
+.recom_hd h3{
+    font-size: 18px;
+    color: #fff ;
+    font-weight: normal;
+}
+.recom_bd {
+    width: 1000px;
+    height: 163px;
+    background-color: #ebebeb;
+}
+.recom_bd li{
+    float: left;
+    width: 250px;
+    height: 145px;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
