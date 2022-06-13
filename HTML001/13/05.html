@@ -8,7 +8,14 @@
 </head>
 <body>
     <form action="">
-        用户账号:<input type="text" required><br>
+        <!-- 多个autofocus依旧是第一个获得焦点 -->
+        用户账号:<input type="text" autofocus required placeholder="请输入账号...."><br>
+        政治面貌:
+        <select name="face" id="" multiple>
+            <option value="1">共青团员</option>
+            <option value="2">共产党员</option>
+        </select>
+        <br>
         <input type="submit">
     </form>
 </body>
