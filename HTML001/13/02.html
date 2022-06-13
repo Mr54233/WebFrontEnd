@@ -8,6 +8,13 @@
 </head>
 <body>
     <!-- Chrome浏览器禁止自动播放 -->
-    <audio src="../medie/snow.mp3" controls="controls" autoplay="autoplay" loop="loop"></audio>
+    <!-- <audio src="../medie/snow.mp3" controls="controls" autoplay="autoplay" loop="loop"></audio> -->
+    <!-- 为了所有浏览器都可以听到同样的声音 -->
+    <!-- 1:同样的音乐,准备两种或者以上格式的文件 -->
+    <!-- 2:Audio代码如下编写 -->
+    <audio controls>
+        <source src="../media/snow.mp3">
+        <source src="../media/snow.wav">
+    </audio>
 </body>
 </html>
