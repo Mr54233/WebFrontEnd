@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oftype结构伪类选择器</title>
+    <style>
+        span{
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            border: 1px solid red;
+            text-align: center;
+            line-height: 30px;
+        }
+        /* 给span添加背景颜色 */
+        div span:first-of-type{
+            background-color: yellow;
+        }
+        div span:last-of-type{
+            background-color: orange;
+        }
+        span:nth-of-type(2){
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div><span>1</span><span>2</span><span>3</span></div>
+    <span>out</span>
+</body>
+</html>
