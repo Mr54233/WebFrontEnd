@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>应用伪元素选择器完成超链接后的三角符号</title>
     <style>
+        @font-face {
+            font-family: 'icomoon';
+            src:  url('./fonts/icomoon.eot?7kkyc2');
+            src:  url('./fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+            url('./fonts/icomoon.ttf?7kkyc2') format('truetype'),
+            url('./fonts/icomoon.woff?7kkyc2') format('woff'),
+            url('./fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
         li{
             list-style: none;
         }
@@ -21,7 +31,9 @@
 
         }
         ul li a::after{
+            margin-left: 20px;
             content: "\ea50";
+            font-family: 'icomoon';
         }
     </style>
 </head>
