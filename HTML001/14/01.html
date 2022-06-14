@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器</title>
+    <style>
+        /* xbgc红,文字白 */
+        /* 使用类样式可以达到目标,但是代码量大,更新工作量大 */
+        /* 属性选择器的理解,前边有基本选择器选取出所有的元素 */
+        div[x]{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div x="21">1</div>
+    <div>2</div>
+    <div x="22">3</div>
+    <div x="32">4</div>
+    <div>5</div>
+</body>
+</html>
