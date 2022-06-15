@@ -180,6 +180,7 @@
   color: #ff6700;
 }
 .menu_item .arrow2{
+
   float: right;
   font-family: 'icomoon';
   color: #fff;
@@ -207,3 +208,78 @@
   color: #fff;
 }
 
+/* footer底部 */
+footer{
+  height: 416px;
+  background-color: #f5f5f5;
+  padding-top: 30px;
+  box-sizing: border-box;
+}
+/* 服务模块 */
+.service{
+  height: 79px;
+  border-bottom: 1px solid #ccc;
+}
+.service li{
+  float: left;
+  width: 240px;
+  height: 79px;
+}
+.service_title{
+  float: left;
+  margin-left: 5px;
+}
+.service_title h5{
+  font-size: 14px;
+  margin: 5px 0;
+}
+.service_title p{
+  font-size: 12px;
+}
+.service_icon{
+  float: left;
+  height: 50px;
+  width: 50px;
+  margin-left: 35px;
+  background: url(../img/icons.png) no-repeat;
+}
+.icon1{
+  background-position: -253px -3px;
+}
+.icon2{
+  background-position: -255px -54px;
+}
+.icon3{
+  background-position: -257px -105px;
+}
+.icon4{
+  background-position: -257px -157px;
+}
+.icon5{
+  background-position: -256px -209px;
+}
+/* 帮助模块 */
+.help{
+  height: 187px;
+  border-bottom: 1px solid #ccc;
+}
+.help_item{
+  float: left;
+  width: 200px;
+  padding: 20px 0 0 50px;
+  box-sizing: border-box;
+}
+.help_item dt {
+  height: 25px;
+  font-size: 16px;
+}
+.help_item dd {
+  height: 22px;
+}
+.help_app dt,
+.help_app p {
+    padding-left: 15px;
+}
+.help_app img{
+    margin: 7px 0;
+}
