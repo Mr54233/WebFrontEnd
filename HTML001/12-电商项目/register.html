@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <!-- 引入favicon.ico图标 -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- 引进初始化的css文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <div class="w">
+        <div class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="register">
+            <h3>
+                注册新用户
+                <em>我有账号,去<a href="login.html">登录</a></em>
+            </h3>
+
+            <div class="reg_form">
+                <form action="#">
+                    <ul>
+                        <li>
+                            <label for="tel">手机号:</label>
+                            <input type="text" class="inp" id="tel">
+                            <span class="error">
+                                <i class="icon"></i>
+                                手机号码格式不正确,请重新输入
+                            </span>
+                        </li>
+                        <li>
+                            <label for="">短信验证码</label>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

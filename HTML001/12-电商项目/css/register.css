@@ -1,0 +1,34 @@
+/* 注册页面的css */
+.w {
+    width: 1200px;
+    margin: auto;
+}
+.header {
+    height: 82px;
+    border-bottom: 2px solid #b1191a;
+}
+.logo {
+    padding-top: 15px;
+}
+.register {
+    height: 520px;
+    /* background-color: pink; */
+    border: 1px solid #ccc;
+    margin-top: 20px;   
+}
+.register h3 {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+    background-color: #ececec;
+    padding: 0 10px;
+    font-weight: normal;
+    font-size: 16px;
+}
+.register h3 em {
+    float: right;
+    font-size: 14px;
+}
+.register a {
+    color: #c81623;
+}
