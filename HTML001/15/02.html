@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用移动来完成效果:子盒子在父盒子的水平居中,垂直居中</title>
+    <style>
+        
+        .father{
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+            background-color: green;
+        }
+        .son{
+            /* position: absolute; */
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            /* margin: -100px 0 0 -100px; */
+            transform: translate(150px,150px);
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>
