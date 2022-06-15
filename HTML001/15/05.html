@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉三角</title>
+    <style>
+        div{
+            width: 249px;
+            height: 35px;
+            border: 1px solid #333;
+        }
+        div:hover::after{
+            transform: translate(229px,10px) rotate(225deg);
+        }
+        div::after{
+            content: '';
+            /* 行内元素直接设置宽高是无效的 */
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-bottom: 1px solid #333;
+            border-right: 1px solid #333;
+            transform: translate(229px,10px) rotate(45deg);
+            
+            transition: all .3s;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>
