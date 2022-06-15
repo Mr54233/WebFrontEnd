@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2d转换之旋转</title>
+    <style>
+        div img{
+            width: 320px;
+            height: 320px;
+            /* 过度动画:谁做动画,过度就写在谁上 */
+            transition: all .3s;
+        }
+        /* 鼠标悬停在图像上,图像顺时针旋转180deg/ */
+        img:hover{
+            transform: rotate(180deg) ;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../img/3.jpg" alt="">
+    </div>
+</body>
+</html>
