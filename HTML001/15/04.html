@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置旋转中心点</title>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: red;
+            transition: all 8s;
+            /* 默认旋转中心点就是元素的中心点 */
+            /* transform-origin: center center; */
+            transform-origin: 50% 50%;
+            /* 盒子围绕盒子的左下角旋转 */
+            /* transform-origin: 0% 100%; */
+            /* transform-origin: left bottom; */
+            /* 左上角 */
+            /* transform-origin: left top; */
+            transform-origin: 0 0;
+        }
+        div:hover{
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>
