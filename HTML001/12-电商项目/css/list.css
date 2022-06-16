@@ -1,0 +1,35 @@
+/* 列表页面CSS  */
+.ms {
+    position: absolute;
+    top: 40px;
+    left: 185px;
+    height: 32px;
+    border-left: 1px solid #b1191a;
+    padding: 5px 0 0 15px;
+}
+/* nav左侧 */
+.navl li{
+    float: left;
+    line-height: 45px;
+    margin: 0 30px;
+}
+.navl li a{
+    font-size: 16px;
+    color: #000;
+    font-weight: 700;
+}
+.navl li a:hover{
+    color: #c81523;
+
+}
+/* nav右侧 */
+.navr li{
+    float: left;
+    line-height: 45px;
+    margin: 0 20px;
+}
+.navr li a{
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'icomoon';
+}
