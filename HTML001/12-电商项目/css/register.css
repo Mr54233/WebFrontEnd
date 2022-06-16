@@ -7,6 +7,7 @@
     height: 82px;
     border-bottom: 2px solid #b1191a;
 }
+/* .logo */
 .logo {
     padding-top: 15px;
 }
@@ -31,4 +32,105 @@
 }
 .register a {
     color: #c81623;
+}
+/* 表单 */
+.reg_form {
+    width: 600px;
+    height: 400px;
+    /* background-color: pink; */
+    margin: 40px auto 0;
+}
+.reg_form label {
+    display: inline-block;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    text-align: right;
+}
+.reg_form li {
+    margin-bottom: 15px;
+}
+/* 输入框 */
+.inp {
+    width: 238px;
+    height: 34px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+}
+/* 安全强度 */
+.safe {
+    padding-left: 187px;
+    color: #b2b2b2;
+}
+.safe em {
+    padding: 0 12px;
+    color: #fff;
+}
+.low {
+    background-color: #de1111;
+}
+.mid {
+    background-color: #40b83f;
+}
+.high {
+    background-color: #f79110;
+}
+/* 同意协议 */
+.agree {
+    padding-top: 20px;
+    padding-left: 115px;
+}
+.agree .inpu {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.agree a {
+    color: #1ba1e6;
+}
+/* 提交按钮 */
+.over {
+    width: 200px;
+    height: 34px;
+    background-color: #c81623;
+    margin: 30px 0 0 130px;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+
+.error {
+    color: #df3033;
+    margin-left: 10px;
+}
+.error_icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/error.png) no-repeat;
+    vertical-align: middle;
+}
+.success {
+    color: #40b83f;
+    margin-left: 10px;
+}
+.success_icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/success.png) no-repeat;
+    vertical-align: middle;
+}
+
+.copyright {
+    text-align: center;
+}
+.copyright_links {
+    margin: 20px 0 15px 0;
+}
+.copyright_span {
+    margin: 0 6px;
+}
+.copyright_info {
+    line-height: 18px;
 }

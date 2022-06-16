@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画案例1</title>
+    <style>
+        /* 需求:打开页面,盒子从左往右移动 */
+        /* 1.定义动画 */
+        @keyframes move {
+            /* 开始状态 */
+            0%{
+                transform: translate(0,0);
+            }
+            /* 结束状态 */
+            100%{
+                transform: translate(1000px,0);
+            }
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            animation: move 3s;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
