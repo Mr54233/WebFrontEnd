@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画案例3</title>
+    <style>
+        /* 需求:页面加载完成以后,div盒子立即动画:
+        1,从左往右,2,从右上移动到右下,3,从右下移动到左下
+        4,从左下移动到左上 */
+        @keyframes move {
+            0% {
+                transform: translate(0,0);
+            }
+            25% {
+                transform: translate(1000px, 0);
+            }
+            50% {
+                transform: translate(1000px, 300px);
+            }
+            75% {
+                transform: translate(0, 300px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+        div{
+            width: 200px;
+            height: 100px;
+            background-color: rgb(255, 0, 0);
+            animation: move 5s;
+        }
+        /* 需求:盒子从左到右 */
+        /* 第一个盒子立即执行,第二个延迟执行 */
+        div:last-of-type{
+            animation: move 5s;
+            animation-delay: 10s;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+</html>
