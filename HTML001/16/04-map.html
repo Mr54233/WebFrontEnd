@@ -4,9 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>热点图</title>
+    <style>
+        body{
+            background-color: #000;
+        }
+        .box{
+            position: relative;
+            width: 747px;
+            height: 617px;
+            margin: 0 auto;
+            background: url(../media/map.png);
+        }
+        .city{
+            position: absolute;
+            top: 229px;
+            right: 194px;
+        }
+        .origin{
+            width: 8px;
+            height: 8px;
+            background-color: #09f;
+            border-radius: 50%;
+        }
+        .city div[class^='wave']{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 2px 2px 2px #09c;
+            animation: wave 4s linear infinite;
+        }
+        .city div.wave2 {
+            animation-delay: 2s ;
+        }
+        .city div.wave3{
+            animation-delay: 3s ;
+        }
+        @keyframes wave {
+            0%{
+
+            }
+            70%{
+                width: 40px;
+                height: 40px;
+                opacity: 1;
+            }
+            100%{
+                width: 70px;
+                height: 70px;
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="box">
+        <div class="city">
+            <div class="origin">
+
+            </div>
+            <div class="wave1">
+
+            </div>
+            <div class="wave2">
+
+            </div>
+            <div class="wave3">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
