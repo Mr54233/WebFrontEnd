@@ -6,11 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>透视</title>
     <style>
+        /* body{
+            perspective: 800px;
+        } */
         .box{
             width: 500px;
             height: 500px;
             border: 1px solid red;
             margin: 50px auto;
+            perspective: 800px;
+        }
+        .box div{
+            width: 100px;
+            height: 100px;
+        }
+        .box div:nth-child(1){
+            background-color: deeppink;
+            transform: translateZ(100px);
+        }
+        .box div:nth-child(2){
+            background-color: orange;
+            transform: translateZ(300px);
         }
     </style>
 </head>
