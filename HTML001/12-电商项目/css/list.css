@@ -33,3 +33,119 @@
     font-weight: 700;
     font-family: 'icomoon';
 }
+/* 中间内容 */
+.con_bd{
+    margin-top: 25px;
+}
+.con_bd ul{
+    width: 1212px;
+}
+/* 商品格子 */
+.goods {
+    position: relative;
+    float: left;
+    width: 288px;
+    height: 458px;
+    border: 1px solid transparent ;
+    margin: 0 12px 15px 0;
+}
+.goods:hover{
+    border: 1px solid #e12228;
+}
+.goods img{
+    width: 200px;
+    height: 200px;
+    padding: 36px 34px;
+}
+.goods_tit{
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+    padding: 0 10px 15px;
+}
+.goods_pri {
+    padding: 0 10px;
+}
+.goods_pri em {
+    font-size: 22px;
+    color: #e60012;
+}
+.goods_pri del {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a4a4a4;
+}
+.goods_pro {
+    padding: 0 10px;
+}
+.bar {
+    display: inline-block;
+    width: 130px;
+    height: 10px;
+    border: 1px solid #b1191a;
+    vertical-align: middle;
+    border-radius: 5px;
+    margin: 0 5px;
+    overflow: hidden;
+}
+.inbar {
+    height: 10px;
+    background-color: #ed282e;
+    width: 80%;
+}
+.goods_pro em,
+.goods_pro i {
+    color: #ed282e;
+}
+.goods_buy {
+    position: absolute;
+    bottom: 0;
+    /* display: block; */
+    height: 50px;
+    width: 288px;
+    background-color: #b1191a;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 50px;
+}
+/* 分页按钮 */
+.page {
+    margin: 40px 0;
+    text-align: center;
+}
+.page_num a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+.page_num .pn_prev,
+.page_num .pn_next {
+    width: 83px;
+}
+.page_num .dotted,
+.page_num .current {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+.page_skip input {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ccc;
+    text-align: center;
+    transition: all 0.3s;
+}
+/* 表单获得焦点后 */
+.page_skip input:focus {
+    width: 58px;
+    border: 1px solid skyblue;
+}
+.page_skip button {
+    width: 54px;
+    height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}

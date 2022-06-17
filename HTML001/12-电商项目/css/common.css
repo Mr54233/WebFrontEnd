@@ -283,3 +283,16 @@ footer{
 .help_app img{
     margin: 7px 0;
 }
+
+.copyright {
+  text-align: center;
+}
+.copyright_links {
+  margin: 20px 0 15px 0;
+}
+.copyright_span {
+  margin: 0 6px;
+}
+.copyright_info {
+  line-height: 18px;
+}
