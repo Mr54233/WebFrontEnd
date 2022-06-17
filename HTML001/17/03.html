@@ -7,20 +7,28 @@
     <title>3D旋转</title>
     <style>
         .box{
+            position: relative;
             width: 300px;
             height: 300px;
             border: 1px solid red;
             margin: 50px auto;
+            transform-style: preserve-3d;
+        }
+        .box div{
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         .box div:first-child{
-            width: 200px;
+            width: 150px;
             height: 200px;
             background-color: #f00;
         }
         .box div:last-child{
-            width: 249px;
+            width: 200px;
             height: 200px;
             background-color: #0f0;
+            transform: rotateX(60deg);
         }
     </style>
 </head>
