@@ -4,9 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>3D导航栏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        ul{
+            padding: 30px;
+        }
+        ul li{
+            float: left;
+            width: 120px;
+            height: 35px;
+            margin: 10px;
+            perspective: 1000px;
+        }
+        .box{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 0.3s;
+        }
+        .box:hover{
+            transform: rotateX(90deg);
+        }
+        .front,.bottom{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 35px;
+        }
+        .front{
+            background-color: deeppink;
+            transform: translateZ(17.5px)
+        }
+        .bottom{
+            background-color: orange;
+            transform: translateY(17.5px) rotateX(-90deg) ;
+        }
+    </style>
 </head>
 <body>
-    
+    <ul>
+        <li>
+            <div class="box">
+                <div class="front">前端工程师</div>
+                <div class="bottom">HELLO</div>
+            </div>
+        </li>
+        <li>
+            <div class="box">
+                <div class="front">前端工程师</div>
+                <div class="bottom">HELLO</div>
+            </div>
+        </li>
+    </ul>
 </body>
 </html>
