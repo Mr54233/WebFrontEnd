@@ -1,0 +1,7 @@
+/* 页面一般是铺满手机浏览器的宽度,但是应该有个最大宽度和最小宽度 */
+body{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+}
