@@ -1,7 +1,14 @@
 /* 页面一般是铺满手机浏览器的宽度,但是应该有个最大宽度和最小宽度 */
 body{
+    /* 水平居中 */
     margin: 0 auto;
+    /* 宽高百分比 */
     width: 100%;
     max-width: 640px;
     min-width: 320px;
+    /* 统一字体,字体大小,颜色,宽高 */
+    font-size: 14px;
+    font-family: -apple-system,Helvetica,sans-serif;
+    color: #666;
+    line-height: 1.5;
 }
