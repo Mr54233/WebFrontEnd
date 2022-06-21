@@ -83,7 +83,8 @@ ul{
         background-size: 20px 18px;
     }
 .search{
-    width: 80%;
+    /* 应该直接继承父类元素的宽度 */
+    /* width: 80%; */
     height: 30px;
     margin: 7px 40px;
     background-color: #fff;
