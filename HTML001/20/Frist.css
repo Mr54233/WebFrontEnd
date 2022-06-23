@@ -4,3 +4,12 @@ div {
 p {
   color: red;
 }
+.head {
+  font-size: 14px;
+}
+.head a {
+  text-decoration: none;
+}
+.head a:hover {
+  color: orange;
+}

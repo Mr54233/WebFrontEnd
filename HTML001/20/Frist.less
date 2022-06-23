@@ -10,3 +10,18 @@ div{
 p{
     color: @color;
 }
+
+// 后代选择器直接写在父选择器的代码段中
+.head{
+    font-size: 14px;
+
+    a{
+        text-decoration: none;
+
+        // 伪类选择器和交集选择器,伪元素选择器:选择器名前加&
+        &:hover{
+            color: orange;
+        }
+    }
+    
+}
