@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 屏幕大于等于320px且屏幕大小小于等于540px,设置页面的背景颜色为蓝色
+        如果屏幕大于540px并且屏幕小于750px,设置背景颜色为绿色
+        如果屏幕大于等于750px,设置背景颜色为红色 */
+        /* main-width,max-width有等于的效果 */
+        @media screen and (min-width:320px) and (max-width:540px) {
+            body{
+                background-color: #00f;
+            }
+        }
+        @media screen and (min-width:541px) and (max-width:749px) {
+            body{
+                background-color: #0f0;
+            }
+        }
+        @media screen and (min-width:750px) {
+            body{
+                background-color: #f00;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
