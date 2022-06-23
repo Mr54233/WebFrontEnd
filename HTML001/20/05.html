@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 根据屏幕大小自动调整div盒子的宽高 */
+        /* 1,媒体查询,根据屏幕大小设置html元素的字体大小 */
+        @media screen and (min-width:320px) {
+            html{
+                font-size: 16px;
+            }
+        }
+        @media screen and (min-width:540px) {
+            html{
+                font-size: 30px;
+            }
+        }
+        @media screen and (min-width:750px) {
+            html{
+                font-size: 50px;
+            }
+        }
+        /* 2,设置网页元素的宽高,单位是rem */
+        div{
+            width: 10rem;
+            height: 5rem;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
