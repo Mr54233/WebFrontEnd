@@ -2,6 +2,8 @@
 // 使用import语句导入公共less代码
 
 @import "common";
+@baseFont: 50;
+
 
 body{
     min-width: 320px;
@@ -10,4 +12,17 @@ body{
     line-height: 1.5;
     font-family: arial,helvetica;
     background: #f2f2f2;
+}
+
+// 顶部搜索开始
+.search-wrap{
+    position: fixed;
+    top: 0;
+    // 移动父盒子的50%
+    left: 50%;
+    // 移动自身的50%
+    transform: translateX(-50%);
+    width: 15rem;
+    height: (88rem/@baseFont);
+    background-color: #ffc001;
 }
