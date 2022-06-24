@@ -56,10 +56,11 @@ body {
 .search-wrap .search input {
   width: 11.24rem;
   height: 1.32rem;
-  margin: 0.22rem 0;
+  margin-top: 0.18rem;
   border-radius: 0.66rem;
   background-color: #fff2cc;
   color: #757575;
+  border: none;
 }
 .search-wrap .login {
   width: 1.5rem;
