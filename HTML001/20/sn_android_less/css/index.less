@@ -1,8 +1,6 @@
 // index页面的css样式代码
-// 使用import语句导入公共less代码
+@import url(./common.less);
 
-@import "common";
-@baseFont: 50;
 a {
     text-decoration: none;
     color: #333;
@@ -12,65 +10,62 @@ ul {
     list-style: none;
 }
 
+@baseFont: 50;
 
-body{
-    // min-width: 320px;
+body {
     width: 15rem;
     margin: 0 auto;
     line-height: 1.5;
-    font-family: arial,helvetica;
-    background: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
 }
 
-// 顶部搜索开始
-.search-wrap{
+//顶部搜索模块
+.search-wrap {
     display: flex;
-
     position: fixed;
     top: 0;
-    // 移动父盒子的50%
     left: 50%;
-    // 移动自身的50%
     transform: translateX(-50%);
     width: 15rem;
-    height: (88rem/@baseFont);
+    height: (88rem / @baseFont);
     background-color: #ffc001;
 
-    .classify{
+    .classify {
         display: flex;
         width: (75rem / @baseFont);
         height: (70rem / @baseFont);
-        margin-top: ((88rem-70)  / @baseFont /2);
+        margin-top: ((88rem - 70rem) / 2 / @baseFont);
         justify-content: center;
-
-        .classify-icon{
+        
+        .classify-icon {
             width: (44rem / @baseFont);
             height: (70rem / @baseFont);
             background: url(../images/classify.png) no-repeat;
-            background-size: (44rem / @baseFont ) (70rem / @baseFont);
+            background-size: (44rem / @baseFont) (70rem / @baseFont);
         }
     }
-    .search{
+    .search {
         flex: 1;
-        padding-left:  ((600rem - 566rem) / 2 / @baseFont);
+        padding-left: ((600rem - 566rem) / 2 / @baseFont);
 
-        input{
+        input {
             width: (562rem / @baseFont);
             height: (66rem / @baseFont);
-            margin-top: ((88rem - 70rem) / @baseFont / 2);
-            border-radius: ((66rem / @baseFont / 2));
+            margin-top: ((88rem - 66rem) / 2 / @baseFont);
+            border-radius: ((66rem / 2 / @baseFont));
             background-color: #fff2cc;
-            color: #757575;
+            color: #757580;
             outline: none;
-            border:none;
+            border: none;
             padding-left: (40rem / @baseFont);
             font-size: (25rem / @baseFont);
         }
     }
-    .login{
+    .login {
         width: (75rem / @baseFont);
         height: (70rem / @baseFont);
-        margin-top: ((88rem-70) / @baseFont /2);
+        margin-top: ((88rem - 70rem) / 2 / @baseFont );
         font-size: (25rem / @baseFont);
         text-align: center;
         line-height: (70rem / @baseFont);
@@ -78,17 +73,17 @@ body{
     }
 }
 
-// 版心模块开始
-.banner{
+// 版心模块
+.banner {
     width: (750rem / @baseFont);
     height: (368rem / @baseFont);
 
-    img{
+    img {
         width: 100%;
     }
 }
 
-// 广告模块开始
+// 广告模块
 .ad {
     display: flex;
     div {
@@ -102,7 +97,7 @@ body{
     }
 }
 
-// 导航栏模块开始
+// 导航栏模块
 .nav {
     width: (750rem / @baseFont);
     height: (390rem / @baseFont);

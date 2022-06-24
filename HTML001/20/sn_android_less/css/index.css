@@ -1,10 +1,10 @@
-html {
-  font-size: 50px;
-}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html {
+  font-size: 50px;
 }
 @media screen and (min-width: 320px) {
   html {
@@ -42,8 +42,8 @@ body {
   width: 15rem;
   margin: 0 auto;
   line-height: 1.5;
-  font-family: arial,helvetica;
-  background: #f2f2f2;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
 }
 .search-wrap {
   display: flex;
@@ -75,10 +75,10 @@ body {
 .search-wrap .search input {
   width: 11.24rem;
   height: 1.32rem;
-  margin-top: 0.18rem;
+  margin-top: 0.22rem;
   border-radius: 0.66rem;
   background-color: #fff2cc;
-  color: #757575;
+  color: #757580;
   outline: none;
   border: none;
   padding-left: 0.8rem;
