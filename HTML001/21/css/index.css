@@ -1,0 +1,36 @@
+body {
+    min-width: 320px;
+    max-width: 750px;
+    width: 10rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: arial,helvetica;
+    background: #f2f2f2;
+}
+a{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+ul{
+    list-style: none;
+}
+
+/* 因为flexible.js是直接将屏幕宽度 / 10 设置为根元素的字体大小. */
+/* 所以在屏幕宽度>750px时,根元素字体大小超过设计的大小 */
+/* 此时需要编写代码来矫正根元素字体大小 */
+@media screen and (min-width:751px) {
+    html{
+        font-size: 75px !important;
+    }
+}
+/* 顶部搜索开始 */
+.search-wrap{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 10rem;
+    height: 1.1733rem;
+    background-color: #ffc001;
+}
