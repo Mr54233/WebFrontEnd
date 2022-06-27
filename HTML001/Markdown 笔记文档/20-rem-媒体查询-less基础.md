@@ -5,14 +5,17 @@
     不同的是rem的基准是相对于html元素的字体大小.
     比如,根元素(html)设置font-size=12px;非根元素设置width:2rem;则换成px表示就是24px
 + 语法
-    <!-- 根html为12px -->
-    html{
-        font-size:12px;
-    }
-    <!-- 此时div的字体大小就是24px -->
-    div{
-        font-size:2rem;
-    }
+```css
+/* 根html为12px */
+html{
+    font-size:12px;
+}
+/* 此时div的字体大小就是24px */
+div{
+    font-size:2rem;
+}
+```
+
 + rem的优势
     + 父元素文字大小可能不一致,但是整个页面只有一个html,可以很好来控制整个页面的元素大小
 

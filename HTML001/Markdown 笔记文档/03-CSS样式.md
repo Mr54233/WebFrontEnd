@@ -13,7 +13,7 @@ css样式决定了网页的外观
 ## 1，行内样式：(不推荐)
 
     在标签中使用html属性“style”来引用css样式
-
+    
     尽量少写，行内样式的作用域就是该标签（即只在该标签中有效）
 
 ## 2，内嵌样式：
@@ -62,7 +62,7 @@ css样式决定了网页的外观
 
 ### 4,通配符选择器:(不推荐)
 
-    *
+    *{}
         效果:选择页面中所有的标签元素
             经常用来统一设置一个页面中全部文字的字体,大小,设置外边距和内边距
 
@@ -93,7 +93,7 @@ table,td
         默认是左对齐
     6:文字修饰:text-decoration:none|underline|;无,下划线
 ###    **可以使用font属性一次性设置字体,字体大小,字体风格,字重**
-    
+
 **font: font-style | font-variant | font-weight | font-size | line-height | font-family;**
 
     font-style（字体样式）: normal（正常）、italic（斜体）或oblique（倾斜）;

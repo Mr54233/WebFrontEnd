@@ -6,21 +6,25 @@
 1. 先定义动画
 2. 再调用定义好的动画
 ## 语法格式(定义动画)
-    @keyframes animationname {
-        0% {
-            width:100px
-        }
-        100% {
-            width:200px
-        }
+```css
+@keyframes animationname {
+    0% {
+        width:100px
     }
+    100% {
+        width:200px
+    }
+}
+```
 ## 语法格式(使用动画)
-    div{
-        <!-- 调用动画 -->
-        animation-name:动画名称
-        <!-- 持续时间 -->
-        animation-duration:持续时间
-    }
+```css
+div{
+    <!-- 调用动画 -->
+    animation-name:动画名称
+    <!-- 持续时间 -->
+    animation-duration:持续时间
+}
+```
 + 动画序列
     + 0%是动画的开始,100%是动画的完成,这样的规则就是动画序列
     + 在`@keyframes`中规定某项CSS样式,就由创建当前样式逐渐改为新样式的动画效果
