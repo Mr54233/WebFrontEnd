@@ -1,0 +1,6 @@
+.hide{
+    display: none;
+}
+ul li h3:hover+p{
+    display: block;
+}
