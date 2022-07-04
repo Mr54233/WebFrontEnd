@@ -1,0 +1,134 @@
+/* 首页样式开始 */
+
+ul {
+   margin : 0;
+   padding : 0;
+   list-style : none;
+}
+
+a {
+   text-decoration : none;
+   color : #666666;
+}
+
+a:hover {
+   text-decoration : none;
+}
+
+/* 当屏幕宽度大于等于1280px的时候,父级容器宽度设置为1280px */
+@media screen and (min-width:1280px) {
+   .container {
+      width : 1280px;
+   }
+}
+
+/* header开始 */
+header {
+   padding-left : 0 !important;
+}
+header .logo {
+   background-color : #429AD9;
+}
+header .logo img {
+   width : 100%;
+}
+
+header .nav {
+   background-color : #EEEEEE;
+   border-bottom : 1px solid #CCCCCC;
+}
+header .nav a {
+   display : block;
+   height : 50px;
+   line-height : 50px;
+   padding-left : 30px;
+   font-size : 16px;
+}
+
+header .nav a:hover {
+   background-color : #FFFFFF;
+   color : #333333;
+}
+
+header .nav a::before {
+   vertical-align : middle;
+   padding-right : 5px;
+}
+
+/* 中间新闻开始 */
+/* 上方五图 */
+.news ul li {
+   float : left;
+   height : 128px;
+   width : 25%;
+   height : 128px;
+   padding-right : 10px;
+   margin-bottom : 10px;
+}
+
+.news ul li a {
+   position : relative;
+   display : block;
+   width : 100%;
+   height : 100%;
+}
+.news li:nth-child(1) {
+   width : 50%;
+   height : 266px;
+}
+
+.news ul li:nth-child(1) a p {
+   line-height : 41px;
+   font-size : 20px;
+   padding : 0 10px;
+}
+
+
+.news ul li img {
+   width : 100%;
+   height : 100%;
+}
+
+.news ul li  p {
+   position : absolute;
+   left : 0;
+   bottom : 0;
+   width : 100%;
+   height : 41px;
+   background : rgba(0,0,0,.5);
+   color : #FFFFFF;
+   margin-bottom : 0;
+   padding : 5px 10px;
+   font-size : 12px;
+}
+
+/* .下面文章 */
+.articles {
+   border-top : 1px solid #666666;
+}
+.articles .row {
+   border-bottom : 1px solid #CCCCCC;
+   padding : 10px 0;
+}
+.articles .row img {
+   width : 100%;
+}
+
+
+/* 右侧开始 */
+.banner img {
+   width : 100%;
+}
+.hot {
+   display : block;
+   padding : 0 20px 10px;
+   margin-top : 10px;
+   border : 1px solid #CCCCCC;
+}
+.hot span {
+   border-radius : 0;
+   margin-bottom : 20px;
+}
+.hot p {
+   font-size : 12px;
+}

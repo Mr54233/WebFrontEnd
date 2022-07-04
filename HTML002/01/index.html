@@ -5,8 +5,148 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- 兼容IE678 -->
+    <!-- [if lt IE 9]-->
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond/1.4.2/respond.min.js"></script>
+    <!--[endif]-->
+    <!-- 导入bootstrap css文件 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- jQuery (necessary for bootstrap's javascript plugins)-->
+    <!-- <script src="//cdn.boot.com/jquery/1.11.3/jquery.min.js"></script> -->
+    <!-- 导入页面对应的样式文件 -->
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="row">
+            <!-- 左侧占两列 -->
+            <header class="col-md-2">
+                <!-- logo开始 -->
+                <div class="logo">
+                    <a href="#"><img src="images/logo.png" alt=""></a>
+                </div>
+                <!-- 导航开始 -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#" class="glyphicon glyphicon-camera">生活馆</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-globe">自然汇</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-book">科技湖</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-bullhorn">奇趣事</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-glass">美食杰</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!-- 中间占七列 -->
+            <article class="col-md-7">
+                <!-- 新闻五图开始 -->
+                <div class="news clearfix">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="upload/lg.png" alt="">
+                                <p>阿里百秀</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="upload/1.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="upload/2.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="upload/3.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="upload/4.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 五图下文章 -->
+                <div class="articles">
+                    <div class="row">
+                        <!-- 左边文章信息占九列 -->
+                        <div class="col-sm-9">
+                            <h3>生活馆 关于养生应该知道的知识</h3>
+                            <p class="text-muted">alibaixiu 发布于 2015-11-20</p>
+                            <p class="text-info">养生知识10个，你值得拥有</p>
+                            <p class="text-muted">阅读（2417）评论（1234）赞（12万）标签：健康</p>
+                        </div>
+                        <!-- 右边图片占三列 -->
+                        <div class="col-sm-3">
+                            <img src="upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3>生活馆 关于养生应该知道的知识</h3>
+                            <p class="text-muted">alibaixiu 发布于 2015-11-20</p>
+                            <p class="text-info">养生知识10个，你值得拥有</p>
+                            <p class="text-muted">阅读（2417）评论（1234）赞（12万）标签：健康</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3>生活馆 关于养生应该知道的知识</h3>
+                            <p class="text-muted">alibaixiu 发布于 2015-11-20</p>
+                            <p class="text-info">养生知识10个，你值得拥有</p>
+                            <p class="text-muted">阅读（2417）评论（1234）赞（12万）标签：健康</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3>生活馆 关于养生应该知道的知识</h3>
+                            <p class="text-muted">alibaixiu 发布于 2015-11-20</p>
+                            <p class="text-info">养生知识10个，你值得拥有</p>
+                            <p class="text-muted">阅读（2417）评论（1234）赞（12万）标签：健康</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3>生活馆 关于养生应该知道的知识</h3>
+                            <p class="text-muted">alibaixiu 发布于 2015-11-20</p>
+                            <p class="text-info">养生知识10个，你值得拥有</p>
+                            <p class="text-muted">阅读（2417）评论（1234）赞（12万）标签：健康</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- 右侧占三列 -->
+            <aside class="col-md-3">
+                <a href="#" class="banner">
+                    <img src="upload/zgboke.jpg" alt="">
+                </a>
+                <a href="#" class="hot">
+                    <span class="btn btn-primary">热搜</span>
+                    <h4 class="text-primary">欢迎加入中国博客联盟</h4>
+                    <p class="text-muted">这里收录了国内各个领域的优秀博客，是一个全人工编辑的开放式博客联盟交流和展示</p>
+                </a>
+            </aside>
+        </div>
+    </div>
 </body>
 </html>

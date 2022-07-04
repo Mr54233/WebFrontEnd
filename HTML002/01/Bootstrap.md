@@ -20,3 +20,16 @@ col-md-3
         images  背景图像文件
         upload 产品图像文件
         index.html 首页
+```
+2. 搭建页面骨架标签
+导入修正兼容IE678HTML5兼容的js文件
+3. 导入bootstrap核心样式
+4. 内容:
+    + 考虑页面布局
+``` 
+.container
+    .row
+        .col-md-2
+        .col-md-7
+        .col-md-3
+```
