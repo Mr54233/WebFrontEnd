@@ -1,4 +1,4 @@
-# 0703 
+# JavaScript 
 JavaScript 入门
 ## JavaScript引入方式
 ### 行内式
@@ -243,7 +243,7 @@ var num1, num2 = 10;
 
 console.log(num1); // undefined
 console.log(num2); // 10
-``` 
+```
 
 ##### 变量之间可以相互赋值
 ``` JavaScript
@@ -304,3 +304,158 @@ temp = a1;
 a1 = a2;
 a2 = temp;
 ```
+
+## *变量的命名规则(重要)*
+js是大小写敏感的语言.也就是说A和a是两个变量.大写字母是可以使用的,比如
+``` JavaScript
+var a = 123; //变量1
+var A = 1234: // 变量2
+```
+
+### 必须遵守:
++ 只能由字母(A-Z,a-z) , 数字(0-9) , 下划线(_) , 美元符($)组成 . 
++ 不能以**数字**开头 . 必须以字母(A-Z , a-z) , 下划线(_) 或者美元符($)开头 . 变量名中不允许出现空格 . 尤其注意 , 变量名中不能出现 **中划线** - .
++ 严格区分大小写(js是区分大小写的语言) . 
++ 不能使用js语言中保留的 [关键字] 和 [保留字] 作为变量名.
++ 变量名长度不能超过255个字符.
++ 汉字可以作为变量名 , 但不建议使用 , 因为比较捞
+
+### 建议遵循:
+
++ 命名要有可读性 , 方便顾名思义
++ 建议使用**驼峰命名法** . 比如: getElementById , getUserInfo , aaaOrBbbAndCcc
+
+#### 补充:
+
+1. 不能以数字开头 , 是为了把数字和字母区分开 . 
+2. js底层保存标识符的时候 , 是采用的Unicode 编码 . 所以理论上讲 , 在遵守命名规则的前提下 , utf-8中包含的所有内容都可以作为标识符.
+
+## 标识符
+
+### 标识符:
+
+在js中所有的可以有我们**自主命名**的都可以称之为标识符 . 包括: **变量名 , 函数名 , 属性名 , 参数名** 都属于标识符 . 
+
+通俗来说 , 标识符就是我们写代码时为某个东西起的名字 , 类似于人名
+
+**和变量的命令规则是一样的** . 关于变量的命名规则 , 详见上一段
+
+标识符不能使用语言中保留的**关键字**及**保留字**
+
+## 关键字
+
+### 关键字:
+
+被js赋予了特殊含义的单词 . 也就是说 , 关键字时js本身已经使用了的单词 , 我们不能再用它们充当变量名 , 函数名等标识符 . 关键字的开发工具中会显示特殊的颜色
+
+js中的关键字如下:
+
+```bash
+if、else、switch、break、case、default、for、in、do、while、
+var、let、const、void、function、continue、return、
+try、catch、finally、throw、debugger、
+this、typeof、instanceof、delete、with、
+export、new、class、extends、super、with、yield、import、static、
+true、false、null、undefined、NaN
+```
+
+### 保留字:
+
+实际上就是预留的"关键字" . 它们虽然现在还不是关键字 , 但是未来可能会成为关键字 . 同样不能用他们充当**变量名 , 函数名**等标识符.
+
+js中的保留字如下:
+
+```bash
+enum、await
+
+abstract、boolean、byte、char、double、final、float、goto、int、long、native、short、synchronized、transient、volatile、
+
+arguments eval Infinity
+
+# 以下关键字只在严格模式中被当成保留字，在ES6中是属于关键字
+implements、interface、package、private、protected、public
+```
+
+## 数据分类
+
+数据分为:静态数据 , 动态数据
+
+### 静态数据
+
+静态数据一般指的是永久性的数据 . 一般是以文件的形式储存在硬盘上 , 比如文档 , 照片 , 视频等文件.
+
+电脑关闭后 , 静态数据仍然存在 , 只要不是主动删除或者硬盘没损坏 , 这些数据就一直都在 . 
+
+### 动态数据
+
+动态数据时在程序运行过程中 , 动态产生的临时数据 , 这些数据可能是随时发生变化 . 一般存储在内存中 . 
+
+电脑关闭后 , 这些数据会被清除
+
+为何不把应用程序的动态数据加载到硬盘中执行呢? 这主要是因为 , 内存的访问速度比硬盘快无数倍 . 
+
+## 变量的数据类型
+
+### 为什么需要数据类型
+
+在计算机中，不同的数据所需占用的存储空间不同，为了充分利用存储空间，于是定义了不同的数据类型。而且，不同的数据类型，寓意也不同。
+
+我们都知道，无论这个变量是字符串类型，还是数字类型，我们都可以直接用 `var` 去定义它。比如：
+
+```javascript
+var a = 'hello word';
+
+var b = 123;
+```
+
+为什么可以这样做呢？这是因为：JavaScript 是一种「弱类型语言」，或者说是一种「动态语言」，这意味着不需要提前声明变量的类型，在程序运行过程中，类型会自动被确定。
+
+**JS 的变量数据类型，是在程序运行的过程中，根据等号右边的值来确定的**。而且，变量的数据类型是可以变化的。比如说：
+
+``` JavaScript
+var name = 'qianguyihao';
+
+name = 123; // 强制将变量 name 修改为 数字类型
+```
+### JS 中一共有八种数据类型
+
++ 基本数据类型(值类型) : **String 字符串 , Number 数值 , Bigint 大型数值 , Boolean 布尔值 , Null 空值 , Undefined 未定义 , symbol 符号.**
++ 引用数据类型 (引用类型) : **Object 对象** . 
+  + *注意*：**内置对象 Function、Array、Date、RegExp、Error** 等都是属于 Object 类型。也就是说，除了那七种基本数据类型之外，其他的，都称之为 Object 类型。
++ **BigInt** 和 **Symbol** 是ES6中新增的类型
+
+#### 经典例子
+
+**基本数据类型举例**：
+
+```javascript
+var a = 23;
+var b = a;
+
+a++;
+
+console.log(a); // 打印结果：24
+console.log(b); // 打印结果：23
+```
+
+上面的代码中：a 和 b 都是基本数据类型，让 b 等于 a，然后**改变 a 的值之后，发现 b 的值并没有被改变**。
+
+但是在引用数据类型中，就不同了，我们来看一看。
+
+**引用数据类型举例**：
+
+```javascript
+var obj1 = new Object();
+obj1.name = 'smyh';
+
+// 让 obj2 等于 obj1
+var obj2 = obj1;
+
+// 修改 obj1 的 name 属性
+obj1.name = 'vae';
+
+console.log(obj1.name); // 打印结果：vae
+console.log(obj2.name); // 打印结果：vae
+```
+
+上面的代码中：obj1 和 obj2 都是引用数据类型，让 obj2 等于 obj1，然后**修改 obj1.name 的值之后，发现 obj2.name 的值也发生了改变**。
