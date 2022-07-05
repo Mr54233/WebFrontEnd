@@ -30,7 +30,12 @@ header .logo {
    background-color : #429AD9;
 }
 header .logo img {
-   width : 100%;
+   display : block;
+   /* 在小屏幕的时候不需要放大 */
+   /* width : 100%; */
+   /* 中屏和大屏才需要放大 */
+   max-width : 100%;
+   margin : 0 auto;
 }
 
 header .nav {
@@ -111,6 +116,7 @@ header .nav a::before {
    padding : 10px 0;
 }
 .articles .row img {
+   margin-top : 5px;
    width : 100%;
 }
 
@@ -132,3 +138,44 @@ header .nav a::before {
 .hot p {
    font-size : 12px;
 }
+
+
+/* 超小屏幕的时候,logo中的图像隐藏,显示文字 */
+.logo span {
+   height : 50px;
+   line-height : 50px;
+   text-align : center;
+   font-size : 20px;
+   color : #FFFFFF;
+}
+/* 小屏幕的时候,li要浮动起来,在同一行显示 */
+@media screen and (max-width:991px) {
+   header .nav li {
+      float : left;
+      width : 20%;
+   }
+}
+/* 在超小屏幕的时候导航栏中的文字要变小一些 */
+@media screen and (max-width:767px) {
+   header .nav li a {
+      padding-left : 3px;
+      font-size : 14px;
+   }
+   /* 超小屏幕 第一个li要占100%的宽度独占一行  剩下四个li要占用50%的宽度 */
+   .news li {
+      width : 50% !important;
+   }
+   .news li:nth-child(1) {
+      width : 100% !important;
+   }
+   .row header {
+      margin-bottom : 10px;
+   }
+
+   /* 超小屏幕时,文章的标题字体大小变小 */
+   .articles .row h3 {
+      font-size : 16px;
+   }
+}
+
+/* 超小屏幕时,文章:只需要标题和点赞信息  */
