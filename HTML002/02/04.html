@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入对话框</title>
+
+    <script>
+        window.onload = function(){
+        var btn = document.getElementById('btnClickMe')
+        btn.onclick = function(){
+            // 输入水果的名称
+            var fruit = prompt('输入水果');
+            // 打印到控制台
+            console.log(fruit);
+        }
+    }
+    </script>
+</head>
+<body>
+    <button id="btnClickMe">输入你喜欢的水果</button>
+</body>
+</html>
