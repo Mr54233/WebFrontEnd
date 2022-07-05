@@ -5,11 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>内嵌:在页面头部书写js代码</title>
-    
+    <!-- 先加载脚本找不到东西 -->
+    <!-- <script>
+        var btn = document.getElementById('btnClickMe')
+        btn.onclick = function(){
+            alert('ok , i am a teacher')
+        }
+    </script> -->
+
+    <!-- 如果一定要放在head头部的话 , 需要写在Window.onload里边 -->
+    <script>
+            window.onload = function(){
+            var btn = document.getElementById('btnClickMe')
+            btn.onclick = function(){
+                alert('ok , i am a teacher')
+            }
+        }
+    </script>
+
 </head>
 <body>
     <!-- 单击按钮 , 弹出一个对话框 -->
     <!-- 在页面头部书写js代码 -->
-    <button >单击我 , 试一试</button>
+    <button id="btnClickMe">单击我 , 试一试</button>
+
+
+
+    <!-- 传统上script标签写在head头部 , 如果是导入外部的js文件 , 还是写在head头部 -->
+    <!-- 但是现在比较流行的做法 , 脚本写在/body的前边,作为最后一个标签 -->
+    <!-- <script>
+        var btn = document.getElementById('btnClickMe')
+        btn.onclick = function(){
+            alert('ok , i am a teacher')
+        }
+    </script> -->
+
 </body>
 </html>

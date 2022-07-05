@@ -38,7 +38,7 @@ script标签引入了外部js文件,所以在这个标签里不可以再写js代
 重点：
 
 当你需要通过 JS 来操作界面上的标签元素的时候，如果实在想把 JS 写到`<head>`标签中，那么就必须用` window.onload `将 JS 代码进行包裹。代码格式如下：
-``` JavaScript
+``` html
 <head>
   window.onload = function(){
     // 这里可以写操作界面元素的JS代码，等页面加载完毕后再执行
