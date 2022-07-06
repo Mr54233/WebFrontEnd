@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 输入一个同学的考试分数(百分制的) , 输出对应的五分制的分数;
+        // 99-100 A 
+        // 80-89 B
+        // 70-79 C
+        // 60-69 D
+        // 其他的 E
+
+        // 1 . 通过输入对话框输入一个百分制的分数
+        var score = Number(prompt('输入考试分数'))
+        // 2 . 分多种情况输出各自的五分制分数
+        if (score >= 90){
+            alert('A')
+        }else if(score >= 80){
+            alert('B')
+        }else if(score >= 70){
+            alert('C')
+        }else if(score >= 60){
+            alert('D')
+        }else{
+            alert('E')
+        }
+    </script>
+</body>
+</html>
