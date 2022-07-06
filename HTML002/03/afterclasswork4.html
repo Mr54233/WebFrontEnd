@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22/07/06 课后作业4</title>
+</head>
+<body>
+    
+    <script>
+    // 4- 判断星期
+    // 题目描述：​	假设这个月1号是星期一，提示用户输入本月的日期（即1日-31日），返回用户输入日期是星期几
+
+    // 1. 键盘输入日期信息
+    var time = Number(prompt('请输入日期数:'))
+    // 2. 判断日期除7余几
+    var week = time % 7
+    if(time >= 1 && time <= 31){
+        switch(week){
+            case 1:alert('星期一');break;
+            case 2:alert('星期二');break;
+            case 3:alert('星期三');break;
+            case 4:alert('星期四');break;
+            case 5:alert('星期五');break;
+            case 6:alert('星期六');break;
+            case 7:alert('星期天');break;
+    }
+    }else{
+        alert('请重新输入日期')
+    }
+    </script>
+</body>
+</html>
