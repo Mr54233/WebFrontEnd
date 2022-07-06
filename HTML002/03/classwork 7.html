@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22/07/06 课堂作业7</title>
+</head>
+<body>
+    
+    <script>
+
+        // 输入一个三位数的正整数 , 判断这个数是否是水仙花数 . 
+        // 水仙花数就是数本身等于组成该数字的三个数字的立方和
+        // 1. 键盘输入一个三位数正整数
+        var num = Number(prompt('输入一个三位数正整数:'))
+        // 2. 判断这个数的三位上的数字的立方和是否等于数的本身
+        var a = parseInt(num % 10); // 个位数
+        var b = parseInt((num % 100) / 10); // 十位数
+        var c = parseInt((num % 1000) / 100); // 百位数
+        var sum = a*a*a + b*b*b + c*c*c;
+        if(sum == num){
+            alert(num + '是水仙花数')
+        }else{
+            alert(num + '不是水仙花数')
+        }
+    </script>
+</body>
+</html>
