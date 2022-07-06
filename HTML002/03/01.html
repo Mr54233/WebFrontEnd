@@ -32,10 +32,27 @@
         //     console.log('err');
         // }
 
+        // 三等号
+        // console.log(18 == 18); //true
+        // console.log(18 == '18'); //true , == 允许进行类型转换
+        // console.log(18 === '18'); //false 值相等且类型相同
 
-        console.log(18 == 18); //true
-        console.log(18 == '18'); //true , == 允许进行类型转换
-        console.log(18 === '18'); //false 值相等且类型相同
+        // 逻辑中断(短路运算)
+        // console.log(123 && 456); //456
+        // console.log(0 && 456); //0
+        // console.log(123 && 456 && 789); //789
+
+        // var x = 1; y = 2; z = 3;
+        // console.log( x > y && ++z > 1 );//false 短路原则没执行后面的++z
+        // console.log( z ); // 3
+
+        // 赋值运算符
+        var age = 10;
+        // 复合赋值运算将右边的表达式作为一个整体来解释
+        age *= 2+3; // age = age * (2+3)
+        console.log("age = " + age );// 50
+
+
     </script>
 </body>
 </html>
