@@ -9,7 +9,13 @@
 <body>
     
     <script>
-        
+        // 输入两个数据 , 输入其中的较小数
+        var num1 = Number(prompt('请输入一个数据:'))
+        var num2 = Number(prompt('请输入第二个数据:'))
+
+        var min = num1 > num2 ? num2 : num1
+
+        alert('较小数是:' + min)
     </script>
 </body>
 </html>
