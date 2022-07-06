@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门票价格</title>
+</head>
+<body>
+    
+    <script>
+        // // 1. 通过键盘 输入游客年龄 性别
+        // var age = Number(prompt('输入游客年龄'))
+        // var sex = Number(prompt('输入游客性别男1女0'))
+        // // 2. 判断游客年龄是否小于7岁或者大于60岁 是则免费
+        // // 如果年龄小于18岁 则半价 
+        // // 18-60之间的 如果是女性就收八折门票 如果是男性 就收全价票
+        // if( age >= 7 && age <= 60){
+        //     if( age < 18) {
+        //         alert('半价')
+        //     }else{
+        //         if(sex == 1){
+        //             alert('全价票')
+        //         }else{
+        //             alert('八折门票')
+        //         }
+        //     }
+        // }else{
+        //     alert('免费门票')
+        // }
+        
+        // 分析出所有需要处理的数据:门票全价 , 年龄 , 性别 , 折扣率
+        // IPO
+        // 输入 : 门票全价 年龄 性别
+        // 处理: 分多钟情况计算折算率 , 全价 * 折扣率
+        // 输出应支付的金额
+        var age = parseInt(prompt('输入游客的年龄:'));
+        var gender = prompt('输入游客的性别(男m女f):');
+        var all = Number(prompt('输入门票的全价:'));
+        var discount = 1;
+
+        if (age <= 7){
+            discount = 0;
+        }else if(age <= 18){
+            discount = 0.5;
+        }else if(age < 60 && gender == 'f'){
+            discount = 0.8;
+        }else if(age < 60 && gender == 'm'){
+            discount = 1;
+        }else{
+            discount = 0;
+        }
+
+        var pay = all * discount;
+        alert('应付金额是' + pay);
+    </script>
+</body>
+</html>
