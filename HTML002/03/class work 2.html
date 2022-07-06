@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22/07/06 课堂作业2</title>
+</head>
+<body>
+    
+    <script>
+        // 输入一个正整数 , 判断它是否是完数 . 
+        // 完数就是数本身等于它的所有真因子之和的数
+        var num = prompt('请输入一个正整数:');
+        var sum = 0;
+        for ( i = 1 ; i < num ;i++ ){
+            if (num % i == 0 ){
+                sum += i;
+            }
+        }
+        if (num == sum){
+            alert('这个数是完数')
+        }else{
+            alert('这个数不是完数')
+        }
+    </script>
+</body>
+</html>
