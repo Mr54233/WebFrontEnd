@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220707 课后作业1</title>
+</head>
+<body>
+    
+    <script>
+        // 1、求100以内所有能被3和7整除的数的和
+        // 题目描述： 把1-100之间所有能够被3和7同时整除的数找出来，计算累加和
+
+        var sum = 0;
+        for(var i = 0 ; i <= 100 ; i++){
+            if (i % 3 == 0 && i % 7 == 0){
+                sum = sum + i;
+                document.write('i=' + i + '<br>')
+                document.write('sum=' + sum + '<br>')
+            }
+        }
+    </script>
+</body>
+</html>

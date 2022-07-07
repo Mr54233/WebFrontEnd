@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220707 课后作业6</title>
+</head>
+<body>
+    
+    <script>
+        // 6. 简易ATM
+        // 题目描述： 账户中现存有  100 块钱。
+        //     如果存钱，就用输入钱数加上先存的钱数, 之后弹出显示余额提示框；
+        //     如果取钱，就减去取的钱数，之后弹出显示余额提示框；
+        //     如果显示余额，就输出余额；
+        //     如果退出，弹出退出信息提示框。
+
+        var account = 100, saveAccount = 0;
+        var operation = prompt('请输入您要的操作:' + '\n' + '1.存钱' + '\n' + '2.取钱' + '\n' + '3.显示余额' + '\n' + '4.退出');
+        if (operation == '1') {
+            var saveMoney = prompt('请输入您要存取的金额:');
+            saveAccount = account + parseInt(saveMoney);
+            account = saveAccount;
+            alert('您的余额是:' + saveAccount);
+            operation = prompt('请输入您要的操作:' + '\n' + '1.存钱' + '\n' + '2.取钱' + '\n' + '3.显示余额' + '\n' + '4.退出');
+        }
+        if (operation == '2') {
+            var takeMoney = prompt('请输入您要取出的金额:');
+            takeAccount = account - parseInt(takeMoney);
+            account = takeAccount;
+            alert('您的余额是:' + takeAccount);
+            operation = prompt('请输入您要的操作:' + '\n' + '1.存钱' + '\n' + '2.取钱' + '\n' + '3.显示余额' + '\n' + '4.退出');
+        }
+        if (operation == '3') {
+            alert('您的余额是:' + account);
+            operation = prompt('请输入您要的操作:' + '\n' + '1.存钱' + '\n' + '2.取钱' + '\n' + '3.显示余额' + '\n' + '4.退出');
+        }
+        if (operation == '4') {
+            alert('正在退出！');
+        }
+    </script>
+</body>
+</html>

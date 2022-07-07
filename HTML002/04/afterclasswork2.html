@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220707课后作业2</title>
+</head>
+<body>
+    
+    <script>
+        // 2、使用for循环打印三角形
+        // 题目描述：在控制台一次性打印形状如下：
+
+        var str = '';
+        for (var i = 1; i <= 5; i++) {  //外层循环负责打印5行
+            for (var j = 1; j <= i; j++) {  //里层循环负责打印5个心
+                str = str + '*';       
+            }
+            str = str + '\n';     //打印完一行之后要另起一行
+        }
+        console.log(str); 
+    </script>
+</body>
+</html>
