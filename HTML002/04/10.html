@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var dates = [1,2,3,4,5,6,7,8,9,10];
+        var min = 0 , max = dates.length - 1;
+        var target = parseInt(prompt('请输入要查找的数据:'))
+
+        while ( min <= max) {
+            var mid = parseInt((min + max) / 2);
+            if (dates[mid] == target){
+                break;
+            } else if(dates[mid] > target){
+                max = mid - 1;
+            } else {
+                min = mid + 1;
+            }
+        }
+
+        if (min <= max){
+            console.log('找到了 , 位置:' + (mid + 1))
+        } else {
+            console.log('数组中没有你要找的数据');
+        }
+    </script>
+</body>
+</html>
