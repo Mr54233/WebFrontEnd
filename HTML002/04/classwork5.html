@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220707课堂作业5</title>
+</head>
+<body>
+    
+    <script>
+        // 数组中有元素 [7,11,18,20,12,14,99]
+        // 1. 计算数组中3的倍数之和
+
+        var dates = [7,11,18,20,12,14,99];
+        var sum = 0;
+        for (var i = 0 ; i < dates.length ; i++){
+            if(dates[i] % 3 == 0){
+                sum = sum + dates[i];
+            }
+        }
+        document.write(sum)
+    </script>
+</body>
+</html>
