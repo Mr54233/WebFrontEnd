@@ -13,20 +13,26 @@
         var min = 0 , max = dates.length - 1;
         var target = parseInt(prompt('请输入要查找的数据:'))
 
+        // 当最小下标小于最大下标时, 意味着还有数据没有找 , 就要循环下去
         while ( min <= max) {
+            // 计算中间位置的下标
             var mid = parseInt((min + max) / 2);
+            // 如果数组中间位置的数据与中间下标的数据相同 , 跳出循环
             if (dates[mid] == target){
                 break;
             } else if(dates[mid] > target){
-                max = mid - 1;
+                max = mid - 1;// 如果数组中间值大于目标 , 最大下标为中见下标 - 1
             } else {
-                min = mid + 1;
+                min = mid + 1;// 如果数组中间值大于目标 , 最小下标为中见下标 + 1
             }
         }
 
+
         if (min <= max){
+            // 当min <= max 时 , 意味着通过break 退出循环 , 找到数据了 , 数据在mid这个位置上 , 从0开始所以加一
             console.log('找到了 , 位置:' + (mid + 1))
         } else {
+            // min>max 退出循环 , 意味着所有的数据都找过了, 没有找到目标数据 
             console.log('数组中没有你要找的数据');
         }
     </script>
