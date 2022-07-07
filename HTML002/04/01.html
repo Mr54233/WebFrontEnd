@@ -10,8 +10,17 @@
     
     <script>
         // 计算并且输出表达式的结果:1+3+5+7+9+....+99
+        // 和 + 加数 = 和 加数 + 2 = 新的加数
 
-        
+        var sum = 0 , num = 1;
+
+        while ( num <= 99) {
+            sum += num;
+            num += 2;
+        }
+
+        console.log('sum=' + sum);
+
     </script>
 </body>
 </html>
