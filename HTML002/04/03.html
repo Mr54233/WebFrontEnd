@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dowhile循环</title>
+</head>
+<body>
+    
+    <script>
+        // 输出一张表格:
+        // 序号 摄氏温度 华氏温度
+        // 1 0 ?
+        // 2 20 ?
+        // 第十行或者摄氏温度>240度
+        // 摄氏度 = (华氏度-32) / 1.8
+
+        // 1. 输出表头
+        // 2. no = 1 , she = 0
+            // 循环条件: no <= 10 she <240 
+            // 计算华氏度 she * 1.8 +32
+            // 输出行
+            // no + 1 she + 20
+        
+        console.log('序号\t 摄氏温度\t 华氏温度');
+        var no = 1, she =0;
+        while( no <= 10 && she <240){
+            hua = she * 1.8 + 32;
+            console.log(no + '\t\t' + she + '\t\t' + hua);
+            no++;
+            she += 20;
+        }
+
+
+
+        // 1. 输出表头
+        // 2. no = 1 , she = 0
+            // 计算华氏度 she * 1.8 +32
+            // 输出行
+            // no + 1 she + 20
+            // 循环条件: no <= 10 she <240 
+        
+            // console.log('序号\t 摄氏温度\t 华氏温度');
+            // var no = 1, she =0;
+            // do{
+            //     hua = she * 1.8 + 32;
+            //     console.log(no + '\t\t' + she + '\t\t' + hua);
+            //     no++;
+            //     she += 20;
+            // }while( no <= 10 && she <240)
+    </script>
+</body>
+</html>
