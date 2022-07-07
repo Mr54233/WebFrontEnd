@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环</title>
+</head>
+<body>
+    
+    <script>
+        // 输出所有的水仙花数
+
+        for (var i = 100 ; i <= 999 ; i++){
+            // 判断i中的数据是不是水仙花数
+            var a = parseInt(i % 10); // 个位数
+            var b = parseInt((i % 100) / 10); // 十位数
+            var c = parseInt((i % 1000) / 100); // 百位数
+            var sum = a*a*a + b*b*b + c*c*c;
+            // 是打印
+            if (sum == i){
+                console.log(sum);
+            }
+        }
+    </script>
+</body>
+</html>
