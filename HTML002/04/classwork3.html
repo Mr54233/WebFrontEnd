@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220707 课堂作业3</title>
+</head>
+<body>
+    
+    <script>
+        // 鸡兔同笼 , 共计头有200个 , 脚有720只 , 请问鸡有几只 兔有几只
+        
+        var che = 0 ,rab = 0;
+        do{
+        che++;
+        rab++;
+        }while(che + rab != 200 && che * 2 + rab * 4 != 720);
+        document.write(che + '\t' + rab);
+    </script>
+</body>
+</html>

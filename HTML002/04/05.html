@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 在网页上输出九九乘法表
+        // document.write("<h1>你好</h1>")
+        // 循环输出九行
+        // 每行中循环输出列 , 列数等于行数
+        // 行 * 列 = 积 "&nbsp;&nbsp;&nbsp;"
+        // 换行<br/>
+        for (var row = 1 ; row <= 9 ; row++){
+            for ( var col = 1 ; col <= row ; col++){
+                document.write(row + '*' + col + '=' + (row * col) + "&nbsp;&nbsp;&nbsp;")
+            }
+            document.write("<br/>")
+        }
+    </script>
+</body>
+</html>

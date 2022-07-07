@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220707 课堂作业2</title>
+</head>
+<body>
+    
+    <script>
+        // 一个球从30米空中自由落体, 每次触底后反弹到一半的高度
+        // 请问球出第几次之后静止(反弹高度 < 0.0001米 算静止)
+
+        var meter = 30 , count = 0;
+        while ( meter >= 0.0001){
+            meter = meter / 2;
+            count ++;
+            document.write(meter + "<br>");
+            document.write(count + "<br>");
+        }
+    </script>
+</body>
+</html>
