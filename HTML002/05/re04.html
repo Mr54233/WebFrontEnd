@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断回文</title>
+</head>
+<body>
+    
+    <script>
+        // 判断info 是否为回文字符
+        // var info = '上海自来来自海上';
+        // // 声明次数
+        // var count = 0;
+        // for (var i = 0 ; i <= info.length ; i++){
+        // // 从前往后 , 比较从后往前 ; 
+        //         if (info[i] == info[-i] ){
+        //             count++;
+        //         } 
+        // }
+        // // 如果次数除2 等于数组长度
+        // document.write(count / 2)
+
+        // if (count / 2 == info.length){
+        //     document.write(info + '&nbsp;是回文')
+        // } else {
+        //     document.write(info + '&nbsp;不是回文')
+        // }
+
+        var info = prompt('请输入一个字符串')
+        var flag = true , before = 0 , after = info.length - 1;
+        while(before < after){
+            if(info[before] !== info[after]){
+                flag = false;
+                break;
+            }
+            before++;
+            after--;
+        }
+        if (flag == true ){
+            alert("是回文")
+        } else {
+            alert("不是回文")
+        }
+    </script>
+</body>
+</html>
