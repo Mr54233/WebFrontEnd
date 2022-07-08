@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的concat sort 方法</title>
+</head>
+<body>
+    
+    <script>
+        // var info = "abc";
+        // info = info.concat('def','1','2');
+        // console.log(info);
+
+        // var ns = [1,2,3];
+        // ns = ns.concat(4,5,6)
+        // console.log(ns);
+
+        // var ns2 = ns.concat()
+        // console.log(ns2);
+
+        var ns = [7,40,20,30,60]
+        // 函数的参数可以是另一个函数
+        // sort函数的第一个参数用来决定 第二个参数决定 后面的
+        ns = ns.sort()
+        var ns2 = ns.sort(function(a,b){return b-a;});
+        console.log(ns);
+    </script>
+</body>
+</html>

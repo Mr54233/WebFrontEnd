@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的push和pop方法</title>
+</head>
+<body>
+    
+    <script>
+
+        var datas = [];
+        console.log(datas.length);
+        datas.push('beijing')
+        console.log(datas , datas.length)
+        datas.push('shanghai')
+        console.log(datas , datas.length)
+        datas.push('shenzhen')
+        console.log(datas , datas.length)
+        var cnt = datas.push('shenzhen')
+        console.log(cnt)
+
+        var element = datas.pop();
+        console.log(element);
+        console.log(datas);
+
+        var empty = [];
+        element = empty.pop();
+        console.log(element);
+        console.log(empty);
+
+        element = datas.shift();
+        console.log(element)
+        console.log(datas)
+        
+
+    </script>
+</body>
+</html>
