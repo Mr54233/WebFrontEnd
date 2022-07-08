@@ -9,7 +9,7 @@
 <body>
     
     <script>
-
+        // 分析:函数的原型 : 包括函数名 , 形参
         // 声明一个函数:计算传入的数组中所有元素的和
         function getSum(myarr){
             var total = 0;
@@ -18,8 +18,10 @@
             }
             return total;
         }
-        var nums = [1,2,3,4,5]
-        console.log(getSum(nums))
+        var nums = [1,2,3,4,5];
+        console.log(getSum(nums));
+        var datas = [10,40,50,60];
+        console.log(getSum(datas));
     </script>
 </body>
 </html>
