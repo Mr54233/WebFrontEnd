@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220708 课堂作业4</title>
+</head>
+<body>
+    
+    <script>
+        // 判断一个正整数是不是质数
+        
+        function isPrimeNumber(num){
+            // 1. 输入一个正整数
+            var num = prompt('输入一个正整数')
+            // 判断这个数是否只能被1和他自己整除
+            var flag = true;
+            for (var i = 2 ; i < num ; i++){
+                if ( num % i == 0){
+                    flag = false;
+                }
+            }
+            return flag;
+        }
+        if (isPrimeNumber() == true){
+            alert('是质数')
+        } else {
+            alert('不是质数')
+        }
+    </script>
+</body>
+</html>

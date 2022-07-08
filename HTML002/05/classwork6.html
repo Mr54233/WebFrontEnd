@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220708 课堂作业6</title>
+</head>
+<body>
+    
+    <script>
+        // 输出所有的水仙花数
+        
+        function outWater(){
+            for (var num = 100 ; num < 999 ; num++){
+                var a = parseInt(num % 10); // 个位数
+                var b = parseInt((num % 100) / 10); // 十位数
+                var c = parseInt((num % 1000) / 100); // 百位数
+                var sum = a*a*a + b*b*b + c*c*c;
+                if (sum == num){
+                    document.write(sum + '<br>')
+                }
+            }
+        }
+        outWater();
+    </script>
+</body>
+</html>

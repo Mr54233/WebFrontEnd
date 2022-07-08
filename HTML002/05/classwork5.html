@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220708 课堂作业5</title>
+</head>
+<body>
+    
+    <script>
+        // 判断一个整数的全部因子的和
+        // 1. 输入一个整数
+        var num = prompt('请输入一个整数')
+        
+        function allFactorSum(){
+            // 2. 计算该数所有的因子和
+            var sum = 0;
+            for (var i = 1 ; i < num ; i++){
+                if ( num % i == 0){
+                    sum += i;
+                }
+            }
+            return sum;
+        }
+        alert(num + '的所有因子之和为: ' + allFactorSum())
+    </script>
+</body>
+</html>
