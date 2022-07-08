@@ -12,8 +12,26 @@
         // 使用一个数组来记录用户喜欢的歌曲的名称, 编写代码实现如下功能
         // 循环输入歌曲的名称 , 并插入到数组中 , 一直循环到输入的歌曲名称是'quit'
         // 要求 , 插入后数组中的歌曲名称是有序的(不能使用插入后再排序来完成 , 应该是先确定位置再插入).
-        var songName = prompt
-        var 
+        var songData = [];
+        var songName = prompt('请输入歌曲名称:');
+        while (songName != 'quit'){
+            // 1. 到songData数组中找位置
+            for ( var i = 0 ; i < songData.length ; i++){
+                if (songData[i] > name){
+                    break;
+                }
+            }
+            // 2. 将songData数组中现有的数据挪位置
+            for ( var j = songData.length - 1 ; j >= i ; j--){
+                songData[j+1] = songData[j]
+            }
+            // 3. 插入歌曲名称
+            // 输入歌曲名称
+            songData[i] = songName; 
+            songName = prompt('请输入歌曲名称:');
+        }
+        document.write(songData)
+        
     </script>
 </body>
 </html>

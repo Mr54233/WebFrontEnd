@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            *{margin: 0px;padding: 0px;}
+            #container{width: 300px;height: 200px;border: 1px solid red;margin: 5px auto;}
+            #sel{display: flex; align-items: center;justify-content: center;}
+            #table{border-collapse: collapse;width: 100%;}
+            #table tr td,#table tr th{border: 1px solid #ccc;}
+        </style>
+
+        <script type="text/javascript">
+            window.onload=function(){
+                timeadd();
+                document.getElementById("year").onchange=showtime;
+                document.getElementById("month").onchange=showtime;
+            }
+            function showtime(){
+                var table=document.getElementById("table");
+                var year=document.getElementById("year").value;
+                var month=document.getElementById("month").value;
+                var flag=year%4==0&&year%100!=0||year%400==0;
+                var day_count=[31,flag?29:28,31,30,31,30,31,31,30,31,30,31];
+                var dt=new Date();
+                dt.setFullYear(year);
+                dt.setMonth(month-1);//month:0--11
+                dt.setDate(1);
+                var week=dt.getDay();//求得该月1号为周几
+                var cells=day_count[month-1]+week;//总共需打印单元格数
+                var row=Math.ceil(cells/7);//计算打印的行数
+                var count=0;
+                while(table.rows.length>1){
+                    table.deleteRow(1);
+                }
+                for(var i=1;i<=row;i++){//打印本月日历
+                    var tr=table.insertRow(i);
+                    for(var j=0;j<7;j++){
+                        var cell=tr.insertCell(j);
+                        count++;
+                        if(count<=week||count>cells){
+                            cell.innerHTML="";
+                        }else{
+                            cell.innerHTML=count-week;
+                        }
+                    }
+                }
+            }
+            function timeadd(){
+                var year=document.getElementById("year");
+                for(var i=1900;i<2030;i++){
+                    var option=document.createElement("option");
+                    option.text=i;
+                    year.add(option);
+                }
+                var month=document.getElementById("month");
+                for(var j=1;j<=12;j++){
+                    var option=document.createElement("option");
+                    option.text=j;
+                    month.add(option);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="sel">
+                <select id="year"></select>
+                <select id="month"></select>
+            </div>
+            <table id="table">
+                <tr>
+                    <th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
