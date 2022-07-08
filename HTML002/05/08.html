@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 词法扫描时 , 会将 var 声明的变量 , function 声明的函数
+        // 记录到词法环境对象中
+        // 可以提前执行
+        fn1();
+        
+        function fn1(){
+            alert('fn1')
+        }
+        
+        // 无法调用 因为扫描到词法环境对象中的时候 还没赋值给fn2
+        // fn2:undefined
+        fn2();
+
+        var fn2 = function(){
+            alert('fn2')
+        }
+    </script>
+</body>
+</html>
