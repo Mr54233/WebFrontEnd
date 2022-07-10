@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220708 课后作业6</title>
+</head>
+<body>
+    <script>
+
+        // 6.简易计算器
+        // 题目描述：
+        // - 用户在弹出的输入框中选择要做的运算
+        // - 用户选择后弹出两个输入框，让用户输入数据
+        // - 根据用户选择的操作和输入的数据，计算出最后结果并弹出提示框显示结果。 操作界面如下：
+
+        var sum = 0;
+        function add(a, b) {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a + b);
+        }
+        function sub() {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a - b);
+        }
+        function mut() {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a * b);
+        }
+        function div() {
+            var a = parseFloat(prompt('请输入第一个数:'));
+            var b = parseFloat(prompt('请输入第二个数:'));
+            sum = (a / b);
+        }
+        function calculator(operation) {
+        switch(operation) {
+            case '1':
+                add();
+                alert('运算结果是:' + sum);
+                break;
+            case '2':
+                sub();
+                alert('运算结果是:' + sum);
+                break;
+            case '3':
+                mut();
+                alert('运算结果是:' + sum);
+                break;
+            case '4':
+                div();
+                alert('运算结果是:' + sum);
+                break;
+            case '5':
+                alert('正在退出计算器！');
+                break;
+            }
+            if (operation != '5') {
+            calculator(prompt('欢迎使用简易计算器:' + '\n' + '1.加法运算' + '\n' + '2.减法运算' + '\n' + '3.乘法运算' + '\n' + '4.除法运算' + '\n' + '5.退出' + '\n' + '请输入您的选项:'));
+            }
+        }
+        calculator(prompt('欢迎使用简易计算器:' + '\n' + '1.加法运算' + '\n' + '2.减法运算' + '\n' + '3.乘法运算' + '\n' + '4.除法运算' + '\n' + '5.退出' + '\n' + '请输入您的选项:'));
+    </script>
+</body>
+</html>
