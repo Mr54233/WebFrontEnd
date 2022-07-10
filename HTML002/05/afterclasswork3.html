@@ -12,7 +12,24 @@
         // 函数编写
         // 3> 写一个函数，能判断传入的一个数值是否是质数，如果是质数返回true，如果不是质数返回false，(质数：从2开始只能被1和自身整数的数)
         
+        function isPrimeNumber(num){
+            // 1. 输入一个正整数
+            var num = prompt('输入一个正整数')
+            // 判断这个数是否只能被1和他自己整除
+            var flag = true;
+            for (var i = 2 ; i < num ; i++){
+                if ( num % i == 0){
+                    flag = false;
+                }
+            }
+            return flag;
+        }
 
+        if (isPrimeNumber() == true){
+            alert('是质数')
+        } else {
+            alert('不是质数')
+        }
 
     </script>
 </body>

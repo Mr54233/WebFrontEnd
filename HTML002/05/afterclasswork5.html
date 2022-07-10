@@ -12,6 +12,25 @@
         // 函数编写
         // 5> 写一个函数，能对所有传入的数组按照从小到大进行排序，并把排序结果通过返回值返回
         
+        function sortNum(){
+            var datas = [];
+            var num = prompt('请输入数字直到quit');
+            while(num != 'quit'){
+                for(var i = 0 ; i < datas.length ; i++){
+                    if (datas[i] > num){
+                        break;
+                    }
+                }
+                for(var j = datas.length ; j >= i ; j--){
+                    datas[j+1] = datas[j];
+                }
+                datas[i] = num;
+                num = prompt('请输入数字直到quit')
+            }
+            return datas;
+        }
+        
+        document.write(sortNum());
     </script>
 </body>
 </html>

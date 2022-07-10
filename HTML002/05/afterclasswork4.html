@@ -11,7 +11,18 @@
     <script>
         // 函数编写
         // 4> 写一个函数，能翻转传入的任意数组，并把翻转结果通过返回值返回。
-        
+        function reverse(){
+            var datas = [];
+            var num = prompt('请输入数字直到quit');
+            while(num != 'quit'){
+                datas.push(num);
+                num = prompt('请输入数字直到quit');
+            }
+            alert(datas);
+            datas = datas.reverse();
+            return datas;
+        }
+        document.write(reverse());
     </script>
 </body>
 </html>
