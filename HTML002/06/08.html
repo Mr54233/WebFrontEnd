@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 定义人类
+        function Person(name){
+            // 给人类添加一个姓名属性
+            this.name = name;
+            // 给人类添加一个sayHi方法
+            this.sayHi = function(){
+                console.log('你好');
+            }
+        }
+        var p1 = new Person('ZhangSan')
+    </script>
+</body>
+</html>
