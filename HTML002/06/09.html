@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function test(){
+            console.log('ok');
+        }
+        // 定义一个函数 , 函数名其实也是一个对象 , 其类型是function , 理解为函数对象
+        console.log(test);
+        console.log(typeof test);
+
+        // 既然函数就是function类的对象 , 也就意味着可以用函数名来进行赋值
+        // 赋值后 , 右边的变量也是一个function类的对象 , 并且对象值是一样的
+        var fn = test;
+        fn();
+        console.log(fn == test);
+        console.log(fn === test);
+    </script>
+</body>
+</html>

@@ -19,7 +19,24 @@
                 console.log('你好');
             }
         }
-        var p1 = new Person('ZhangSan')
+        var p1 = new Person('ZhangSan');
+        // var p1 = new Person('LiSi');
+        var p2 = new Person('LiSi');
+        p1.sayHi();
+        p2.sayHi();
+
+        // 如果方法是构造函数中定义的方法 , 通过构造函数创建出来的多个对象
+        // 每个对象都有该方法的拷贝 , 也就是说 , 每个对象的方法是不同的方法 , 
+        // 尽管方法体是一样的 , 但是它们还是不同的方法
+        // 在构造函数中不建议定义方法 , 只定义属性就OK了
+        console.log(p1.sayHi === p2.sayHi);
+        console.log(typeof p1.sayHi);
+        console.log(typeof p2.sayHi);
+
+        for (var pro in p1){
+            console.log(pro);
+            console.log(p1[pro]);
+        }
     </script>
 </body>
 </html>
