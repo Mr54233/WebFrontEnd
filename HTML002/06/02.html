@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 经常使用立即执行的匿名函数作为命名空间来使用
+        // 在命名空间中定义自己的全部代码
+        (function(){
+            var x = 1;
+            console.log(x);
+            // 在命名空间中向外暴露变量或者函数
+            // 给window对象添加了一个新的属性
+            // 就是定义了一个全局变量
+            window.x = x;
+        })();
+
+        (function(){
+            var x = 2;
+            console.log(x);
+        })();
+    </script>
+</body>
+</html>

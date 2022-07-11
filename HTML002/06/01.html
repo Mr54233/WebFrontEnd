@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 在函数外部变量声明的变量就是全局变量
+        // 全局指的是window对象的属性
+        var num = 10;
+        console.log(num); // 10
+        console.log(window.num); // 10
+
+        var x = 1; // 定义一个全局变量 其实就是给window 对象添加了一个属性
+        console.log(x); // 1
+
+        function add(){
+            var y = 10;
+            // 在函数中存在和全局变量同名的局部变量 , 函数中使用变量有限使用局部变量
+            // 就近原则
+            var x = 11;
+
+            console.log('y=' , y);
+            console.log('x=' , x);
+
+
+            num++; // 
+
+            // 在函数中没有使用var 关键字来声明变量 , 而是直接使用变量 , 此变量
+            age = 100;
+        }
+        add();
+
+        // console.log('y=' , y)
+        console.log(num); // 11
+        console.log(age); // 100
+    </script>
+</body>
+</html>

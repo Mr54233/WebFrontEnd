@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 在函数内部可以定义另一个函数 , 
+        // 也就是说在外部函数中 , 可以定义内部函数
+        function outter(){
+            var x = 1;
+            console.log('x=' , ++x);
+
+            function inner(){
+                // 在内部函数中可以访问外部函数中的变量
+                var y = 1;
+                console.log('y=' , y , 'x=' , x);
+            }
+            inner();//调用内部函数
+
+            return inner(); // 外部函数将内部函数作为返回值返回
+        }
+        
+        var fn = outter();//调用外部函数 , 返回得到内部函数
+        fn();// 调用内部函数
+    </script>
+</body>
+</html>
