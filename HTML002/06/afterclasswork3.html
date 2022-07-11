@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220711 课后作业3</title>
+</head>
+<body>
+    
+    <script>
+        // 3、请描述下面代码的输出结果以及运行原因
+        var num = 1;
+        function demo(){
+            console.log(num);
+            function demoSon(){
+                console.log(num); 
+                num = 3;
+                console.log(num); 
+            }
+            var num = 2
+            demoSon(); 
+        }
+        demo();
+        /* 
+        undefined 由于JavaScript预解析，把num变量和demo函数的声明提升到作用域最前面，赋值不提升，所以num只声明没有赋值
+        2 在demo函数作用域内，由于JavaScript预解析，把num变量和demoSon函数提升到作用域最前面，赋值不提升，num赋值为2在demoSon()前面，所以输出2
+        3 在demoSon作用域内，num赋值为3在console.log(num)前面，所以直接输出3
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220711 课后作业5</title>
+</head>
+<body>
+    
+    <script>
+        // 5、书写一个函数，判断指定数据是否存在于指定数组中
+        // 要求：
+        // 函数名称：exist
+        // 函数调用方式：exist(数据data，数组arr)
+        // 函数功能：判断“数据data”是否存在于“数组arr”中，如果是函数返回值为true，如果不是函数返回值为false
+
+        function exist(data , arr){
+            var flag = true;
+            for ( var i = 0 ; i <= arr.length ; i++){
+                if ( data == arr[i]){
+                    return flag;
+                } 
+            }
+            return false;
+        }
+        console.log(exist(5,[2,3,4,5]));
+    </script>
+</body>
+</html>
