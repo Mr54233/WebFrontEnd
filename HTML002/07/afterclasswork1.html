@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220712 课后作业1</title>
+</head>
+<body>
+    
+    <script>
+        // 4、16进制随机颜色
+        // 题目描述：使用Math对象，随机生成一个16进制的随机颜色
+
+        /* function getRandomColor(){
+
+        } */
+
+        function getColor() {
+            var color = '#';
+            var arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+            for (var i = 0; i < 6; i++) {
+                var num = parseInt(Math.random() * arr.length);
+                color += arr[num];
+            }
+            return color;
+        }
+        document.write
+    </script>
+</body>
+</html>

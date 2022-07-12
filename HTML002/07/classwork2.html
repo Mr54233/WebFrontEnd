@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>220712 课堂作业2</title>
-</head>
-<body>
-    
-    <script>
-        // 2. 计算指定日期是今年的第几天
-        // 题目描述: 制作一个函数 , getDayNum(年月日日期) ,
-        // 可以返回指定日期是当前年的第几天
-        // 例如 : getDayNum('2019-1-2') 返回值为;2
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>220712 课堂作业2</title>
+	</head>
+	<body>
+		<script>
+			// 2. 计算指定日期是今年的第几天
+			// 题目描述: 制作一个函数 , getDayNum(年月日日期) ,
+			// 可以返回指定日期是当前年的第几天
+			// 例如 : getDayNum('2019-1-2') 返回值为;2
 
-    </script>
-</body>
+			function getDayNum(s) {
+                // 以-为分节符 , 划分三段
+				var arr = s.split("-");
+                // 算出d1和d2距离1970年的总毫秒
+				var d1 = new Date(arr[0], 0, 0).getTime();
+				var d2 = new Date(arr[0], arr[1] - 1, arr[2]).getTime();
+                // d2-d1除以每天的毫秒数
+				var d = Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
+				return d;
+			}
+
+			var s = "2019-02-01";
+			console.log(getDayNum(s));
+		</script>
+	</body>
 </html>

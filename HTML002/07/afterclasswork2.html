@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220712 课后作业2</title>
+</head>
+<body>
+    
+    <script>
+        // 5. 字符串操作
+        // 字符串：“abaasdffggghhjjkkgfddsssss3444343”，问题如下：
+        // 1> 字符串的长度 
+        // 2> 取出指定位置的字符，如：0,3,5,9等 
+        // 3> 查找指定字符是否在以上字符串中存在，如：i，c ，b等 
+        // 4> 替换指定的字符，如：g替换为22,ss替换为b等操作方法 
+        // 5> 截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
+        // 6> 找出以上字符串中出现次数最多的字符和出现的次数 
+        // 7> 遍历字符串，并将遍历出的字符两头添加符号“@”
+
+        // 字符串：“abaasdffggghhjjkkgfddsssss3444343”，问题如下：
+        //  1> 字符串的长度 
+        function getLength(str) {
+            console.log(str.length); 
+        }
+        getLength("abaasdffggghhjjkkgfddsssss3444343");
+        
+        //  2> 取出指定位置的字符，如：0,3,5,9等 
+        function getStr(str, n) {
+            console.log(str.charAt(n));
+        }
+        getStr("abaasdffggghhjjkkgfddsssss3444343", 3);
+
+        //  3> 查找指定字符是否在以上字符串中存在，如：i，c ，b等 
+        function exist(str, s) {
+            if (str.indexOf(s) != -1) {
+                console.log("存在");
+            }else {
+                console.log("不存在");
+            }
+        }
+        exist("abaasdffggghhjjkkgfddsssss3444343", "c");
+
+        //  4> 替换指定的字符，如：g替换为22,ss替换为b等操作方法 
+        function changeStr(str, target) {
+            var arr1 = str.replace(/g/g, target)  // replace() 方法首个替换加 /要被替换的字符/  全部替换加 /要被替换的字符/g
+            console.log(arr1);
+        }
+        changeStr("abaasdffggghhjjkkgfddsssss3444343", "22");
+
+        //  5> 截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
+        function subStr(str) {
+            console.log(str.substring(1, 6)); 
+        }
+        subStr("abaasdffggghhjjkkgfddsssss3444343");
+
+        //  6> 找出以上字符串中出现次数最多的字符和出现的次数 
+        function getNum(str) {
+            var obj = {};
+            for (var i = 0; i < str.length; i++) {
+                var char = str.charAt(i);
+                if (obj[char]) {
+                    obj[char]++;
+                }else {
+                    obj[char] = 1;
+                }
+            }
+            console.log(obj);
+            var max = 0;
+            var ch = '';
+            for (var k in obj) {
+                if ((obj[k]) > max) {
+                    max = obj[k];
+                    ch = k;
+                }
+            }
+            console.log(ch, max);
+        }
+        getNum("abaasdffggghhjjkkgfddsssss3444343");
+
+        //  7> 遍历字符串，并将遍历出的字符两头添加符号“@”
+        function strOperation(str) {
+            var arr = [];
+            for (var i = 0; i < str.length; i++) {
+                arr.push("@" + str[i] + "@");
+            }
+            console.log(arr);
+        }
+        strOperation("abaasdffggghhjjkkgfddsssss3444343");
+    </script>
+</body>
+</html>

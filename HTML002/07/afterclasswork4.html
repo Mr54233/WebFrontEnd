@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220712 课后作业4</title>
+</head>
+<body>
+    
+    <script>
+//         7.随机排序
+// ​	      对以下学员随机排序，生成一个新数组：
+// ​	     var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"]；
+
+        function randomSort() {
+            var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"];
+            var result = [];
+            while (arr.length > 0) {
+                var randomIndex = Math.floor(Math.random() * arr.length);
+                result.push(arr[randomIndex]);
+                arr.splice(randomIndex, 1);
+            }
+            return result;
+        }
+        console.log(randomSort()); 
+    </script>
+</body>
+</html>

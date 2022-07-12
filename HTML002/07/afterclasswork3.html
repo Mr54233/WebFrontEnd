@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220712 课后作业3</title>
+</head>
+<body>
+    
+    <script>
+    //     6、随机选学员
+    //     从以下学员名单中随机选出4个学员：
+    // ​	 var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"]；
+    // ​	 注意：不要有重复的学员
+        
+        function select() {
+            var stu = [];
+            var arr = ["鹿晗","王俊凯","蔡徐坤","彭于晏","周杰伦","刘德华","赵本山"]
+            for (var i = 0; i < 4; i++) {
+                var num = parseInt(Math.random() * arr.length);
+                stu.push(arr[num]);
+                arr.splice(num, 1);
+            }
+            return stu;
+        }
+        console.log(select()); 
+    </script>
+</body>
+</html>

@@ -12,6 +12,19 @@
         // 3. 在一个字符串中查找指定的字符 , 
         // 返回其首次出现的下标和出现的次数
         
+        function getCount(str , target){
+            var count = 0;
+            var i = str.indexOf(target);
+            var result = {};
+            result.index = i + 1;
+            while(i != -1){
+                count++;
+                i = str.indexOf(target , i+1)
+            }
+            result.count = count;
+            return result;
+        }
+        console.log(getCount('abcdefga' , 'a'));
     </script>
 </body>
 </html>
