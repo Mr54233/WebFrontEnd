@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// var info = 'abcdefg';
+			// var result = info.charAt(0);
+			// console.log(result);
+			// var code = 'abcdefg'
+			// var codeResult = code.charCodeAt(0)
+			// console.log(codeResult);
+
+			// 输出字符串"abcoefoxyozzopp"中出现次数最多的字符
+			// 并统计其次数以及字符
+			function find(str) {
+				// var str = "abcoefoxyozzopp";
+				var o = {};
+				for (var i = 0; i < str.length; i++) {
+					var chars = str.charAt(i);
+					if (o[chars]) {
+						o[chars]++;
+					} else {
+						o[chars] = 1;
+					}
+				}
+				var max = 0;
+				for (var k in o) {
+					if (o[k] > max) {
+						max = o[k];
+						var ch = k;
+					}
+				}
+				return o;
+			}
+            console.log(find('abcoefoxyozzopp'))
+		</script>
+	</body>
+</html>

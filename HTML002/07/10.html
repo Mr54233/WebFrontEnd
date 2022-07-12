@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // var info = 'abcde'
+        // var ss = info.replace('c','ok');
+        // console.log(ss);
+
+        // var city = 'beijing,shanghai,shenzhen';
+        // var result = city.split(',')
+        // console.log(result);
+
+        // 统计一个字符串中某个字符出现的次数
+        // function getCount(str , target){
+        //     var count = 0;
+        //     var i = str.indexOf(target);
+        //     while(i != -1){
+        //         count++;
+        //         i = str.indexOf(target , i+1)
+        //     }
+        //     return count;
+        // }
+        // console.log(getCount('abcdefga' , 'a'));
+        function getCount(str , target){
+            var arr = str.split(target);
+            return arr.length - 1;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 查找字符串"abcoefoxyozzopp"中所有的o出现的位置以及次数
+        function find(src,target){
+            // 声明一个对象记录查找的结果 , position属性用来记录位置 , count 属性用来记录出现的次数
+            // 初始值 一个是空数组 , 一个是零次
+            var result = {
+                position:[],
+                count:0
+            };
+            // 开始循环查找
+            var i = src.indexOf(target);
+            while(i != -1){
+                // 找到了 , 记录新的位置 , 次数 + 1
+                result.position.push[i];
+                result.count++;
+                // 从找到的位置的下一个字符 继续查找
+                i = src.indexOf(target , i + 1)
+            }
+            // 返回结果
+            return result;
+        }
+
+        console.log(find('abcoefoxyozzopp','o'));
+    </script>
+</body>
+</html>

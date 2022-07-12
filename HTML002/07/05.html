@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // var test = '123456';
+        // 第二个参数是从该位置开始查找
+        // var i = test.indexOf('2' , 3)
+        // console.log(i);
+
+        // var test = '123456';
+        // // 还可以查找字符串
+        // var i = test.indexOf('23')
+        // console.log(i);
+
+        // 给定一个文件名, 输出文件的扩展名
+        var fileName = 'abc.me.txt';
+        var i = fileName.lastIndexOf('.');
+        var ext = fileName.substr(i+1);
+        console.log(ext);
+    </script>
+</body>
+</html>
