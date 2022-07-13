@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div>
+			<a href="#">百度</a>
+			<img src="../img/01.jpg" alt="" />
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<!-- <li id="second">2</li> -->
+				<li>3</li>
+			</ul>
+		</div>
+		<p>
+            <ul id="ul1">
+                <li>10</li>
+                <li>20</li>
+                <li>30</li>
+                <li>40</li>
+            </ul>
+        </p>
+
+        <script>
+            // 按照id获取唯一的元素对象
+            var li = document.getElementById('second')
+            console.log(li);
+
+            var lis = document.getElementsByTagName('li')
+            console.log(lis);
+
+            var ul = document.getElementById('ul1')
+            var lis2 = ul.getElementsByTagName('li')
+            console.log(lis2);
+
+
+            var ols = document.getElementsByTagName('ol');
+            console.log(ols);
+        </script>
+	</body>
+</html>
