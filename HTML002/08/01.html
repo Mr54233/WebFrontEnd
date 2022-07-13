@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 形参是基本数据类型
+			// function inc(num) {
+			// 	console.log("传递参数后 , 形参num的值 = " + num); // 10
+			// 	num++;
+			// 	console.log("形参改变后 , 形参num的值 = " + num); // 11
+			// }
+
+			// var real = 10;
+			// console.log("函数调用前 , 实参real的值 = " + real); // 10
+			// inc(real);
+			// console.log("函数调用后 , 实参real的值 = " + real); // 10
+
+			// function inc2(obj) {
+			// 	console.log("传递参数后 , 形参obj.cnt的值 = " + obj.cnt); // 10
+			// 	obj.cnt++;
+			// 	console.log("形参改变后 , 形参obj.cnt的值 = " + obj.cnt); // 11
+			// }
+
+			// var tmp = { cnt: 10 };
+			// console.log("函数调用前 , 实参tmp.cnt的值 = " + tmp.cnt); // 10
+			// inc2(tmp);
+			// console.log("函数调用后 , 实参tmp.cnt的值 = " + tmp.cnt); // 11
+
+
+            function inc3(obj) {
+				console.log("传递参数后 , 形参obj.cnt的值 = " + obj.cnt); // 10
+				obj = new Object();
+                obj.cnt = 200;
+				console.log("形参改变后 , 形参obj.cnt的值 = " + obj.cnt); // 200
+			}
+
+            var tmp = { cnt: 10 };
+			console.log("函数调用前 , 实参tmp.cnt的值 = " + tmp.cnt); // 10
+			inc3(tmp);
+			console.log("函数调用后 , 实参tmp.cnt的值 = " + tmp.cnt); // 10
+
+		</script>
+	</body>
+</html>
