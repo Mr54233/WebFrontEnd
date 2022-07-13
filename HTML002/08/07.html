@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.test {
+				float: left;
+				list-style: none;
+				width: 120px;
+				height: 50px;
+				background-color: aqua;
+				color: red;
+			}
+			.center {
+				line-height: 50px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="myul">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+
+		<input type="text" name="userName" id="" xxx="123" />
+
+		<script>
+			/* 需求li需要设置样式 ,
+            去掉小圆点 , 
+            同一行显示
+            设置宽高
+            背景颜色粉色
+            前景颜色白色 */
+
+			// var lis = document.querySelectorAll('#myul li')
+			/* for (var i = 0 ; i < lis.length ; i++){
+                var li = lis[i]
+                // li.style.listStyle = 'none'
+                // li.style.float = 'left'
+                // li.style.width = '120px'
+                // li.style.height = '50px'
+                // li.style.backgroundColor = 'pink'
+                // li.style.color = 'white'
+                // li.className = 'test';
+                // li.className += ' center';
+
+                // li.classList.add('test');
+                // li.classList.add('center');
+                // li.classList.add('demo');
+                // li.classList.remove('demo');
+            } */
+
+			var ul = document.querySelector('#myul');
+            var pNode = ul.parentNode;
+            console.log(pNode.nodeName);
+            // var cNode = ul.children;
+            /* var cNode = ul.childNodes;
+            for(var i = 0 ; i < cNode.length ; i++){
+                // 过滤文本节点
+                if (cNode[i].nodeType != 3 ){
+                    console.log(cNode[i].nodeName);
+                }
+            } */
+
+            console.log(ul.firstChild.nodeName);
+            console.log(ul.lastChild.nodeName);
+
+            // 去除文本节点 获取真正的第一个和最后一个子节点
+            function getFirstNode(node){
+                
+            }
+            // 获取非文本节点的大弟弟节点
+            function getNextSibling(node){
+                var result = node;
+                while(result.nodeType == 3){
+                    result = result.nextSibling
+                }
+                return result;
+            }
+
+            var li = document.querySelector('#myul li:nth-child(3)');
+            console.log(getNextSibling(li.nextSibling))
+		</script>
+	</body>
+</html>
