@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul id="myul">
+			<li>1</li>
+			<li>2</li>
+            <li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+
+        <input type="text" name="userName" id="" xxx="123">
+		<script>
+			// 获取id名为myul下面的li
+			// var ul = document.getElementById("myul");
+			// var lis = ul.getElementsByTagName("li");
+            // console.log(lis);
+
+            // var lis = document.querySelectorAll('#myul li')
+            // console.log(lis);
+
+            // 获取id名为myul下面的第二个li
+            // var li = document.querySelector('#myul li:nth-child(2)')
+            // console.log(li);
+            
+            // 设置#myul下面的第三个li的href属性为www.baidu.com
+            var trd = document.querySelector('#myul li:nth-child(3)')
+            trd.setAttribute('href' , 'http://www.baidu.com')
+            trd.setAttribute('price' , '10000')
+
+            // 读取input文本框中的name属性值
+            var txt = document.querySelector('input')
+            console.log(txt.name);
+            console.log(txt.getAttribute('xxx'));
+
+            txt.id = 'userName'
+		</script>
+	</body>
+</html>
