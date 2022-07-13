@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			form img {
+				position: absolute;
+				top: 0px;
+				right: 3px;
+				width: 22px;
+				height: 22px;
+			}
+			.img-td {
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="#" method="post ">
+			<table>
+				<tr>
+					<td>密码:</td>
+					<td class="img-td">
+						<input type="password" name="pwd" id="pwd" />
+						<img id="eye" src="../img/close.png" alt="" />
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<script>
+			// 1. 找到图像对象
+			var img = document.querySelector("#eye");
+			var txt = document.querySelector("#pwd");
+			// 2. 绑定click时间处理程序
+			img.onclick = function () {
+				// 3. 写处理代码
+				// 原来是闭眼图像 , 就要变成开眼图像 , 原来是开眼图像 , 就要变成闭眼图像
+				var flag = 1;
+				if (flag == 1) {
+					// 变成开眼的图像
+					img.src = "../img/open.png";
+					// 文本框从密码文本框变成一般文本框
+					txt.type = "text";
+					flag = 0;
+				} else {
+					// 变成闭眼的图像
+					img.src = "../img/close.png";
+					// 文本框从一般文本框变成密码文本框
+					txt.type = "password";
+					flag = 1;
+				}
+			};
+		</script>
+	</body>
+</html>
