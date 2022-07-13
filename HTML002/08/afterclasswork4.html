@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>220713 课后作业</title>
+	</head>
+	<body>
+		<input type="submit" id="sub" value="开关灯" />
+		<script>
+			// 1. 先找到按钮
+			var sub = document.querySelector("#sub");
+			// 2. 绑定处理时间程序
+            var flag = 1;
+			sub.onclick = function () {
+				// 3. 写处理程序
+				if (flag == 1) {
+					document.body.style.backgroundColor = "black";
+					flag = 0;
+				} else {
+					document.body.style.backgroundColor = "white";
+					flag = 1;
+				}
+			};
+		</script>
+	</body>
+</html>
