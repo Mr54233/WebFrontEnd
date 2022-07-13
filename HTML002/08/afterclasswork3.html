@@ -4,12 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>220713 课后作业</title>
+    <title>220713 课后作业3</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .nav a{
+            color: #666;
+            text-decoration: none;
+        }
+        .nav a span{
+            color: #000;
+        }
+        .nav a:hover span{
+            color: #fecc5b;
+        }
+        .nav ul li {
+            list-style: none;
+        }
+        .nav ul{
+            display: none;
+        }
+        .nav ul li:hover {
+            background-color: #fff5da;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="nav">
+        <a href="#"><span id="enter">微博</span></a>
+        <ul>
+            <li><a href="#">点赞</a></li>
+            <li><a href="#">评论</a></li>
+            <li><a href="#">@我</a></li>
+        </ul>
+    </div>
+
     <script>
+        // 3、新浪下拉菜单
+        // 题目描述
+        // 仿新浪网，鼠标移入显示下拉菜单，鼠标移出隐藏下拉菜单，具体表现如下图
         
+        var span = document.querySelector('#enter')
+        var ul = document.querySelector('ul')
+        span.onmouseover = function(){
+            ul.style.display = 'block'
+        }
+        span.onmouseout = function(){
+            ul.style.display = 'none'
+        }
     </script>
 </body>
 </html>

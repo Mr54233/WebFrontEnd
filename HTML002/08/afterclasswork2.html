@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>220713 课后作业</title>
+    <title>220713 课后作业2</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            position: relative;
+            width: 1190px;
+            margin: 0 auto;
+        }
+        #btn{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
 </head>
 <body>
-    
+    <div>
+        <img id="img" src="DOM第一天作业/luzhou.jpg" alt="">
+        <img id="btn" src="DOM第一天作业/close.jpg" alt="">
+    </div>
+
     <script>
-        
+        // 2、京东关闭广告
+        // 题目描述：
+        // 仿京东网，单击关闭广告，具体表现如下图：
+
+        var img = document.querySelector('#img')
+        var btn = document.querySelector('#btn')
+        btn.onclick = function(){
+            img.style.display = 'none'
+            btn.style.display = 'none'
+        }
+
     </script>
 </body>
 </html>
