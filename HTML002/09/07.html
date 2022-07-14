@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>jd tab</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style: none;
+			}
+
+			.tab-container {
+				width: 640px;
+				margin: 50px auto;
+			}
+
+			.tab-title {
+				overflow: hidden;
+			}
+
+			.tab-title li {
+				float: left;
+				width: 160px;
+				height: 80px;
+				line-height: 80px;
+				text-align: center;
+				background-color: #eee;
+				border-bottom: 2px solid #f00;
+			}
+			/* .tab-content {
+            clear: both;
+        } */
+
+			.selected {
+				color: #fff;
+				background-color: red !important;
+			}
+			.show {
+				display: block;
+			}
+			.hide {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 外边是选项卡的容器 -->
+		<div class="tab-container">
+			<!-- 选项卡的标题 -->
+			<ul class="tab-title">
+				<li class="selected">商品介绍</li>
+				<li>规格与包装</li>
+				<li>售后保障</li>
+				<li>商品评价</li>
+			</ul>
+			<div class="tab-content">
+				<div class="show">本商品是一个夏天乘凉神器</div>
+				<div class="hide">100cm的立方体盒子</div>
+				<div class="hide">无限期的退货</div>
+				<div class="hide">五星</div>
+			</div>
+		</div>
+
+		<script>
+			var lis = document.querySelectorAll(".tab-title li");
+			var divs = document.querySelectorAll(".tab-content div");
+			// 标题和内容中的自定义属性值相等
+			// 1. 设置标题和内容的自定义属性值
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].dataset["index"] = i + 1;
+				divs[i].dataset["index"] = i + 1;
+			}
+			// 标题中的li要注册click单击事件
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].onclick = function () {
+					// 排他
+					for (var j = 0; j < lis.length; j++) {
+						// 先取消所有的
+						lis[j].className = "";
+					}
+					// 再给自己加上
+					this.className = "selected";
+
+					// 找出被单击的标题中的data-index的值 currIndex
+					var currIndex = this.dataset["index"];
+					// 遍历所有内容div ,
+                    for (var x = 0 ; x < divs.length ; x++){
+                        // 判断内容div中的data-index的值是否等于currIndex
+                        if (divs[x].dataset['index'] == currIndex){
+                            // 相等 , 就显示
+                            divs[x].className = 'show'
+                        } else {
+                            // 如果不相等 , 则隐藏
+                            divs[x].className = 'hide'
+                        }
+                    }
+					
+					
+					
+				};
+			}
+		</script>
+	</body>
+</html>
