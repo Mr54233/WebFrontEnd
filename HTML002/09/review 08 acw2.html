@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				position: relative;
+			}
+			.close {
+				position: absolute;
+				top: 6px;
+				right: 28px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="../08/DOM第一天作业/luzhou.jpg" alt="" />
+			<img
+				class="close"
+				id="close"
+				src="../08/DOM第一天作业/close.jpg"
+				alt=""
+			/>
+		</div>
+
+		<script>
+			// 点击关闭图像 , 将整个div隐藏
+			var img = document.querySelector("#close");
+			img.onclick = function () {
+				// this在事件处理的函数中
+				console.log(this);
+				// 事件处理函数中的this 指向于事件源对象
+				// div = img.parentNode;
+				var div = this.parentNode;
+				div.style.display = "none";
+			};
+		</script>
+	</body>
+</html>

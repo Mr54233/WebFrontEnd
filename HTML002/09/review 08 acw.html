@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+        <style>
+            /* input{
+                outline: none;
+            } */
+        </style>
+	</head>
+	<body>
+		<input type="text" name="acc" id="acc" value="手机号 | ID | 账号" />
+
+		<script>
+			// 文本框获得焦点 , 改变文本框边框颜色 , 去掉文本框中的提示信息
+			// 事件源 , 文本框 , 事件 : onfocus
+			var txt = document.querySelector("#acc");
+			txt.onfocus = function () {
+				txt.style.borderColor = "red";
+                txt.value = '';
+                txt.style.outline = 'none'
+			}; 
+		</script>
+	</body>
+</html>

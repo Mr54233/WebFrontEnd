@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="button" value="开关灯" id="btnOpen">
+
+    <script>
+        // 单击开关灯按钮 改变背景颜色
+        // 如果是奇数次单击按钮 , 背景颜色设置为黑色
+        // 如果是偶数次单击按钮 , 背景颜色设置为白色
+
+        var btn = document.getElementById('btnOpen')
+        var count = 0;
+        btn.onclick = function(){
+            // 单击次数加一
+            count++;
+            // 根据单机次数的奇偶性设置背景颜色
+            if (count % 2 == 0){
+                document.body.style.backgroundColor = 'white'
+            } else {
+                document.body.style.backgroundColor = 'black'
+            }
+        }
+    </script>
+</body>
+</html>
