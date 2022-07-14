@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			table {
+				width: 800px;
+				margin: 100px auto;
+				text-align: center;
+				border-collapse: collapse;
+			}
+			table thead tr {
+				background-color: #87ceeb;
+			}
+			table tbody tr {
+				height: 40px;
+				border-right-color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>代码</th>
+					<th>名称</th>
+					<th>最新公布净值</th>
+					<th>累计净值</th>
+					<th>前单位净值</th>
+					<th>净值增长率</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>123456</td>
+					<td>农行竞拍三个月定期开放债卷</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>123456</td>
+					<td>农行竞拍三个月定期开放债卷</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>123456</td>
+					<td>农行竞拍三个月定期开放债卷</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>123456</td>
+					<td>农行竞拍三个月定期开放债卷</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>123456</td>
+					<td>农行竞拍三个月定期开放债卷</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>123456</td>
+					<td>农行竞拍三个月定期开放债卷</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<script>
+			// 鼠标进入数据行中 , 数据行添加背景颜色 ,
+			// 鼠标离开该行 , 背景颜色还原
+
+			var trs = document.querySelectorAll("table tbody tr");
+			for (var i = 0; i < trs.length; i++) {
+				trs[i].onmouseover = function () {
+					this.style.backgroundColor = "pink";
+				};
+				trs[i].onmouseout = function () {
+					this.style.backgroundColor = "";
+				};
+			}
+		</script>
+	</body>
+</html>
