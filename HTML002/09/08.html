@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h3>水果市场</h3>
+		<ul id="myul">
+			<li>苹果</li>
+			<li>香蕉</li>
+			<li>西瓜</li>
+		</ul>
+		<input type="button" value="新增水果" id="btnNew" />
+
+		<script>
+			// 单击新增水果的按钮 , 在无序列表中插入一种新的水果
+			var btnNew = document.querySelector("#btnNew");
+			btnNew.onclick = function () {
+				// 1. 输入水果名
+				var fruit = prompt("请输入一种水果的名称");
+				// 2. 新建元素对象 -- li
+				var li = document.createElement("li");
+				// 3. 设置元素对象的内容, html属性 , css属性等
+				li.innerHTML = fruit;
+				li.style.color = "red"
+				li.dataset["price"] = 100;
+				// 4. 元素对象要添加到无序列表中
+				var myul = document.querySelector("#myul");
+				myul.appendChild(li);
+			};
+		</script>
+	</body>
+</html>
