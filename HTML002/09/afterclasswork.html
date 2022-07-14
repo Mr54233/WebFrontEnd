@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>220714 课后作业</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.container {
+				width: 600px;
+				margin: 20px auto;
+			}
+			.list {
+				border-collapse: collapse;
+			}
+			.list table {
+				width: 100%;
+				margin: 0 auto;
+			}
+			.list thead {
+				color: white;
+				background-color: purple;
+				text-align: center;
+			}
+			.list tbody {
+				background-color: #ffbcc8;
+			}
+			.list .email a {
+				color: black;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="top">
+				请输入姓名:<input type="text" id="name" />
+				<br />
+				请输入邮箱:<input type="text" id="email" />
+				<br />
+				<input type="button" value="添加" id="btn" />
+			</div>
+			<div class="list">
+				<table>
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>邮箱</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						<tr>
+							<td>小黑</td>
+							<td class="email">xiaohei@126.com</td>
+						</tr>
+						<tr>
+							<td>小白</td>
+							<td class="email">xiaobai@itcast.com</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script>
+			var userName = document.querySelector("#name");
+			var userEmail = document.querySelector("#email");
+			var btn = document.querySelector("#btn");
+			btn.onclick = function () {
+				if (name.value != "" && email.value != "") {
+					var tbody = document.querySelector("#tbody");
+
+					var tr = document.createElement("tr");
+					var td = document.createElement("td");
+					var tdMail = document.createElement("td");
+
+					td.innerHTML = userName.value;
+					tdMail.innerHTML = userEmail.value;
+
+					tr.appendChild(td);
+					tr.appendChild(tdMail);
+					tbody.appendChild(tr);
+				} else {
+					alert("请将数据填入完整");
+				}
+			};
+		</script>
+	</body>
+</html>
