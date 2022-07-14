@@ -26,9 +26,7 @@
 	</head>
 	<body>
 		<div id="main">
-			<textarea name="text" id="talk" cols="50" rows="10">
-请输入你要发布的言论....</textarea
-			>
+			<textarea name="text" id="talk" cols="50" rows="10" placeholder="请输入你要发布的言论...."></textarea>
 			<br />
 			<input id="btn" type="button" value="发布" />
 			<ul id="talks">
@@ -41,11 +39,11 @@
 			// 当文本卡失去焦点 如果没有内容 需要还原提示信息
 			var txt = document.querySelector("#talk");
 			txt.onfocus = function () {
-				this.value = "";
+				this.placeholder = "";
 			};
 			txt.onblur = function () {
-				if (!this.value) {
-					this.value = "请输入你要发布的言论....";
+				if (this.value == "") {
+					this.placeholder = "请输入你要发布的言论....";
 				}
 			};
 
@@ -53,8 +51,8 @@
 			btn.onclick = function () {
 				var li = document.createElement("li");
 				li.innerHTML = txt.value;
-                var ul = document.querySelector('#talks')
-                ul.insertBefore(li , ul.firstElementChild)
+				var ul = document.querySelector("#talks");
+				ul.insertBefore(li, ul.firstElementChild);
 			};
 		</script>
 	</body>
