@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1" data-price="200"></div>
+		<input type="button" value="读取price" id="btnRead" />
+		<input type="button" value="设置price" id="btnWrite" />
+
+		<script>
+			var btnRead = document.querySelector("#btnRead");
+			btnRead.onclick = function () {
+				// 读取div里面的属性值
+				var div = document.querySelector("#div1");
+				// alert(div.getAttribute('data-price'))
+				// alert(div.dataset.price);
+				alert(div.dataset["price"]);
+			};
+			var btnWrite = document.querySelector("#btnWrite");
+			btnWrite.onclick = function () {
+				var div = document.querySelector("#div1");
+				var val = prompt("请输入一个价格");
+                // div.setAttribute('data-price' , val)
+				// div.dataset.price = val;
+                div.dataset['price'] = val;
+			};
+		</script>
+	</body>
+</html>
