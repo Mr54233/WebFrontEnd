@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#main {
+				width: 500px;
+				height: auto;
+				margin: 30px auto;
+			}
+			#talks li {
+				background-color: pink;
+				color: red;
+			}
+			#btn {
+				margin: 10px 0 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<textarea name="text" id="talk" cols="50" rows="10">
+请输入你要发布的言论....</textarea
+			>
+			<br />
+			<input id="btn" type="button" value="发布" />
+			<ul id="talks">
+				<!-- <li>123</li> -->
+			</ul>
+		</div>
+
+		<script>
+			// 当文本框获得焦点清除提示信息
+			// 当文本卡失去焦点 如果没有内容 需要还原提示信息
+			var txt = document.querySelector("#talk");
+			txt.onfocus = function () {
+				this.value = "";
+			};
+			txt.onblur = function () {
+				if (!this.value) {
+					this.value = "请输入你要发布的言论....";
+				}
+			};
+
+			var btn = document.querySelector("#btn");
+			btn.onclick = function () {
+				var li = document.createElement("li");
+				li.innerHTML = txt.value;
+                var ul = document.querySelector('#talks')
+                ul.insertBefore(li , ul.firstElementChild)
+			};
+		</script>
+	</body>
+</html>
