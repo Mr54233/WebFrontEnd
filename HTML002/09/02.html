@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#contacts {
+				width: 160px;
+				height: 300px;
+				margin: 0 auto;
+				border: 1px solid #ccc;
+				text-align: center;
+			}
+			.group h3 {
+				background-color: #eee;
+				border-bottom: 1px solid #ccc;
+			}
+
+			.hide {
+				display: none;
+			}
+			.show {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="contacts">
+			<div class="group show">
+				<h3>我的朋友</h3>
+				<div class="pers">
+					<p>张三</p>
+					<p>李四</p>
+				</div>
+			</div>
+			<div class="group">
+				<h3>我的大学同学</h3>
+				<div class="pers hide">
+					<p>Tom</p>
+					<p>Rose</p>
+				</div>
+			</div>
+			<div class="group">
+				<h3>陌生人</h3>
+				<div class="pers hide">
+					<p>A</p>
+					<p>B</p>
+					<p>C</p>
+				</div>
+			</div>
+		</div>
+
+        <script>
+            var h3s = document.querySelectorAll('#contacts .group h3')
+            for (var i = 0 ; i < h3s.length ; i++){
+                var h3 = h3s[i];
+                h3.onclick = function(){
+                    // 1. 所有组的联系人隐藏 
+                    var pers = document.querySelectorAll('#contacts .group .pers')
+                    for (var j = 0 ; j < pers.length ; j++){
+                        pers[j].className = 'pers hide'
+                    }
+                    // 2. 被单击的组后面的div 显示出来
+                    this.nextElementSibling.className = 'pers show'
+                }
+            }
+        </script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+    <input type="button" value="按钮">
+
+    <script>
+        // 被单击的当前按钮 设置背景颜色为粉色 其他的背景颜色是灰色
+        var btns = document.querySelectorAll("input[type = 'button']")
+        for (var i = 0 ; i < btns.length ; i++){
+            var btn = btns[i];
+            btn.onclick = function(){
+                //1. 设置所有的按钮都没有bg类样式 ,
+                for(var j = 0 ; j<btns.length ; j++){
+                    btns[j].classList.remove('bg')
+                }
+                // 2. 给被单击的按钮添加bg类样式
+                this.classList.add('bg')
+            }
+        }
+    </script>
+</body>
+</html>
