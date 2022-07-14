@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <th><input type="checkbox" id="chkAll"></th>
+                    </td>
+                    <td>名称</td>
+                    <td>价钱</td>
+                </tr>
+            </thead>
+            <tbody id="tb">
+                <tr>
+                    <td>
+                        <th><input type="checkbox"></th>
+                    </td>
+                    <td>iPhone</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <th><input type="checkbox"></th>
+                    </td>
+                    <td>iPhone</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <th><input type="checkbox"></th>
+                    </td>
+                    <td>iPhone</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <th><input type="checkbox"></th>
+                    </td>
+                    <td>iPhone</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <th><input type="checkbox"></th>
+                    </td>
+                    <td>iPhone</td>
+                    <td>8000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // 单击全选复选框 , 其他复选框的checked属性值 = 全选复选框的checked属性值
+        var chkAll = document.querySelector('#chkAll');
+        var chks = document.querySelectorAll('#tb input[type="checkbox"]');
+        chkAll.onclick = function(){
+            for(var i = 0 ; i < chks.length ; i++){
+                chks[i].checked = this.checked;
+            }
+        }
+        // 单击其他复选框 , 如果有其他复选框没有选中 ,则全选复选框不选中
+        // 其他复选框全部选中 , 则全选复选框选中
+        for ( var i = 0 ; i< chks.length; i++){
+            chks[i].onclick = function(){
+                var flag = true;//全部选中
+                for(var i = 0 ; i < chks.length ; i++){
+                    if(!chks[i].checked){
+                        flag = false;// 没有全部选中
+                        break;
+                    }
+                }
+                // if(flag){
+                //     chkAll.checked = 'checked'
+                // } else {
+                //     // removeAttribute :删除指定的HTML属性
+                //     chkAll.checked = false;
+                // }
+                chkAll.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>
