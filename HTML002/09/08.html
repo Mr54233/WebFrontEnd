@@ -29,7 +29,8 @@
 				li.dataset["price"] = 100;
 				// 4. 元素对象要添加到无序列表中
 				var myul = document.querySelector("#myul");
-				myul.appendChild(li);
+				// myul.appendChild(li);
+                myul.insertBefore(li , myul.children[2])
 			};
 		</script>
 	</body>
