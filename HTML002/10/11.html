@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			#div1 {
+				width: 600px;
+				height: 400px;
+				margin: 30px auto;
+				border: 1px solid red;
+			}
+			#info {
+				width: 600px;
+				height: 50px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="info">
+			<h1>X:<span>0</span> Y:<span>0</span></h1>
+		</div>
+
+		<script>
+			// 当鼠标在div中移动时候 , 在屏幕上看到鼠标移动到的坐标
+			var div1 = document.querySelector("#div1");
+			// div1.addEventListener("mousemove", function (e) {
+            //     // 逻辑短路
+            //     e = e || window.event;
+			// 	// 获取info中的span标签
+            //     console.log(e.target);
+			// 	var spans = document.querySelectorAll("#info span");
+			// 	spans[0].innerHTML = e.pageX;
+			// 	spans[1].innerHTML = e.pageY;
+			// });
+
+
+
+			div1.parentNode.addEventListener("mousemove", function (e) {
+                // 逻辑短路
+                e = e || window.event;
+				// 获取info中的span标签
+                console.log(e.target);
+                console.log(this);
+				var spans = document.querySelectorAll("#info span");
+				spans[0].innerHTML = e.pageX;
+				spans[1].innerHTML = e.pageY;
+			});
+		</script>
+	</body>
+</html>

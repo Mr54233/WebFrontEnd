@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<a href="http://www.baidu.com" id="link">百度</a>
+		<script>
+			var div = document.querySelector("div");
+			div.onclick = function (e) {
+				e = e || window.event;
+				alert("div被单击了");
+
+				// 阻止冒泡
+				e.stopPropagation();
+			};
+			document.body.onclick = function () {
+				alert("body被单击了");
+			};
+
+			// 有些网页元素是有默认行为 , 比如超链接的跳转 , 提交按钮提交表单的数据 ,
+			// 重置按钮 , 重新设置表单元素中的数据
+			document.querySelector("#link").onclick = function (e) {
+                e = e || window.event;
+				// 如果选择了不跳转 , 就不跳转到百度页面
+				if (!confirm("跳转到百度页面吗?")) {
+					alert("不跳转了");
+                    // 阻止默认行为
+                    e.preventDefault();
+				}
+			};
+		</script>
+	</body>
+</html>

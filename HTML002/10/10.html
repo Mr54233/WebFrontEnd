@@ -18,12 +18,21 @@
 
     <script>
         var div = document.querySelector('#div1')
-        div.onclick = function(){
+        // on+事件名 , 传统注册事件 注册在事件冒泡阶段
+        /* div.onclick = function(){
             alert('div被单击')
         }
         document.body.onclick = function(){
             alert('body被单击了')
-        }
+        } */
+
+        // 
+        div.addEventListener('click',function(){
+            alert('div被单击')
+        },true)
+        document.body.addEventListener('click',function(){
+            alert('body被单击了')
+        },true)
     </script>
 </body>
 </html>
