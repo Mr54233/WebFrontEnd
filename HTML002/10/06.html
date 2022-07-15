@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			table {
+				width: 500px;
+				margin: 100px auto;
+				border-collapse: collapse;
+				text-align: center;
+			}
+			td,
+			th {
+				border: 1px solid #333;
+			}
+			thead tr {
+				height: 40px;
+				background-color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>科目</th>
+					<th>成绩</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody id="tb"></tbody>
+		</table>
+
+		<script>
+			// 1. 先准备好学生的数据
+			// <tr>
+			//         <td>魏璎珞</td>
+			//         <td>JavaScript</td>
+			//         <td>100</td>
+			//         <td><a href="JavaScript:;">删除</a></td>
+			// </tr>
+
+			var datas = [
+				{
+					name: "魏璎珞",
+					subject: "JavaScript",
+					score: 100,
+				},
+				{
+					name: "魏璎珞",
+					subject: "JavaScript",
+					score: 100,
+				},
+				{
+					name: "魏璎珞",
+					subject: "JavaScript",
+					score: 100,
+				},
+				{
+					name: "魏璎珞",
+					subject: "JavaScript",
+					score: 100,
+				},
+			];
+			// 往tbody里面创建行 , 有几个人创建几行
+			var tbody = document.querySelector("#tb");
+			for (var i = 0; i < datas.length; i++) {
+				// 外边的循环管行 tr
+				// 创建tr行
+				var tr = document.createElement("tr");
+				tbody.appendChild(tr);
+				// 行里面创建数据单元格 单元格的数量取决于对象里面的元素属性个数 forin 循环遍历 datas[i]
+				for (var j in datas[i]) {
+					// 创建单元格
+					var td = document.createElement("td");
+					td.innerHTML = datas[i][j];
+					tr.appendChild(td);
+				}
+				// 创建删除单元格
+				var td = document.createElement("td");
+				td.innerHTML = '<a href="JavaScript:;">删除</a>';
+				tr.appendChild(td);
+			}
+
+			var as = document.querySelectorAll("a");
+			for (var i = 0; i < as.length; i++) {
+				as[i].onclick = function () {
+					tbody.removeChild(this.parentNode.parentNode);
+				};
+			}
+		</script>
+	</body>
+</html>
