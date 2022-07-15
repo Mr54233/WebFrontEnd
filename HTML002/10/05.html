@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="button" value="添加div" id="btnAdd" />
+		<div id="div1"></div>
+
+		<script>
+			// 单击添加按钮 , 给div1 中添加一千个div
+			var btn = document.querySelector("#btnAdd");
+			btn.onclick = function () {
+				var div1 = document.querySelector("#div1");
+				var start = new Date();
+				var arr = [];
+				for (var i = 0; i < 1000; i++) {
+					// 1. innerHTML 拼接字符串方式 1k+
+					// div1.innerHTML +=
+					// 	'<div style="width:100px;height:100px;border:1px solid red"></div>';
+
+					// 2. document.createElement()方式 4
+					// var div = document.createElement("div");
+					// div.style.width = '100px'
+					// div.style.height = '100px'
+					// div.style.border = '1px solid red'
+					// div1.appendChild(div)
+
+					// 3. innerHTML 数组方式 2
+					arr.push(
+						'<div style="width:100px;height:100px;border:1px solid red"></div>'
+					);
+				}
+				div1.innerHTML = arr.join("");
+				var end = new Date();
+				console.log(end - start);
+			};
+		</script>
+	</body>
+</html>

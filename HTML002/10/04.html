@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="button" value="新增元素" id="btnAdd" />
+
+		<script>
+			document.querySelector("#btnAdd").onclick = function () {
+				// 新增一个文本框
+				// var txt = document.createElement("input");
+				// txt.type = "text";
+				// document.body.appendChild(txt);
+
+                // document.write('<input type= "text" name="name" />')
+
+                document.body.innerHTML += ('<input type= "text" name="name" />')
+			};
+		</script>
+	</body>
+</html>
