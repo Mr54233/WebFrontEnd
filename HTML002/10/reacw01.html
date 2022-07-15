@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.container {
+				width: 800px;
+				height: auto;
+				margin: 30px auto;
+			}
+			.data-table,
+			.data-table td,
+			.data-table th {
+				width: 600px;
+				border: 1px solid #666;
+				border-collapse: collapse;
+				text-align: center;
+			}
+			.data-table thead tr {
+				background-color: #9529e0;
+			}
+			.data-table tbody tr {
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form action="#" method="post">
+				<table>
+					<tr>
+						<td>请输入姓名:</td>
+						<td><input type="text" name="name" id="name" /></td>
+					</tr>
+					<tr>
+						<td>请输入邮箱:</td>
+						<td><input type="text" name="email" id="email" /></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<input type="button" value="添加" id="btnAdd" />
+						</td>
+					</tr>
+				</table>
+			</form>
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>姓名</th>
+						<th>电子邮箱</th>
+					</tr>
+				</thead>
+				<tbody id="tb">
+					<tr>
+						<td>Tom</td>
+						<td>Tom@126.com</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<script>
+			// 单击添加按钮 , 在数据表格中添加一行 , 行中的列的数据分别是
+			// 对应文本框的值
+
+			var btnAdd = document.querySelector("#btnAdd");
+			btnAdd.onclick = function () {
+				if (
+					!document.querySelector("#name").value ||
+					!document.querySelector("#email").value
+				) {
+					alert("请先填写姓名和电子邮箱地址 , 再来添加");
+				} else {
+					var tr = document.createElement("tr");
+					var td1 = document.createElement("td");
+					td1.innerHTML = document.querySelector("#name").value;
+					var td2 = document.createElement("td");
+					td2.innerHTML = document.querySelector("#email").value;
+					tr.appendChild(td1);
+					tr.appendChild(td2);
+					document.querySelector("#tb").appendChild(tr);
+				}
+			};
+		</script>
+	</body>
+</html>
