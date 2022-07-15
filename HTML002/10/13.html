@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				background: url(../img/1.jpg);
+			}
+			ul {
+				width: 880px;
+				margin: 100px auto;
+				padding: 0;
+			}
+			ul li {
+				float: left;
+				list-style: none;
+				width: 200px;
+				height: 100px;
+				padding: 5px;
+				background-color: #fff;
+			}
+			li img {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+        <input type="button" value="添加背景图像" id="btnAdd">
+		<ul>
+			<li><img src="../img/1.jpg" alt="" /></li>
+			<li><img src="../img/2.jpg" alt="" /></li>
+			<li><img src="../img/3.jpg" alt="" /></li>
+			<!-- <li><img src="../img/4.jpg" alt="" /></li> -->
+		</ul>
+
+		<script>
+			/* var imgs = document.querySelectorAll("ul li img");
+			for (var i = 0; i < imgs.length; i++) {
+				imgs[i].onclick = function () {
+					document.body.style.background = "url(" + this.src + ")";
+				};
+			} */
+
+            document.querySelector('ul').onclick = function(e){
+                e = e || window.event;
+                document.body.style.background = "url(" + e.target.src + ")";
+            }
+
+            document.querySelector('#btnAdd').onclick = function(){
+                var html = '<li><img src="../img/4.jpg" alt="" /></li>';
+                var ul = document.querySelector('ul')
+                ul.innerHTML += html;
+            }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 1366px;
+            height: 768px;
+        }
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="../img/w.gif" alt="">
+
+    <script>
+        document.body.onmousemove = function(e){
+            e = e || window.event;
+
+            var img = document.querySelector('img')
+            img.style.left = e.pageX + 'px'
+            img.style.top = e.pageY + 'px'
+
+        }
+    </script>
+</body>
+</html>
