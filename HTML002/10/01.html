@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<input type="button" value="删除第一个li" id="btnDelete" />
+
+		<script>
+			// 单击删除按钮, 从ul2无序列表中 删除它的第一个li
+			var btn = document.querySelector("#btnDelete");
+			btn.onclick = function () {
+				var ul = document.querySelector("#ul1");
+				// 由子节点才能删除第一个子节点
+				if (ul.children.length > 0) {
+					// confirm()弹出确认对话框
+					if (confirm("确定要删除第一个li吗?"))
+						ul.removeChild(ul.firstElementChild);
+				}
+			};
+		</script>
+	</body>
+</html>
