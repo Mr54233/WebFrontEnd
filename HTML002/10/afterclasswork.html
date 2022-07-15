@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220715 课后作业</title>
+</head>
+<body>
+    <ul>
+        
+        <li>西施</li>
+        <li>貂蝉</li>
+        <li>昭君</li>
+        <li>凤姐</li>
+        <li>芙蓉姐姐</li>
+    </ul>
+    <input type="button" value="新增按钮" id="btn">
+
+    <script>
+        var li = document.createElement('li');
+        li.innerHTML = '杨超越'
+        var btn = document.querySelector('#btn')
+        var ul = document.querySelector('ul')
+        btn.onclick = function(){
+            ul.insertBefore(li , ul.firstElementChild)
+        }
+        ul.addEventListener('click',function(e){
+            e.target.style.backgroundColor = 'red'
+        })
+    </script>
+</body>
+</html>
