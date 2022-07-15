@@ -68,7 +68,23 @@
 			];
 			// 往tbody里面创建行 , 有几个人创建几行
 			var tbody = document.querySelector("#tb");
+			var arr = [];
 			for (var i = 0; i < datas.length; i++) {
+				var person = datas[i];
+				var html = "<tr>";
+				for (var key in person) {
+					html += "<td>" + person[key] + "</td>";
+				}
+                html += '<td><a href="JavaScript:;" onclick="del(this)">删除</a></td></tr>';
+
+                arr.push(html);
+			}
+
+            tbody.innerHTML = arr.join('')
+            function del(a){
+                tbody.removeChild(a.parentNode.parentNode);
+            }
+			/* for (var i = 0; i < datas.length; i++) {
 				// 外边的循环管行 tr
 				// 创建tr行
 				var tr = document.createElement("tr");
@@ -91,7 +107,7 @@
 				as[i].onclick = function () {
 					tbody.removeChild(this.parentNode.parentNode);
 				};
-			}
+			} */
 		</script>
 	</body>
 </html>
