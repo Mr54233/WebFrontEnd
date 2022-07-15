@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            display: block;
+        }
+        .show{
+            display: block;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="zs" src="../img/z.gif" alt="">
+        <img id="sw" src="../img/s.gif" alt="">
+        <img id="xw" src="../img/x.gif" alt="">
+        <img id="ws" src="../img/w.gif" alt="">
+    </div>
+    <script>
+        // 根据当前时间 , 在网页上显示对应图片
+        // 0-8早上好 
+        // 9-12中午好
+        // 13-18下午好
+        // 19-24晚上好
+        
+        var nowTime = new Date();
+        var hours = nowTime.getHours();
+        // var hours = Number(prompt('shijian'));
+        var imgs = document.querySelectorAll('img')
+        for(var i = 0 ; i < imgs.length ; i++){
+            imgs[i].className = 'hide'
+        }
+        if(hours >= 0 && hours <= 8){
+            document.querySelector('#zs').className = 'show'
+        } else if(hours <= 12){
+            document.querySelector('#sw').className = 'show'
+        } else if(hours <= 18){
+            document.querySelector('#xw').className = 'show'
+        } else if(hours <= 24){
+            document.querySelector('#ws').className = 'show'
+        }
+    </script>
+</body>
+</html>

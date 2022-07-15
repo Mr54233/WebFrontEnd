@@ -1,52 +1,33 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        img{
-            display: block;
-        }
-        .show{
-            display: block;
-        }
-        .hide{
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img id="zs" src="../img/z.gif" alt="">
-        <img id="sw" src="../img/s.gif" alt="">
-        <img id="xw" src="../img/x.gif" alt="">
-        <img id="ws" src="../img/w.gif" alt="">
-    </div>
-    <script>
-        // 根据当前时间 , 在网页上显示对应图片
-        // 0-8早上好 
-        // 9-12中午好
-        // 13-18下午好
-        // 19-24晚上好
-        
-        var nowTime = new Date();
-        var hours = nowTime.getHours();
-        // var hours = Number(prompt('shijian'));
-        var imgs = document.querySelectorAll('img')
-        for(var i = 0 ; i < imgs.length ; i++){
-            imgs[i].className = 'hide'
-        }
-        if(hours >= 0 && hours <= 8){
-            document.querySelector('#zs').className = 'show'
-        } else if(hours <= 12){
-            document.querySelector('#sw').className = 'show'
-        } else if(hours <= 18){
-            document.querySelector('#xw').className = 'show'
-        } else if(hours <= 24){
-            document.querySelector('#ws').className = 'show'
-        }
-    </script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="button" value="触发事件" id="btn" />
+
+		<script>
+			// 使用on+事件名 传统注册事件方式
+            // 同一个元素同一个事件 只能注册一个处理函数
+            // 如果同一个元素同一个事件注册了多个函数 , 最后一个注册的函数起作用
+			// var btn = document.querySelector("#btn");
+			/* btn.onclick = function () {
+				alert("1");
+			};
+			btn.onclick = function () {
+				alert("2");
+			}; */
+
+            // addEventListener() 可以给同一个元素同一个事件注册多个处理函数
+            addEventListener('click',function(){
+                alert('1')
+            },false);
+            addEventListener('click',function(){
+                alert('2')
+            },false);
+		</script>
+	</body>
 </html>

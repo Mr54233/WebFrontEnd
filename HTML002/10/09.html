@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="触发事件" id="btn" />
+    <input type="button" value="解绑事件" id="btnUnBind" />
+
+    <script>
+        var btn = document.querySelector('#btn')
+        // btn.onclick = function(){
+        //     alert('1')
+        // }
+        // 传统解绑方式
+        // document.querySelector('#btnUnBind').onclick = function(){
+        //     btn.onclick = null;
+        // }
+        
+        btn.addEventListener('click',test)
+        function test(){
+            alert('1')
+        }
+        // 监听解绑方式
+        document.querySelector('#btnUnBind').onclick = function(){
+            btn.removeEventListener('click',test);
+        }
+        // 注册事件是怎么注册的就怎么解绑, 传统注册就传统解绑 
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 技术嗅探 : 判断浏览器是否支持该技术
+        var obj = {
+            test : function(){
+                alert('test ok')
+            }
+        }
+        if (obj.test){
+            obj.test();
+        } else {
+            alert('没有test方法')
+        }
+    </script>
+</body>
+</html>
