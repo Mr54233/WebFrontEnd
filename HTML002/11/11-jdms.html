@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#container {
+				width: 200px;
+				height: auto;
+				margin: 100px auto;
+			}
+			#hours,
+			#minutes,
+			#seconds {
+				float: left;
+				width: 50px;
+				height: 50px;
+				margin-right: 10px;
+				background-color: #666;
+				color: #fff;
+				text-align: center;
+				font-size: 30px;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="hours">00</div>
+			<div id="minutes">00</div>
+			<div id="seconds">00</div>
+		</div>
+
+		<script>
+			// 通过输入对话框设置一个秒杀结束的时间
+			var endTime = new Date(
+				prompt("结束秒杀时间", "2022/7/18 17:00:00")
+			);
+
+			// 显示剩余的时间
+			function showTime() {
+				// 得到现在的时间
+				var now = new Date();
+				// 计算剩余时间
+				var total = endTime - now;
+				// 计算剩余的小时数
+				var hs = parseInt(total / 3600000);
+				var ms = parseInt((total - hs * 3600000) / 60000);
+				var ss = parseInt((total - hs * 3600000 - ms * 60000) / 1000);
+
+				// 将时间显示到对应的div中
+				document.querySelector("#hours").innerHTML = hs<10?'0'+hs:hs;
+				document.querySelector("#minutes").innerHTML = ms<10?'0'+ms:ms;
+				document.querySelector("#seconds").innerHTML = ss<10?'0'+ss:ss;
+			}
+			// 初始化剩余时间
+			showTime();
+			// 循环计时
+			setInterval(() => {
+				showTime();
+			}, 1000);
+		</script>
+	</body>
+</html>

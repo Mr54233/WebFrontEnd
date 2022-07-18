@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			#mydiv {
+				width: 300px;
+				height: 200px;
+				margin: 50px auto;
+				display: none;
+				background-color: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mydiv"></div>
+
+        <input type="button" value="停止计时" id="btnStop">
+		<script>
+			// 1秒钟后 , mydiv这个层显示出来
+			var timer1 = setTimeout(() => {
+				// 显示mydiv
+				var div = document.querySelector("#mydiv");
+				div.style.display = "block";
+			}, 5000);
+
+            // 停止按钮单击 , 停止计时器计时
+            document.querySelector('#btnStop').onclick = function(){
+                clearTimeout(timer1);
+            }
+		</script>
+	</body>
+</html>
