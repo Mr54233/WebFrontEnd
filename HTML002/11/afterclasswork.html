@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>220718 课后作业1</title>
+		<style>
+			.box {
+				width: 550px;
+				height: 70px;
+				background-color: #fba91b;
+				border: 5px solid #ccc;
+				text-align: center;
+				border-radius: 10px;
+				font-size: 30px;
+				margin: 200px auto;
+				color: #fff;
+			}
+
+			.box span {
+				line-height: 70px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<span class="one"></span>
+			<span class="two"></span>
+		</div>
+		<script>
+            // 页面上有一个电子时钟，显示当前的年月日，时分秒，要求自动变化，
+
+			//刷新页面不出错
+			var timer = setTimeout(function () {
+				var one = document.querySelector(".one");
+				var two = document.querySelector(".two");
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var dates = date.getDate();
+				var arr = [
+					"星期日",
+					"星期一",
+					"星期二",
+					"星期三",
+					"星期四",
+					"星期五",
+					"星期六",
+				];
+				var day = arr[date.getDay()];
+				one.innerHTML =
+					year + "年" + month + "月" + dates + "日 " + day;
+				two.innerHTML = getTime();
+				clearInterval(timer);
+			});
+			//设置定时器
+			setInterval(function () {
+				//格式化日期 年月日
+				var one = document.querySelector(".one");
+				var two = document.querySelector(".two");
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var dates = date.getDate();
+				var arr = [
+					"星期日",
+					"星期一",
+					"星期二",
+					"星期三",
+					"星期四",
+					"星期五",
+					"星期六",
+				];
+				var day = arr[date.getDay()];
+				one.innerHTML =
+					year + "年" + month + "月" + dates + "日 " + day;
+				two.innerHTML = getTime();
+			}, 1000);
+
+			//要求封装一个函数返回当前的时分秒 格式：08：08：08
+			function getTime() {
+				var time = new Date();
+				var h = time.getHours();
+				h = h < 10 ? "0" + h : h;
+				var m = time.getMinutes();
+				m = m < 10 ? "0" + m : m;
+				var s = time.getSeconds();
+				s = s < 10 ? "0" + s : s;
+				return h + ":" + m + ":" + s;
+			}
+		</script>
+	</body>
+</html>
