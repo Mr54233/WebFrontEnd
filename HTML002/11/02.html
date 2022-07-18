@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        document.addEventListener('keydown', function(e){
+            console.log('down')
+            console.log(e.keyCode)
+        }) 
+        document.addEventListener('keyup', function(e){
+            console.log('up')
+            console.log(e.keyCode)
+            // console.log(e)
+            
+        }) 
+        document.addEventListener('keypress', function(e){
+            console.log('press')
+            console.log(e.keyCode)
+        }) 
+    </script>
+</body>
+</html>
