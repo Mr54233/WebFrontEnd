@@ -10,6 +10,9 @@
 		<ul id="ul1"></ul>
 		<input type="button" value="按钮" id="btnAdd" />
 
+		<a href="16.html">回去</a>
+		<h1>后退</h1>
+		<h1>前进</h1>
 		<script>
 			// 准备一个保存数据的数组
 			var girls = ["西施", "昭君"];
@@ -54,6 +57,10 @@
 				showDatas();
 				bind();
 			};
+
+			document.querySelector('h1').onclick = function(){
+				history.back();
+			}
 		</script>
 	</body>
 </html>

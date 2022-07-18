@@ -7,7 +7,13 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<input type="button" value="刷新" id="btnRefresh">
+
 		<script>
+			document.querySelector('#btnRefresh').onclick = function(){
+				location.reload(true);
+			}
+
 			// 第一步 拿到search
 			var info = location.search;
 			// 第二 去掉?
@@ -15,6 +21,10 @@
 			// 第三步 按 = & 分割字符串
 			var ws = info.split(/[= &]/);
 			console.log("ws", ws);
+
+			for(var i = 0 ; i < 100000000; i++){
+				// console.log('i',i)
+			}
 		</script>
 	</body>
 </html>
