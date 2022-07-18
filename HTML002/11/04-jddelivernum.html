@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			form {
+				margin-top: 100px;
+			}
+            #biger{
+                position: absolute;
+                top: 65px;
+                left: 45px;
+                font-size: 20px;
+            }
+		</style>
+	</head>
+	<body>
+		<form action="#" method="post">
+			<table>
+				<tr>
+					<td>快递单号:</td>
+					<td><input type="text" name="bill" id="bill" /></td>
+				</tr>
+			</table>
+		</form>
+		<input type="text" name="biger" id="biger" style="display: none" />
+
+		<script>
+			var bill = document.querySelector("#bill");
+			bill.addEventListener("focus", function () {
+				var biger = document.querySelector("#biger");
+				biger.style.display = "block";
+			});
+			bill.addEventListener("blur", function () {
+				var biger = document.querySelector("#biger");
+				biger.style.display = "none";
+			});
+			bill.addEventListener("keyup", function (e) {
+				var biger = document.querySelector("#biger");
+				biger.value = this.value;
+			});
+            </script>
+	</body>
+</html>
