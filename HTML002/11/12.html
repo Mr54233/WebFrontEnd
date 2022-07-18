@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="text" name="phone" id="phone" />
+		<input type="button" value="发送" id="btnSend" />
+
+		<script>
+			var txt = document.querySelector("#phone");
+			var btn = document.querySelector("#btnSend");
+			var count = 5; // 全局变量 , 表示计时的次数
+			var timer1 = "";
+			btn.onclick = function () {
+				if (txt.value.trim() == "") {
+					alert("必须先填写电话号码才能发送短信");
+				} else {
+					alert("已发送");
+					// 禁用发送按钮
+					this.disabled = "disabled";
+					// 开启计时器
+					timer1 = setInterval(() => {
+						count--; // 次数减一
+						console.log("count", count);
+						if (count == 0) {
+							// 启用按钮
+							// btn.disabled = "enable";
+							btn.removeAttribute("disabled");
+							// 还原计时器
+							clearInterval(timer1);
+							count = 5;
+						}
+					}, 1000);
+				}
+			};
+		</script>
+	</body>
+</html>

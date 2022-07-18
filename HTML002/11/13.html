@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="DEMO" id="btn" onclick = 'res();'>
+    
+    <script>
+        console.log('this',this)
+        function demo(){
+            console.log('this',this)
+            function inner(){
+                console.log('this',this)
+            }
+            inner();
+        }
+        demo();
+
+        var obj = {
+            test:function(){
+                console.log('this',this)
+            },
+            name:'Tom'
+        }
+        obj.test();
+
+        function Student(name){
+            this.name = name;
+            console.log('this',this)
+            this.study = function(){
+                console.log('study',study)
+            }
+        }
+        var stu = new Student('zhangsan');
+        var stu2 = new Student('lisi')
+
+
+        var btn = document.querySelector('#btn')
+        // btn.onclick = function(){
+        //     console.log('this',this)
+        // }
+
+        function res(){
+            console.log('this',this)
+        }
+        // btn.onclick = res;
+    </script>
+</body>
+</html>

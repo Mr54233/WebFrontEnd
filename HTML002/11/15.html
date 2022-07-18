@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="button" value="点击" id="btn" />
+		<span id="info" style="display: none"
+			>你在<span id="count" style="color: red">5</span>秒后跳转</span
+		>
+		<script>
+			// 点击按钮后 , 计时五秒后跳转到
+			var btn = document.querySelector("#btn");
+			btn.addEventListener("click", function () {
+				// 显示提示信息
+				document.querySelector("#info").style.display = "block";
+				// 开启计时器
+				timer1 = setInterval(function () {
+					// 次数减一 , 页面中的次数需要刷新显示
+					count--;
+					document.querySelector("#count").innerHTML = count;
+					// 判断是否到五秒种
+					if (count == 0) {
+						// 跳转到首页
+						location =
+							"../10/afterclasswork.html";
+					}
+				}, 1000);
+			});
+			var count = 5,
+				timer1 = null;
+		</script>
+	</body>
+</html>

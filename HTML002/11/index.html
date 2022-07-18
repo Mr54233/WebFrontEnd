@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 第一步 拿到search
+			var info = location.search;
+			// 第二 去掉?
+			info = info.substr(1);
+			// 第三步 按 = & 分割字符串
+			var ws = info.split(/[= &]/);
+			console.log("ws", ws);
+		</script>
+	</body>
+</html>
