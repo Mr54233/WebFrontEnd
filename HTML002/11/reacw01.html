@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul id="ul1"></ul>
+		<input type="button" value="按钮" id="btnAdd" />
+
+		<script>
+			// 准备一个保存数据的数组
+			var girls = ["西施", "昭君"];
+			// 找到ul标签
+			var ul = document.querySelector("#ul1");
+
+			// 显示数组中的数据
+			function showDatas() {
+				// 清空ul所有的li标签
+				// ul.children = null;
+				ul.innerHTML = "";
+				// 遍历数组 , 每个数组的元素就是一个li
+				for (var i = 0; i < girls.length; i++) {
+					var li = "<li>" + girls[i] + "</li>";
+					ul.innerHTML += li;
+				}
+			}
+
+			// 找到ul中所有的li , 给它订阅click时间的处理方法
+			// function bind() {
+			// 	var lis = document.querySelectorAll("#ul li");
+			// 	for (var i = 0; i < lis.length; i++) {
+			// 		lis[i].onclick = function () {
+			// 			this.style.backgroundColor = "red";
+			// 		};
+			// 	}
+			// }
+
+			function bind() {
+				ul.onclick = function (e) {
+					e.target.style.backgroundColor = "red";
+				};
+			}
+
+			// 调用显示方法 , 进行初始化
+			showDatas();
+			// 调用绑定方法 , 进行初始化
+			bind();
+
+			document.querySelector("#btnAdd").onclick = function () {
+				girls.unshift("杨超越");
+				showDatas();
+				bind();
+			};
+		</script>
+	</body>
+</html>
