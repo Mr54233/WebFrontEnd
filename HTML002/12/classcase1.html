@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				position: absolute;
+				top: 100px;
+				left: 300px;
+				width: 200px;
+				height: 200px;
+				background-color: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+
+		<script>
+			var div = document.querySelector("div");
+			console.log("div.offsetTop", div.offsetTop);
+			console.log("div.offsetLeft", div.offsetLeft);
+            
+            div.onclick = function(e){
+                // console.log('e.pageX',e.pageX)
+                // console.log('e.pageY',e.pageY)
+
+                var x = e.pageX - div.offsetLeft
+                var y = e.pageY - div.offsetTop
+                console.log('x,y',x,y)
+            }
+		</script>
+	</body>
+</html>
