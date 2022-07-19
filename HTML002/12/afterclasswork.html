@@ -1,117 +1,159 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>220719 课后作业1</title>
-		<style>
-			* {
-				margin: 0;
-				padding: 0;
-			}
-			#open {
-				width: 100%;
-				height: 50px;
-				line-height: 50px;
-				text-align: center;
-			}
-			#login {
-				display: none;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        .login-header {
+            width: 180px;
+            height: 100%;
+            margin: 0 auto;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .login {
+            display: none;
+            position: fixed;
+            width: 512px;
+            height: 280px;
+            border: 1px solid #ebebeb ;
+            left: 50%;
+            top: 50%;
+            background-color: #fff;
+            box-shadow: 0px 0px 20px #ddd;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+        .login-title {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            margin: 10px 0 0 0;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+            cursor: move;
+        }
+        .login-title .close-login {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: -20px;
+            top: -30px;
+            background-color: #ebebeb;
+            border-radius: 50%;
+            font-size: 14px;
 
-				width: 500px;
-				height: 200px;
+        }
+        .login-input-content {
+            margin-top: 20px;
+        }
+        .login-btn {
+            width: 50%;
+            margin: 30px auto 0 auto;
+            line-height: 40px;
+            font-size: 14px;
+            border: 1px solid #ebebeb;
+            text-align: center;
+        }
+        .login-bg {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .3)
+        }
+        .login-input {
+            overflow: hidden;
+            margin: 0 0 20px 0;
+        }
+        .login-input label {
+            float: left;
+            width: 80px;
+            height: 35px;
+            padding-left: 10px;
+            font-size: 14px;
+            line-height: 35px;
+            text-align: center;
+        }
+        .login-input input {
+            float: left;
+            width: 360px;
+            height: 30px;
+        }
 
-				background-color: #fff;
+    </style>
+</head>
+<body>
+    <div class="login-header"><a href="javascript:;" id="link">点击，打开登陆界面</a></div>
+    <div class="login">
+        <div class="login-title" id="title">登录会员
+            <span><a href="javascript:;" id="close" class="close-login">关闭</a></span>
+        </div>
+        <div class="login-input-content">
+            <div class="login-input">
+                <label for="username">用户名：</label>
+                <input type="text" name="username" id="username" placeholder="请输入用户名">
+            </div>
+            <div class="login-input">
+                <label for="password">登录密码：</label>
+                <input type="password" name="password" id="password" placeholder="请输入登录密码">
+            </div>
+        </div>
+        <div class="login-btn" id="loginBtn"><a href="javascript:;" id="login-submit">登陆会员</a></div>
+    </div>
+    <!-- 遮盖层 -->
+    <div class="login-bg" id="bg"></div>
 
-				z-index: 10;
-			}
-			#login #title {
-				width: 100%;
-				height: 60px;
-				line-height: 60px;
-				text-align: center;
-				font-size: 18px;
-				background-color: #eee;
-			}
-			#login #close {
-				position: absolute;
-				top: -40px;
-				right: -40px;
-				width: 60px;
-				height: 60px;
-				border-radius: 50%;
-				background-color: #eee;
-			}
-			#mask {
-				display: none;
-				position: fixed;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				z-index: 8;
-				background-color: rgba(0, 0, 0, 0.3);
-			}
-		</style>
-	</head>
-	<body>
-		<div id="open">点击打开模态框</div>
-		<div id="login">
-			<div id="title">
-				会员登陆
-				<div id="close">关闭</div>
-			</div>
-		</div>
-		<div id="mask"></div>
+    <script>
+		// 1 - 模态框拖拽
+		// - 题目描述
+		// 把今天课上讲的模态框拖拽写一遍
+		// - 训练目标
+		// 能够独自完成模态框拖拽的制作
 
-		<script>
-            // 1 - 模态框拖拽
-            // - 题目描述
-            // 把今天课上讲的模态框拖拽写一遍
-            // - 训练目标
-            // 能够独自完成模态框拖拽的制作
-
-			var open = document.querySelector("#open");
-			var close = document.querySelector("#close");
-			var login = document.querySelector("#login");
-			var mask = document.querySelector("#mask");
-			var title = document.querySelector("#login #title");
-
-			// 单击打开显示模态框 点击关闭隐藏模态框
-			open.addEventListener("click", function () {
-				login.style.display = "block";
-				mask.style.display = "block";
-			});
-			close.addEventListener("click", function () {
-				login.style.display = "none";
-				mask.style.display = "none";
-			});
-
-			title.addEventListener("mousedown", function (e) {
-				// 计算出鼠标在模态框中的 , xy坐标值
-				// 此坐标值在拖拽过程中是不变的
-				var mx = e.pageX - login.offsetLeft;
-				var my = e.pageY - login.offsetTop;
-                document.addEventListener("mousemove", move);
-                function move(e) {
-                    // 计算并赋值给模态框的xy坐标值
-                    var x = e.pageX - mx;
-                    var y = e.pageY - my;
-                    login.style.left = x + "px";
-                    login.style.top = y + "px";
-                }
-                addEventListener("mouseup", function (e) {
-                    // 松绑mousemove事件
-                    document.removeEventListener('mousemove' , move);
-                });
-			});
-            
-
-		</script>
-	</body>
+        var link = document.querySelector('#link');
+        var login = document.querySelector('.login');
+        var mask = document.querySelector('#bg');
+        var close = document.querySelector('#close');
+        // 1.鼠标点击，弹出登录界面和遮盖层
+        link.addEventListener('click', function() {
+            login.style.display = 'block';
+            mask.style.display = 'block';
+        });
+        // 2. 鼠标点击关闭按钮，隐藏登陆界面和遮盖层
+        close.addEventListener('click', function() {
+            login.style.display = 'none';
+            mask.style.display = 'none';
+        });
+        var title = document.querySelector('#title');
+        // 3. 鼠标在 title 区域按下，获得鼠标的位置
+        title.addEventListener('mousedown', function(e) {
+            var x = e.pageX - login.offsetLeft;
+            var y = e.pageY - login.offsetTop;
+            // 4. 绑定鼠标移动事件，鼠标在页面中的位置减去鼠标在盒子中的位置，得到盒子再页面中的位置，并把 left 和 top 的值给 login 盒子
+            document.addEventListener('mousemove', move);
+            function move(e) {
+                login.style.left = e.pageX - x + 'px';
+                login.style.top = e.pageY - y + 'px';
+            }
+            // 5. 鼠标弹起，解绑鼠标移动事件
+            document.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', move);
+            });
+        });
+    </script>
+</body>
 </html>
