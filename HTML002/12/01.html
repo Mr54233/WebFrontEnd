@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: #f00;
+				margin: 180px;
+                padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+
+		<script>
+			var div = document.querySelector("div");
+			var x = div.offsetLeft;
+			var y = div.offsetTop;
+			var w = div.offsetWidth;
+			var h = div.offsetHeight;
+            console.log('x,y,w,h',x,y,w,h)
+		</script>
+	</body>
 </html>
