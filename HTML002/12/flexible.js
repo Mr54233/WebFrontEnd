@@ -15,7 +15,7 @@
   }
   setBodyFontSize();
 
-  // 设置根元素的字体大小
+  // 设置根元素的字体大小 : 10等份设备宽度
   function setRemUnit () {
     var rem = docEl.clientWidth / 10
     docEl.style.fontSize = rem + 'px'

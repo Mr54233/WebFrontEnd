@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.head {
+				width: 800px;
+				height: 100px;
+				margin: 0 auto 10px;
+				background-color: #f00;
+			}
+			.banner {
+				width: 800px;
+				height: 80px;
+				margin: 0 auto 10px;
+				background-color: #0f0;
+			}
+			.main {
+				width: 800px;
+				height: 800px;
+				background-color: #00f;
+				margin: 0 auto 10px;
+			}
+			.sidebar {
+				position: absolute;
+				top: 300px;
+				right: 220px;
+				width: 50px;
+				height: 80px;
+				background-color: yellow;
+			}
+			.backTop {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sidebar">
+			<div class="backTop">回到顶部</div>
+		</div>
+		<div class="head"></div>
+		<div class="banner"></div>
+		<div class="main"></div>
+
+		<script>
+			var sidebar = document.querySelector(".sidebar");
+			var banner = document.querySelector(".banner");
+            var main = document.querySelector('.main')
+            var backTop = document.querySelector('.backTop')
+			var bannerTop = banner.offsetTop;
+            var sidebarTop = sidebar.offsetTop - bannerTop;
+            var mainTop = main.offsetTop;
+
+			// 功能1 , 当页面滚到banner区域时候 , 侧边栏变成固定定位的 ,
+			// 就是侧边栏不再跟随页面的滚动而滚动
+			document.addEventListener("scroll", function () {
+				// 页面被卷去的头部使用
+				// window.pageYOffset , window.pageXOffset
+				if (window.pageYOffset >= 110) {
+					sidebar.style.position = "fixed";
+					sidebar.style.top = sidebarTop + "px";
+					// sidebar.style.right = '220px'
+				} else {
+					sidebar.style.position = "absolute";
+					sidebar.style.top = "300px";
+				}
+                if(window.pageYOffset >= mainTop){
+                    backTop.style.display = 'block'
+                } else {
+                    backTop.style.display = 'none'
+                }
+			});
+
+            // 获取页面被卷去的头部的距离的兼容性函数
+            // function getScroll(){
+            //     return{
+            //         left:window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+            //         top:window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            //     }
+            // }
+		</script>
+	</body>
+</html>

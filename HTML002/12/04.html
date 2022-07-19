@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				position: absolute;
+				top: 100px;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				background-color: #f00;
+			}
+			p {
+				position: absolute;
+				top: 300px;
+				left: 0;
+				width: 120px;
+				height: 120px;
+				background-color: #0f0;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<p></p>
+		<button>让绿色的盒子执行动画</button>
+
+		<script>
+			// 封装动画函数
+			// 1
+			// 2
+			// 3
+			// 4
+			// 5
+
+			// 功能:动画函数
+			// 形参:el : 就是需要执行动画的元素对象
+			//      target :就是动画的目标坐标值
+			function animation(el, target) {
+				var x = el.offsetLeft;
+				el.style.left = x + 1 + "px";
+				// 使用var 声明的变量要在内存中分配内存空间
+				// 1. 比较浪费内存空间
+				// 2. 执行效率不太高
+				// 3. 存在大量同名变量 , 不容易区分
+
+				// js是动态语言 , 可以给已经存在的对象添加属性和方法
+
+				// 不管事件触发多少次 , 一个元素上同时只能有一个动画函数得到执行
+				clearInterval(el.timer);
+				el.timer = setInterval(function () {
+					x = el.offsetLeft;
+					el.style.left = x + 1 + "px";
+					if (el.offsetLeft == target) {
+						clearInterval(el.timer);
+					}
+				}, 1);
+			}
+
+			var div = document.querySelector("div");
+			animation(div, 300);
+
+			var p = document.querySelector("p");
+
+			var btn = document.querySelector("button");
+			btn.onclick = function () {
+				animation(p, 500);
+			};
+		</script>
+	</body>
+</html>
