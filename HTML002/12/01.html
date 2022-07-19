@@ -16,18 +16,33 @@
 				background-color: #f00;
 				margin: 180px;
                 padding: 10px;
+                border: 5px solid black;
 			}
+            div p{
+                width: 100px;
+                height: 100px;
+                margin-left: 50px;
+                background-color: green;
+            }
 		</style>
 	</head>
 	<body>
-		<div></div>
+		<div>
+            <p></p>
+        </div>
 
 		<script>
 			var div = document.querySelector("div");
-			var x = div.offsetLeft;
-			var y = div.offsetTop;
-			var w = div.offsetWidth;
-			var h = div.offsetHeight;
+			// var x = div.offsetLeft;
+			// var y = div.offsetTop;
+			// var w = div.offsetWidth;
+			// var h = div.offsetHeight;
+            // console.log('x,y,w,h',x,y,w,h)
+            var p = document.querySelector('div p')
+			var x = p.offsetLeft;
+			var y = p.offsetTop;
+			var w = p.offsetWidth;
+			var h = p.offsetHeight;
             console.log('x,y,w,h',x,y,w,h)
 		</script>
 	</body>
