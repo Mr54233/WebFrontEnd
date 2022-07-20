@@ -31,33 +31,44 @@ window.addEventListener("load", function () {
     var focusWidth = focus.offsetWidth;
 	// 2. 单击右侧按钮一次 , 图片往左播放一张 , 以此类推
 	// 3. 
+	// 设置一个节流阀变量
+	var flag = true;//节流阀变量
 	arrow_r.addEventListener("click", function () {
-        // 先要找到现在的图像的序号 , (current小圆圈的序号)
-		for (var i = 0; i < ol.children.length; i++) {
-            if (ol.children[i].className == "current") {
-                var index = i;
-				ol.children[i].removeAttribute("class");
-				break;
+		if(flag){
+			flag = false;// 已经开始执行动画 , 节流阀关闭 , 不允许执行下一次动画
+			// 先要找到现在的图像的序号 , (current小圆圈的序号)
+			for (var i = 0; i < ol.children.length; i++) {
+				if (ol.children[i].className == "current") {
+					var index = i;
+					ol.children[i].removeAttribute("class");
+					break;
+				}
 			}
+			index++;
+			index = index == ol.children.length ? 0 : index;
+			ol.children[index].className = "current";
+			animate(ul, - index*focusWidth , function(){
+				flag = true ; // 动画执行结束 , 打开节流阀 , 可以执行下一次动画
+			});
 		}
-        index++;
-        index = index == ol.children.length ? 0 : index;
-        ol.children[index].className = "current";
-        animate(ul, - index*focusWidth);
 	});
 	arrow_l.addEventListener("click", function () {
-		// 先要找到现在的图像的序号 , (current小圆圈的序号)
-		for (var i = 0; i < ol.children.length; i++) {
-            if (ol.children[i].className == "current") {
-                var index = i;
-				ol.children[i].removeAttribute("class");
-				// break;
+		if(flag){
+			// 先要找到现在的图像的序号 , (current小圆圈的序号)
+			for (var i = 0; i < ol.children.length; i++) {
+				if (ol.children[i].className == "current") {
+					var index = i;
+					ol.children[i].removeAttribute("class");
+					// break;
+				}
 			}
+			index--;
+			index = index < 0 ? ol.children.length-1 : index;
+			ol.children[index].className = "current";
+			animate(ul, -index * focusWidth , function(){
+				flag = true;
+			});
 		}
-        index--;
-        index = index < 0 ? ol.children.length-1 : index;
-        ol.children[index].className = "current";
-        animate(ul, -index * focusWidth);
 	});
 
 	//4. 点击小圆圈 , 播放相对应的图片
@@ -84,5 +95,5 @@ window.addEventListener("load", function () {
         var timer = setInterval(() => {
             arrow_r.click();
         }, 3000);
-    })
+    });
 });
