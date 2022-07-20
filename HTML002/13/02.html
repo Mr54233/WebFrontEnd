@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 回调函数 , 1. 在函数中定义一个形参 , 这个形参需要的得到的实参是一个函数
+			//         ,2. 在函数结束时 , 通过形参调用传入的实参函数
+            // 回调函数的作用 , 1. 增加了函数的功能 
+            //                 2. 增加的功能不是函数的开发者决定的 , 而是函数的调用者决定的
+			function old(x, y, callback) {
+				// 如果传入了回调函数 , 则调用实参函数
+				if (callback) {
+					callback();
+				}
+				return x + y;
+			}
+
+			//调用old函数 , old函数执行完毕时 , 弹出对话框
+			var result = old(10, 20);
+			console.log("result", result);
+			result = old(20, 30, function () {
+				alert("ok , callback");
+			});
+			console.log("result", result);
+		</script>
+	</body>
+</html>
