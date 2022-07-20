@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>用户注册</h1>
+    <form action="01.html" method="post" id="myform">
+        <table>
+            <tr>
+                <td>账号</td>
+                <td><input type="text" name="acc" id="acc"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="pwd" id="pwd"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td><input type="text" name="email" id="email"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="注册">
+                    <input type="reset" value="重填">
+                </td>
+                <td class="info">&nbsp;</td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        // 表单验证 : 账号是必填的 , 密码至少要6位
+
+        // 2. onblur  , 字符串内置对象的方法进行验证
+        var acc = document.querySelector('#acc')
+        acc.addEventListener('blur',function(){
+            var td = this.parentNode.nextElementSibling;
+            if(this.value.trim() === ''){
+                td.innerHTML = '账号不能为空'
+                td.style.color = 'red'
+
+            } else {
+                // 合法
+                td.innerHTML = '账号合法'
+                td.style.color = 'green'
+            }
+        })
+
+        var pwd = document.querySelector('#pwd')
+        pwd.addEventListener('blur',function(){
+            var pwdTd = this.parentNode.nextElementSibling;
+            if(this.value.trim().length < 6) {
+                // 不合法的密码
+                pwdTd.innerHTML = '密码的长度不能小于六位'
+                pwdTd.style.color = 'red'
+                e.preventDefault();
+            } else {
+                pwdTd.innerHTML = '密码合法'
+                pwdTd.style.color = 'green'
+            }
+        })
+
+        var email = document.querySelector('#email')
+        email.addEventListener('blur',function(){
+            var mailTd = this.parentNode.nextElementSibling;
+            var index = this.value.indexOf('@')
+            if(index <= 0) {
+                mailTd.innerHTML = '邮箱非法'
+                mailTd.style.color = 'red'
+            } else {
+                mailTd.innerHTML = '邮箱合法'
+                mailTd.style.color = 'green'
+            }
+        })
+    </script>
+</body>
+</html>
