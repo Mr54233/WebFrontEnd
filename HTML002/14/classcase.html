@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .contacts{
+            width: 240px;
+            height: 320px;
+            margin: 30px auto;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .group h2{
+            background-color: #eee;
+            border-bottom: 1px solid #ccc;
+        }
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+    </style>
+    <script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="contacts">
+        <div class="group">
+            <h2>大学同学</h2>
+            <div class="ps">
+                <p>张三</p>
+                <p>李四</p>
+                <p>王五</p>
+            </div>
+        </div>
+        <div class="group">
+            <h2>朋友</h2>
+            <div class="ps hide">
+                <p>Tom</p>
+                <p>jack</p>
+                <p>rose</p>
+            </div>
+        </div>
+        <div class="group">
+            <h2>陌生人</h2>
+            <div class="ps hide">
+                <p>A</p>
+                <p>B</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function(){
+            $('.contacts>.group>h2').click(function(){
+                // 所有联系人都隐藏
+                $('.contacts .ps').removeClass('hide').addClass('hide');
+                // 显示被单击的标题后面的联系人
+                $(this).next('div').removeClass('hide');
+            })
+        })
+    </script>
+</body>
+</html>
