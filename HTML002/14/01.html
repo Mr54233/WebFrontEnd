@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>用户注册</h1>
+    <form action="01.html" method="post" id="myform">
+        <table>
+            <tr>
+                <td>账号</td>
+                <td><input type="text" name="acc" id="acc"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="pwd" id="pwd"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td><input type="text" name="email" id="email"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>邮政编码</td>
+                <td><input type="text" name="zip" id="zip"></td>
+                <td class="info">*</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="注册">
+                    <input type="reset" value="重填">
+                </td>
+                <td class="info">&nbsp;</td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        // 表单验证 : 账号是必填的 , 密码至少要6位 , 正确的邮政编码
+        // 3.onblur 正则表达式
+
+        var acc = document.querySelector('#acc')
+        acc.addEventListener('blur',function(){
+            // 1. 创建正则表达式对象
+            var reg = new RegExp('\\w{1,}','ig')
+            // 获取显示提示信息的元素
+            var td = acc.parentNode.nextElementSibling;
+            // 2. 验证数据
+            reg.test(this.value);
+            console.log('reg.test(this.value)',reg.test(this.value))
+            if(!reg.test(this.value)){
+                //非法数据 
+                td.innerHTML = '账号不能为空'
+                td.style.color = 'red'
+                
+            } else {
+                // 合法数据
+                td.innerHTML = '有效账号'
+                td.style.color = 'green'
+            }
+        })
+
+        // 密码至少六位 , 密码中的字符 : 以abc三个字母中的一个开头 , 后跟若干数字
+        var pwd = document.querySelector('#pwd')
+        pwd.addEventListener('blur',function(){
+            // 1. 创建正则表达式对象
+            // var reg = new RegExp('\\w{6,}','ig')
+            var reg = /^[abc]{1}\d{5,}$/ig
+            // 获取显示提示信息的元素
+            var td = pwd.parentNode.nextElementSibling;
+            // 2. 验证数据
+            reg.test(this.value);
+            console.log('reg.test(this.value)',reg.test(this.value))
+            if(!reg.test(this.value)){
+                //非法数据 
+                td.innerHTML = '密码至少六位 , 且需要以abc开头'
+                td.style.color = 'red'
+                
+            } else {
+                // 合法数据
+                td.innerHTML = '有效密码'
+                td.style.color = 'green'
+            }
+        })
+
+        var zip = document.querySelector('#zip')
+        zip.addEventListener('blur',function(){
+            // 1. 创建正则表达式对象
+            // var reg = new RegExp('\\d{6}','ig')
+            // var reg = /^\d{6}$/ig;
+            // var reg = /^[0123456789]{6}$/ig
+            var reg = /^[0-9]{6}$/ig
+            // 获取显示提示信息的元素
+            var td = zip.parentNode.nextElementSibling;
+            // 2. 验证数据
+            reg.test(this.value);
+            console.log('reg.test(this.value)',reg.test(this.value))
+            if(!reg.test(this.value)){
+                //非法数据 
+                td.innerHTML = '邮政编码必须为六位数字'
+                td.style.color = 'red'
+                
+            } else {
+                // 合法数据
+                td.innerHTML = '有效编码'
+                td.style.color = 'green'
+            }
+        })
+    </script>
+</body>
+</html>
