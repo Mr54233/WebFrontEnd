@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- 导入jQuery库的js文件 -->
+		<script src="jquery-3.6.0.min.js"></script>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>层1</div>
+		<div>层2</div>
+
+		<script>
+			// 要给所有的div添加红色的边框 ,
+			// 层中间的文字大小设置为20px 文字颜色设置为橙色
+			// $(document).ready(function () {
+			// 	$("div")
+			// 		.css("border", "1px solid red")
+			// 		.css("fontSize", "20px")
+			// 		.css("color", "orange");
+			// });
+            $(function(){
+                // $("div")
+				// 	.css("border", "1px solid red")
+				// 	.css("fontSize", "20px")
+				// 	.css("color", "orange");
+
+                // var $divs = $('div')
+                // for(var i = 0 ; i < divs.length ; i++){
+                //     $divs[i].style.border = '1px solid red'
+                //     // $divs[i].css('border' , "1px solid red")
+                // }
+
+                var divs = document.querySelectorAll('div')
+                divs.css('border' , '1px solid red')
+            })
+		</script>
+	</body>
+</html>

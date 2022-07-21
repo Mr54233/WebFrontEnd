@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <ul>
+        <a href="#">演示</a>
+        <li>1</li>
+        <li>2</li>
+        <li id="my">3</li>
+        <li>4<a href="#">百度</a></li>
+        <li>5</li>
+    </ul>
+    <a href="#">CSDN程序员</a>
+
+    <script>
+        $(function(){
+            // 选择ul中第一个li
+            $('ul li:first').css('color' , 'red')
+            // 选择ul 中的第三个li后面的所有li
+            $('ul li:gt(2)').css('fontSize', ' 50px')
+        })
+    </script>
+</body>
+</html>

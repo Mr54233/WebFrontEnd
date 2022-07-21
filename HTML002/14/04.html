@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<div id="mydiv">
+			<ul>
+				<li class="target">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<ul>
+				<li>1<a href="#" class="target">百度</a></li>
+				<li>2<a href="#">博客园</a></li>
+			</ul>
+		</div>
+
+		<script>
+			$(function () {
+				// 设置所有的li 中的文字颜色为红色 , 去掉小圆点
+				$("li").css("color", "red").css("listStyle", "none");
+				// 给id是mydiv的层设置 : 宽度300px , 高度 150px , 边框红色细边框
+				$("#mydiv")
+					.css("width", "300px")
+					.css("height", "150px")
+					.css("border", "1px solid red");
+				// 给类名是target的元素设置前景颜色设置为绿色
+				$(".target").css("color", "green");
+                // 给id为mydiv的元素中的li设置一个字体大小26px
+                $("#mydiv li").css('fontSize' , '26px')
+			});
+		</script>
+	</body>
+</html>

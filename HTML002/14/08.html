@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <div class="abc">
+        <p>abc</p>
+    </div>
+
+    <script>
+        $(function(){
+            // // 选取出不包含p段落的层
+            // $('div:not(.abc)').css('width' , '100px')
+            //                 .css('height' , '100px')
+            //                 .css('backgroundColor' , 'red')
+
+            $('div:parent').css('width' , '100px')
+                            .css('height' , '100px')
+                            .css('backgroundColor' , 'red')
+        })
+    </script>
+</body>
+</html>

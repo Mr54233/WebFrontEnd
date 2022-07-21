@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <ul>
+        <a href="#">演示</a>
+        <li>1</li>
+        <li>2</li>
+        <li id="my">3</li>
+        <li>4<a href="#">百度</a></li>
+        <li>5</li>
+    </ul>
+    <a href="#">CSDN程序员</a>
+
+    <script>
+        $(function(){
+            // 给ul中的超链接设置字体大小和颜色
+            $('ul a').css('color' , 'red').css('fontSize' , '26px')
+            //给ul中的子元素超链接设置没有下划线
+            $('ul>a').css('textDecoration' , 'none')
+            // 给id 为my 的li 的后面的兄弟设置颜色是橙色的
+            $('#my+li').css('color' , 'orange') 
+            // 给id 为my的 li 的前面的兄弟设置颜色是橙色的
+            $("#my~li").css('color' , 'orange')
+
+        })
+    </script>
+</body>
+</html>

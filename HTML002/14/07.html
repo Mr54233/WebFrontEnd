@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <ul>
+        <a href="#">演示</a>
+        <li price="21">1</li>
+        <li price="22">2</li>
+        <li id="my">3</li>
+        <li price="121">4<a href="#">百度</a></li>
+        <li price="12">5</li>
+    </ul>
+    <a href="#">CSDN程序员</a>
+
+    <script>
+        $(function(){
+            // 给有price的属性并且他的值用2开头的li,设置颜色为橙色
+            // $('li[price^="2"]').css('color','orange')
+            $('li[price*="2"]').css('color','orange')
+        })
+    </script>
+</body>
+</html>
