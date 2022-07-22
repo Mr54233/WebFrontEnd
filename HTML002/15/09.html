@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				position: absolute;
+				top: 100px;
+				left: 300px;
+				width: 100px;
+				height: 100px;
+				background-color: #f00;
+			}
+			button {
+				position: absolute;
+				top: 10px;
+				left: 300px;
+			}
+		</style>
+		<script src="../js/jquery-3.6.0.min.js"></script>
+		<script>
+			$(function () {
+				var count = 0; // 单击次数
+				$("button").click(function () {
+					count++;
+					if (count % 2 == 0) {
+						$("div").fadeIn(3000);
+					} else {
+						$("div").fadeOut(3000);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<button>淡入淡出</button>
+	</body>
+</html>

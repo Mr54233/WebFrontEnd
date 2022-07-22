@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+        button{
+            position: absolute;
+            top: 10px;
+            left: 300px;
+        }
+    </style>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('button').click(function(){
+                $('div').animate({top:'600px',left:'1000px'},5000)
+            })
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+    <button>执行动画</button>
+</body>
+</html>

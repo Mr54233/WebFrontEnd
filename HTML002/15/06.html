@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #father{
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 300px;
+            height: 300px;
+            background-color: #f00;
+        }
+        #son{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: #0f0;
+        }
+    </style>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            console.log("$('#son').offset()",$('#son').offset())
+            console.log("$('#son').position()",$('#son').position())
+            console.log('$("#father").offset()',$("#father").offset())
+            console.log('$("#father").position()',$("#father").position())
+        })
+    </script>
+</head>
+<body>
+    <div id="father">
+        <div id="son"></div>
+    </div>
+
+</body>
+</html>
