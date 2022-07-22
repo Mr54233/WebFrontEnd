@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <input type="checkbox" name="chekAll" id="chk" checked="checked">
+    <button id="read">读属性</button>
+    <button id="write">写属性</button>
+
+    <script>
+        $(function(){
+            $('#read').click(function(){
+                console.log("$('#chk').prop('checked')",$('#chk').prop('checked'))
+                console.log("$('#chk').attr('checked')",$('#chk').attr('checked'))
+                console.log("$('#chk').prop('name')",$('#chk').prop('name'))
+                console.log("$('#chk').attr('name')",$('#chk').attr('name'))
+            })
+            $('#write').click(function(){
+                $('#chk').prop('checked',true);
+            })
+        })
+    </script>
+</body>
+</html>

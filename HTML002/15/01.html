@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="../js/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<h1>水果市场</h1>
+		<ul id="myul">
+			<li>苹果</li>
+			<li>香蕉</li>
+		</ul>
+		<button id="btnAppend">Append</button>
+		<button id="btnPrepend">Prepend</button>
+		<button id="btnAfter">After</button>
+		<button id="btnBefore">Before</button>
+
+		<script>
+			$(function () {
+				// 单击对应的按钮 , 就按照对应的方式在ul中添加一种水果
+				$("#btnAppend").click(function () {
+					// 1. 创建空的jQuery对象
+					var $li = $("<li></li>");
+					// 2. 新增html属性和css属性
+					$li.attr("data-price", "100")
+						.css("color", "red")
+						.html("火龙果");
+					// 3. 将新的jQuery对象 添加到网页中
+					// $("#myul").append($li);
+                    $li.appendTo($('#myul'))
+				});
+
+				$("#btnPrepend").click(function () {
+					// 1. 创建空的jQuery对象
+					var $li = $("<li></li>");
+					// 2. 新增html属性和css属性
+					$li.attr("data-price", "100")
+						.css("color", "red")
+						.html("火龙果");
+					// 3. 将新的jQuery对象 添加到网页中
+					$('ul').prepend($li)
+				});
+
+				$("#btnAfter").click(function () {
+					// 1. 创建空的jQuery对象
+					var $li = $("<li></li>");
+					// 2. 新增html属性和css属性
+					$li.attr("data-price", "100")
+						.css("color", "red")
+						.html("火龙果");
+					// 3. 将新的jQuery对象 添加到网页中
+					$('#myul li:first').after($li)
+				});
+
+				$("#btnBefore").click(function () {
+					// 1. 创建空的jQuery对象
+					var $li = $("<li></li>");
+					// 2. 新增html属性和css属性
+					$li.attr("data-price", "100")
+						.css("color", "red")
+						.html("火龙果");
+					// 3. 将新的jQuery对象 添加到网页中
+					$('#myul li:last').before($li)
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>库存数量</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            
+        </tbody>
+    </table>
+
+    <button>新增一行</button>
+
+    <script>
+        $(function(){
+            $('button').click(function(){
+                // var $tr = $('<tr></tr>')
+                // var $td1 = $('<td></td>')
+                // $td1.html('格力空调')
+                // var $td2 = $('<td></td>')
+                // $td2.html('3000')
+                // var $td3 = $('<td></td>')
+                // $td3.html('80')
+                // $tr.append($td1)
+                // $tr.append($td2)
+                // $tr.append($td3)
+                // $('#tb').append($tr)
+
+                var html = '<tr><td>格力空调</td><td>3000</td><td>80</td></tr>'
+                $('#tb').html(html)
+            })
+        })
+    </script>
+</body>
+</html>

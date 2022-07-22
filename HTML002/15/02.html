@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="btnClone">克隆</button>
+
+    <script>
+        $(function(){
+            $('#btnClone').click(function(){
+                // 将事件源对象克隆一份 , 添加在自己的后面
+                // clone()方法没有参数 , 默认为false , 
+                // 浅层复制 , 事件处理函数没有得到复制
+                // 深层复制 , 事件处理函数得到复制
+                // var $btn = $(this).clone();
+                // 克隆方法的参数是true , 则是深层复制 , 事件处理函数也被复制了
+                var $btn = $(this).clone(true);
+                $(this).after($btn)
+            })
+        })
+    </script>
+</body>
+</html>
