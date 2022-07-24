@@ -9,6 +9,7 @@ $(function () {
         } else {
             $('.cart-item').removeClass('check-cart-item');
         }
+		getSum();
 	});
     // 小checkbox
 	$(".j-checkbox").change(function () {
@@ -24,6 +25,7 @@ $(function () {
         } else {
             $(this).parents('.cart-item').removeClass('check-cart-item');
         }
+		getSum();
 	});
     // 加号
 	$(".increment").click(function () {
@@ -78,19 +80,14 @@ $(function () {
 	function getSum() {
 		var $count = 0; // 总件数
 		var $money = 0; // 总价钱
-        if($('.checkall').prop('checked')){
-            $(".itxt").each(function (i, ele) {
-                $count += parseInt($(ele).val());
-            });
-            $(".amount-sum em").text($count);
-            $(".p-sum").each(function (i, ele) {
-                $money += parseFloat($(ele).text().substr(1));
-            });
-            $(".price-sum em").text("￥" + $money.toFixed(2));
-        } else {
-            console.log('没写完呢')
-            console.log('$(".j-checkbox:checked").each',$(".j-checkbox:checked").each)
-        }
+        // 购物车里选中的商品计算总和
+		$('.j-checkbox:checked').each(function(i, ele) {
+			// count += parseInt($(ele).parents('.p-checkbox').siblings('.p-num').children().children('.itxt').val());
+			$count += parseInt($(ele).parents('.p-checkbox').siblings('.p-num').find('.itxt').val());
+			$money += parseFloat($(ele).parents('.p-checkbox').siblings('.p-sum').text().substr(1));
+		});
+		$('.amount-sum em').text($count);
+		$('.price-sum em').html( '￥' + $money.toFixed(2));
 	}
 
     // 行中删除按钮 
