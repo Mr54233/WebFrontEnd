@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 创建一个学生对象
+			// 1. 字面量方式
+			/* var stu = {
+				name: "Zhangsan",
+				age: 16,
+				score: 90.5,
+				study: function () {
+					console.log(this.name + "正在学习");
+				},
+			};
+            stu.study(); */
+
+			// 2. new关键字
+			/* var stu = new Object();
+			stu.name = "Zhangsan";
+			stu.age = 16;
+			stu.score = 89.9;
+			stu.study = function () {
+				console.log("hello");
+			};
+			stu.study(); */
+
+			// 3. 构造函数方式
+			function Student(name, age, score) {
+				this.name = name;
+				this.age = age;
+				this.score = score;
+				// 定义方法
+				this.study = function () {
+					console.log(this.name + "正在学习");
+				};
+			}
+            var zs = new Student('zhangsan',16,89)
+            var ls = new Student('lisi',17,99)
+            zs.study();
+            ls.study();
+		</script>
+	</body>
+</html>
