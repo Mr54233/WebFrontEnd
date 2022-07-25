@@ -35,11 +35,18 @@
 				this.name = name;
 				this.age = age;
 				this.score = score;
+                // this.count = 0;
+                // this.count++;
 				// 定义方法
+                Student.count++;
 				this.study = function () {
 					console.log(this.name + "正在学习");
 				};
 			}
+
+            // 静态成员
+            Student.count = 0;
+
             var zs = new Student('zhangsan',16,89)
             var ls = new Student('lisi',17,99)
             zs.study();
