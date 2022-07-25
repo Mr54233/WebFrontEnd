@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// var stu = {
+			//     name:'zhangsan',
+			//     age:16,
+			//     score:92.5,
+			//     sayHi:function(){
+			//         console.log('hi');
+			//     }
+			// }
+
+			// var stu = new Object();
+			// stu.name = 'zhangsan';
+			// stu.age = 16;
+			// stu.score = 92.5
+			// stu.sayHi = function(){
+			//     console.log('hi');
+			// }
+
+			function Student(name, age, score) {
+				this.name = name;
+				this.age = age;
+				this.score = score;
+			}
+			Student.prototype.sayHi = function () {
+				console.log("hi");
+			};
+
+            var stu = new Student('lisi',10,89)
+
+			// 获取stu对象的所有属性名 , 返回所有属性名组成的数组
+            // 字面量和new 关键字 创造出来的对象, 属性数组中包含了方法名
+            // 构造函数方法 , 属性数组中只包含构造函数中定义的方法和属性 , 不包含原型对象上定义的方法
+            // 属性数组中只包含实例属性 , 不包含静态属性
+			var keys = Object.keys(stu);
+			console.log("keys", keys);
+		</script>
+	</body>
+</html>

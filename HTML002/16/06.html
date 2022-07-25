@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 1. 定义一个交通工具类 , 该类有载重量属性和行驶方法、停止行驶方法
+			function Tool(weight) {
+				this.weight = weight;
+			}
+			Tool.prototype.start = function () {
+				console.log("开始行驶");
+			};
+			Tool.prototype.stop = function () {
+				console.log("停止行驶");
+			};
+
+			// 2. 定义卡车类 ， 它是交通工具类的子类 ，
+			function Truck(weight, brand) {
+				Tool.call(this, weight);
+				this.brand = brand;
+			}
+
+			Truck.prototype = new Tool();
+			Truck.prototype.constructor = Tool;
+
+			// 子类有自己的品牌属性和装货卸货方法
+			Truck.prototype.upload = function () {
+				console.log("开始装货");
+			};
+			Truck.prototype.download = function () {
+				console.log("开始卸货");
+			};
+
+            // 创建子类的对象
+            var t1 = new Truck(10,'解放');
+            // 设置载重量weight为
+            Object.defineProperty(t1,'weight',{
+                // 不可修改
+                writable:false,
+                // 不可遍历
+                // enumerable:false,
+                // 不可删除
+                configurable:false
+            })
+
+            t1.weight = 20;//语句失效
+            
+            // console.log('t1',t1)
+
+            for(var prop in t1){
+                console.log(prop,":",t1[prop]);
+            }
+            // delete 对象名.属性名 :删除对象的属性
+            // 如果该属性是不可删除的 , 删除时不报错 , 只是删除失败
+            delete t1.weight;
+
+            // 属性被删除后 ,打印出undefined
+            console.log('t1.weight',t1.weight)
+
+            Object.defineProperty(t1,'test',{
+                value:123,
+                writable:false,
+                configurable:false
+            })
+
+            console.log('t1.test',t1.test)
+		</script>
+	</body>
+</html>

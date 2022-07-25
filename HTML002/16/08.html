@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 调用数组的forEach()方法遍历数组)
+        var num = [100,200,300]
+        // 回调函数在便利到数组中的每一个数组元素就要调用一次
+        // 第一个参数就是遍历到的数组元素
+        // 第二个参数就是当前元素下标
+        // 第三个参数就是当前数组
+        num.forEach(function(val,index,arr){
+            console.log('val,index.arr',val,index,arr)
+        })
+    </script>
+</body>
+</html>
