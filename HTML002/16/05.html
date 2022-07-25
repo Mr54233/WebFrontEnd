@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 人类 (name, age)
+			// 工程师类 (name , age , tech , salary)
+			// 工程师类是人类中的一种
+
+			function Person(name, age) {
+				this.name = name;
+				this.age = age;
+                this.eat = function(){
+                    console.log("是人就得吃饭");
+                }
+			}
+
+			function Engineer(name, age, tech, salary) {
+				// 从父类继承name 和 age
+				// 使用call 调用父类的构造函数
+				Person.call(this, name, age);
+				// 定义子类自己的属性方法
+				this.tech = tech;
+				this.salary = salary;
+			}
+
+
+			var p = new Person("xiaoming", 10);
+			var e = new Engineer("dahuang", 30, "土木", 8000);
+
+            //子类继承父类的方法 , 设置子类构造函数的原型对象是一个父类的对象
+            Engineer.prototype = new Person()
+            
+		</script>
+	</body>
+</html>

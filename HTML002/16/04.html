@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function getMax(x,y,z){
+            console.log(this);
+            var max = x > y? x : y;
+            max = max > z? max : z;
+            return max;
+        }
+
+        var max = getMax(100,300,200)
+        console.log('max',max)
+
+        var stu = {
+            name : "zhangsan"
+        }
+        var m = getMax.call(stu,100,200,500)
+        console.log('m',m)
+    </script>
+</body>
+</html>
