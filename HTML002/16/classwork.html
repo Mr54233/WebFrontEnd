@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 1. 定义一个交通工具类 , 该类有载重量属性和行驶方法、停止行驶方法
+        function Transportation(weight){
+            this.weight = weight;
+            this.start = function(){
+                console.log("开始行驶");
+            }
+            this.stop = function(){
+                console.log("停止行驶");
+            }
+        }
+
+        // 2. 定义卡车类 ， 它是交通工具类的子类 ， 
+        function Truck(brand){
+            Transportation.call(this,weight)
+            this.brand = brand;
+            
+        }
+
+        Truck.prototype = new Transportation();
+        Truck.prototype.constructor = Transportation
+
+        // 子类有自己的品牌属性和装货卸货方法
+        Truck.prototype.upload = function(){
+            console.log("开始装货");
+        }
+        Truck.prototype.download = function(){
+            console.log("开始卸货");
+        }
+    </script>
+</body>
+</html>
