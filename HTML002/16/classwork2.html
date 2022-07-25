@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var datas = [];
+			for (var i = 0; i < 100; i++) {
+				datas.push(i + 2);
+			}
+			console.log("datas", datas);
+			// 补充代码 : 判断datas数组中是否有质数
+			var flag = datas.some(function (val, index, arr) {
+				for (var i = 0; i < index; i++) {
+					if (val % arr[i] != 0) {
+						return flag;
+					}
+				}
+				return flag;
+			});
+
+            console.log('flag',flag)
+		</script>
+	</body>
+</html>
