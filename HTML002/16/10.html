@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.low,
+			.high {
+				width: 76px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mobiles">
+			<div class="search-box">
+				<p>
+					<span>按照价格搜索:</span>
+					<input type="text" class="low" />
+					<input type="text" class="high" />
+					<input type="button" value="搜索" class="btn1" />
+				</p>
+				<p>
+					<span>按照名称搜索</span>
+					<input type="text" class="name" />
+					<input type="button" value="搜索" class="btn2" />
+				</p>
+			</div>
+			<div class="datas">
+				<table>
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>名称</th>
+							<th>价格</th>
+						</tr>
+					</thead>
+					<tbody class="tb"></tbody>
+				</table>
+			</div>
+		</div>
+		<script>
+			var data = [
+				{
+					id: 1,
+					pname: "小米",
+					price: 3999,
+				},
+				{
+					id: 2,
+					pname: "oppo",
+					price: 999,
+				},
+				{
+					id: 3,
+					pname: "荣耀",
+					price: 1299,
+				},
+				{
+					id: 4,
+					pname: "华为",
+					price: 1999,
+				},
+			];
+
+			function showDatas(arr) {
+				var tb = document.querySelector(".tb");
+				tb.innerHTML = "";
+				// 遍历数组中的商品对象 ，将对象的属性值拼接为html代码
+				// html代码设置为表格中的行 , ---新增元素
+				arr.forEach(function (goods) {
+					var html = "<tr><td>"+goods.id+"</td><td>"+goods.pname+"</td><td>"+goods.price+"</td></tr>";
+					tb.innerHTML += html;
+				});
+			}
+			showDatas(data);
+
+			document.querySelector(".btn1").onclick = function () {
+				// 检查两个价格文本框是否填写了价格(至少要填写一个)
+				var low = document.querySelector(".low").value;
+				var high = document.querySelector(".high").value;
+				if (low.trim() === "" && high.trim() === "") {
+					alert("按照价格搜索时必须至少填写一个价格");
+				} else {
+					// 填写了价格 , 就可以搜索了
+					var newGoods = data.filter(function (goods) {
+						var result;
+						if (low && high) {
+							result = goods.price >= low && goods.price <= high;
+						} else {
+							if (low) {
+								result = goods.price >= low;
+							}
+							if (high) {
+								result = goods.price <= high;
+							}
+						}
+						return result;
+					});
+					// 已经过滤了 , 显示
+					showDatas(newGoods);
+				}
+			};
+
+            document.querySelector('.btn2').onclick = function() {
+                var goodName = document.querySelector('.name').value;
+                if (goodName.trim() === '') {
+                    alert('请输入要搜索的商品');
+                }else {
+                    var newGoods = data.filter(function(goods) {
+                        var result;
+                        if (goodName.trim() === goods.pname) {
+                            result = goods.pname;
+                            return result;
+                        }
+                    });
+                    showDatas(newGoods);
+                }
+            };
+		</script>
+	</body>
+</html>

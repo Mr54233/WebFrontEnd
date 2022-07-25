@@ -14,16 +14,29 @@
 			}
 			console.log("datas", datas);
 			// 补充代码 : 判断datas数组中是否有质数
-			var flag = datas.some(function (val, index, arr) {
-				for (var i = 0; i < index; i++) {
-					if (val % arr[i] != 0) {
-						return flag;
+			var result = datas.some(function (val) {
+				var flag = true;
+				for (var i = 2; i < val; i++) {
+					if (val % i === 0) {
+						flag = false;
+						break;
 					}
 				}
 				return flag;
 			});
 
-            console.log('flag',flag)
+            if(result){
+                console.log("有质数")
+            } else {
+                console.log("没有质数")
+            }
+			// var flag = datas.some(function (val, index, arr) {
+			// 	for (var i = 0; i < index; i++) {
+			// 		return val % arr[i] != 0;
+			// 	}
+			// });
+
+			// console.log("flag", flag);
 		</script>
 	</body>
 </html>
