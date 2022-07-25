@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 2 - 为数组对象的原型添加求和的方法
+        // - 题目描述
+        // 把今天课上讲的数组对象的原型添加求和的方法写一遍
+        // - 训练目标
+        // 能够理解原型
+
+        function getMax(x, y, z) {
+            console.log(this);
+            var max = x > y ? x : y;
+            max = max > z ? max : z;
+            return max;
+        }
+        
+        var m = getMax.call(this, 100, 300, 200);
+        console.log(m);
+
+        // 为数组对象的原型添加求和方法
+        Array.prototype.sum = function() {
+            var sum = 0;
+            for (var i = 0; i < this.length; i++) {
+                sum += this[i];
+            }
+            return sum;
+        };
+        var arr = [1,2,3,4,5];
+        console.log(arr.sum());
+    </script>
+</body>
+</html>

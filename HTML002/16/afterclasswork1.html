@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>220725 课后作业1</title>
+</head>
+<body>
+    
+    <script>
+        // 1 - 创建一个构造函数并生成实例并打印出构造函数的原型与实例的原型
+        // - 题目描述
+        // 创建一个构造函数并生成实例并打印出构造函数的原型与实例的原型
+        // - 训练目标
+        // 能够理解实例对象的原型,构造函数的原型的关系
+        // - 训练提示
+        // 1. 创建构造函数
+        // 2. 通过new 创建出实例对象
+        // 3. 打印实例的原型和构造函数的原型,查看两者的关系
+
+        function Student (name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        Student.prototype.study = function () {
+				console.log(this.name + "正在学习");
+			};
+
+        var zs = new Student('zhangsan',16)
+        var ls = new Student('lisi',17)
+        console.log(zs.__proto__);
+        console.log(Student.prototype);
+    </script>
+</body>
+</html>

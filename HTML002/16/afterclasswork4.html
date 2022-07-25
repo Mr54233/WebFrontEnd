@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>220725 课后作业</title>
 		<style>
 			.low,
 			.high {
@@ -42,6 +42,15 @@
 			</div>
 		</div>
 		<script>
+            // 4 - 修改课堂案例查询商品
+            // - 题目描述
+            // 当输入框输入文字进行实时匹配(模糊查询)
+            // - 训练目标 
+            // 理解属性的高级方法
+            // - 训练提示
+            // 1. 当用户输入一个'小' 字,筛选的结果小米就显示在表格中,不需要点击查询按钮
+            // 2. 使用表单事件
+            // 3. 重点是检测输入框的值和数据中的值是否存在包含的关系
 			var data = [
 				{
 					id: 1,
@@ -65,13 +74,20 @@
 				},
 			];
 
-            function showDatas(arr) {
+			function showDatas(arr) {
 				var tb = document.querySelector(".tb");
 				tb.innerHTML = "";
 				// 遍历数组中的商品对象 ，将对象的属性值拼接为html代码
 				// html代码设置为表格中的行 , ---新增元素
 				arr.forEach(function (goods) {
-					var html = "<tr><td>"+goods.id+"</td><td>"+goods.pname+"</td><td>"+goods.price+"</td></tr>";
+					var html =
+						"<tr><td>" +
+						goods.id +
+						"</td><td>" +
+						goods.pname +
+						"</td><td>" +
+						goods.price +
+						"</td></tr>";
 					tb.innerHTML += html;
 				});
 			}
@@ -104,21 +120,37 @@
 				}
 			};
 
-            document.querySelector('.btn2').onclick = function() {
-                var goodName = document.querySelector('.name').value;
-                if (goodName.trim() === '') {
-                    alert('请输入要搜索的商品');
-                }else {
-                    var newGoods = data.filter(function(goods) {
-                        var result;
-                        if (goodName.trim() === goods.pname) {
-                            result = goods.pname;
-                            return result;
-                        }
-                    });
-                    showDatas(newGoods);
-                }
-            };
+			document.querySelector(".btn2").onclick = function () {
+				var goodName = document.querySelector(".name").value;
+				if (goodName.trim() === "") {
+					alert("请输入要搜索的商品");
+				} else {
+					var newGoods = data.filter(function (goods) {
+						var result;
+						if (goodName.trim() === goods.pname) {
+							result = goods.pname;
+							return result;
+						}
+					});
+					showDatas(newGoods);
+				}
+			};
+
+			document.querySelector(".name").on = function () {
+				var goodName = document.querySelector(".name").value;
+				var newGoods = data.filter(function (goods) {
+					var result;
+					var item = [];
+					item.push(goods.pname);
+					var items = item.join("");
+					var good = items.indexOf(goodName.trim());
+					if (good >= 0) {
+						result = goods.pname;
+						return result;
+					}
+				});
+				showDatas(newGoods);
+			};
 		</script>
 	</body>
 </html>

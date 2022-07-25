@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 5 - 使用数组高级方法实现数组的去重
+        // - 题目描述
+        // 使用数组方法filter来实现数组的去重
+        // - 训练目标
+        // 理解数组的高级方法
+        // - 训练提示
+        // 1. 定义一个数组调用filter方法
+        // 2. 判断循环当前数组元素的索引和循环的索引是否一致，一致就返回
+
+        var data = [1,2,3,4,2,6];
+        var result = data.filter(function(val, index, arr) {
+            return arr.indexOf(val, 0) == index;
+        });
+        console.log(result);
+    </script>
+</body>
+</html>
