@@ -29,13 +29,16 @@
 				this.salary = salary;
 			}
 
+            //子类继承父类的方法 , 设置子类构造函数的原型对象是一个父类的对象
+            Engineer.prototype = new Person()
+            // 在设置子类的原型对象后才可以在这个子类的构造函数的原型对象上定义子类的方法
+            Engineer.prototype.work = function(){
+                console.log("工程师还需要工作哦");
+            }
 
 			var p = new Person("xiaoming", 10);
 			var e = new Engineer("dahuang", 30, "土木", 8000);
 
-            //子类继承父类的方法 , 设置子类构造函数的原型对象是一个父类的对象
-            Engineer.prototype = new Person()
-            
 		</script>
 	</body>
 </html>
