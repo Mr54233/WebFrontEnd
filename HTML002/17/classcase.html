@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 使用es6语法定义一个园类 circle :
+			// 属性有半径 radius , 面积 area , 周长 length
+			// 方法: 计算面积的方法 , 计算周长
+
+			class Circle {
+				constructor(radius) {
+					this.radius = radius;
+					this.area = -1;
+					this.length = -1;
+				}
+				getArea() {
+					var result = 3.14 * this.radius * this.radius;
+					return result;
+				}
+				getLength() {
+					var result = 2 * 3.14 * this.radius;
+					return result;
+				}
+			}
+
+			var yuan = new Circle(5);
+			console.log("yuan.getArea()", yuan.getArea());
+			console.log("yuan.getLength()", yuan.getLength());
+		</script>
+	</body>
+</html>

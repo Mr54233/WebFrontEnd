@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Shape 形状类 父类
+        // Circle 园类 子类
+        class Shape{
+            constructor(){
+                // 面积属性和周长属性为-1 表示还没有计算出来
+                this.area = -1;
+                this.len = -1
+            }
+            showInfo(){
+                console.log('形状的面积是' + this.area);
+                console.log('形状的周长是' + this.len);
+            }
+        }
+
+        class Circle extends Shape{
+            static PI = 3.14
+            constructor(radius){
+                // 在子类的构造方法中, 必须先使用关键字super来调用父类的构造函数
+                super();
+                this.radius = radius;
+            }
+
+            calcArea(){
+                this.area = this.radius ** 2 * Circle.PI
+            }
+            calcLen(){
+                this.len = this.radius * 2 * Circle.PI
+            }
+        }
+
+        var circle = new Circle(10);
+        circle.calcArea();
+        circle.calcLen();
+        circle.showInfo();
+    </script>
+</body>
+</html>

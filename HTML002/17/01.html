@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 用es6的语法 定义一个学生类
+
+        class Student{
+            // 构造函数 , 声明属性 , 给属性附初始值
+            // 在类中不可以没有构造函数 , 如果程序员没有写构造函数 , 系统会自动补充一个
+            // 默认的构造函数中没有给类声明任何属性
+            constructor(name,age,score){
+                this.name = name;
+                this.age = age;
+                this.score = score
+            }
+            // 定义类的实例方法
+            // 方法名(形参列表){// 方法体}
+            study(){
+                console.log(this.name + '正在学习...');
+            }
+        }
+
+        // 使用类来实例化对象, var 对象名 = new 类名()
+        // 使用类名来创建对象时 , 会自动调用类中的构造函数
+        var zs = new Student("zhangsan",18,90)
+        console.log('zs',zs)
+        // 调用对象的方法 , 对象名.方法名(实参列表)
+        zs.study()
+    </script>
+</body>
+</html>
