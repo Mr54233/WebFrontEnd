@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>220726 课后作业1</title>
+	</head>
+	<body>
+		<script>
+			// 1.子类继承父类的属性和方法
+			// - 题目描述
+			// 一个父类中有money(钱) cars(车) house(房) company(公司) 属性,有管理(manage)的方法,子类要继承父类中的属性和方法
+			// - 训练目标
+			// 能够理解继承的原理
+			// - 训练提示
+			// 1. 创建父类添加属性和方法
+			// 2. 子类通过extends关键字继承到父类的属性和方法
+			// 3. 注意constructor和this的问题
+
+			class Father {
+				constructor(money, car, house, company) {
+					this.money = money;
+					this.car = car;
+					this.house = house;
+					this.company = company;
+				}
+                manage(){
+                    console.log("管理公司");
+                }
+			}
+
+            class Son extends Father{
+                constructor(name){
+                    super();
+                    this.name = name
+                }
+            }
+
+            var son = new Son();
+            son.manage();
+		</script>
+	</body>
+</html>

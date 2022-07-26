@@ -43,7 +43,8 @@ nav ul li {
 }
 
 nav ul li.liactive {
-    border-bottom: 2px solid #fff;
+    /* box-sizing: border-box; */
+    border-bottom: 2px solid #fff !important;
     z-index: 9;
 }
 
@@ -86,7 +87,7 @@ nav ul li span:last-child {
     height: 300px;
     position: absolute;
     padding: 30px;
-    top: 50px;
+    top: 51px;
     left: 0px;
     box-sizing: border-box;
     border-top: 1px solid #ccc;
