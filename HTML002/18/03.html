@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// let person = { name: "zhangsan", age: 20 };
+			// let { name, age } = person;
+			// console.log(name); // 'zhangsan'
+			// console.log(age); // 20
+
+			// let { name: myName, age: myAge } = person; // myName myAge 属于别名
+			// console.log(myName); // 'zhangsan'
+			// console.log(myAge); // 20
+
+			var [a, b, c, d] = [10, 20, 30];
+			console.log("a", a);
+			console.log("b", b);
+			console.log("c", c);
+			console.log("d", d);
+
+			var p = { name: "zhangsan", age: 16, score: 92.5 };
+			var { name, age, score:a } = p;
+			console.log("name", name);
+			console.log("age", age);
+			console.log("score", a);
+		</script>
+	</body>
+</html>
