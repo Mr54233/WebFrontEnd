@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 下面程序的执行结果是什么
+        function push(array , ...items){
+            items.forEach(function(item){
+                array.push(item);
+                console.log('item',item)
+            })
+        }
+        var a = [1,2];
+        push(a,1,2,3)
+        // item 1
+        // item 2
+        // item 3
+    </script>
+</body>
+</html>

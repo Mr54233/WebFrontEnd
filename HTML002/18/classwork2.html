@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 使用解构赋值交换两个变量的值
+
+        var nums = {num1:1,num2:2}
+        var {num1 , num2} = nums
+        console.log('num1',num1)
+        console.log('num2',num2)
+        
+        var {num1:a , num2:b} = nums
+        console.log('num2',a)
+        console.log('num1',b)
+        </script>
+</body>
+</html>
