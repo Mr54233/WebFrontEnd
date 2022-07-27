@@ -18,7 +18,17 @@
 				});
 			}
 
-			console.log(noRepeat(nums));
+            function noRepeat2(nums){
+                var result = [];
+                for(var i = 0 ; i < nums.length ; i++){
+                    var index = nums.indexOf(nums[i]);
+                    if(index === i){
+                        result.push(nums[i]);
+                    }
+                }
+                return result
+            }
+			console.log(noRepeat2(nums));
 		</script>
 	</body>
 </html>
