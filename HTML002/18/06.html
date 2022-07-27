@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>商品名称</th>
+					<th>单价</th>
+				</tr>
+			</thead>
+			<tbody id="tb"></tbody>
+		</table>
+
+		<script>
+			var goods = [
+				{ id: 1, name: "美的空调", price: 3000 },
+				{ id: 2, name: "格力空调", price: 4000 },
+			];
+
+			var html = "";
+			for (var i = 0; i < goods.length; i++) {
+				// html += '<tr></tr>'+''+''
+				html += `<tr>
+                    <td>${goods[i].id}</td>
+                    <td>${goods[i].name}</td>
+                    <td>${goods[i].price}</td>
+                    </tr>`;
+			}
+            document.querySelector('#tb').innerHTML = html;
+		</script>
+	</body>
+</html>
