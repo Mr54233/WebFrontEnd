@@ -19,6 +19,15 @@
         // 2. 函数内部随机生成一个随机数
         // 3. 使用闭包延长生成的随机数的作用范围
 
+        function random() {
+            var num = parseInt(Math.random() * 10 + 1);
+            return function() {
+                console.log(num);
+            }
+        }
+        var num1 = random();
+        num1();
+        num1();
     </script>
 </body>
 </html>

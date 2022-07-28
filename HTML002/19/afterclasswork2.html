@@ -7,7 +7,12 @@
     <title>220728 课后作业2</title>
 </head>
 <body>
-
+    <div class="box">
+        <button>按钮20</button>
+        <button>按钮40</button>
+        <button>按钮60</button>
+        <p>闭包把我搞的</p>
+    </div>
     <script>
         // 2 - 点击按钮改变页面上的文字大小
         // - 题目描述
@@ -18,7 +23,15 @@
         // 1. 结构中有三个按钮分别绑定点击事件
         // 2. 点击事件触发一个函数 是修改p标签文本大小的
         // 3. 使用闭包实现字体大小的设置 
-
+        var btn = document.querySelectorAll('button');
+        var p = document.querySelector('p');
+        for (let i = 0; i < btn.length; i++) {
+            (function(index) {
+                btn[i].onclick = function() {
+                    p.style.fontSize = 20 * (index + 1) + 'px'
+                }
+            })(i);
+        }
     </script>
 </body>
 </html>
