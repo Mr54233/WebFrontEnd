@@ -12,44 +12,51 @@
 			// 1. 普通函数
             function fn(){
                 console.log('ok')
+                console.log('普通函数this',this)
             }
             // 调用方式 : 函数名(实参)
             fn();
-
+            
 			// 2. 对象的方法
             var obj = {
                 sayHi : function () {
                     console.log('hello');
+                    console.log('对象方法里的this',this)
                 }
             }
             // 调用方式 : 对象名.方法名(实参列表)
             obj.sayHi();
-
+            
 			// 3. 构造函数
 			function Person(name,age){
                 this.name = name;
                 this.age = age;
                 console.log('create a person object');
+                console.log('构造函数中的this',this)
             }
             new Person('Zhangsan',10)
             // 调用方式 : new 构造函数名(实参列表)
-
+            
             // 4. 绑定事件函数
 			document.querySelector('button').onclick = function(){
                 console.log('单击了一个按钮')
+                console.log('绑定事件中的this',this)
             }
             // 调用方式 : 事件触发了 , 事件处理函数得到执行
-
+            
             // 5. 定时器函数
 			setInterval(() => {
                 console.log('time up');
-            }, 150000);
+                console.log('定时器的this',this)
+            }, 10000);
             // 调用方式 : 时间到了自动调用
-
+            
             // 6. 立即执行函数
             (function(){
                 console.log('run')
-            })
+                console.log('立即执行中的this',this)
+            })()
+            // 调用方式 : 马上自动调用立即执行函数
 		</script>
 	</body>
 </html>

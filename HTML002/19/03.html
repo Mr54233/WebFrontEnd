@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 使用call apply bind 函数 改变函数中this的指向
+			function fn(a, b) {
+				console.log(this);
+				console.log("a+b", a + b);
+			}
+			var o = {
+				name: "zhangsan",
+			};
+
+            // fn.call(o,1,2);
+            // fn.apply(o,[1,2]);
+            var result = fn.bind(o,1,2)
+            result();
+            console.log('result',result)
+		</script>
+	</body>
+</html>
