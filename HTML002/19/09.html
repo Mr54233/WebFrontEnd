@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var data = [
+				{
+					id: 1,
+					name: "家用电器",
+					goods: [
+						{
+							id: 11,
+							name: "空调",
+							goods: [
+								{
+									id: 111,
+									name: "挂式",
+									goods: [
+										{
+											id: 1111,
+											name: "美的空调",
+											goods: [],
+										},
+										{
+											id: 1112,
+											name: "格力空调",
+											goods: [],
+										},
+									],
+								},
+								{
+									id: 112,
+									name: "立式",
+									goods: [
+										{
+											id: 1121,
+											name: "美的空调",
+											goods: [],
+										},
+										{
+											id: 1122,
+											name: "格力空调",
+											goods: [],
+										},
+									],
+								},
+							],
+						},
+					],
+				},
+			];
+
+			function getID(data, id) {
+				var result = {};
+				data.forEach((item) => {
+					if (item.id == id) {
+						result = item;
+					} else if (item.goods && item.goods.length > 0) {
+						result = getID(item.goods, id);
+					}
+				});
+				return result;
+			}
+			console.log(getID(data, 11));
+		</script>
+	</body>
+</html>
