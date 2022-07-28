@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+        <button>单击我</button>
+		<script>
+			// 1. 普通函数
+            function fn(){
+                console.log('ok')
+            }
+            // 调用方式 : 函数名(实参)
+            fn();
+
+			// 2. 对象的方法
+            var obj = {
+                sayHi : function () {
+                    console.log('hello');
+                }
+            }
+            // 调用方式 : 对象名.方法名(实参列表)
+            obj.sayHi();
+
+			// 3. 构造函数
+			function Person(name,age){
+                this.name = name;
+                this.age = age;
+                console.log('create a person object');
+            }
+            new Person('Zhangsan',10)
+            // 调用方式 : new 构造函数名(实参列表)
+
+            // 4. 绑定事件函数
+			document.querySelector('button').onclick = function(){
+                console.log('单击了一个按钮')
+            }
+            // 调用方式 : 事件触发了 , 事件处理函数得到执行
+
+            // 5. 定时器函数
+			setInterval(() => {
+                console.log('time up');
+            }, 150000);
+            // 调用方式 : 时间到了自动调用
+
+            // 6. 立即执行函数
+            (function(){
+                console.log('run')
+            })
+		</script>
+	</body>
+</html>
