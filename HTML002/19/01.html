@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 函数的三种定义方式
+        // 1. 命名函数
+        fn(); // 变量提升
+        function fn () {
+            console.log("ok")
+        }
+
+        // 2. 匿名函数
+        // f1() // 没有变量提升
+        var f1 = function(){
+            console.log('hello')
+        }
+        f1();
+
+        // 3. new Function()
+        var f2 = new Function('x','y','z','console.log(x+y+z);');
+        f2(1,2,3)
+    </script>
+</body>
+</html>
