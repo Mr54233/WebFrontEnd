@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>数据可视化</title>
+		<style>
+			.box {
+				width: 600px;
+				height: 400px;
+				border: 1px solid #999;
+			}
+		</style>
+		<!-- 1. 导入echarts.js可视化库的js文件 -->
+		<script src="../js/echarts.js"></script>
+	</head>
+	<body>
+		<!-- 2. 准备一个有宽高的容器 , 在容器中绘制图表 -->
+		<div class="box"></div>
+
+		<script>
+			// 3. 创建echarts实例对象
+			// 不是new 关键字创建出来的 , 而是调用init()初始化方法获取到的
+			// 参数就是绘制图表的盒子元素
+			var myChart = echarts.init(document.querySelector(".box"));
+			// 4. 准备图表数据和配置项
+			var option = {
+				title: {
+					text: "ECharts 入门示例",
+				},
+				tooltip: {},
+				legend: {
+					data: ["销量"],
+				},
+				xAxis: {
+					data: [
+						"衬衫",
+						"羊毛衫",
+						"雪纺衫",
+						"裤子",
+						"高跟鞋",
+						"袜子",
+					],
+				},
+				yAxis: {},
+				series: [
+					{
+						name: "销量",
+						type: "bar",
+						data: [5, 20, 36, 10, 10, 20],
+					},
+				],
+			};
+            // 5. 调用实例对象的方法加载图表的数据和配置项
+            myChart.setOption(option);
+		</script>
+	</body>
+</html>

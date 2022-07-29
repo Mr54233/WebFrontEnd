@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 600px;
+				height: 400px;
+				border: 1px solid #999;
+			}
+		</style>
+		<script src="../js/echarts.js"></script>
+	</head>
+	<body>
+		<div class="box"></div>
+
+		<script>
+			var myChart = echarts.init(document.querySelector(".box"));
+
+			option = {
+				// title: {
+				// 	// 定义标题
+				// 	text: "Referer of a Website", // 标题文字
+				// 	subtext: "Fake Data", // 子标题
+				// 	left: "center", // 居中显示
+				// },
+				// tooltip: {
+				// 	// 定义提示框 , 鼠标悬停到图表相关位置 , 图表上显示提示框
+				// 	trigger: "item", // 触发条件 , item表示图表的项目
+				// },
+				// legend: {
+				// 	// 定义图例
+				// 	orient: "vertical", // 多个图例现实的方向
+				// 	left: "left", // 图例现实的位置
+				// },
+				// series: [
+				// 	{
+				// 		name: "Access From",
+				// 		type: "pie", // 图表类型
+				// 		radius: "50%",
+				// 		data: [
+				// 			{ value: 1048, name: "Search Engine" },
+				// 			{ value: 735, name: "Direct" },
+				// 			{ value: 580, name: "Email" },
+				// 			{ value: 484, name: "Union Ads" },
+				// 			{ value: 300, name: "Video Ads" },
+				// 		],
+				// 		emphasis: {
+				// 			itemStyle: {
+				// 				shadowBlur: 10,
+				// 				shadowOffsetX: 0,
+				// 				shadowColor: "rgba(0, 0, 0, 0.5)",
+				// 			},
+				// 		},
+				// 	},
+				// ],
+
+				title: {
+					text: "Stacked Line",
+				},
+				tooltip: {
+					trigger: "axis",
+				},
+				legend: {
+					data: [
+						"Email",
+						"Union Ads",
+						"Video Ads",
+						"Direct",
+						"Search Engine",
+					],
+				},
+				grid: { // 网格
+					left: "3%", // 左边距
+					right: "4%", // 右边距
+					bottom: "3%", // 下边距
+					containLabel: true,  // 是否包含标签
+				},
+				toolbox: {  // 工具栏
+					feature: {
+						saveAsImage: {},
+					},
+				},
+				xAxis: { // x轴
+					type: "category", // 类型
+					boundaryGap: false, // 
+					data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+				},
+				yAxis: { // y轴
+					type: "value", // 值
+				},
+				series: [
+					{
+						name: "Email",
+						type: "line", // 图表类型
+						// stack: "Total", // 堆叠
+						data: [120, 132, 101, 134, 90, 230, 210],
+					},
+					{
+						name: "Union Ads",
+						type: "line",
+						// stack: "Total",
+						data: [220, 182, 191, 234, 290, 330, 310],
+					},
+					{
+						name: "Video Ads",
+						type: "line",
+						// stack: "Total",
+						data: [150, 232, 201, 154, 190, 330, 410],
+					},
+					{
+						name: "Direct",
+						type: "line",
+						// stack: "Total",
+						data: [320, 332, 301, 334, 390, 330, 320],
+					},
+					{
+						name: "Search Engine",
+						type: "line",
+						// stack: "Total",
+						data: [820, 932, 901, 934, 1290, 1330, 1320],
+					},
+				],
+			};
+
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>
