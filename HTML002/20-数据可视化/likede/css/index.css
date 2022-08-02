@@ -9,10 +9,6 @@
 	}
 }
 
-h4 {
-	font-weight: 400;
-}
-
 body {
 	background: url(../img/bg.jpg) no-repeat;
 	background-size: cover;
@@ -28,7 +24,7 @@ body {
 	margin: 0.4rem 0.25rem 0;
 }
 
-.box {
+.container {
 	display: flex;
 	max-width: 1920px;
 	min-width: 1024px;
@@ -38,17 +34,17 @@ body {
 	background-size: contain;
 }
 
-.box .column:nth-child(1) {
+.container .column:nth-child(1) {
 	flex: 3;
 }
 
-.box .column:nth-child(2) {
+.container .column:nth-child(2) {
 	flex: 4;
 	margin-left: 0.25rem;
 	margin-right: 0.25rem;
 }
 
-.box .column:nth-child(3) {
+.container .column:nth-child(3) {
 	flex: 3;
 }
 /* 面板 */
@@ -73,6 +69,10 @@ body {
 /* 概览面板 */
 .overview {
 	height: 1.375rem;
+}
+
+.overview h4 {
+	text-align: center;
 }
 
 .overview ul {
@@ -172,6 +172,21 @@ body {
 	width: 1rem;
 }
 
+/* 调用滚动动画 */
+.monitor .marquee-view .marquee {
+	animation: scroll 15s linear infinite;
+}
+/* 鼠标悬停停止做动画 */
+.monitor .marquee-view .marquee:hover {
+	animation-play-state: paused;
+}
+/* 监控区域内容的滚动动画 */
+@keyframes scroll {
+	100% {
+		transform: translateY(-50%);
+	}
+}
+
 /* 点位 */
 .point {
 	height: 4.25rem;
@@ -255,11 +270,10 @@ body {
 	width: 2.1rem;
 	padding: 0.45rem 0.375rem;
 	box-sizing: border-box;
-	background-image: url(../images/rect.png);
+	background-image: url(../img/rect.png);
 	background-size: cover;
 }
-.users h3,
-h4 {
+.users h3 {
 	margin-bottom: 0.15rem;
 	font-size: 0.25rem;
 	color: #fff;
@@ -323,7 +337,7 @@ h4 {
 	line-height: 1;
 }
 .sales h3 {
-	font-size: .25rem;
+	font-size: 0.25rem;
 	color: #fff;
 	height: 0.225rem;
 	padding-right: 0.225rem;
@@ -359,4 +373,195 @@ h4 {
 .sales .line {
 	width: 100%;
 	height: 100%;
+}
+
+/* 渠道 销售  */
+.warp {
+	display: flex;
+}
+
+/* 渠道分布 */
+.channel {
+	flex: 1;
+	margin-right: 0.25rem;
+	height: 2.9rem;
+}
+.channel .data {
+	overflow: hidden;
+}
+.channel .data .radar {
+	height: 2.1rem;
+	width: 100%;
+}
+.channel h3 {
+	color: #fff;
+	font-size: 0.25rem;
+	margin-bottom: 0.0625rem;
+}
+.channel small {
+	font-size: 50%;
+}
+.channel span {
+	display: block;
+	color: #4c9bfd;
+	font-size: 0.175rem;
+}
+/* 销售进度 */
+.quarter {
+	flex: 1;
+	height: 2.9rem;
+}
+.quarter .chart {
+	flex: 1;
+}
+.quarter .chart .box {
+	position: relative;
+}
+.quarter .chart .label {
+	transform: translate(-50%, -30%);
+	color: #fff;
+	font-size: 0.375rem;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+.quarter .label small {
+	font-size: 50%;
+}
+.quarter .gauge {
+	height: 1.05rem;
+}
+.quarter .data {
+	display: flex;
+	justify-content: space-between;
+}
+.quarter .item {
+	width: 50%;
+}
+.quarter .data .item {
+	margin-left: 0.125rem;
+}
+.quarter h3 {
+	color: #fff;
+	font-size: 0.3rem;
+	margin-bottom: 0.125rem;
+}
+.quarter h4 {
+	text-align: center;
+}
+.quarter span {
+	display: block;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #4c9bfd;
+	font-size: 0.175rem;
+}
+
+/* 排行榜 */
+.top {
+	height: 3.5rem;
+}
+.top .inner {
+	display: flex;
+}
+.top h3 {
+	color: #fff;
+	font-size: 0.3rem;
+	margin-bottom: 0.125rem;
+}
+/* 左侧全国 */
+.top .all {
+	display: flex;
+	flex-direction: column;
+	width: 2.1rem;
+	color: #4c9bfd;
+	font-size: 0.175rem;
+	vertical-align: middle;
+}
+.top .all ul {
+	padding-left: 0.15rem;
+	margin-top: 0.15rem;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.top .all li {
+	overflow: hidden;
+}
+.top .all [class^="icon-"] {
+	font-size: 0.45rem;
+	vertical-align: middle;
+	margin-right: 0.15rem;
+}
+
+/* 右侧省份 */
+.top .province {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+}
+
+.top .province i {
+	float: right;
+	padding: 0 0.15rem;
+	font-style: normal;
+	font-size: 0.175rem;
+	color: #0bace6;
+}
+.top .province s {
+	display: inline-block;
+	transform: scale(0.8);
+	text-decoration: none;
+}
+.top .province .icon-up {
+	color: #dc3c33;
+}
+.top .province .icon-down {
+	color: #36be90;
+}
+.top .province .data {
+	flex: 1;
+	display: flex;
+	margin-top: 0.175rem;
+}
+.top .province ul {
+	flex: 1;
+	line-height: 1;
+	margin-bottom: 0.175rem;
+}
+.top .province ul li {
+	display: flex;
+	justify-content: space-between;
+}
+.top .province ul span {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.top .province ul.sup {
+	font-size: 0.175rem;
+}
+.top .province ul.sup li {
+	color: #4995f4;
+	padding: 0.15rem;
+}
+.top .province ul.sup li.active {
+	color: #a3c6f2;
+	background-color: rgba(10, 67, 188, 0.2);
+}
+.top .province ul.sub {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	font-size: 0.15rem;
+	background-color: rgba(10, 67, 188, 0.2);
+}
+.top .province ul.sub li {
+	color: #52ffff;
+	padding: 0.125rem 0.175rem;
 }
