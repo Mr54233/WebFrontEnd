@@ -149,7 +149,7 @@ fs.readFile("hello.txt", "utf8", (err, data) => {
 
 如果需要嵌套读取多个文件，可以用 promise 或者 async ... await 进行封装。代码举例如下。
 
-## promise 封装 fs.readFile()
+### promise 封装 fs.readFile()
 
 ```js
 const fs = require("fs");
@@ -183,7 +183,7 @@ promise1
 	});
 ```
 
-## async ... await 封装 fs.readFile()
+### async ... await 封装 fs.readFile()
 
 这个写法更为简洁，推荐。
 
@@ -341,6 +341,7 @@ console.log(buffer);
 
 # 读取目录
 
+
 语法格式：
 
 ```js
@@ -349,11 +350,12 @@ fs.mkdir(path[, options], callback)
 
 参数说明：
 
--   path：文件路径。
+- path：文件路径。
 
--   options 参数可以是：
-    -   recursive：是否以递归的方式创建目录，默认为 false。
-    -   mode：设置目录权限，默认为 0777。
+- options参数可以是：
+    - recursive：是否以递归的方式创建目录，默认为 false。
+    - mode：设置目录权限，默认为 0777。
+
 
 代码举例：
 
