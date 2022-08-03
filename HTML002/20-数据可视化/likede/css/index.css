@@ -508,6 +508,7 @@ body {
 .top .province i {
 	float: right;
 	padding: 0 0.15rem;
+	margin-top: 0.0625rem;
 	font-style: normal;
 	font-size: 0.175rem;
 	color: #0bace6;
@@ -564,4 +565,17 @@ body {
 .top .province ul.sub li {
 	color: #52ffff;
 	padding: 0.125rem 0.175rem;
+}
+
+.top span {
+	transform: scale(0.9);
+}
+.top .province ul.sup li {
+	padding: 0.125rem 0.15rem;
+}
+.top .province ul.sub li {
+	padding: 0.0625rem 0.15rem;
+}
+.quarter span {
+	transform: scale(0.9);
 }
