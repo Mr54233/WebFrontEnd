@@ -3,6 +3,6 @@
 // 引入hello模块
 var greet = require('./hello')
 
-var s = 'world';
+var s = 'World';
 
 greet(s)
