@@ -9,6 +9,7 @@ const app = http.createServer();
 
 app.on("request", (req, res) => {
 	let url = req.url;
+	// 根据请求的的地址拼接出文件所在地址
 	let fileName = path.join(__dirname, url);
 	fs.readFile(fileName, "utf-8", (err, data) => {
 		if (err) {
