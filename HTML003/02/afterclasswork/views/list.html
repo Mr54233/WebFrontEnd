@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">学生管理系统</a>
+    </nav>
+    <main class="container mt-5">
+        <h1 class="alert-heading">学生管理
+            <a class="btn btn-link btn-sm" href="/students/add">添加学生</a>
+        </h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>出生日期</th>
+                    <th>家庭住址</th>
+                    <th class="text-center" width="140">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{each students}}
+                <tr>
+                    <td>{{$value.no}}</td>
+                    <td>{{$value.name}}</td>
+                    <td>{{$value.birthday}}</td>
+                    <td>{{$value.address}}</td>
+                    <td>
+                        <a href="/students/edit?no={{$value.no}}">编辑</a>
+                        <a href="/students/delete?no={{$value.no}}">删除</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+        </ul>
+    </main>
+</body>
+
+</html>
