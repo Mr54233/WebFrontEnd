@@ -4,10 +4,12 @@ const express = require('express');
 const stu = require('./routers/stu');
 // 创建服务器
 const app = express();
+// 业务处理代码
+// 1. 托管静态资源
+app.use(express.static('views'))
 // 注册路由模块
-app.use('/stu',stuRouter)
+app.use('/stu',stu)
 
-app.use('/stu',express.static('./stu'))
 
 // 绑定端口
 app.listen(3000, function () {

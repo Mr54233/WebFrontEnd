@@ -1,1 +1,26 @@
-{"stu":[{"no":1,"name":"张三","birthday":"1997/8/9","address":"南昌"},{"no":2,"name":"李四","birthday":"2022-08-19","address":"4"},{"no":3,"name":"123","birthday":"2022-08-26","address":"3"}]}
+[
+    {
+        "no":"1",
+        "name":"张三",
+        "birthday":"1997/8/9",
+        "address":"南昌"
+    },
+    {
+        "no":"1",
+        "name":"李四",
+        "birthday":"1998/9/15",
+        "address":"九江"
+    },
+    {
+        "no":"3",
+        "name":"张飞",
+        "birthday":"1997/8/9",
+        "address":"南昌"
+    },
+    {
+        "no":"4",
+        "name":"王五",
+        "birthday":"1998/9/15",
+        "address":"九江"
+    }
+]
