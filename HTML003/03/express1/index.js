@@ -6,14 +6,39 @@ const app = express();
 
 // 绑定浏览器端请求的事件处理函数
 app.get("/", (req, res) => {
-	res.setHeader("Content-Type", "text/html;charset=utf-8");
-	res.end("<h1>首页</h1>");
+	// res.setHeader("Content-Type", "text/html;charset=utf-8");
+	console.log("req.url");
+
+	// var index = req.url.indexOf("?");
+	// var result = req.url.substring(index + 1);
+	// var params = result.split(/[=|&]/g);
+	// var ps = {};
+	// // console.log("params name : ", params[0]);
+	// // console.log("params value : ", params[1]);
+
+	// for (var i = 0; i < params.length; i++) {
+	// 	ps[params[i]] = params[i+1];
+	// }
+	// console.log(ps);
+
+	console.log(req.query);
+
+	res.send("<h1>首页</h1>");
+	// res.send("OK");
+	res.end();
 });
 
 app.get("/about.html", (req, res) => {
-	res.setHeader("Content-Type", "text/html;charset=utf-8");
+	// res.setHeader("Content-Type", "text/html;charset=utf-8");
 	res.end("<h1>关于我的页面</h1>");
+	res.end("123");
 });
+
+app.get('/test.html/:x/:y/:name',(req,res)=>{
+    console.log(req.params)
+    res.send("<h1>test</h1>")
+})
+
 
 // 启动服务器
 app.listen(3000, () => {
