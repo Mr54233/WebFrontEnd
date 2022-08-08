@@ -7,7 +7,7 @@ const scoreRoute = require('./routers/scoreRoute')
 // 创建服务器实例对象
 const app = express();
 // 注册路由
-app.use(stuRoute);
+app.use('/stu',stuRoute);
 app.use(scoreRoute)
 
 // 启动服务器
