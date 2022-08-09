@@ -1,4 +1,4 @@
-a; // 学生管理功能的路由模块
+// 学生管理功能的路由模块
 
 const express = require("express");
 const path = require("path");
