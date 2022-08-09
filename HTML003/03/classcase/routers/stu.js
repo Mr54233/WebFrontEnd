@@ -52,7 +52,7 @@ route.get("/list", (req, res) => {
 				// 操作页面中的分页导航控件
 				let pager = `<div class='pager'>`;
 				// 上一页
-				pageIndex = parseInt(pageIndex)
+				pageIndex = parseInt(pageIndex);
 				pager += `<a href='/stu/list?page=${pageIndex - 1}'`;
 				if (pageIndex === 1) {
 					pager += `style="display:none;">上一页</a>`;
@@ -78,6 +78,29 @@ route.get("/list", (req, res) => {
 	});
 });
 // 处理新增的学生数据
-route.post("/add", (req, res) => {});
+route.post("/add", (req, res) => {
+	// 接收 post 方式提交的学生数据
+	// 用于保存post 方式提交的数据 , 默认为空字符串
+	var result = "";
+	// 请求对象的data事件表示有提交的数据到达了
+	// 事件处理函数的参数就记录了接收到的数据
+	req.on("data", (chunk) => {
+		result += chunk;
+	});
+	// 请求对象的end事件表示数据已经提交完毕了
+	req.on("end", () => {
+		// console.log(result)
+
+		// 将字符串格式的数据拆分出一个对象
+		let datas = result.split(/&|=/g);
+		// 将最后结果的对象作为req的body属性值
+		req.body = {};
+		for (var i = 0 ; i < datas.length ; i+=2){
+			req.body[datas[i]] = datas[i+1]
+		}
+		console.log(req.body)
+	});
+	res.send("<h1>receive over </h1>");
+});
 
 module.exports = route;
