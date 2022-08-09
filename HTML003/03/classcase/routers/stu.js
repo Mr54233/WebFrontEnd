@@ -1,4 +1,4 @@
-// 学生管理功能的路由模块
+a; // 学生管理功能的路由模块
 
 const express = require("express");
 const path = require("path");
@@ -29,7 +29,7 @@ route.get("/list", (req, res) => {
 			let end = pageIndex * pageSize;
 			// 处理不满一页的情况
 			end = end < all.length ? end : all.length;
-
+			var total = Math.ceil(all / pageSize);
 			// 拼接html代码
 			let html = `<tbody class="tb">`;
 			for (var i = start; i < end; i++) {
@@ -48,6 +48,30 @@ route.get("/list", (req, res) => {
 				// 替换动态内容
 				let reg = /<tbody class='tb'>[\s\S]*<\/tbody>/g;
 				htmlStr = htmlStr.replace(reg, html);
+
+				// 操作页面中的分页导航控件
+				let pager = `<div class='pager'>`;
+				// 上一页
+				pageIndex = parseInt(pageIndex)
+				pager += `<a href='/stu/list?page=${pageIndex - 1}'`;
+				if (pageIndex === 1) {
+					pager += `style="display:none;">上一页</a>`;
+				} else {
+					pager += ">上一页</a>";
+				}
+				// 下一页
+				pager += `<a href="/stu/list?page=${pageIndex + 1}"`;
+				if (pageIndex === total) {
+					pager += `style="display:none;">下一页</a>`;
+				} else {
+					pager += ">下一页</a>";
+				}
+
+				pager += `</div>`;
+				reg = /<div class="pager">[\s\S]*<\/div>/;
+				htmlStr = htmlStr.replace(reg, pager);
+
+				// 将动态生成的html代码发送给浏览器
 				res.send(htmlStr);
 			});
 		}
