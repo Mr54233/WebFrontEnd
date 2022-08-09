@@ -77,30 +77,59 @@ route.get("/list", (req, res) => {
 		}
 	});
 });
+
 // 处理新增的学生数据
 route.post("/add", (req, res) => {
-	// 接收 post 方式提交的学生数据
-	// 用于保存post 方式提交的数据 , 默认为空字符串
-	var result = "";
-	// 请求对象的data事件表示有提交的数据到达了
-	// 事件处理函数的参数就记录了接收到的数据
-	req.on("data", (chunk) => {
-		result += chunk;
-	});
-	// 请求对象的end事件表示数据已经提交完毕了
-	req.on("end", () => {
-		// console.log(result)
+	// 接收浏览器端提交的数据(post)
+	const stu = req.body;
 
-		// 将字符串格式的数据拆分出一个对象
-		let datas = result.split(/&|=/g);
-		// 将最后结果的对象作为req的body属性值
-		req.body = {};
-		for (var i = 0 ; i < datas.length ; i+=2){
-			req.body[datas[i]] = datas[i+1]
-		}
-		console.log(req.body)
+	// 将新的学生数据保存到data.json 文件中去
+	// 1. 读取data.json 文件中的数据得到一个数组
+	var dfile = path.join(__dirname, "../data.json");
+	fs.readFile(dfile, "utf-8", (err, arr) => {
+		// if(err){
+		// 	throw err;
+		// }
+
+		// 2. 在数组中加入新的学生
+		arr = JSON.parse(arr);
+		arr.push(stu);
+
+		// 3. 将数组转换成字符串 , 写入到data.json文件中
+		fs.writeFile(dfile, JSON.stringify(arr), (err) => {
+			if (err) {
+			} else {
+				// 重定向到学生列表页面
+				res.redirect("/stu/list");
+			}
+		});
 	});
-	res.send("<h1>receive over </h1>");
+});
+
+route.get("/delete", (req, res) => {
+	// 接收浏览器端提交的数据(post)
+	const stu = req.body;
+
+	// 将新的学生数据保存到data.json 文件中去
+	// 1. 读取data.json 文件中的数据得到一个数组
+	var dfile = path.join(__dirname, "../data.json");
+	fs.readFile(dfile, "utf-8", (err, arr) => {
+		// if(err){
+		// 	throw err;
+		// }
+
+		// 2. 在数组中删除学生
+		arr = JSON.parse(arr);
+
+		// 3. 将数组转换成字符串 , 写入到data.json文件中
+		fs.writeFile(dfile, JSON.stringify(arr), (err) => {
+			if (err) {
+			} else {
+				// 重定向到学生列表页面
+				res.redirect("/stu/list");
+			}
+		});
+	});
 });
 
 module.exports = route;
