@@ -15,15 +15,16 @@ const mw = function (req, res, next) {
 	// }
 
 	console.log("执行了第一个中间件逻辑");
+	console.log("req.x", req.x);
 	// 放行 : 放行到下一个中间件或者路由处理函数
 	next();
 };
 
 const mw2 = (req, res, next) => {
-    console.log("执行了第二个中间件逻辑");
-    // 中间件中通过给req请求对象自定义属性 , 就可以向下游的中间件或路由传递参数
-    req.x = 100;
-    // 放行 : 放行到下一个中间件或者路由处理函数
+	console.log("执行了第二个中间件逻辑");
+	// 中间件中通过给req请求对象自定义属性 , 就可以向下游的中间件或路由传递参数
+	req.x = 100;
+	// 放行 : 放行到下一个中间件或者路由处理函数
 	next();
 };
 
@@ -43,9 +44,19 @@ app.use(mw);
 // });
 
 // 挂载多个路由函数
+// 注册路由模块
+
+// 从理论上来说 , 路由级别的中间件 , 和应用程序级别的中间件没有区别
+// 但是如果在注册有中间件的路由模块之前 , 挂载了路由 , 请求这些路由的地址
+// 那么就不会执行路由级别的中间件
+
+app.use(require("./routers/second"));
+app.use(require("./routers/test"));
+
+
 app.get("/", (req, res) => {
 	console.log("执行了 / 这个路由函数");
-    console.log(req.x)
+	console.log(req.x);
 	res.send("<h1>Home page </h1>");
 });
 

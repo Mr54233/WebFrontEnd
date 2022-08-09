@@ -1,4 +1,7 @@
-// 获取浏览器端 , 通过 post 方式提交的数据
+// 获取浏览器端 , 通过 post 方式提交的数据的中间件(express)
+
+const qs = require('querystring')
+
 module.exports = function (req, res, next) {
 	// 接收 post 方式提交的学生数据
 	// 用于保存post 方式提交的数据 , 默认为空字符串
@@ -14,13 +17,15 @@ module.exports = function (req, res, next) {
 	req.on("end", () => {
 		// console.log(result)
 		// 将字符串格式的数据拆分出一个对象
-		let datas = result.split(/&|=/g);
+		// let datas = result.split(/&|=/g);
 
-		// 将最后结果的对象作为req的body属性值
-		req.body = {};
-		for (var i = 0; i < datas.length; i += 2) {
-			req.body[datas[i]] = datas[i + 1];
-		}
+		// // 将最后结果的对象作为req的body属性值
+		// req.body = {};
+		// for (var i = 0; i < datas.length; i += 2) {
+		// 	req.body[datas[i]] = datas[i + 1];
+		// }
+
+		req.body = qs.parse(result)
 
 		// console.log(req.body);
         next();
