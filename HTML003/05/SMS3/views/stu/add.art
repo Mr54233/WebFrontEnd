@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>新增学生档案</title>
+
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/add.css" />
+	</head>
+
+	<body>
+		<div class="info">
+			<form action="/stu/add" method="post">
+				<div class="form-group">
+					<label for="name">姓名</label>
+					<input
+						type="text"
+						class="form-control"
+						name="name"
+						id="name"
+						placeholder="请输入姓名"
+					/>
+				</div>
+				<div class="form-group">
+					<label for="age">年龄</label>
+					<input
+						type="number"
+						class="form-control"
+						name="age"
+						id="age"
+						placeholder="请输入年龄"
+					/>
+				</div>
+				<div class="form-group">
+					<label>性别</label>
+					<input
+						type="radio"
+						name="sex"
+						value="0"
+						checked="checked"
+					/>
+					男 <input type="radio" name="sex" value="1" /> 女
+				</div>
+				<div class="form-group">
+					<label for="email">邮箱地址</label>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						class="form-control"
+					/>
+				</div>
+				<div class="form-group">
+					<label>爱好</label>
+					<input
+						type="checkbox"
+						name="hobby"
+						id="code"
+						value="0"
+					/>编码
+					<input
+						type="checkbox"
+						name="hobby"
+						id="basketball"
+						value="1"
+					/>打篮球
+					<input
+						type="checkbox"
+						name="hobby"
+						id="sleep"
+						value="2"
+					/>睡觉
+				</div>
+				<div class="form-group">
+					<label for="email">所属学院</label>
+					<select class="form-control" name="depart">
+						<option value="0">前端与移动开发</option>
+						<option value="1">Java</option>
+						<option value="2">人工智能</option>
+						<option value="3">大数据</option>
+						<option value="4">物联网</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">入学日期</label>
+					<input
+						type="date"
+						name="open"
+						id="open"
+						class="form-control"
+					/>
+				</div>
+				<button type="submit" class="form-control btn btn-success">
+					提交
+				</button>
+			</form>
+		</div>
+	</body>
+</html>
