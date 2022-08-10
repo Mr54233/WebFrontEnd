@@ -8,7 +8,6 @@ var fileName = path.join(__dirname, "../data.json");
 function getAll(callback) {
 	fs.readFile(fileName, "utf-8", (err, result) => {
 		stus = JSON.parse(result);
-
 		// 读取的数据由函数的调用者传入回调函数来处理
 		callback(stus);
 	});
@@ -25,7 +24,13 @@ function writeData(student, callback) {
 	});
 }
 
+// 覆盖文件
+function updateData(result){
+    fs.writeFile(fileName,JSON.stringify(result),(err)=>{})
+}
+
 module.exports = {
 	getAll,
 	writeData,
+    updateData,
 };

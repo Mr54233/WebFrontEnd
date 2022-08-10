@@ -1,6 +1,6 @@
 // 学生管理路由模块
 const express = require("express");
-const { getAll, writeData } = require("../mymodules/data");
+const { getAll, writeData,updateData } = require("../mymodules/data");
 const df = require("../mymodules/dataFormat");
 
 // 创建路由
@@ -23,9 +23,18 @@ route.post("/add", (req, res) => {
 	});
 });
 
-route.get('/delete',(req,res)=>{
-    
-})
+route.get("/delete", (req, res) => {
+	getAll((result) => {
+		for (var i = 1; i < result.length; i++) {
+			if (result[i].name == req.query.name) {
+				result.splice(i, 1);
+			}
+		}
+		updateData(result);
+		res.redirect("/stu/list");
+		res.render("stu/list.art", { stus: result });
+	});
+});
 
 // 导出路由
 module.exports = route;

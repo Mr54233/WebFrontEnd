@@ -24,6 +24,13 @@ app.engine("art", require("express-art-template"));
 // 挂载路由
 app.use('/stu',stuRoute)
 
+app.use(function (err, req, res, next) {
+	// 错误级别的中间件
+	console.log("发生了错误:" + err.message); // 在服务器打印错误消息
+	res.send("Error!" + err.message); // 向客户端响应错误相关的内容
+	next()
+});
+
 app.listen(3000, () => {
 	console.log(`Example app listening on port http://127.0.0.1:3000`);
 });
