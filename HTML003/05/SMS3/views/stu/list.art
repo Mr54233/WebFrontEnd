@@ -19,6 +19,7 @@
 					<th>爱好</th>
 					<th>所属学院</th>
 					<th>入学日期</th>
+					<th>操作</th>
 				</tr>
 				{{each stus}}
 				<tr>
@@ -29,9 +30,14 @@
 					<td>{{ $value.hobby }}</td>
 					<td>{{ $value.depart }}</td>
 					<td>{{ $value.open }}</td>
+					<td>
+						<!-- <a class="btn btn-default" href="/stu/edit" role="button">编辑</a> -->
+						<a class="btn btn-default" href="/stu/delete" role="button">删除</a>
+					</td>
 				</tr>
 				{{/each}}
 			</table>
 		</div>
+		<a class="btn btn-default" href="/stu/add" role="button">新增</a>
 	</body>
 </html>
