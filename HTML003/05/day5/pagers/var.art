@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- {{}}可以输出一个变量的数据 , 一个对象的属性值 , 或者计算一个简单表达式的值并输出 -->
+		<h2>{{value}}</h2>
+		<h2>{{a ? b : c}}</h2>
+		<h2>{{a + b}}</h2>
+		<h2>{{c}}</h2>
+		<h2>{{employee.name}}</h2>
+		<!-- 原文输出 -->
+		<h2>{{span}}</h2>
+		<h2>{{@span}}</h2>
+	</body>
+</html>
