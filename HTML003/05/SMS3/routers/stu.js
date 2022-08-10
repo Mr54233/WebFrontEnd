@@ -2,6 +2,7 @@
 const express = require("express");
 const { getAll, writeData,deleteData } = require("../mymodules/data");
 const df = require("../mymodules/dataFormat");
+const Pager = require('../mymodules/pager')
 
 // 创建路由
 const route = express.Router();
@@ -35,6 +36,14 @@ route.get("/delete", (req, res) => {
 		res.render("stu/list.art", { stus: result });
 	});
 });
+
+// var i = 0
+// getAll((result)=>{
+// 	i = result.length
+// 	console.log('i',i)
+// })
+// var pager = new Pager(1,5,i)
+
 
 // 导出路由
 module.exports = route;
