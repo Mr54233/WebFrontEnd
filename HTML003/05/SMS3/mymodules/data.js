@@ -25,12 +25,12 @@ function writeData(student, callback) {
 }
 
 // 覆盖文件
-function updateData(result){
-    fs.writeFile(fileName,JSON.stringify(result),(err)=>{})
+function deleteData(result){
+    fs.writeFile(fileName,JSON.stringify(result),(err)=>{});
 }
 
 module.exports = {
 	getAll,
 	writeData,
-    updateData,
+    deleteData,
 };
