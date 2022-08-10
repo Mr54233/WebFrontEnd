@@ -1,0 +1,2 @@
+{{extend './layout.art'}}
+{{block 'content'}}<h1>手机商贸会</h1>{{/block}}

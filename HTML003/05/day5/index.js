@@ -45,18 +45,29 @@ app.get("/list", (req, res) => {
 	res.render("list", {
 		stus: [
 			{
-				no: 1,
+				no: '001',
 				name: "张三",
 				address: "江西南昌",
 			},
 			{
-				no: 2,
+				no: '002',
 				name: "李四",
 				address: "江西赣州",
 			},
 		],
 	});
 });
+
+app.get('/about',(req,res)=>{
+    res.render('about',{})
+})
+
+app.get('/mobile',(req,res)=>{
+    res.render('mobile',{})
+})
+app.get('/computer',(req,res)=>{
+    res.render('computer',{})
+})
 
 // 启动服务器
 app.listen(port, () =>

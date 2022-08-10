@@ -11,6 +11,7 @@
     <table>
         <thead>
             <tr>
+                <th>序号</th>
                 <th>学号</th>
                 <th>姓名</th>
                 <th>家庭住址</th>
@@ -21,7 +22,9 @@
             <!-- 遍历学生数组 -->
             {{each stus}}
             <tr>
+                <!-- $index就是循环的序号 -->
                 <!-- value就是遍历的循环变量 , 用来保存遍历出来的数组元素 -->
+                <td>{{$index}}</td>
                 <td>{{$value.no}}</td>
                 <td>{{$value.name}}</td>
                 <td>{{$value.address}}</td>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物网站</title>
+</head>
+<body>
+    <div class="main">
+        <header>LOGO</header>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">手机数码</a></li>
+                <li><a href="#">图书</a></li>
+                <li><a href="#">电脑</a></li>
+                <li><a href="#">家用电器</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            {{block 'content'}}{{/block}}
+        </div>
+    </div>
+</body>
+</html>
