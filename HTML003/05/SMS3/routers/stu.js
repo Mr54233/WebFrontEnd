@@ -12,6 +12,7 @@ route.get("/list", (req, res) => {
 	getAll((result) => {
 		res.render("stu/list.art", { stus: result });
 	});
+	req.query.page
 });
 
 route.get("/add", (req, res) => {
@@ -37,12 +38,12 @@ route.get("/delete", (req, res) => {
 	});
 });
 
-// var i = 0
-// getAll((result)=>{
-// 	i = result.length
-// 	console.log('i',i)
-// })
-// var pager = new Pager(1,5,i)
+var i = 0
+getAll((result)=>{
+	i = result.length
+	console.log('i',i)
+})
+var pager = new Pager(1,5,i)
 
 
 // 导出路由

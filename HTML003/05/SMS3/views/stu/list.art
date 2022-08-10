@@ -47,17 +47,17 @@
 		<nav aria-label="Page navigation">
 			<ul class="pagination">
 				<li>
-					<a href="/stu/list?page={{}}" aria-label="Previous">
+					<a href="/stu/list?page={{prev}}" aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<li><a href="/stu/list?page=1">1</a></li>
+				<li><a href="/stu/list?page=2">2</a></li>
+				<li><a href="/stu/list?page=3">3</a></li>
+				<li><a href="/stu/list?page=4">4</a></li>
+				<li><a href="/stu/list?page=5">5</a></li>
 				<li>
-					<a href="#" aria-label="Next">
+					<a href="/stu/list?page={{next}}" aria-label="Next">
 						<span aria-hidden="true">&raquo;</span>
 					</a>
 				</li>
