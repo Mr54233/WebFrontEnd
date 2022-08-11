@@ -2,7 +2,7 @@
 
 const { application } = require("express");
 const express = require("express");
-const { getList,add } = require("../database/user");
+const { getList,add, deleteUser, updateUser } = require("../database/user");
 
 const route = express.Router();
 
@@ -27,6 +27,18 @@ route.post('/reg',(req,res)=>{
 
     add(req.body,()=>{
         res.redirect('/user/list')
+    })
+})
+
+route.get('/delete',(req,res)=>{
+    deleteUser(req.query.uid,()=>{
+        res.redirect('/user/list')
+    })
+})
+
+route.get('/edit',(req,res)=>{
+    updateUser(req.query.uid,(users)=>{
+        res.render('edit.art', {users : users})
     })
 })
 

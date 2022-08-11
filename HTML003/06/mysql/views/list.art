@@ -17,6 +17,7 @@
 					<th>年龄</th>
 					<th>性别</th>
 					<th>状态</th>
+					<th>操作</th>
 				</tr>
 				<!-- 2. 处理动态内容 , 换成模板语法-->
 				{{each users}}
@@ -26,6 +27,18 @@
 					<td>{{ $value.age }}</td>
 					<td>{{ $value.gender }}</td>
 					<td>{{ $value.state }}</td>
+					<td>
+						<a
+							href="/user/edit?uid={{ $value.uid }}"
+							class="btn btn-primary"
+							>编辑</a
+						>
+						<a
+							href="/user/delete?uid={{ $value.uid }}"
+							class="btn btn-danger"
+							>删除</a
+						>
+					</td>
 				</tr>
 				{{/each}}
 			</table>
