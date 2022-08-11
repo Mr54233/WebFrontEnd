@@ -29,7 +29,7 @@
 			{{/each}}
 		</table>
 		<div class="func">
-			<a href="" class="btn btn-success">注册用户</a>
+			<a href="/user/reg" class="btn btn-success">注册用户</a>
 		</div>
 	</body>
 </html>

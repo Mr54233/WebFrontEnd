@@ -12,7 +12,7 @@ const db = mysql.createPool({
 	// 登录用户的登陆密码
 	password: "admin123456",
 	// 访问的数据库名
-	database: "bookshop",
+	database: "testdb",
 });
 
 // 3. 暴露db对象

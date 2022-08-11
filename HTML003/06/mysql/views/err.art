@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>错误提示信息</title>
+	</head>
+	<body>
+		<h1>系统出现一点小问题 , 请联系开发人员xxx</h1>
+		<h3>具体原因是 : {{ err.message }}</h3>
+	</body>
+</html>
