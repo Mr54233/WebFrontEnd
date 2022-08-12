@@ -11,20 +11,22 @@ route.get("/chkExist", (req, res) => {
 	let uname = req.query.uname;
 
 	// 到数据库中的users 表中查询是否已经有同名的用户
-	isExist(uname, (len) => {
-		var message = " ",
-			result = "ok";
-		if (len > 0) {
-			var result = "failure";
-			var message = "用户名已被注册 , 请重新设置";
-		}
-
-        res.setHeader('Content-Type','application/json')
-		res.send({
-			result,
-			message,
+	setTimeout(()=>{
+		isExist(uname, (len) => {
+			var message = " ",
+				result = "ok";
+			if (len > 0) {
+				var result = "failure";
+				var message = "用户名已被注册 , 请重新设置";
+			}
+	
+			res.setHeader('Content-Type','application/json')
+			res.send({
+				result,
+				message,
+			});
 		});
-	});
+	},3000)
 });
 
 module.exports = route

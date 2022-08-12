@@ -11,6 +11,9 @@
 		<div style="width: 800px; margin: 10px auto">
 			<h3>注册用户</h3>
 			<hr />
+			<div class="loading" style="display:none;">
+				<img src="/Loading_icon.gif" alt="">
+			</div>
 			<form class="form-horizontal" action="/user/reg" method="post">
 				<div class="form-group">
 					<label for="uname" class="col-sm-2 control-label"
@@ -91,6 +94,16 @@
 
 		<script src="/js/jquery.min.js"></script>
 		<script>
+			$(document).ajaxStart(()=>{
+				// 开始ajax请求了 , 就显示带动态图像的div
+				$('.loading').css('display','block')
+			})
+			$(document).ajaxStop(()=>{
+				// ajax结束了 , 就隐藏带动态图像的div
+				$('.loading').css('display','none')
+				
+			})
+
 			$("#uname").blur(function () {
 				var span = $("#err");
 				var un = $(this).val().trim();
