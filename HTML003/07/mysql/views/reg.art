@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>用户注册</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div style="width: 800px; margin: 10px auto">
+			<h3>注册用户</h3>
+			<hr />
+			<form class="form-horizontal" action="/user/reg" method="post">
+				<div class="form-group">
+					<label for="uname" class="col-sm-2 control-label"
+						>用户名称</label
+					>
+					<div class="col-sm-10">
+						<input
+							type="text"
+							class="form-control"
+							id="uname"
+							name="uname"
+							placeholder="请输入用户名"
+							/>
+							<span id="err"></span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="password" class="col-sm-2 control-label"
+						>登录密码</label
+					>
+					<div class="col-sm-10">
+						<input
+							type="password"
+							class="form-control"
+							id="password"
+							name="password"
+							placeholder="请输入登陆密码"
+						/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="age" class="col-sm-2 control-label">年龄</label>
+					<div class="col-sm-10">
+						<input
+							type="number"
+							class="form-control"
+							id="age"
+							name="age"
+							placeholder="请输入年龄"
+						/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="gender" class="col-sm-2 control-label"
+						>性别</label
+					>
+					<div class="col-sm-10">
+						<input
+							type="radio"
+							id="man"
+							name="gender"
+							value="0"
+						/>男
+						<input
+							type="radio"
+							id="woman"
+							name="gender"
+							value="1"
+						/>女
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button
+							type="submit"
+							class="btn btn-primary form-control"
+						>
+							注册
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<script>
+			// 发送ajax请求的js代码
+			var text = document.querySelector("#uname");
+			text.addEventListener("blur", () => {
+				// 1. 创建XMLHttpRequest 对象
+				var xhr;
+				if (window.ActiveXObject) {
+					// 技术嗅探 , 如果是ie浏览器
+					xhr = new ActiveXObject("XMLHTTP");
+				} else if (window.XMLHttpRequest) {
+					// 如果是chrome
+					xhr = new XMLHttpRequest();
+				}
+
+				// 2. 给XMLHttpRequest 对象的 onreadystatechange事件绑定事件处理函数
+				// 也就是回调函数 , 用于处理ajax 的请求
+
+				xhr.onreadystatechange = function () {
+					// readyState :
+					// 0 代表xhr 对象未初始化状态 ,
+					// 1 初始化状态
+					// 2 发送数据状态
+					// 3 接收数据状态
+					// 4 接收已完成状态
+					if (xhr.readyState == 4) {
+						// status 记录状态码
+						if (xhr.status == 200) {
+							var span = document.querySelector('#err')
+							var jg = JSON.parse(xhr.responseText)
+							if(jg.result === 'ok'){
+								span.innerHTML = '有效用户名'
+								span.style.color = 'green'
+							} else {
+								span.innerHTML = jg.message;
+								span.style.color = 'red'
+							}
+							// console.log("xhr.responseText", xhr.responseText);
+							// console.log("xhr.responseXml", xhr.responseXml);
+							// var jg = xhr.responseText
+						}
+					}
+				};
+
+				// 3. 指定Ajax请求的目标地址
+				xhr.open("get", "/api/chkExist?uname=" + text.value, true);
+
+				// 4. 发送请求
+				xhr.send();
+			});
+		</script>
+	</body>
+</html>
