@@ -1,6 +1,7 @@
 // 操作用户表的自定义模块
 
 const db = require("./db");
+const Pager = require("./page");
 
 // 查询所有
 function getList(callback) {
@@ -13,7 +14,7 @@ function getList(callback) {
 		var users = [],
 			genders = ["男", "女"],
 			states = ["正常", "删除"];
-        // console.log(result)
+		// console.log(result)
 		result.forEach((user) => {
 			user.gender = genders[user.gender];
 			user.state = states[user.state];
@@ -21,6 +22,27 @@ function getList(callback) {
 		});
 
 		callback(users);
+	});
+}
+
+// 分页查询用户
+function getPage(pageIndex, pageSize, count, callback) {
+	// 计算需要跳过的前几页的数量
+	var skip = (pageIndex - 1) * pageSize;
+	// 分页查询
+	var sql = "select * from users limit ?,?";
+	db.query(sql, [skip, pageSize], (err, users) => {
+		// 查询总记录数
+		var sql = "select count(*) as cnt from users";
+		db.query(sql, (err, counts) => {
+			var cnt = parseInt(counts[0].cnt);
+			// console.log('cnt',cnt)
+			var pager = new Pager(pageIndex, pageSize, cnt, count);
+			// 返回users,pagers
+			console.log('users',users)
+			console.log('pagers',pager)
+			callback(users, pager);
+		});
 	});
 }
 
@@ -38,13 +60,12 @@ function add(user, callback) {
 }
 
 // 带条件(uname)查询用户
-function isExist(uname,callback){
-	var sql = `select * from users where uname = ?`
-	db.query(sql,uname,(err,result)=>{
-		callback(result.length)
-	})
+function isExist(uname, callback) {
+	var sql = `select * from users where uname = ?`;
+	db.query(sql, uname, (err, result) => {
+		callback(result.length);
+	});
 }
-
 
 // 删除用户
 function deleteUser(uid, callback) {
@@ -55,13 +76,13 @@ function deleteUser(uid, callback) {
 }
 
 // 编辑更新用户
-function updateUser(uid,callback){
-    var sql = "select * from users where uid = ?"
-    db.query(sql,uid,(err,result)=>{
-        var users = [],
+function updateUser(uid, callback) {
+	var sql = "select * from users where uid = ?";
+	db.query(sql, uid, (err, result) => {
+		var users = [],
 			genders = ["男", "女"],
 			states = ["正常", "删除"];
-        // console.log(result)
+		// console.log(result)
 		result.forEach((user) => {
 			user.gender = genders[user.gender];
 			user.state = states[user.state];
@@ -69,14 +90,14 @@ function updateUser(uid,callback){
 		});
 
 		callback(users);
-    })
+	});
 }
-
 
 module.exports = {
 	getList,
 	add,
 	deleteUser,
-    updateUser,
-	isExist
+	updateUser,
+	isExist,
+	getPage,
 };

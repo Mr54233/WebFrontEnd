@@ -11,8 +11,8 @@
 		<div style="width: 800px; margin: 10px auto">
 			<h3>注册用户</h3>
 			<hr />
-			<div class="loading" style="display:none;">
-				<img src="/Loading_icon.gif" alt="">
+			<div class="loading" style="display: none">
+				<img src="/Loading_icon.gif" alt="" style="width: 100px" />
 			</div>
 			<form class="form-horizontal" action="/user/reg" method="post">
 				<div class="form-group">
@@ -94,15 +94,14 @@
 
 		<script src="/js/jquery.min.js"></script>
 		<script>
-			$(document).ajaxStart(()=>{
+			$(document).ajaxStart(() => {
 				// 开始ajax请求了 , 就显示带动态图像的div
-				$('.loading').css('display','block')
-			})
-			$(document).ajaxStop(()=>{
+				$(".loading").css("display", "block");
+			});
+			$(document).ajaxStop(() => {
 				// ajax结束了 , 就隐藏带动态图像的div
-				$('.loading').css('display','none')
-				
-			})
+				$(".loading").css("display", "none");
+			});
 
 			$("#uname").blur(function () {
 				var span = $("#err");
@@ -114,17 +113,17 @@
 						url: "/api/chkExist",
 						type: "get",
 						data: { uname: un },
-						dataType:'json',
-						success:(obj)=>{
+						dataType: "json",
+						success: (obj) => {
 							// console.log('obj',obj)
 							// obj = JSON.parse(obj.responseText)
 
-							if(obj.result === 'ok'){
-								span.html('有效用户名').css('color','green')
+							if (obj.result === "ok") {
+								span.html("有效用户名").css("color", "green");
 							} else {
-								span.html(obj.message).css('color','red')
+								span.html(obj.message).css("color", "red");
 							}
-						}
+						},
 					});
 				}
 			});
