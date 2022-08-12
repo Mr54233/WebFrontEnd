@@ -37,10 +37,10 @@ function getPage(pageIndex, pageSize, count, callback) {
 		db.query(sql, (err, counts) => {
 			var cnt = parseInt(counts[0].cnt);
 			// console.log('cnt',cnt)
+			// 创建分页控件对象
 			var pager = new Pager(pageIndex, pageSize, cnt, count);
 			// 返回users,pagers
-			console.log('users',users)
-			console.log('pagers',pager)
+			// 调用回调函数生成html页面
 			callback(users, pager);
 		});
 	});

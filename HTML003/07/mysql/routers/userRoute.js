@@ -18,14 +18,14 @@ route.get("/list", (req, res) => {
 	// /user/list?page=1   /user/list
 	// 1. 获取到浏览器提交的页码
 	var pageIndex = 1; // 默认第一页
-	if (req.query) {
+	if (req.query.page) {
 		pageIndex = req.query.page;
 	}
 	// 2. 设置每一页的条数和需要显示的页码的个数
     var pageSize = 3;
     var count = 5;
 	// 3. 到数据库中获取当前页的数据
-    getPage(pageIndex , pageSize , count , (users , pager)=>{
+    getPage(pageIndex , pageSize , count , function(users , pager){
         // users : 本页上需要显示的用户数组
         // pager : 分页控件
         // 4. 渲染模板文件 , 生成html代码 , 返回给浏览器

@@ -21,7 +21,7 @@ class Pager {
 		this.prev = this.nums[0] - 1; // 上翻一页的页码
 		this.next = this.nums[count - 1] + 1; // 下翻一页的页码
 		this.isFirstPage = this.nums[0] === 1; // 第一个页码=1 , 说明就是第一页 
-		this.isLastPage = this.nums[count - 1] === this.pages; // 最后一个页码=总页数 , 说明到达了最后一页
+		this.isLastPage = this.nums[end - 1] === this.pages; // 最后一个页码=总页数 , 说明到达了最后一页
 	}
 }
 
