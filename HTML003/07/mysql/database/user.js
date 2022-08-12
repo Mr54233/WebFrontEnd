@@ -31,7 +31,7 @@ function getPage(pageIndex, pageSize, count, callback) {
 	var skip = (pageIndex - 1) * pageSize;
 	// 分页查询
 	var sql = "select * from users limit ?,?";
-	db.query(sql, [skip, pageSize], (err, users) => {
+	db.query(sql, [skip, pageSize], (err, result) => {
 		// 查询总记录数
 		var sql = "select count(*) as cnt from users";
 		db.query(sql, (err, counts) => {
@@ -41,6 +41,17 @@ function getPage(pageIndex, pageSize, count, callback) {
 			var pager = new Pager(pageIndex, pageSize, cnt, count);
 			// 返回users,pagers
 			// 调用回调函数生成html页面
+			// 格式化users
+			// 格式化
+			var users = [],
+				genders = ["男", "女"],
+				states = ["正常", "删除"];
+			// console.log(result)
+			result.forEach((user) => {
+				user.gender = genders[user.gender];
+				user.state = states[user.state];
+				users.push(user);
+			});
 			callback(users, pager);
 		});
 	});
@@ -75,8 +86,8 @@ function deleteUser(uid, callback) {
 	});
 }
 
-// 编辑更新用户
-function updateUser(uid, callback) {
+// 编辑用户
+function editUser(uid, callback) {
 	var sql = "select * from users where uid = ?";
 	db.query(sql, uid, (err, result) => {
 		var users = [],
@@ -93,11 +104,25 @@ function updateUser(uid, callback) {
 	});
 }
 
+// 更新用户
+function updateUser(user, uid, callback) {
+	var sql = "update users set uname=?,password=?,age=?,gender=? where uid=?";
+	db.query(
+		sql,
+		[user.uname, user.password, user.age, user.gender, uid],
+		(err, result) => {
+			// 更新成功 , 则调用回调函数
+			callback();
+		}
+	);
+}
+
 module.exports = {
 	getList,
 	add,
 	deleteUser,
-	updateUser,
+	editUser,
 	isExist,
 	getPage,
+	updateUser,
 };

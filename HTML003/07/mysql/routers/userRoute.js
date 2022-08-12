@@ -2,7 +2,14 @@
 
 const { application } = require("express");
 const express = require("express");
-const { getList, add, deleteUser, updateUser,getPage } = require("../database/user");
+const {
+	getList,
+	add,
+	deleteUser,
+	editUser,
+	getPage,
+    updateUser
+} = require("../database/user");
 const Pager = require("../database/page");
 
 const route = express.Router();
@@ -22,18 +29,18 @@ route.get("/list", (req, res) => {
 		pageIndex = req.query.page;
 	}
 	// 2. 设置每一页的条数和需要显示的页码的个数
-    var pageSize = 3;
-    var count = 5;
+	var pageSize = 3;
+	var count = 5;
 	// 3. 到数据库中获取当前页的数据
-    getPage(pageIndex , pageSize , count , function(users , pager){
-        // users : 本页上需要显示的用户数组
-        // pager : 分页控件
-        // 4. 渲染模板文件 , 生成html代码 , 返回给浏览器
-        res.render('list.art',{
-            users,
-            pager
-        })
-    })
+	getPage(pageIndex, pageSize, count, function (users, pager) {
+		// users : 本页上需要显示的用户数组
+		// pager : 分页控件
+		// 4. 渲染模板文件 , 生成html代码 , 返回给浏览器
+		res.render("list.art", {
+			users,
+			pager,
+		});
+	});
 });
 
 route.get("/reg", (req, res) => {
@@ -58,15 +65,20 @@ route.get("/delete", (req, res) => {
 });
 
 route.get("/edit", (req, res) => {
-	updateUser(req.query.uid, (users) => {
+	editUser(req.query.uid, (users) => {
+        // console.log('users',users)
 		res.render("edit.art", { users: users });
 	});
 });
 
-// route.get('/test',(req,res)=>{
-//     getPage(()=>{
+route.post("/edit", (req, res) => {
+    // console.log(req.body)
+    // console.log(req.query.uid)
+	updateUser(req.body,req.query.uid, () => {
+		res.redirect("/user/list");
+	});
+});
 
-//     });
-// })
+
 
 module.exports = route;

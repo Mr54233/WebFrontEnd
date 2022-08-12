@@ -12,7 +12,7 @@
 		<div style="width: 800px; margin: 10px auto">
 			<h3>编辑信息</h3>
 			<hr />
-			<form class="form-horizontal" action="/user/reg" method="post">
+			<form class="form-horizontal" action="/user/edit?uid={{$value.uid}}" method="post">
 				<div class="form-group">
 					<label for="uname" class="col-sm-2 control-label"
 						>用户名称</label
@@ -64,10 +64,22 @@
 					<label for="gender" class="col-sm-2 control-label"
 						>性别</label
 					>
-					<label for="gender" class="control-label">{{
-						$value.gender
-					}}</label>
-					<!-- <div class="col-sm-10">
+					<div class="col-sm-10">
+						{{if($value.gender == '男')}}
+						<input
+							type="radio"
+							id="man"
+							name="gender"
+							value="0"
+							checked
+						/>男
+						<input
+							type="radio"
+							id="woman"
+							name="gender"
+							value="1"
+						/>女
+						{{else}}
 						<input
 							type="radio"
 							id="man"
@@ -79,8 +91,10 @@
 							id="woman"
 							name="gender"
 							value="1"
+							checked
 						/>女
-					</div> -->
+						{{/if}}
+					</div>
 				</div>
 				{{/each}}
 
