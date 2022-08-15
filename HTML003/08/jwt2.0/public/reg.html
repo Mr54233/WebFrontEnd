@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>用户注册</title>
+	</head>
+	<body>
+		<!-- 表单中如果有需要上传的文件 , 必须添加 enctype="multipart/form-data"-->
+		<form action="/reg" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td>用户名:</td>
+					<td><input type="text" name="uname" id="uname" /></td>
+				</tr>
+				<tr>
+					<td>头像:</td>
+					<td>
+						<input type="file" name="photo" id="photo" />
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" value="注册" /></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
