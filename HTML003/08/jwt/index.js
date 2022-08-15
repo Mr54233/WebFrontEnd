@@ -19,7 +19,11 @@ const secretKey = "i love you";
 
 // 2. 配置express-jwt
 // unless() ; 配置那些地址的请求不需要解密来验证身份
-app.use(expressJWT({ secret: secretKey }).unless({ path: [/^\/api\//] }));
+app.use(
+	expressJWT({ secret: secretKey }).unless({
+		path: ["/user/login", "/user/reg"],
+	})
+);
 
 app.listen(port, () =>
 	console.log(`Example app listening on port http://127.0.0.1:${port}`)
