@@ -1,0 +1,41 @@
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="../public/css/layui.css" />
+</head>
+<body>
+<div class="layui-form">
+	<table class="layui-table">
+		<colgroup>
+			<col width="150" />
+			<col width="150" />
+			<col width="50" />
+			<col width="200" />
+			<col width="50" />
+			<col />
+		</colgroup>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>副标题</th>
+				<th>发布用户</th>
+				<th>内容</th>
+				<th>发布时间</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{each news}}
+			<tr>
+				<td>{{$value.title}}</td>
+				<td>{{$value.subtitle}}</td>
+				<td>{{$value.author}}</td>
+				<td>{{$value.content}}</td>
+				<td>{{$value.pubdate}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
+</body>
