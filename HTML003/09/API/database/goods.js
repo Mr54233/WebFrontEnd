@@ -15,4 +15,4 @@ function getPage(pageIndex, pageSize, callback) {
     });
 }
 
-module.exports = getPage
+module.exports = {getPage}

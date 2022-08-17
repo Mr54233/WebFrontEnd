@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 通过API接口 , 获取到商品数据并且展示出来 -->
+		<!-- 访问API接口采用AJAX技术 : Jquery -->
+		<table>
+			<thead>
+				<tr>
+					<th>商品名称</th>
+					<th>销售价格</th>
+					<th>库存数量</th>
+				</tr>
+			</thead>
+			<tbody id="tb"></tbody>
+		</table>
+
+		<div class="page">
+			<span class="pp" data-page="">上一页</span>&nbsp;&nbsp;&nbsp;
+			<span class="np" data-page="">下一页</span>
+		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script>
+			function load(pageIndex, pageSize) {
+				// 给上一页和下一页 , 计算页码
+				$(".page .pp").attr("date-page", pageIndex - 1);
+				$(".page .np").attr("date-page", pageIndex + 1);
+				// ajax请求 得到当前页的数据
+				$.ajax({
+					url: `http://127.0.0.1:8080/api/goods/page/${pageIndex}/${pageSize}`,
+					type: "get",
+					dataType: "json",
+					success: function (data) {
+						var html = "";
+						data.goods.forEach((goods) => {
+							// 一个商品对象要生成为页面中的一行
+							html += `<tr>
+                                <td>${goods.name}</td>
+                                <td>${goods.sell_price}</td>
+                                <td>${goods.store_num}</td>
+                                </tr>`;
+							// 将生成的动态的HTML 追加到页面中显示
+							$("#td").html(html);
+						});
+					},
+				});
+			}
+			load(1, 5);
+
+			$(".page .pp").click(function () {
+				// alert('上一页')
+				// 获取当前页
+				var num = parseInt($(this).attr("data-page"));
+				// 计算上一页的页码
+				num = num - 1;
+
+				if (num < 1) {
+					alert("超过第一页了");
+				} else {
+					load(num, 5);
+				}
+			});
+			$(".page .np").click(function () {
+				// alert('下一页')
+				// 获取当前页
+				var num = parseInt($(this).attr("data-page"));
+				// 计算上一页的页码
+				num = num + 1;
+
+				// if (num > 1) {
+				// 	alert("超过第一页了");
+				// } else {
+                    // 需要判断是否最后一页
+					load(num, 5);
+				// }
+			});
+		</script>
+	</body>
+</html>
