@@ -5,11 +5,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>注册登录</title>
-		<link rel="stylesheet" href="/public/css/layui.css" />
+		<link rel="stylesheet" href="css/layui.css" />
 	</head>
 	<body>
 		<div class="layui-bg-gray" style="padding: 30px">
-			<form class="layui-form" action="/login" method="post">
+			<form class="layui-form" action="/api/login" method="post">
 				<div class="layui-form-item">
 					<label class="layui-form-label">用户名</label>
 
@@ -21,11 +21,8 @@
 							autocomplete="off"
 							placeholder="请输入用户名"
 							class="layui-input"
+							id="uname"
 						/>
-					</div>
-
-					<div class="err layui-input-block" style="color: red">
-						{{ err ? err.message : "" }}
 					</div>
 				</div>
 
@@ -40,6 +37,7 @@
 							placeholder="请输入密码"
 							autocomplete="off"
 							class="layui-input"
+							id="password"
 						/>
 					</div>
 				</div>
@@ -51,6 +49,7 @@
 							class="layui-btn"
 							lay-submit=""
 							lay-filter="demo1"
+							id="submit"
 						>
 							提交
 						</button>
@@ -62,7 +61,43 @@
 						</button>
 					</div>
 				</div>
+				<div
+					class="layui-input-block"
+					style="display: none"
+					id="message"
+				></div>
 			</form>
 		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/layui.js"></script>
+
+		<script>
+			$("#submit").click((e) => {
+				e.preventDefault();
+				$.ajax({
+					type: "post",
+					url: "http://127.0.0.1:3000/api/login",
+					data: {
+						uname: $("#uname").val(),
+						password: $("#password").val(),
+					},
+					dataType: "json",
+					success: function (response) {
+						if (response.status === 555) {
+							$("#message")
+								.html(response.message)
+								.css("display", "block")
+								.css("color", "red");
+						} else if (response.status === 200) {
+							$("#message")
+								.html(response.message)
+								.css("display", "block")
+								.css("color", "green");
+						}
+					},
+				});
+			});
+		</script>
 	</body>
 </html>

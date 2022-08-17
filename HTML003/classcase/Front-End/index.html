@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>首页</title>
+		<link rel="stylesheet" href="/public/css/layui.css" />
+	</head>
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<a class="layui-logo layui-hide-xs layui-bg-black" href="/"
+					>新闻首页</a
+				>
+				<!-- 头部区域（可配合layui 已有的水平导航） -->
+				<ul class="layui-nav layui-layout-left">
+					<!-- 移动端显示 -->
+					<li
+						class="layui-nav-item layui-show-xs-inline-block layui-hide-sm"
+						lay-header-event="menuLeft"
+					>
+						<i class="layui-icon layui-icon-spread-left"></i>
+					</li>
+
+					<li class="layui-nav-item layui-hide-xs">
+						<a href="#">热点</a>
+					</li>
+					<li class="layui-nav-item layui-hide-xs">
+						<a href="#">民生</a>
+					</li>
+					<li class="layui-nav-item layui-hide-xs">
+						<a href="#">体育</a>
+					</li>
+				</ul>
+				<ul class="layui-nav layui-layout-right">
+					<li
+						class="layui-nav-item layui-hide layui-show-md-inline-block"
+					>
+						<a href="javascript:;">
+							<img
+								src="http://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"
+								class="layui-nav-img"
+							/>
+
+						</a>
+						<dl class="layui-nav-child">
+							<dd><a href="/login">登录</a></dd>
+							<dd><a href="#">个人中心</a></dd>
+							<dd><a href="#">设置</a></dd>
+							<dd><a href="/logout">登出</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="layui-bg-gray" style="padding: 30px">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md6">
+					<div class="layui-card" style="margin-top: 50px">
+						<div class="layui-card-header">新闻列表</div>
+						<div class="layui-card-body">热点新闻</div>
+					</div>
+				</div>
+			</div>
+
+			<hr />
+
+			<div class="layui-form">
+				<table class="layui-table">
+					<colgroup>
+						<col width="150" />
+						<col width="150" />
+						<col width="50" />
+						<col width="200" />
+						<col width="50" />
+						<col />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>标题</th>
+							<th>副标题</th>
+							<th>发布用户</th>
+							<th>内容</th>
+							<th>发布时间</th>
+						</tr>
+					</thead>
+					<tbody id="tb">
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script src="/public/js/layui.js"></script>
+		<script src="/public/js/jquery.min.js"></script>
+
+		<script>
+			layui.use("element", function () {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+				//监听导航点击
+				element.on("nav(demo)", function (elem) {
+					//console.log(elem)
+					layer.msg(elem.text());
+				});
+			});
+		</script>
+	</body>
+</html>
