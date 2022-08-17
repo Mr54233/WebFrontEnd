@@ -1,0 +1,502 @@
+- [09](#09)
+- [Web 开发模式](#web-开发模式)
+	- [1. 服务端渲染的 Web 开发模式](#1-服务端渲染的-web-开发模式)
+	- [2. 服务器端渲染的优缺点](#2-服务器端渲染的优缺点)
+	- [3. 前后端分离的 Web 开发模式](#3-前后端分离的-web-开发模式)
+	- [4. 前后端分离的优缺点](#4-前后端分离的优缺点)
+	- [5. 如何选择 Web 开发模式](#5-如何选择-web-开发模式)
+- [身份认证](#身份认证)
+	- [1. 什么是身份认证](#1-什么是身份认证)
+	- [2. 为什么需要身份认证](#2-为什么需要身份认证)
+	- [3. 不同开发模式下的身份认证](#3-不同开发模式下的身份认证)
+- [Session 认证机制](#session-认证机制)
+	- [1. HTTP 协议的无状态性](#1-http-协议的无状态性)
+	- [2. 如何突破 HTTP 无状态的限制](#2-如何突破-http-无状态的限制)
+	- [3. 什么是 Cookie](#3-什么是-cookie)
+	- [4. Cookie 在身份认证中的作用](#4-cookie-在身份认证中的作用)
+	- [5. Cookie 不具有安全性](#5-cookie-不具有安全性)
+	- [6. 提高身份认证的安全性](#6-提高身份认证的安全性)
+	- [7. Session 的工作原理](#7-session-的工作原理)
+- [在 Express 中使用 Session 认证](#在-express-中使用-session-认证)
+	- [1. 安装 express-session 中间件](#1-安装-express-session-中间件)
+	- [2. 配置 express-session 中间件](#2-配置-express-session-中间件)
+	- [3. 向 session 中存数据](#3-向-session-中存数据)
+	- [4. 从 session 中取得数据](#4-从-session-中取得数据)
+	- [5. 清空 session](#5-清空-session)
+- [JWT 认证机制](#jwt-认证机制)
+	- [1. 了解 Session 认证的局限性](#1-了解-session-认证的局限性)
+	- [2. 什么是 JWT](#2-什么是-jwt)
+	- [3. JWT 的工作原理](#3-jwt-的工作原理)
+	- [6. JWT 的三个部分各自代表的含义](#6-jwt-的三个部分各自代表的含义)
+	- [7. JWT 的使用方式](#7-jwt-的使用方式)
+- [在 Express 中使用 JWT](#在-express-中使用-jwt)
+	- [1. 安装 JWT 相关的包](#1-安装-jwt-相关的包)
+	- [2. 导入 JWT 相关的包](#2-导入-jwt-相关的包)
+	- [3. 定义 secret 密钥](#3-定义-secret-密钥)
+	- [4. 在登录成功后生成 JWT 字符串](#4-在登录成功后生成-jwt-字符串)
+	- [5. 将 JWT 字符串还原为 JSON 对象](#5-将-jwt-字符串还原为-json-对象)
+	- [6. 使用 req.user 获取用户信息](#6-使用-requser-获取用户信息)
+	- [7. 捕获解析 JWT 失败后产生的错误](#7-捕获解析-jwt-失败后产生的错误)
+- [上传文件](#上传文件)
+- [课堂作业](#课堂作业)
+
+# 09
+# Web 开发模式
+
+目前主流的 Web 开发模式有两种 , 分别是 :
+
+1. 基于服务端渲染的传统 Web 开发模式
+2. 基于前后端分离的新型 Web 开发模式
+
+## 1. 服务端渲染的 Web 开发模式
+
+服务端渲染的概念 : 服务器发送给客户端的 HTML 代码 , 实在服务器通过字符串的拼接 , 动态生成的 , 因此 , 客户端不需要使用 Ajax 这样的技术额外请求页面的数据. 代码示例如下 :
+
+```js
+app.get("/index.html", (req, res) => {
+	// 1. 要渲染的数据
+	const user = { name: "zs", age: 20 };
+	// 2. 服务器端通过字符串的拼接 , 动态生成 HTML 内容
+	const html = `<h1>姓名 : ${user.name} , 年龄:${user.age}</h1>`;
+	// 3. 把拼接好的页面内容响应给客户端 , 因此 , 客户端拿到的是带有真实数据的HTML页面
+	res.send(html);
+});
+```
+
+## 2. 服务器端渲染的优缺点
+
+> 优点 :
+
+1. 前端耗时少 . 因为服务器端负责动态生成 HTML 内容 , 浏览器只需要直接渲染页面即可 . 尤其是移动端 , 更省电 .
+2. 更有利于 SEO . 因为服务器端相应的是完整的 HTML 页面内容 , 所以爬虫更容易爬取获得信息 , 更有利于 SEO
+
+> 缺点 :
+
+1. 占用服务器端资源 . 即服务器端完成 HTML 页面内容的拼接 , 如果请求较多 , 会对服务器造成一定的访问压力 .
+2. 不利于前后端分离 , 开发效率低 . 使用服务器端渲染 , 则无法进行分工合作 , 尤其对于前端复杂度高的项目 , 不利于项目高效开发
+
+## 3. 前后端分离的 Web 开发模式
+
+前后端分离的概念：前后端分离的开发模式，依赖于 Ajax 技术的广泛应用。简而言之，前后端分离的 Web 开发模式，就是后端只负责提供 API 接口，前端使用 Ajax 调用接口的开发模式。
+
+## 4. 前后端分离的优缺点
+
+> 优点：
+
+1. 开发体验好。前端专注于 UI 页面的开发，后端专注于 api 的开发，且前端有更多的选择性
+2. 用户体验好。Ajax 技术的广泛应用，极大的提高了用户的体验，可以轻松实现页面的局部刷新。
+3. 减轻了服务器端的渲染压力。因为页面最终是在每个用户的浏览器中生成的。
+
+> 缺点：
+
+1. 不利于 SEO。因为完整的 HTML 页面需要在客户端动态拼接完成，所以爬虫对无法爬取页面的有效信息。（解决方案：利用 Vue、React 等前端框架的 SSR （server side render）技术能够很好的解决 SEO 问题！）
+
+## 5. 如何选择 Web 开发模式
+
+不谈业务场景而盲目选择使用何种开发模式都是耍流氓。
+
+-   比如企业级网站，主要功能是展示而没有复杂的交互，并且需要良好的 SEO，则这时我们就需要使用服务器端渲染；
+
+-   而类似后台管理项目，交互性比较强，不需要考虑 SEO，那么就可以使用前后端分离的开发模式。
+
+另外，具体使用何种开发模式并不是绝对的，为了同时兼顾了首页的渲染速度和前后端分离的开发效率，一些网站采用了首屏服务器端渲染 + 其他页面前后端分离的开发模式。
+
+# 身份认证
+
+## 1. 什么是身份认证
+
+身份认证（Authentication）又称“身份验证”、“鉴权”，是指通过一定的手段，完成对用户身份的确认。
+
+-   日常生活中的身份认证随处可见，例如：高铁的验票乘车，手机的密码或指纹解锁，支付宝或微信的支付密码等。
+-   在 Web 开发中，也涉及到用户身份的认证，例如：各大网站的手机验证码登录、邮箱密码登录、二维码登录等。
+
+## 2. 为什么需要身份认证
+
+身份认证的目的，是为了确认当前所声称为某种身份的用户，确实是所声称的用户。例如，你去找快递员取快递，你要怎么证明这份快递是你的。
+在互联网项目开发中，如何对用户的身份进行认证，是一个值得深入探讨的问题。例如，如何才能保证网站不会错误的将“马云的存款数额”显示到“马化腾的账户”上。
+
+## 3. 不同开发模式下的身份认证
+
+对于服务端渲染和前后端分离这两种开发模式来说，分别有着不同的身份认证方案：
+
+-   服务端渲染推荐使用 Session 认证机制
+-   前后端分离推荐使用 JWT 认证机制
+
+# Session 认证机制
+
+## 1. HTTP 协议的无状态性
+
+了解 HTTP 协议的无状态性是进一步学习 Session 认证机制的必要前提。
+HTTP 协议的无状态性，指的是客户端的每次 HTTP 请求都是独立的，连续多个请求之间没有直接的关系，服务器不会主动保留每次 HTTP 请求的状态。
+
+![](../img/Session.png)
+
+## 2. 如何突破 HTTP 无状态的限制
+
+对于超市来说，为了方便收银员在进行结算时给 VIP 用户打折，超市可以为每个 VIP 用户发放会员卡。
+
+![](../img/Cookie.png)
+
+注意：现实生活中的会员卡身份认证方式，在 Web 开发中的专业术语叫做 Cookie。
+
+## 3. 什么是 Cookie
+
+Cookie 是存储在用户浏览器中的一段不超过 4 KB 的字符串。它由一个名称（Name）、一个值（Value）和其它几个用于控制 Cookie 有效期、安全性、使用范围的可选属性组成。
+不同域名下的 Cookie 各自独立，每当客户端发起请求时，会自动把当前域名下所有未过期的 Cookie 一同发送到服务器。
+Cookie 的几大特性：
+
+-   自动发送
+-   域名独立
+-   过期时限
+-   4KB 限制
+
+## 4. Cookie 在身份认证中的作用
+
+客户端第一次请求服务器的时候，服务器通过响应头的形式，向客户端发送一个身份认证的 Cookie，客户端会自动将 Cookie 保存在浏览器中。
+随后，当客户端浏览器每次请求服务器的时候，浏览器会自动将身份认证相关的 Cookie，通过请求头的形式发送给服务器，服务器即可验明客户端的身份。
+
+![](../img/Cookie的作用.png)
+
+## 5. Cookie 不具有安全性
+
+由于 Cookie 是存储在浏览器中的，而且浏览器也提供了读写 Cookie 的 API，因此 Cookie 很容易被伪造，不具有安全性。因此不建议服务器将重要的隐私数据，通过 Cookie 的形式发送给浏览器。
+
+![](../img/Cookie安全性.png)
+
+> 注意：**千万不要使用 Cookie 存储重要且隐私的数据**！比如用户的身份信息、密码等。
+
+## 6. 提高身份认证的安全性
+
+为了防止客户伪造会员卡，收银员在拿到客户出示的会员卡之后，可以在收银机上进行刷卡认证。只有收银机确认存在的会员卡，才能被正常使用。
+
+![](../img/提高安全性.png)
+
+这种“`会员卡 + 刷卡认证`”的设计理念，就是 Session 认证机制的精髓。
+
+## 7. Session 的工作原理
+
+![](../img/session的工作原理.png)
+
+# 在 Express 中使用 Session 认证
+
+## 1. 安装 express-session 中间件
+
+在 Express 项目中，只需要安装 express-session 中间件，即可在项目中使用 Session 认证：
+
+```bash
+npm install express-session
+```
+
+## 2. 配置 express-session 中间件
+
+express-session 中间件安装成功后，需要通过 app.use() 来注册 session 中间件，示例代码如下：
+
+```js
+// 1. 导入 session 中间件
+var session = require("express-session");
+// 2. 配置session 中间件
+app.use(
+	session({
+		secret: "keyboard cat ", // secret 属性的值可以为任意字符串
+		resave: false, // 固定写法
+		saveUninitialized: true, // 固定写法
+	})
+);
+```
+
+## 3. 向 session 中存数据
+
+当 express-session 中间件配置成功后 , 即可通过`req.session` 来访问和使用 session 对象 , 从而存储用户的关键消息.
+
+```js
+app.post("/api/login", (req, res) => {
+	// 判断用户提交的登录信息是否正确
+	if (req.body.username !== "admin" || req.body.password !== "000000") {
+		return res.send({ status: 1, msg: "登陆失败" });
+	}
+
+	req.session.user = req.body; // 将用户的信息 , 存储到session中
+	req.session.islogin = true; // 将用户的登陆状态 , 存储到session中
+
+	res.send({ status: 0, msg: "登陆成功" });
+});
+```
+
+## 4. 从 session 中取得数据
+
+可以直接从 session 对象上获取之前存储的数据 , 示例代码如下:
+
+```js
+// 获取用户姓名的接口
+app.get("/api/username", (req, res) => {
+	// 判断用户是否登录
+	if (!req.session.islogin) {
+		return res.send({ status: 1, msg: "fail" });
+	}
+	res.send({
+		status: 0,
+		msg: "success",
+		username: req.session.user.username,
+	});
+});
+```
+
+## 5. 清空 session
+
+调用 `req.session.destroy()` 函数 , 即可清空服务器保存的 session 信息 .
+
+```js
+// 推出登录的接口
+app.post("/api/logout", (req, res) => {
+	// 清空当前客户端对应的 session 信息
+	req.session.destroy();
+	res.send({
+		status: 0,
+		msg: "退出登录成功",
+	});
+});
+```
+
+# JWT 认证机制
+
+## 1. 了解 Session 认证的局限性
+
+Session 认证机制需要配合 Cookie 才能实现。由于 Cookie 默认不支持跨域访问，所以，当涉及到前端跨域请求后端接口的时候，需要做很多额外的配置，才能实现跨域 Session 认证。
+
+> 注意：
+
+-   当前端请求后端接口不存在跨域问题的时候，推荐使用 Session 身份认证机制。
+-   当前端需要跨域请求后端接口的时候，不推荐使用 Session 身份认证机制，推荐使用 JWT 认证机制。
+
+## 2. 什么是 JWT
+
+JWT（英文全称：JSON Web Token）是目前最流行的跨域认证解决方案。
+
+## 3. JWT 的工作原理
+
+![](../img/JWT工作原理.png)
+
+总结：用户的信息通过 Token 字符串的形式，保存在客户端浏览器中。服务器通过还原 Token 字符串的形式来认证用户的身份。
+
+4. JWT 的组成部分
+
+JWT 通常由三部分组成，分别是 Header（头部）、Payload（有效荷载）、Signature（签名）。三者之间使用英文的“.”分隔，格式如下：
+
+```
+Header.Payload.Signature
+```
+
+示例:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsInVzZXJuYW1lIjoiQnJ1Y2UiLCJwYXNzd29yZCI6IiIsIm5pY2tuYW1lIjoiaGVsbG8iLCJlbWFpbCI6InNjdXRAcXEuY29tIiwidXNlcl9waWMiOiIiLCJpYXQiOjE2NDE4NjU3MzEsImV4cCI6MTY0MTkwMTczMX0.bmqzAkNSZgD8IZxRGGyVlVwGl7EGMtWitvjGD-a5U5c
+```
+
+## 6. JWT 的三个部分各自代表的含义
+
+JWT 的三个组成部分，从前到后分别是 Header、Payload、Signature。
+其中：
+
+-   Payload 部分才是真正的用户信息，它是用户信息经过加密之后生成的字符串。
+-   Header 和 Signature 是安全性相关的部分，只是为了保证 Token 的安全性。
+
+![](../img/JWT的含义.png)
+
+## 7. JWT 的使用方式
+
+客户端收到服务器返回的 JWT 之后，通常会将它储存在 localStorage 或 sessionStorage 中。
+此后，客户端每次与服务器通信，都要带上这个 JWT 的字符串，从而进行身份认证。推荐的做法是把 JWT 放在 HTTP 请求头的 Authorization 字段中，格式如下：
+
+```
+Authorization:Bearer <token>
+```
+
+# 在 Express 中使用 JWT
+
+## 1. 安装 JWT 相关的包
+
+运行如下命令，安装如下两个 JWT 相关的包：
+
+```bash
+npm install jsonwebtoken express-jwt
+```
+
+其中：
+
+-   jsonwebtoken 用于生成 JWT 字符串
+-   express-jwt 用于将 JWT 字符串解析还原成 JSON 对象
+
+## 2. 导入 JWT 相关的包
+
+使用 require() 函数，分别导入 JWT 相关的两个包：
+
+```js
+const jwt = require("jsonwebtoken");
+const expressJWT = require("express-jwt");
+
+// 密钥为任意字符串
+const secretKey = "123456";
+```
+
+## 3. 定义 secret 密钥
+
+为了保证 JWT 字符串的安全性，防止 JWT 字符串在网络传输过程中被别人破解，我们需要专门定义一个用于加密和解密的 secret 密钥：
+
+当生成 JWT 字符串的时候，需要使用 secret 密钥对用户的信息进行加密，最终得到加密好的 JWT 字符串
+
+当把 JWT 字符串解析还原成 JSON 对象的时候，需要使用 secret 密钥进行解密
+
+```js
+// secret 本质上就是一个字符串
+var secretKey = "itell-soft^_^";
+```
+
+## 4. 在登录成功后生成 JWT 字符串
+
+调用 jsonwebtoken 包提供的 sign() 方法，将用户的信息加密成 JWT 字符串，响应给客户端：
+
+```js
+app.post("/api/login", (req, res) => {
+	// 用户登录成功之后 , 生成jwt字符串 , 通过session属性响应给客户端
+	res.send({
+		status: 200,
+		massage: "登陆成功",
+		// 调用 jwt.sign() 生成 jwt 字符串 , 三个参数分别是 : 用户信息对象 , 加密密钥 , 配置对象
+
+		token: jwt.sign({ username: userinfo.name }, secretKey, {
+			expiresIn: "30s",
+		}),
+	});
+});
+```
+
+## 5. 将 JWT 字符串还原为 JSON 对象
+
+客户端每次在访问那些有权限接口的时候，都需要主动通过请求头中的 Authorization 字段，将 Token 字符串发送到服务器进行身份认证。此时，服务器可以通过 express-jwt 这个中间件，自动将客户端发送过来的 Token 解析还原成 JSON 对象：
+
+```js
+// 使用app.use() 来注册中间件
+// express-JWT({secret:secretKey}) 就是用来解析Token的中间件
+// .unless({path:[/^\/api\//]}) 用来指定那些接口不需要访问权限
+
+app.use(expressJWT({ secret: secretKey }).unless({ path: [/^\/api\//] }));
+```
+
+## 6. 使用 req.user 获取用户信息
+
+当 express-jwt 这个中间件配置成功之后，即可在那些有权限的接口中，使用 req.user 对象，来访问从 JWT 字符串中解析出来的用户信息了，示例代码如下：
+
+```js
+app.get('/admin/getinfo',function(req,res)=>{
+	console.log(req.user)
+	res.send({
+		status:200,
+		message:'获取用户信息成功',
+		data:req.user
+	})
+})
+```
+
+## 7. 捕获解析 JWT 失败后产生的错误
+
+当使用 express-jwt 解析 Token 字符串时，如果客户端发送过来的 Token 字符串过期或不合法，会产生一个解析失败的错误，影响项目的正常运行。我们可以通过 Express 的错误中间件，捕获这个错误并进行相关的处理，示例代码如下：
+
+```js
+app.use((err, req, res, next) => {
+	// token解析失败导致的错误
+	if (err.name == "UnauthorizedError") {
+		return res.send({ status: 401, message: "无效的token" });
+	}
+	// 其他原因导致的错误
+	res.send({ status: 500, massage: "未知错误" });
+});
+```
+
+# 上传文件
+
+表单中如果有需要上传的文件 , 必须添加 enctype="multipart/form-data"
+
+html 代码 , form 表单必须是 post 提交方式 ;
+form 表单必须有 enctype="multipart/form-data"
+
+服务器端代码使用 connect-multipart 中间件 来接收数据 ,
+req.body 记录了一般表单元素的数据
+req.files 记录文件与中的数据
+
+2 . 如果需要使用 ajax 方式上传文件
+FormData 类
+JS 代码 :
+
+```js
+var fd = new FormData($("#form1"));
+$.ajax({
+	url: "/reg",
+	type: "post",
+	data: fd,
+	// ...
+});
+```
+
+# 课堂作业
+
+完成一个新闻管理的小网站
+
+1. 数据结构 :
+
+users 用户表
+
+| 字段     | 数据类型    | 约束                                | 说明                      |
+| -------- | ----------- | ----------------------------------- | ------------------------- |
+| uid      | int         | 主键 pk,非空 not null , 自动增长 AI | 用户编号                  |
+| uname    | varchar(50) | 非空 not null                       | 用户名                    |
+| password | varchar(50) | 非空 not null                       | 登录密码                  |
+| state    | tinyint     | 默认值 df 为 0                      | 状态 0 正常 1 禁言 2 删除 |
+
+categories 新闻类型表
+| 字段 | 数据类型 | 约束 | 说明 |
+| -------- | ----------- | ----------------------------------- | ------------------------- |
+| cid | int | 主键 pk,非空 not null , 自动增长 AI | 类型编号 |
+| cname | varchar(100) | 非空 not null | 类型名称 |
+
+newses 新闻表
+| 字段 | 数据类型 | 约束 | 说明 |
+| -------- | ----------- | ----------------------------------- | ------------------------- |
+| newsid | int | 主键 pk,非空 not null , 自动增长 AI | 新闻编号编号 |
+| title | varchar(200) | 非空 not null | 新闻标题 |
+| subtitle | varchar(200) | | 新闻副标题 |
+| category | int | 外键 , 应用 categories(cid) | 新闻的类型 |
+| author | int | 外键 , 引用 users(uid) | 新闻作者的编号 |
+| pubdata | date | | 发布日期 |
+| content | text | | 新闻内容 |
+| cover | varchar(200) | | 新闻图片的文件名 |
+
+2. 技术选型 :
+
+    - 服务器端渲染的 web 开发模式 ,
+    - express + express-art-template + mysql
+
+3. 功能实现
+
+-   管理后台子系统
+    -   用户管理
+        -   用户列表
+        -   禁言用户
+        -   删除用户(逻辑删除)
+        -   清理用户(物理删除)
+    -   新闻类型管理
+        -   类型列表
+            -   增删改查
+    -   新闻管理
+        -   新闻列表
+        -   发布新闻
+        -   修改新闻
+        -   删除新闻
+-   前端子系统
+    -   用户注册
+    -   用户登录
+    -   新闻列表
+    -   新闻分类列表
+    -   新闻详情页面
+
+>注意
+1. 管理后台子系统需要用户权限 , 前端子系统不需要用户权限

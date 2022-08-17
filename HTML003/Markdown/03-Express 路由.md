@@ -1,0 +1,443 @@
+- [03](#03)
+- [初始 Express](#初始-express)
+	- [什么是 Express](#什么是-express)
+	- [进一步理解 Express](#进一步理解-express)
+	- [Express 能做什么](#express-能做什么)
+- [Express 的基本使用](#express-的基本使用)
+	- [安装](#安装)
+	- [创建基本的 web 服务器](#创建基本的-web-服务器)
+		- [监听 GET 请求](#监听-get-请求)
+		- [监听 POST 请求](#监听-post-请求)
+		- [把内容响应给客户端](#把内容响应给客户端)
+		- [获取 URL 中携带的查询参数](#获取-url-中携带的查询参数)
+		- [获取 URL 中的动态参数](#获取-url-中的动态参数)
+			- [动态参数名不唯一](#动态参数名不唯一)
+			- [动态匹配的参数可以不止一个](#动态匹配的参数可以不止一个)
+	- [托管静态资源](#托管静态资源)
+		- [express.static()](#expressstatic)
+		- [托管多个静态资源目录](#托管多个静态资源目录)
+		- [挂载路径前缀](#挂载路径前缀)
+	- [nodemon](#nodemon)
+		- [为什么要使用 nodemon](#为什么要使用-nodemon)
+		- [安装 nodemon](#安装-nodemon)
+		- [使用 nodemon](#使用-nodemon)
+- [_Express 路由_](#express-路由)
+	- [什么是路由](#什么是路由)
+	- [现实生活中的路由](#现实生活中的路由)
+	- [Express 中的路由](#express-中的路由)
+		- [Express 中的路由的例子](#express-中的路由的例子)
+	- [路由的匹配过程](#路由的匹配过程)
+		- [路由匹配的注意点](#路由匹配的注意点)
+	- [路由的使用](#路由的使用)
+		- [最简单的用法](#最简单的用法)
+		- [模块化路由](#模块化路由)
+		- [创建路由模块](#创建路由模块)
+		- [注册路由模块](#注册路由模块)
+		- [为路由模块添加前缀](#为路由模块添加前缀)
+- [其他](#其他)
+	- [静态资源](#静态资源)
+	- [通知位置](#通知位置)
+		- [绑定前缀](#绑定前缀)
+	- [路由](#路由)
+
+# 03
+# 初始 Express
+
+## 什么是 Express
+
+官方给出的概念：Express 是基于 Node.js 平台 , 快速 , 开放 , 极简的 Web 开发框架
+
+通俗的理解 : Express 的作用和 Node.js 内置的 http 模块类似 , 也是专门用来创建 Web 服务器的
+
+Express 的本质是 : 就是一个 npm 上的第三方包 , 提供了快速创建 Web 服务器的边界方法
+
+Express 中文官网 : https://www.expressjs.com.cn/
+
+## 进一步理解 Express
+
+Q:不使用 Express 能否创建 Web 服务器?
+A:能 , 使用 Node.js 自带的原生 http 模块即可
+
+Q: 有了内置模块还要第三方干嘛
+A: 内置模块用起来很复杂 , 开发效率低下 , Express 是基于内置模块 进一步封装出来的 , 能极大地提高开发效率
+
+Q: http 内置模块和 Express 是什么关系
+A: 类似浏览器中的 WebApi 和 jQuery 的关系 , 后者是基于前者进一步封装出来
+
+## Express 能做什么
+
+对于前端程序员来说 , 最常见的两种服务器 , 分别是 :
+
+-   Web 网站服务器, 专门对外提供 Web 网页资源的服务器
+-   API 接口服务器 , 专门对外提供 API 接口的服务器
+
+使用 Express 可以方便快速的创建 Web 网站服务器或者 API 接口的服务器
+
+# Express 的基本使用
+
+## 安装
+
+在项目所处的目录中 , 运行如下的终端命令 , 即可将 express 安装到项目中使用
+
+```js
+npm i express@4.17.1
+```
+
+## 创建基本的 web 服务器
+
+```js
+// 导入express
+const express = require("express");
+// 创建web 服务器
+const app = express();
+// 调用app.listen(端口号 , 启动成功的回调函数) , 启动服务器
+app.listen(80, () => {
+	console.log("express server running at http://127.0.0.1");
+});
+```
+
+### 监听 GET 请求
+
+通过 app.get() 方法 , 可以监听客户端的 GET 请求 , 具体语法格式如下:
+
+```js
+// 参数1 : 客户端请求的URL 地址
+// 参数2 : 请求对应的处理函数
+//        req : 请求对象(包含了请求相关的属性和方法)
+//        res : 响应对象(包含了响应相关的属性和方法)
+app.get("请求URL", function (req, res) {
+	/*处理函数*/
+});
+```
+
+### 监听 POST 请求
+
+通过 app.post() 方法 , 可以监听客户端的 POST 请求 , 具体语法格式如下:
+
+```js
+// 参数1 : 客户端请求的URL 地址
+// 参数2 : 请求对应的处理函数
+//        req : 请求对象(包含了请求相关的属性和方法)
+//        res : 响应对象(包含了响应相关的属性和方法)
+app.post("请求URL", function (req, res) {
+	/*处理函数*/
+});
+```
+
+### 把内容响应给客户端
+
+通过 res.send() 方法 , 可以把处理好的内容 ,发送给客户端
+
+```js
+app.get("/user", (req, res) => {
+	// 向客户端发送JSON对象
+	res.send({
+		name: "zs",
+		age: 20,
+		gender: "男",
+	});
+});
+
+app.post("/user", (req, res) => {
+	// 向客户端发送文本内容
+	res.send("请求成功");
+});
+```
+
+### 获取 URL 中携带的查询参数
+
+通过 req.query 对象 , 可以访问到客户端通过查询字符串的形式 , 发送到服务器的参数 :
+
+```js
+app.get("/", (req, res) => {
+	// req.query 默认是一个空对象
+	// 客户端使用 ?name=zs&age=20 这种查询字符串形式, 发送到服务器的参数
+	// 可以通过 req.query 对象访问到 , 例如:
+	// req.query.name req.query.age
+	console.log(req.query);
+});
+```
+
+### 获取 URL 中的动态参数
+
+通过 req.params 对象 , 可以访问到 URL 中 , 通过`:` 匹配到的动态参数:
+
+```js
+// 注意这里的id是一个动态参数
+app.get("/user/:id", (req, res) => {
+	// req.params 默认是一个空对象 , 是动态匹配到的url参数
+	// 里面存放着 : 动态匹配到的参数值
+	console.log(req.params);
+});
+```
+
+#### 动态参数名不唯一
+
+可以改成 ids
+
+```js
+app.get("/user/:ids", (req, res) => {
+	// req.params 默认是一个空对象 , 是动态匹配到的url参数
+	// 里面存放着 : 动态匹配到的参数值
+	console.log(req.params);
+});
+```
+
+#### 动态匹配的参数可以不止一个
+
+```js
+app.get("/user/:ids/:name", (req, res) => {
+	// req.params 默认是一个空对象 , 是动态匹配到的url参数
+	// 里面存放着 : 动态匹配到的参数值
+	console.log(req.params);
+});
+```
+
+## 托管静态资源
+
+### express.static()
+
+express 提供了一个非常好用的函数 , 叫做 express.static() , 通过它 , 我们可以非常方便的创建一个静态资源服务器
+
+例如 , 通过如下代码就可以将 public 目录下的图片 , css 文件 , JavaScript 文件对外开放了:
+
+```js
+app.use(express.static("public"));
+```
+
+现在 , 你就可以访问 public 目录中的所有文件了 :
+
+http://localhost:3000/images/bg.jpg
+
+http://localhost:3000/css/style.css
+
+http://localhost:3000/js/login.js
+
+> 注意 : express 在指定的静态目录中查找文件 , 并对外提供资源的访问路径 , 因此 , 存放静态文件的目录名不会出现在 URL 中
+
+### 托管多个静态资源目录
+
+如果要托管多个静态资源目录 ， 请多次调用 express.static() 函数
+
+```js
+app.use(express.static("public"));
+app.use(express.static("files"));
+```
+
+> 注意 : 访问静态资源文件时候 , express.static() 函数 会根据目录的顺序查找所需的文件
+
+### 挂载路径前缀
+
+如果希望在托管的静态资源访问路径之前 , 挂在路径前缀 , 则可以使用如下方法 :
+
+```js
+app.use("/public", express.static("public"));
+```
+
+现在 , 你就可以通过带有 `/public` 前缀地址来访问 public 目录中的文件了:
+
+http://localhost:3000/public/images/bg.jpg
+
+http://localhost:3000/public/css/style.css
+
+http://localhost:3000/public/js/app.js
+
+## nodemon
+
+### 为什么要使用 nodemon
+
+在编写调试 node.js 项目的时候 , 如果修改了项目代码 , 需要频繁的手动 close 掉 , 然后再重新启动 , 非常繁琐 , 现在我们可以使用 nodemon 这工具 , 他能够监听项目文件的变动 , 当代码被修改之后 , nodemon 会自动帮我们重启项目, 极大方便了开发与调试
+
+### 安装 nodemon
+
+在终端中 ,运行如下命令 ， 即可将 nodemon 安装为全局可用的工具
+
+```js
+npm install -g nodemon
+```
+
+### 使用 nodemon
+
+当基于 node.js 编写了一个网站应用的时候 , 传统的方式 , 是运行 `node app.js` 命令来启动 , 这样做的坏处是:
+代码被修改之后 , 需要手动重启项目 .
+
+现在我们可以将 `node` 命令替换成 `nodemon` 命令 , 使用 `nodemon app.js` 来启动项目 , 这样做的好处是 :
+代码被修改之后 , 会被 `nodemon` 监听到 ,从而实现自动重启项目的效果.
+
+```js
+node app.js
+// 将上面的终端命令 , 替换为下面的终端命令 , 即可实现自动重启项目的效果
+nodemon app.js
+```
+
+# _Express 路由_
+
+## 什么是路由
+
+广义上来说 , 路由就是映射关系
+
+## 现实生活中的路由
+
+![](../img/路由.png)
+
+在这里路由就是按键与服务之间的映射关系
+
+## Express 中的路由
+
+在 Express 中 , 路由指的是客户端的请求 与 服务器处理函数之间的映射关系
+Express 中的路由由 3 部分组成 , 分别是请求的类型 , 请求的 URL 地址 , 处理关系 , 格式如下:
+
+```js
+app.method(path, handler);
+```
+
+### Express 中的路由的例子
+
+```js
+// 匹配GET 请求 , 且请求URL 为 /
+app.get("/", function (req, res) {
+	res.send("hello world");
+});
+
+// 匹配 POST 请求 , 且请求URL 为 /
+app.post("/", function (req, res) {
+	res.send("Got a POST request");
+});
+```
+
+## 路由的匹配过程
+
+每当一个请求到达服务器之后 , 需要先经过路由的匹配 , 只有匹配成功之后 , 才会调用对应的处理函数
+
+在匹配的时候 , 会按照路由的顺序进行匹配 , 如果请求类型和请求 URL 同时匹配成功 , 则 Express 会将这次请求 , 转交给对应的 function 函数进行处理
+
+![](../../img/路由的匹配.png)
+
+### 路由匹配的注意点
+
+1. 按照指定的先后顺序进行匹配
+2. 请求类型和请求的 URL 同时匹配成功才会调用对应的处理函数
+
+## 路由的使用
+
+### 最简单的用法
+
+在 Express 中使用路由最简单的方式 , 就是把路由挂在到 app 上 , 实例代码如下:
+
+```js
+const express = require("express");
+// 创建web服务器 命名为 app
+const app = express();
+
+// 挂载路由
+app.get("/", (req, res) => {
+	res.send("hello world");
+});
+app.post("/", (req, res) => {
+	res.send("POST request");
+});
+
+// 启动web 服务器
+app.listen(80, () => {
+	console.log("server running at http://127.0.0.1");
+});
+```
+
+### 模块化路由
+
+为了方便对路由进行模块化的管理 , Express 不建议将路由直接挂载到 app 对象上 , 而是推荐路由抽离为单独的模块
+
+将路由抽离为单独模块的步骤如下:
+
+1. 创建路由模块对应的 .js 文件
+2. 调用 express.Router() 函数创建路由对象
+3. 向路由对象上挂在具体的路由
+4. 使用 module.exports 向外共享路由对象
+5. 使用 app.use() 函数注册路由模块
+
+> 注意: app.use() 函数的作用 , 就是用来注册全局中间件的
+
+### 创建路由模块
+
+```js
+var express = require("express"); // 导入express
+var router = express.Router(); // 创建路由对象
+
+router.get("/user/list", function (req, res) {
+	// 挂在获取用户列表的路由
+	res.send("Get user list.");
+});
+
+router.post("/user/add", function (req, res) {
+	// 挂在添加用户的路由
+	res.send("Add new user");
+});
+
+module.exports = router; // 向外导出路由对象
+```
+
+### 注册路由模块
+
+```js
+// 1. 导入路由模块
+const userRouter = require("./router/user.js");
+
+// 2. 使用app.user() 注册路由模块
+app.use(userRouter);
+```
+
+### 为路由模块添加前缀
+
+类似于托管静态资源时 , 为静态资源统一挂载访问前缀一样 , 路由模块添加前缀的方法也非常简单
+
+```js
+// 1. 导入路由模块
+const userRouter = require("./router/user.js");
+
+// 2. 使用app.user() 注册路由模块 , 并添加统一的访问前缀 /api
+app.use("/api", userRouter);
+```
+
+# 其他
+
+Egg.js: 淘宝的框架  
+KOA
+
+传统方式的地址:
+http://localhost:3000?x=1&y=2
+
+restful 写法
+http://localhost:3000?1/2/rose
+
+## 静态资源
+
+静态资源 : 诸如 图像 , 外部 css 文件 , 外部 js 文件 等资源 . 服务器端不需要进行代码处理 , 直接将对应文件中的内容发送给浏览器就好了 , 这样的资源就可以称之为静态资源
+
+1. 在网站项目中的网站根目录下创建静态资源文件夹 , 在静态资源文件夹下存放资源文件
+2. 使用 express 创建好了 web 服务器实例对象后 , 通知 web 服务器到哪里找静态资源文件
+
+## 通知位置
+
+```js
+app.use(express.static("public"));
+// use()方法 和 get()|post()方法一样 , 绑定事件处理函数的
+```
+
+> 注意 : 不管请求的地址是什么 , 都要通过这段代码来处理请求
+
+### 绑定前缀
+
+```js
+app.use("/public", express.static("/public"));
+```
+
+请求`localhost:3000/css/01.css` 会提示找不到文件 , 因为没有加`/public`
+
+要请求到文件需要写为 `localhost:3000/public/css/01.css`
+
+## 路由
+
+1. 在网站根目录下新建路由子文件夹:routers
+2. 在 routers 文件夹下新建路由文件:
+    - stuRoute.js : 处理学生管理系统的 js
+    - scoreRoute.js : 处理分数管理系统的 js
