@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>修改类型</title>
+	</head>
+	<body>
+		<h1>修改类型</h1>
+		<form action="#" method="post">
+			<input type="hidden" name="cid" id="cid" value="" />
+			类型名称 : <input type="text" name="cname" id="cname" />
+			<br />
+			<button id="btnSave">保存</button>
+		</form>
+		<div id="err" style="display: none; color: color"></div>
+
+		<script src="js/jquery.min.js"></script>
+		<script>
+			var start = location.search.lastIndexOf("=") + 1;
+			var cid = location.search.substring(start);
+			// 1. 将cid 设置到对应的表单元素中
+			$("#cid").val(cid);
+			// 2. 访问API服务器获取到类型对象
+			$.ajax({
+				url: `http://localhost:8080/api/category/edit/${cid}`,
+				type: "get",
+				data: { cid: cid},
+				dataType: "json",
+				success: function (data) {
+                    if(data.status == 200 ){
+                        $('#cname').val(data.categories.cname)
+                    }
+                },
+			});
+
+			$("#btnSave").click(function () {
+				$.ajax({
+					url: "http://localhost:8080/api/category/edit",
+					type: "post",
+					data: { cid: $("#cid").val(), caname: $("#cname").val() },
+					dataType: "json",
+					success: function (data) {
+						if (data.status === 200) {
+							// 成功 , 跳转到列表页面
+							location.href = "category_list.html";
+						} else {
+							// 失败 , 显示错误的原因
+							$("#err").html(data.message).css("display", block);
+						}
+					},
+				});
+			});
+		</script>
+	</body>
+</html>

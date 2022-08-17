@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // 挂载路由
 app.use("/", require("./routers/newsRoute"));
-app.use("/login", require("./routers/loginRoute"));
+app.use("/api/login", require("./routers/loginRoute"));
 app.use("/logout", require("./routers/logoutRoute"));
 
 // 模板引擎
