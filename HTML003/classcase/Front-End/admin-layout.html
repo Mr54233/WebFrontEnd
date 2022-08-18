@@ -23,11 +23,10 @@
 								src="http://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"
 								class="layui-nav-img"
 							/>
-							{{if (user)}} {{user.uname}} {{else }} 未登录
-							{{/if}}
+							<span id="uname"> 未登录 </span>
 						</a>
 						<dl class="layui-nav-child">
-							<dd><a href="/logout">登出</a></dd>
+							<dd><a href="#" id="logout">登出</a></dd>
 						</dl>
 					</li>
 				</ul>
@@ -36,12 +35,19 @@
 			<div class="layui-side layui-bg-black">
 				<div class="layui-side-scroll">
 					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-					<ul class="layui-nav layui-nav-tree leftMain" lay-filter="test">
+					<ul
+						class="layui-nav layui-nav-tree leftMain"
+						lay-filter="test"
+					>
 						<li class="layui-nav-item layui-nav-itemed">
 							<a class="" href="javascript:;">用户中心</a>
 							<dl class="layui-nav-child">
-								<dd><a href="admin-userList.html">基本资料</a></dd>
-								<dd><a href="admin-changePwd.html">修改密码</a></dd>
+								<dd>
+									<a href="admin-userList.html">基本资料</a>
+								</dd>
+								<dd>
+									<a href="admin-changePwd.html">修改密码</a>
+								</dd>
 								<dd><a href="javascript:;">更改头像</a></dd>
 							</dl>
 						</li>
@@ -54,7 +60,9 @@
 						<li class="layui-nav-item">
 							<a href="javascript:;">新闻管理</a>
 							<dl class="layui-nav-child">
-								<dd><a href="admin-newsList.html">新闻列表</a></dd>
+								<dd>
+									<a href="admin-newsList.html">新闻列表</a>
+								</dd>
 							</dl>
 						</li>
 					</ul>
@@ -75,6 +83,7 @@
 				&copy;54
 			</div>
 		</div>
+
 		<script src="js/jquery.min.js"></script>
 		<script src="js/layui.js"></script>
 		<script>
@@ -94,6 +103,7 @@
 				});
 			});
 		</script>
+
 		<script>
 			$(document).ready(function () {
 				$(".leftMain a").on("click", function (e) {
@@ -101,6 +111,29 @@
 					var href = $(this).attr("href");
 					var iframe = $("#rightMain").attr("src", href);
 				});
+			});
+
+			// 获取登录的姓名
+			if (localStorage.token) {
+				$.ajax({
+					type: "post",
+					url: "http://127.0.0.1:3000/api/login/getuname",
+					data: {
+						token: localStorage.token,
+					},
+					success: function (response) {
+						$("#uname").html(response.username);
+						$("#login").css("display", "none");
+					},
+				});
+			}
+
+			// 退出登录
+			$("#logout").click((e) => {
+				e.preventDefault();
+				// 移除token
+				localStorage.token = "";
+				location.href = "index.html";
 			});
 		</script>
 	</body>

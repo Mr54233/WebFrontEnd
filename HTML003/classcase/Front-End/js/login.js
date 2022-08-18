@@ -2,7 +2,7 @@ $("#submit").click((e) => {
     e.preventDefault();
     $.ajax({
         type: "post",
-        url: "http://127.0.0.1:3000/api/login",
+        url: "http://127.0.0.1:3000/api/user/login",
         data: {
             uname: $("#uname").val(),
             password: $("#password").val(),
@@ -28,3 +28,7 @@ $("#submit").click((e) => {
         },
     });
 });
+
+$('#reg').click(()=>{
+    location.href = 'reg.html'
+})

@@ -19,8 +19,9 @@ app.use(
 
 // 挂载路由
 
-app.use("/api/login", require("./routers/userRoute"));
+app.use("/api/user", require("./routers/userRoute"));
 app.use("/api/getNews", require("./routers/newsRoute"));
+app.use('/api/cate',require('./routers/cateRoute'))
 
 // 错误处理
 app.use((err, req, res, next) => {

@@ -1,13 +1,13 @@
 // user 路由模块
 
 const express = require("express");
-const { login } = require("../database/users");
+const { login, register } = require("../database/users");
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 
 const route = express.Router();
 
-route.post("/", (req, res) => {
+route.post("/login", (req, res) => {
 	var user = req.body;
 
 	login(user, (result) => {
@@ -45,5 +45,12 @@ route.post("/getuname", (req, res) => {
 
 	res.send(decoded);
 });
+
+route.post("/reg",(req,res)=>{
+	user = req.body
+	register(user,(result)=>{
+		res.send(result)
+	})
+})
 
 module.exports = route;

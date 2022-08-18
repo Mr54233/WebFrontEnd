@@ -66,7 +66,7 @@ layui.use("element", function () {
 if(localStorage.token){
     $.ajax({
         type: "post",
-        url: "http://127.0.0.1:3000/api/login/getuname",
+        url: "http://127.0.0.1:3000/api/user/getuname",
         data:{
             token:localStorage.token
         },

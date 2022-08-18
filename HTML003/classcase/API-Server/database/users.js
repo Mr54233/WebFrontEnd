@@ -9,7 +9,34 @@ function login(user, callback) {
 	});
 }
 
+function register(user, callback) {
+	var sql1 = `select * from users where uname = ?`
+	db.query(sql1,user.uname,(err,result)=>{
+		if(result.length > 0){
+			callback({
+				statu:555,
+				message:'用户名重复 , 请重新输入用户名'
+			})
+		} else {
+			var sql = `insert into users(uname,password) value(?,?)`;
+			db.query(sql, [user.uname, user.password], (err, result) => {
+				if(result.affectedRows === 1){
+					callback({
+						status:200,
+						message:'注册成功'
+					});
+				} else {
+					callback({
+						status:666,
+						message:'注册失败'
+					});
+				}
+			});
+		}
+	})
+}
 
 module.exports = {
 	login,
+	register,
 };

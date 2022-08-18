@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>注册登录</title>
+		<link rel="stylesheet" href="css/layui.css" />
+	</head>
+	<body>
+		<div class="layui-bg-gray" style="padding: 30px">
+			<form class="layui-form" action="#" method="post">
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户名</label>
+
+					<div class="layui-input-block">
+						<input
+							type="text"
+							name="uname"
+							lay-verify="required"
+							autocomplete="off"
+							placeholder="请输入用户名"
+							class="layui-input"
+							id="uname"
+						/>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">密码</label>
+
+					<div class="layui-input-block">
+						<input
+							type="password"
+							name="password"
+							lay-verify="required"
+							placeholder="请输入密码"
+							autocomplete="off"
+							class="layui-input"
+							id="password"
+						/>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">确认密码</label>
+
+					<div class="layui-input-block">
+						<input
+							type="password"
+							name="repassword"
+							lay-verify="required"
+							placeholder="请输入确认密码"
+							autocomplete="off"
+							class="layui-input"
+							id="repassword"
+						/>
+					</div>
+					<div
+						class="layui-input-block"
+						style="display: none"
+						id="err"
+					></div>
+				</div>
+
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button
+							type="submit"
+							class="layui-btn"
+							lay-submit=""
+							lay-filter="demo1"
+							id="submit"
+						>
+							提交注册
+						</button>
+						<button
+							type="reset"
+							class="layui-btn layui-btn-primary"
+						>
+							重置
+						</button>
+					</div>
+				</div>
+				<div
+					class="layui-input-block"
+					style="display: none"
+					id="message"
+				></div>
+			</form>
+		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/layui.js"></script>
+
+		<script>
+			$("#submit").click((e) => {
+				e.preventDefault();
+				var uname = $("#uname").val().trim();
+				var pwd = $("#password").val().trim();
+				var rePwd = $("#repassword").val().trim();
+				console.log(uname, pwd, rePwd);
+				if (pwd && pwd === rePwd) {
+					$.ajax({
+						type: "post",
+						url: "http://127.0.0.1:3000/api/user/reg",
+						data: {
+							uname,
+							password: pwd,
+						},
+						dataType: "json",
+						success: function (response) {
+							if (response.status === 200) {
+								$("#message")
+									.html(response.message)
+									.css("display", "block")
+									.css("color", "green");
+                                setTimeout(() => {
+                                    location.href='login.html'
+                                }, 100);
+							} else {
+                                $("#message")
+									.html(response.message)
+									.css("display", "block")
+									.css("color", "red");
+                            }
+						},
+					});
+				} else {
+					$("#err")
+						.html("密码不能为空或者两次输入的密码不相同")
+						.css("display", "block")
+						.css("color", "red");
+				}
+			});
+		</script>
+	</body>
+</html>
