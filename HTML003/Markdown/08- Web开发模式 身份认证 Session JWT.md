@@ -380,6 +380,10 @@ app.post("/api/login", (req, res) => {
 // .unless({path:[/^\/api\//]}) 用来指定那些接口不需要访问权限
 
 app.use(expressJWT({ secret: secretKey }).unless({ path: [/^\/api\//] }));
+
+// 新版本需要讲expressjwt() 方法暴露出来 , 还需要在secret 后边加一个algorithms 算法选择
+app.use(expressJWT.expressjwt({ secret: "123456", algorithms: ["HS256"] }).unless({path:[/^\/api\//],}));
+
 ```
 
 ## 6. 使用 req.user 获取用户信息
