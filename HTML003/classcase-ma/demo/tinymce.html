@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>测试 tinymce.js</title>
+	</head>
+	<body>
+		<h1>TinyMCE快速开始示例</h1>
+		<form method="post" id="myfrom">
+			<textarea id="mytextarea">Hello, World!</textarea>
+            <button>提交</button>
+		</form>
+
+		<!-- 1. 导入tinymce 富文本编辑器的js库 -->
+		<script src="../lib/tinymce/jquery.tinymce.min.js"></script>
+		<script src="../lib/tinymce/tinymce.min.js"></script>
+
+		<script>
+			tinymce.init({
+				selector: "#mytextarea",
+                // 配置插件 
+                plugins:'advlist autolink link image lists charmap print preview'
+			});
+
+            var myform = document.querySelector('#myform')
+            myform.addEventListener('submit' , function (e) {
+                e.preventDefault();
+                var txt = document.querySelector('#mytextarea')
+                console.log(txt.value())
+            })
+		</script>
+	</body>
+</html>
