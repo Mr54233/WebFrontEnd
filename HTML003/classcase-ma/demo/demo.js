@@ -12,31 +12,29 @@ const options = {
 $image.cropper(options);
 
 $(".btnChange").on("click", function () {
-	var $file = $("#file");
-	$file.click();
+	$("#file").click();
 });
 
 $("#file").on("change", function (e) {
-	var file = e.target.file[0];
+	var file = e.target.files[0];
 	var newImgUrl = URL.createObjectURL(file);
-	$image.cropper("destroy").attr("src", $("#file").val()).cropper(options);
+	$image.cropper("destroy").attr("src", newImgUrl).cropper(options);
 });
 
 $(".btnUpload").on("click", function (e) {
-    var dataURL = $image
-    .cropper('getCropperCanvas',{ // 创建一个canvas画布
-        width:100,
-        height:100
-    })
-    .toDataURL ('image/png')
-});
-
-$.ajax({
-    type: "method",
-    url: "url",
-    data: "data",
-    dataType: "dataType",
-    success: function (response) {
-        
-    }
+	var dataURL = $image
+		.cropper("getCropperCanvas", {
+			// 创建一个canvas画布
+			width: 100,
+			height: 100,
+		})
+		.toDataURL("image/png");
+	// 写个点击上传的ajax
+	$.ajax({
+		type: "method",
+		url: "url",
+		data: dataURL,
+		dataType: "dataType",
+		success: function (response) {},
+	});
 });

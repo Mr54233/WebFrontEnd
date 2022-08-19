@@ -23,8 +23,10 @@
 API Server 项目 : Nodejs + Express + MySQL + CORS + jsonwebtoken + express-jwt + connect-multiparty
 
 前端项目 : layui + Echarts + jQuery(Ajax) + template-web.js(前端模板引擎) + cropper.js(图片裁剪) + 富文本编辑器组件库tinymce.js
+
 ---
 
+## 数据库
 users 用户表
 
 | 字段     | 数据类型    | 约束                                | 说明                      |
