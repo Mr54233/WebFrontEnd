@@ -53,4 +53,7 @@ route.post("/reg",(req,res)=>{
 	})
 })
 
+
+route.get('/')
+
 module.exports = route;

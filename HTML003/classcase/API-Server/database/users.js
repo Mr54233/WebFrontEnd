@@ -36,6 +36,13 @@ function register(user, callback) {
 	})
 }
 
+function getAllUser(callback){
+	var sql = `select * from users`
+	db.query(sql,(err,result)=>{
+		callback(result)
+	})
+}
+
 module.exports = {
 	login,
 	register,
