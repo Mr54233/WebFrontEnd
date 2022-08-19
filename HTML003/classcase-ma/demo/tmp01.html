@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>测试 template-web.js</title>
+	</head>
+	<body>
+		<!-- 本层用来装载动态生成的html代码 -->
+		<div id="result"></div>
+
+		<!-- 1. 定义模板字符串 按照HTML 代码的结构 -->
+		<script id="templateStr1" type="text/html">
+			<div>{{name}}</div>
+			<div>{{email}}</div>
+			<div>{{age>0?100:'还没出生'}}</div>
+		</script>
+		<!-- 2. 获取数据 , 并调用模板引擎的方法拼接字符串 -->
+		<!-- 2.1 导入模板引擎的js库 -->
+		<script src="../lib/template-web.js"></script>
+		<!-- 2.2 获取数据 调用方法 , 拼接字符串 -->
+		<script>
+			var user = {
+				name: "zs",
+				email: "zs@126.com",
+				age: 0,
+			};
+			var htmlStr = template("templateStr1", user);
+			var div = document.querySelector("#result");
+			div.innerHTML = htmlStr;
+			console.log(htmlStr);
+		</script>
+	</body>
+</html>

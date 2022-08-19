@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<td>学号</td>
+					<td>姓名</td>
+					<td>性别</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody id="tb"></tbody>
+		</table>
+	</body>
+
+	<script src="../lib/template-web.js"></script>
+	<script id="template" type="text/html">
+		{{each stus}}
+		<tr>
+			<td>{{$value.no}}</td>
+			<td>{{$value.name}}</td>
+			<td>{{$value.gender === 1 ? "女":'男'}}</td>
+			<td>
+				<button class="btnDelete">删除</button>
+			</td>
+		</tr>
+		{{/each}}
+	</script>
+
+	<script>
+		var stus = [
+			{ no: 1, name: "zs", gender: "2" },
+			{ no: 2, name: "rose", gender: "1" },
+		];
+
+		var htmlStr = template("template", { stus });
+		document.querySelector("#tb").innerHTML = htmlStr;
+	</script>
+</html>
