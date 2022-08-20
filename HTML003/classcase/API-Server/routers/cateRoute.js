@@ -18,8 +18,8 @@ route.post('/add',(req,res)=>{
 })
 
 route.post('/delete',(req,res)=>{
-    var cname = req.body.cname;
-    deleteCate(cname,(result)=>{
+    var cid = req.body.cid;
+    deleteCate(cid,(result)=>{
         res.send(result)
     })
 })

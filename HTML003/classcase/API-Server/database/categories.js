@@ -36,9 +36,9 @@ function add(cname, callback) {
 	});
 }
 
-function deleteCate(cname, callback) {
-	var sql = `delete from categories where cname = ?`;
-	db.query(sql, cname, (err, result) => {
+function deleteCate(cid, callback) {
+	var sql = `delete from categories where cid = ?`;
+	db.query(sql, cid, (err, result) => {
 		if (result.affectedRows === 1) {
 			callback({
 				status: 200,

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="../assets/css/layui.css" />
+	</head>
+	<body>
+		<button type="button" class="layui-btn" id="add">添加类型</button>
+		<table class="layui-table" style="margin: 0 20px">
+			<colgroup>
+				<col width="50" />
+				<col width="400" />
+				<col />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>cid</th>
+					<th>cname</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody id="tb"></tbody>
+		</table>
+
+		<script src="../assets/js/template-web.js"></script>
+		<script src="../assets/js/jquery.min.js"></script>
+		<script id="template1" type="text/html">
+			{{each response}}
+			<tr>
+				<td>{{$value.cid}}</td>
+				<td>{{$value.cname}}</td>
+				<td>
+					<button
+						type="button"
+						class="delete layui-btn layui-btn-danger"
+						data-id="{{$value.cid}}"
+					>
+						删除
+					</button>
+					<button
+						type="button"
+						class="edit layui-btn layui-btn-normal"
+						data-id="{{$value.cid}}"
+					>
+						编辑
+					</button>
+				</td>
+			</tr>
+			{{/each}}
+		</script>
+
+		<script>
+			function ajx() {
+				$.ajax({
+					type: "get",
+					url: "http://127.0.0.1:3000/api/cate/",
+					success: function (response) {
+						// console.log("cate", cate);
+						// console.log("response", response);
+						var html = template("template1", { response });
+						// console.log("html", html);
+						$("#tb").html(html);
+					},
+				});
+			}
+			ajx();
+
+            
+			$(".delete").click((e) => {
+				// e.preventDefault();
+				var cid = $(this).attr("data-id");
+				console.log(cid);
+				$.ajax({
+					type: "post",
+					url: "http://127.0.0.1:3000/api/cate/delete",
+					// data: { cid },
+					dataType: "dataType",
+					success: function (response) {},
+				});
+			});
+		</script>
+	</body>
+</html>
