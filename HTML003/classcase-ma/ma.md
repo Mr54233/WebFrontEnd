@@ -74,3 +74,24 @@ users 用户表
                 -   1. 使用 js 修改 src 属性的值
                 -   2. 给iframe 框架标签设置id值 `<a href='...' target='内置框架的id值'></a> `
 -   home : 前台子系统 文件夹
+
+
+
+## token 
+locastorage.setItem 
+getItem
+sesssionstorage
+
+在前端项目中 , 如果请求的不是/login , /reg , 需要在请求数据包的
+
+报文头中添加属性: Authorization +  Bearer 
+
+
+
+## 新闻表
+/api/news/page : 分页显示新闻 get
+/api/news/save : 保存新增的新闻 | 修改的新闻 post 
+/api/news/edit : 获取需要修改的新闻 get
+/api/news/delete : 删除新闻 get
+
+
