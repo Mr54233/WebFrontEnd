@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>循环结构</title>
+	</head>
+	<body>
+        <div id="app">
+            <table>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                </tr>
+                <tr v-for="(stu,index) in list ">
+                    <td v-text="stu.no"></td>
+                    <td v-text="stu.name"></td>
+                    <td v-text="stu.age"></td>
+                </tr>
+            </table>
+        </div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					list: [
+						{ no: 1, name: "zhangsan", age: 18 },
+						{ no: 2, name: "lisi", age: 20 },
+						{ no: 3, name: "wangwu", age: 16 },
+					],
+				},
+				methods: {},
+			});
+		</script>
+	</body>
+</html>

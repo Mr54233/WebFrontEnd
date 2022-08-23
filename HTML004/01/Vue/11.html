@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>样式绑定</title>
+		<style>
+			.warn {
+				font-size: 20px;
+				font-weight: bold;
+				color: red;
+			}
+			.fs {
+				font-size: 50px;
+			}
+			.green {
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1. 样式绑定的第一种写法:  :class="{类样式名:模型数据 true|false }" 
+                控制是否实施类样式 true 表示实施 false 表示不实施
+            -->
+			<p :class="{warn:isWarn}">警告</p>
+			<!-- 2. 样式绑定的第二种写法:   :class="[模型数据1,模型数据2,...]" 
+                模型数据中的值就是类样式名的字符串 , 
+                控制实施多少个类样式
+            -->
+			<div :class="[fsCls,colorCls]">实施了多个类样式</div>
+
+			<!-- 3. 样式绑定3   :style='模型数据名'
+                模型数据是一个对象 , 对象的属性名就是css属性名 , 值就是css属性值的字符串
+            -->
+			<div :style="borderStyle">1</div>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					isWarn: false,
+					fsCls: "fs",
+					colorCls: "green",
+					borderStyle: { border: "1px solid red" },
+					widthStyle: "width:100px",
+					heightStyle: "height:100px",
+				},
+			});
+		</script>
+	</body>
+</html>

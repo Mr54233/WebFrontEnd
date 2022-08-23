@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>分支结构</title>
+	</head>
+	<body>
+		<div id="app">
+			<span v-text="name"></span>
+            <span v-if="score>=90">优秀</span>
+            <span v-else-if="score>=60">中等</span>
+            <span v-else>普通</span>
+
+            <span v-show="score>=60">达标了</span>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					name: "zhangsan",
+					score: 78,
+				},
+				methods: {},
+			});
+		</script>
+	</body>
+</html>
