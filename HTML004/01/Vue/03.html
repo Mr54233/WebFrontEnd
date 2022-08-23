@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定指令</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-text="city"></h1>
+        <h1 v-html="info"></h1>
+        <!-- 需要显示原始数据 , 不需要框架进行处理 -->
+        <h2 v-pre>{{city}}</h2>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                city:'beijing',
+                info:'<span style="color:red">这是一段文字</span>'
+            }
+        })
+    </script>
+</body>
+</html>

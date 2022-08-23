@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on指令</title>
+</head>
+<body>
+    <div id="app">
+        购买数量:<span v-text="quantity"></span>
+        <!-- <button v-on:click='quantity++'>+</button>
+        <button v-on:click='quantity--'>-</button> -->
+        <!-- <button v-on:click="inc()">+</button>
+        <button v-on:click="sub()">-</button> -->
+        <button @click="inc()">+</button>
+        <button @click="sub()">-</button>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                quantity:1
+            },
+            methods: {
+                inc:function(){this.quantity++},
+                sub:function(){
+                    this.quantity--;
+                    if(this.quantity < 0){
+                        this.quantity = 0
+                    }
+                },
+            },
+        })
+    </script>
+</body>
+</html>

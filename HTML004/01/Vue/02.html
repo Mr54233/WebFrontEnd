@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>v-cloak</title>
+        <style>
+            /* 1. 给v-cloak指令定义css样式 */
+            [v-cloak]{
+                display: none;
+            }
+        </style>
+	</head>
+	<body>
+			<!-- HTML代码 : Vue框架挂载到一个HTML标签中 , 这个标签已经它的后代标签就是Vue框架的管理范围 -->
+			<div id="app" v-cloak>
+                <!-- 2. 在插值表达式所在的标签中使用v-cloak -->
+				<!-- 插值表达式 : 输出变量(表达式)的值 -->
+				<h1>{{msg}}</h1>
+				<h1>{{num}}</h1>
+		</div>
+
+        <script src="./js/vue.js"></script>
+
+        <script>
+            const app = new Vue({
+                el:'#app',
+                data:{
+                    msg:'hello world',
+                    num:10
+                }
+            })
+        </script>
+	</body>
+</html>

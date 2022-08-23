@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一个应用Vue 框架的案例代码</title>
+</head>
+<body>
+    <!-- 1. HTML代码 : Vue框架挂载到一个HTML标签中 , 这个标签已经它的后代标签就是Vue框架的管理范围 -->
+    <div id="app">
+        <!-- 插值表达式 : 输出变量(表达式)的值 -->
+        <h1>{{msg}}</h1>
+        <h1>{{num}}</h1>
+        <button @click="add()">进行加一操作</button>
+
+        <a href="http://baidu.com" data-price="200">百度</a>
+    </div>
+
+    <!-- 2. 导入Vue 框架的js代码 -->
+    <script src="./js/vue.js"></script>
+    <!-- 3. 编写自己的代码: vue框架的规范 -->
+    <script>
+        // 创建vue实例对象
+        const app = new Vue({
+            el:'#app',
+            data:{
+                msg:'Hello world',
+                num:10,
+            },
+            methods: {
+                add:function(){
+                    this.num++
+                }
+            },
+        });
+    </script>
+</body>
+</html>
