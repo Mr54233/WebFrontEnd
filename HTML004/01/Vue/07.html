@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>事件冒泡</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 事件冒泡 -->
+            <!-- vue框架中也是采用事件冒泡的方式处理事件的 -->
+			<!-- <div @click="clickdiv()">
+                调用事件处理函数时可以传递事件对象(固定写法:$event)
+				<p @click="clickp($event)">单击我</p>
+			</div> -->
+			<div @click="clickdiv()">
+                <!-- 调用事件处理函数时可以传递事件对象(固定写法:$event) -->
+				<p @click.stop="clickp()">单击我</p>
+                <a href="http://www.baidu.com" @click.prevent="clicka()">baidu</a>
+			</div>
+			<div>
+				<h1>{{info1}}</h1>
+				<h1>{{info2}}</h1>
+			</div>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					info1: "",
+					info2: "",
+				},
+				methods: {
+					clickdiv(e) {
+                        this.info2 = "单击了div";
+                        // e.stopPropagation()
+					},
+					clickp(e) {
+                        this.info1 = "单击了p段落";
+                        e.stopPropagation();
+					},
+                    clicka(){
+                        alert('单击了超链接');
+                    }
+				},
+			});
+		</script>
+	</body>
+</html>

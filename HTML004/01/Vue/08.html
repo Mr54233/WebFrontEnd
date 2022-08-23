@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" @keyup.enter.space="ipt()" />
+    </div>
+
+    <script src="./js/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods: {
+                ipt(){
+                    // 如果是按了回车键 , 弹出对话框
+                    // if(e.keyCode === 13){
+                        alert('over')
+                    // }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
