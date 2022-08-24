@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>计算属性</title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{msg}}</h1>
+            <!-- 逆序输出msg的值 -->
+            <!-- 计算属性的使用和一般属性使用一样 , 和函数的调用不一样 -->
+            <h1>{{com}}</h1>
+            <h1>{{comMethod()}}</h1>
+            <h1>{{com}}</h1>
+            <h1>{{comMethod()}}</h1>
+		</div>
+		<script src="./js/vue.js"></script>
+
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					msg:'student'
+				},
+				methods: {
+					comMethod(){
+                        console.log("method");
+                        // 基于模型数据进行较为复杂的计算
+                        return this.msg.split('').reverse().join('');
+                    }
+				},
+                computed:{
+                    // 计算属性的定义就是定义一个函数
+                    com(){
+                        console.log("computed");
+                        // 基于模型数据进行较为复杂的计算
+                        return this.msg.split('').reverse().join('');
+                    }
+                }
+			});
+		</script>
+	</body>
+</html>

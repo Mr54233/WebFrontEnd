@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 文本框不能自动获取焦点 , 用户操作比较麻烦 -->
+			<!-- 自定义指令 : 让文本框自动获得焦点 -->
+			<input type="text" v-focus />
+			<!-- 调用指令时 , 指令名前加'v-' -->
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// 自定义一个自动获取焦点的指令 v-focus
+			Vue.directive("focus", {
+				// 钩子函数是有形参的 , 一般而言 , 第一个形参是el ,
+				// 就是实施了指令的这个元素
+				inserted: function (el) {
+					el.focus(); //让元素获得焦点
+				},
+			});
+			const app = new Vue({
+				el: "#app",
+				data: {},
+				methods: {},
+			});
+		</script>
+	</body>
+</html>

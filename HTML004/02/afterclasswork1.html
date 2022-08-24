@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>课后作业1</title>
+	</head>
+	<body>
+		<!-- 1 -  自定义一个过滤器，用于在金额数据前添加“￥”符号 -->
+		<div id="app">
+			<h1>{{money | symbol('$')}}</h1>
+			<h1>{{msg | symbol('$')}}</h1>
+		</div>
+
+        <script src="./js/vue.js"></script>
+
+        <script>
+            const app = new Vue({
+                el:'#app',
+                data:{
+                    money:200,
+                    msg:"hello",
+                },
+                filters:{
+                    symbol(value,symbol){
+                        var reg = /\d/g;
+                        if(reg.test(value)){
+                            return symbol + value
+                        } else {
+                            return value
+                        }
+                    }
+                }
+            })
+        </script>
+	</body>
+</html>

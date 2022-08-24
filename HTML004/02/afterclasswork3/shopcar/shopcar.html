@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>购物车</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 表格方式显示购物车中的商品数据 -->
+
+			<table>
+				<thead>
+					<tr>
+						<th>商品编号</th>
+						<th>商品名称</th>
+						<th>商品单价</th>
+						<th>购买数量</th>
+						<th>小计</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(product,index) in cart.goods">
+						<td>{{product.id}}</td>
+						<td>{{product.name}}</td>
+						<td>{{product.price}}</td>
+						<td>
+                            <button @click="sub(index)">-</button>
+                            {{product.quantity}}
+                            <button @click="inc(index)">+</button>
+                        </td>
+						<td>{{product.price * product.quantity}}</td>
+						<td>
+							<a href="#" @click.prevent="remove(index)">删除</a>
+						</td>
+					</tr>
+                    <tr  v-show="cart.goods.length === 0">
+                        <td colspan="6">购物车中没有需要购买的商品</td>
+                    </tr>
+				</tbody>
+				<tfoot>
+					<tr >
+						<td colspan="4">总计</td>
+						<td>{{total}}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					cart: {
+						goods: [
+							{
+								id: 1001,
+								name: "格力空调",
+								price: 3000,
+								quantity: 1,
+							},
+							{
+								id: 1023,
+								name: "华为手机",
+								price: 2200,
+								quantity: 1,
+							},
+						],
+						amount: 5200,
+						count: 2,
+					},
+				},
+                methods: {
+                    remove(index){
+                        // 按照下标到goods数组中删除对应商品
+                        this.cart.goods.splice(index,1)
+                    },
+                    sub(index){
+                        this.cart.goods[index].quantity--
+                        //如果购买数量小于等于0 , 询问是否删除该商品
+                        if(this.cart.goods[index].quantity <= 0){
+                            if(confirm('是否删除该商品')){
+                                this.cart.goods.splice(index,1)
+                            } else {
+                                // 如果不删除 , 就将该商品的购买数量设置为1
+                                this.cart.goods[index].quantity = 1
+                            }
+                        }
+                    },
+                    inc(index){
+                        this.cart.goods[index].quantity++
+                    }
+                },
+				computed:{
+					total(){
+						var amount = 0;
+						this.cart.goods.forEach((good)=> {
+							amount += good.price * good.quantity
+						});
+						return amount
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

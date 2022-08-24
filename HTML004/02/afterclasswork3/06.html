@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 自定义指令 : 给文本框添加背景颜色 -->
+			<input type="text" v-bgcolor="val" />
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// // 全局自定义指令
+			// Vue.directive("bgcolor", {
+			// 	// el : 就是实施了指令的元素对象
+			// 	// binding : 接收到的指令的值
+			// 	// name : 属性记录了指令名
+			// 	// value : 属性记录了所赋的值
+			// bind: function (el, binding) {
+			// 	el.style.backgroundColor = binding.value.color
+			// 	},
+			// });
+
+			const app = new Vue({
+				el: "#app",
+				data: {
+					val: {
+						color: "blue",
+					},
+				},
+				methods: {},
+				// 局部自定义指令
+				directives: {
+					bgcolor: {
+						bind: function (el, binding) {
+							el.style.backgroundColor = binding.value.color;
+						},
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>课后作业2</title>
+	</head>
+	<body>
+		<!-- 2 -  需求：在文本框中输入职工的工资，下面就要显示出他|她应该支付的个人所得税：
+        工资总额小于3500元，个人所得税=0
+        工资总额>=3500元，个人所得税 = 工资总额*1% -->
+
+		<div id="app">
+			工资总额 : <input type="number" v-model="salary" /><br />
+			个人所得税 : <h1>{{pit}}</h1>
+			<!-- 个人所得税 : <h1>{{Pit}}</h1> -->
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					salary: "",
+					pit: "",
+				},
+                // 侦听器
+				watch: {
+					salary(value) {
+						if (value < 3500) {
+							this.pit = 0;
+						} else {
+							this.pit = value * 0.01;
+						}
+					},
+				},
+                // 计算属性
+                // computed:{
+                //     Pit(){
+                //         if(this.salary < 3500){
+                //             return 0
+                //         } else {
+                //             return this.salary * 0.01
+                //         }
+                //     }
+                // }
+			});
+		</script>
+	</body>
+</html>
