@@ -230,7 +230,7 @@ const fileName1 = path.join(__dirname, "./a", "/b", "c", "readme.txt");
 console.log(fileName, "\n", fileName1);
 ```
 
-1. path.basename() 
+2. path.basename() 
 
 使用path.basename() 方法可以从一个文件路径中 , 获取到文件的名称部分
 
