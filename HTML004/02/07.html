@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>侦听器</title>
+	</head>
+	<body>
+		<div id="app">
+			firstName:<input type="text" v-model="firstName" /> <br />
+			lastName:<input type="text" v-model="lastName" /> <br />
+			<h1>FullName:{{fullName}}</h1>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					firstName: "Tom",
+					lastName: "Trump",
+					fullName: "Tom Trump",
+				},
+				watch: {
+					// 侦听器侦听到模型数据的改变 , 就需要实时作出反应
+					// 侦听器函数名 = 被侦听的模型数据名
+					// 侦听器函数的形参记录了对应模型数据中的最新值
+					firstName(val) {
+						this.fullName = val + " " + this.lastName;
+					},
+					lastName(val) {
+						this.fullName = this.firstName + " " + val;
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

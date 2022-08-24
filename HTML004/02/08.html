@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>侦听器</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 要将字符串格式化为首字母大写 , 其他字母小写 -->
+			<h1>{{msg | upper}}</h1>
+			<!-- 将日期格式化为 2022年08月01日 -->
+			<h1>{{birthday | dateFormat('yyyy年mm月dd日')}}</h1>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// 过滤器函数的第一个形参value , 记录了需要进行格式化的数据
+			Vue.filter("upper", function (value) {
+				return (
+					value.charAt(0).toUpperCase() +
+					value.substring(1).toLowerCase()
+				);
+			});
+			const app = new Vue({
+				el: "#app",
+				data: {
+					msg: "hElLo",
+					birthday: "2022/8/1",
+				},
+				filters: {
+					// 过滤器的第二个形参就记录了调用时传递过来的第一个参数
+					// 一般是格式字符串
+					dateFormat(value, formatter) {
+						var now = new Date(value);
+						var y = now.getFullYear();
+						var m = now.getMonth() + 1;
+						m = m < 10 ? "0" + m : m;
+						var d = now.getDate();
+						d = d < 10 ? "0" + d : d;
+
+						return y + "年" + m + "月" + d + "日";
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

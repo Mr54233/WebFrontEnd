@@ -15,24 +15,33 @@
 		<script src="./js/vue.js"></script>
 
 		<script>
-			Vue.directive("bgcolor", {
-				// el : 就是实施了指令的元素对象
-				// binding : 接收到的指令的值 
-				// name : 属性记录了指令名
-				// value : 属性记录了所赋的值
-				bind: function (el, binding) {
-					el.style.backgroundColor = binding.value.color
-				},
-			});
+			// // 全局自定义指令
+			// Vue.directive("bgcolor", {
+			// 	// el : 就是实施了指令的元素对象
+			// 	// binding : 接收到的指令的值
+			// 	// name : 属性记录了指令名
+			// 	// value : 属性记录了所赋的值
+			// bind: function (el, binding) {
+			// 	el.style.backgroundColor = binding.value.color
+			// 	},
+			// });
 
 			const app = new Vue({
 				el: "#app",
 				data: {
 					val: {
-						color: "orange",
+						color: "blue",
 					},
 				},
 				methods: {},
+				// 局部自定义指令
+				directives: {
+					bgcolor: {
+						bind: function (el, binding) {
+							el.style.backgroundColor = binding.value.color;
+						},
+					},
+				},
 			});
 		</script>
 	</body>
