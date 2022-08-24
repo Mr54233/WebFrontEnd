@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			#app div {
+				width: 300px;
+				height: 60px;
+			}
+			#app div span {
+				display: inline-block;
+				width: 80px;
+			}
+            #app div:nth-child(4){
+                height: auto;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<form action="">
+				<div>
+					<span>用户名称:</span>
+					<!-- 当行文本框: 使用v-model 双向绑定到一个模型数据 -->
+					<input type="text" v-model="uname" />
+				</div>
+				<div>
+					<span>性别:</span>
+                    <!-- 一组单选按钮中每个单选按钮都绑定到同一个模型变量 -->
+					<input type="radio" value="1" v-model="gender" />男
+					<input type="radio" value="2" v-model="gender" />女
+				</div>
+				<div>
+					<span>爱好:</span>
+					<input type="checkbox" value="1" v-model="hobby" />足球 
+                    <input type="checkbox" value="2" v-model="hobby" />编码
+					<input type="checkbox" value="3" v-model="hobby" />音乐
+				</div>
+				<div>
+					<span>职位:</span>
+					<select v-model="position" multiple="true">
+						<option value="1">软件工程师</option>
+						<option value="2">培训师</option>
+						<option value="3">技术支持工程师</option>
+					</select>
+				</div>
+				<div>
+					<span>简介:</span>
+					<textarea v-model="description"></textarea>
+				</div>
+				<div>
+					<span>&nbsp;</span>
+					<button @click.prevent="save()">保存</button>
+				</div>
+			</form>
+		</div>
+		<script src="./js/vue.js"></script> 
+
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					uname: "zs",
+                    // 一组单选按钮 , 对应一个模型变量
+                    gender:1,
+                    // 一个复选框对应一个数组类型的模型数据
+                    hobby:[1,2],
+                    // 多选的下拉列表框对应一个数组类型的模型数据
+                    position:[2,3],
+                    description:'i am a employee'
+				},
+				methods: {
+					save() {
+						// 提交按钮的处理函数中 , 直接使用模型数据中的数据就是单行文本框中输入的数据
+                        console.log(this.uname)
+                        console.log(this.gender)
+                        console.log(this.hobby)
+                        console.log(this.position);
+                        console.log(this.description);
+					},
+				},
+			});
+		</script>
+	</body>
+</html>
