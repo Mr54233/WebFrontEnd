@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>具名插槽</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <info-box reason="用户名已被注册"></info-box> -->
+			<info-box>
+				<p slot="type">业务逻辑错误</p>
+				<p>用户名已被注册 , 请重新输入</p>
+				<p slot="time">2022/8/25</p>
+				<!-- 业务逻辑错误,用户名已被注册,2022/8/25 -->
+			</info-box>
+			<!-- <info-box>密码的长度必须大于等于6</info-box> -->
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// info-box 子组件用于显示显示错误信息
+			// 错误的原因是多种多样的
+			// Vue.component("info-box", {
+			// 	props: ["reason"],
+			// 	template: `<div>
+			//                 <strong>ERROR:</strong>
+			//                 <span>{{reason}}</span>
+			//             </div>`,
+			// });
+			Vue.component("info-box", {
+				template: `<div>
+                            <strong style='color:red'><slot name="type"></slot></strong>
+                            <span><slot></slot></span>
+							<p><slot name="time"></slot></p>
+                        </div>`,
+			});
+
+			const app = new Vue({
+				el: "#app",
+				data: {},
+			});
+		</script>
+	</body>
+</html>
