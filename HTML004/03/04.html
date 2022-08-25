@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>父组件向子组件传递数据</title>
+	</head>
+	<body>
+		<div id="app">
+            <cart></cart>
+        </div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// 父组件是购物车组件 , 子组件是商品列表组件
+			// 列表组件需要父组件购物车组件将商品数组传递过来
+			Vue.component("cart", {
+				data() {
+					return {
+						goods: [
+							{
+								id: 1,
+								name: "笔记本",
+								price: 3000,
+							},
+							{
+								id: 2,
+								name: "美的空调",
+								price: 2600,
+							},
+						],
+					};
+				},
+                template:`
+                <div>
+                    <h1>购物车</h1>
+                    <list :goods='goods'></list>
+                </div>
+                `,
+				components: {
+					'list': {
+						props: ["goods"],
+						template: `
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>名称</th>
+                                    <th>单价</th>
+                                </tr>
+                                <tr v-for='(good ,index) in goods'>
+                                    <td>{{good.id}}</td>
+                                    <td>{{good.name}}</td>
+                                    <td>{{good.price}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        `,
+					},
+				},
+			});
+
+			const app = new Vue({
+				el: "#app",
+				data: {},
+			});
+		</script>
+	</body>
+</html>

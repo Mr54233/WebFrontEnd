@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>zujian</title>
+	</head>
+	<body>
+		<!-- 组件 : 按钮 , 按钮上的文字显示为此按钮被单击了几次的次数 -->
+		<!-- 按钮响应单击事件 , 计数被单击的次数     -->
+		<div id="app">
+			<btn-counter></btn-counter>
+			<btn-counter></btn-counter>
+			<btn-counter></btn-counter>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// 全局组件注册
+			// 两个参数 , 第一个参数就是组件名 , 也是调用这个组件的标签名
+			//            第二个参数就是组件对象 , 包含了data 数据属性 , methods 方法属性 , filters 过滤器属性 等属性
+			Vue.component("btn-counter", {
+				// 子组件中data属性应该是一个函数 , 函数应该返回包含模型数据的对象
+				data() {
+					return {
+						count: 0, // 记录被单机次数的模型数据
+					};
+				},
+				// 组件的内容应该包含在父盒子中
+				template: `
+                <div>
+                    <button @click="inc()">被单击了 {{count}} 次</button>
+                    <p>123</p>
+                </div>
+                `,
+				methods: {
+					inc() {
+						this.count++;
+					},
+				},
+			});
+
+			// 实际上也是创建了一个组件对象 , 称之为根组件
+			const app = new Vue({
+				el: "#app",
+				data: {},
+				methods: {},
+			});
+		</script>
+	</body>
+</html>

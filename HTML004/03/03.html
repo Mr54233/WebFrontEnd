@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>局部组件</title>
+	</head>
+	<body>
+		<div id="app">
+			<info-box>
+				<test></test>
+			</info-box>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			var infobox = {
+				data() {
+					return {
+						msg: "hello vue",
+					};
+				},
+				template: `
+							<h1>{{msg}}</h1>
+						`,
+				components: {
+					test: {
+						template: "test",
+					},
+				},
+			};
+			const app = new Vue({
+				el: "#app",
+				data: {},
+				// 局部组件
+				// 添加一个components属性
+				// 局部注册的组件 , 就是在组件中components属性中注册的组件
+				// 局部注册的组件只能在它注册的组件中使用
+				components: {
+					"info-box": infobox,
+				},
+			});
+		</script>
+	</body>
+</html>

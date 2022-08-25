@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>zujian</title>
+	</head>
+	<body>
+		<div id="app">
+			<btn-counter></btn-counter>
+			<info-box></info-box>
+			<InfoBox></InfoBox>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+            Vue.component('info-box',{
+                template:`<h1>这是提示信息</h1>`
+            })
+            Vue.component('InfoBox',{
+                template:`<h1>这是提示信息</h1>`
+            })
+
+			Vue.component("btn-counter", {
+				data() {
+					return {
+						count: 0,
+					};
+				},
+				template: `
+                <div>
+                    <button @click="inc()">被单击了 {{count}} 次</button>
+                    <p>123</p>
+                    <info-box></info-box>
+                    <InfoBox></InfoBox>
+                </div>
+                `,
+				methods: {
+					inc() {
+						this.count++;
+					},
+				},
+			});
+
+			// 实际上也是创建了一个组件对象 , 称之为根组件
+			const app = new Vue({
+				el: "#app",
+				data: {},
+				methods: {},
+			});
+		</script>
+	</body>
+</html>
