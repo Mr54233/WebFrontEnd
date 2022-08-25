@@ -4,106 +4,148 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>购物车</title>
+		<title>shopcar</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#header {
+				background-color: #a5d1e2;
+			}
+			#footer {
+				background-color: #f1ce73;
+			}
+			#totalMoney{
+				color: #fc400c;
+			}
+			#total {
+				background-color: red;
+			}
+			#input{
+				width: 50px;
+			}
+			.btn {
+				width: 20px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="app">
-			<!-- 表格方式显示购物车中的商品数据 -->
-
-			<table>
-				<thead>
-					<tr>
-						<th>商品编号</th>
-						<th>商品名称</th>
-						<th>商品单价</th>
-						<th>购买数量</th>
-						<th>小计</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="(product,index) in cart.goods">
-						<td>{{product.id}}</td>
-						<td>{{product.name}}</td>
-						<td>{{product.price}}</td>
-						<td>
-                            <button @click="sub(index)">-</button>
-                            {{product.quantity}}
-                            <button @click="inc(index)">+</button>
-                        </td>
-						<td>{{product.price * product.quantity}}</td>
-						<td>
-							<a href="#" @click.prevent="remove(index)">删除</a>
-						</td>
-					</tr>
-                    <tr  v-show="cart.goods.length === 0">
-                        <td colspan="6">购物车中没有需要购买的商品</td>
-                    </tr>
-				</tbody>
-				<tfoot>
-					<tr >
-						<td colspan="4">总计</td>
-						<td>{{total}}</td>
-					</tr>
-				</tfoot>
-			</table>
+			<cart></cart>
 		</div>
 
 		<script src="./js/vue.js"></script>
 
 		<script>
-			const app = new Vue({
-				el: "#app",
-				data: {
-					cart: {
+			// 父组件是购物车组件 , 子组件是商品列表组件
+			// 列表组件需要父组件购物车组件将商品数组传递过来
+			Vue.component("cart", {
+				data() {
+					return {
 						goods: [
 							{
-								id: 1001,
-								name: "格力空调",
+								logo: "笔记本logo",
+								name: "笔记本",
 								price: 3000,
-								quantity: 1,
+								count: 1,
 							},
 							{
-								id: 1023,
-								name: "华为手机",
-								price: 2200,
-								quantity: 1,
+								logo: "美的logo",
+								name: "美的空调",
+								price: 2600,
+								count: 1,
 							},
 						],
-						amount: 5200,
-						count: 2,
+					};
+				},
+				template: `
+                <div>
+					<headTitle></headTitle>
+                    <list :goods='goods' @remove-goods="deleteGoods" @inc='inc' @sub='sub'></list>
+					<foot>
+						{{total}}
+					</foot>
+                </div>
+                `,
+				components: {
+					// 头部组件
+					headTitle: {
+						template: `<h1 id="header">我的商品</h1>`,
+					},
+					// 中心组件
+					list: {
+						props: ["goods"],
+						template: `
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>logo</th>
+                                    <th>名称</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr v-for='(good ,index) in goods'>
+                                    <td>{{good.logo}}</td>
+                                    <td>{{good.name}}</td>
+                                    <td>{{good.price}}</td>
+                                    <td>
+										<button @click='$emit("sub",index)' class='btn'>-</button>
+										<input type="text" v-model="good.count" id="input">
+										<button @click='$emit("inc",index)' class='btn'>+</button>
+									</td>
+                                    <td>
+										<a href="" @click.prevent='$emit("remove-goods",index)'>删除</a>
+									</td>
+                                </tr>
+								
+                            </table>
+                        </div>
+                        `,
+					},
+					// 结算组件
+					foot: {
+						template: `
+						<div id="footer">
+							<span id='totalMoney'>总价:<slot></slot></span> <button id="total">结算</button>
+						</div>
+						`,
 					},
 				},
-                methods: {
-                    remove(index){
-                        // 按照下标到goods数组中删除对应商品
-                        this.cart.goods.splice(index,1)
-                    },
-                    sub(index){
-                        this.cart.goods[index].quantity--
-                        //如果购买数量小于等于0 , 询问是否删除该商品
-                        if(this.cart.goods[index].quantity <= 0){
-                            if(confirm('是否删除该商品')){
-                                this.cart.goods.splice(index,1)
-                            } else {
-                                // 如果不删除 , 就将该商品的购买数量设置为1
-                                this.cart.goods[index].quantity = 1
-                            }
-                        }
-                    },
-                    inc(index){
-                        this.cart.goods[index].quantity++
-                    }
-                },
-				computed:{
-					total(){
+				methods: {
+					deleteGoods(index) {
+						this.goods.splice(index, 1);
+					},
+					inc(index) {
+						this.goods[index].count++;
+					},
+					sub(index) {
+						this.goods[index].count--;
+						if (this.goods[index].count <= 0) {
+							if (confirm("是否删除该商品")) {
+								this.goods.splice(index, 1);
+							} else {
+								// 如果不删除 , 就将该商品的购买数量设置为1
+								this.goods[index].count = 1;
+							}
+						}
+					},
+				},
+				computed: {
+					total() {
 						var amount = 0;
-						this.cart.goods.forEach((good)=> {
-							amount += good.price * good.quantity
+						this.goods.forEach((good) => {
+							amount += good.price * good.count;
 						});
-						return amount
-					}
-				}
+						return amount;
+					},
+				},
+			});
+
+			const app = new Vue({
+				el: "#app",
+				data: {},
 			});
 		</script>
 	</body>
