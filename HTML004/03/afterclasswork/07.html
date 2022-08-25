@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>非父子组件之间传递数据</title>
+	</head>
+	<body>
+		<div id="app">
+			<tom-component></tom-component>
+			<john-component></john-component>
+
+			<button @click="off">销毁事件</button>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// 1. 创建事件中心对象
+			const hub = new Vue();
+			// 2. 注册组件 Tom , John
+			Vue.component("tom-component", {
+				data() {
+					return {
+						num: 0,
+					};
+				},
+				template: `<div>
+                                <h1>John计数器:{{num}}</h1>
+                                <button @click="say">向John说话</button>
+                            </div>`,
+				methods: {
+					say() {
+						// 需要向别的组件发送数据 , 就要触发自定义事件
+						hub.$emit("tom-say-event", 1);
+					},
+					process(step) {
+						console.log(step);
+						this.num += step;
+					},
+				},
+				// 挂载完成的钩子函数
+				mounted() {
+					// 给组件绑定事件处理函数
+					hub.$on("john-say-event", this.process);
+				},
+			});
+
+			Vue.component("john-component", {
+				data() {
+					return {
+						num: 0,
+					};
+				},
+				template: `<div>
+                                <h1>Tom计数器:{{num}}</h1>
+                                <button @click="say">向Tom说话</button>
+                            </div>`,
+				methods: {
+					say() {
+						// 需要向别的组件发送数据 , 就要触发自定义事件
+						hub.$emit("john-say-event", 2);
+					},
+					process(step) {
+						console.log(step);
+						this.num += step;
+					},
+				},
+				// 挂载完成的钩子函数
+				mounted() {
+					// 给组件绑定事件处理函数
+					hub.$on("tom-say-event", this.process);
+				},
+			});
+
+			const app = new Vue({
+				el: "#app",
+				data: {},
+				methods: {
+					off() {
+						hub.$off("tom-say-event");
+						hub.$off("john-say-event");
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>子组件向父组件传递数据</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 父组件在调用子组件时 , 需要进行事件绑定 -->
+            <!-- 给自定义事件绑定上处理函数来处理事件 -->
+			<test-c @test-event="process"></test-c>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			Vue.component("test-c", {
+				data() {
+					return {
+						num: 1,
+					};
+				},
+				// 单击按钮 , 功能:模型数据+1 , 触发自定义事件
+				// 自定义事件名是自己命名的
+				// $emit("自定义事件名", ...事件发生时 , 需要传递给父组件的数据...)
+				template: `
+                <div>
+                    <h1>{{num}}</h1>
+                    <button @click='num++;$emit("test-event",num)'>+1</button>
+                </div>
+                `,
+			});
+
+			const app = new Vue({
+				el: "#app",
+				data: {},
+                methods: {
+                    // 父组件中的事件处理函数需要参照子组件中触发事件时传递的参数
+                    // 子组件中出发时间传递了多少个实参 , 事件处理函数就需要定义多少个形参
+                    process(x){
+                        console.log(x);
+                    }
+                },
+			});
+		</script>
+	</body>
+</html>
