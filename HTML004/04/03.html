@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>使用vue-router进行基本前端路由</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 2. 编写导航组件 -->
+			<!-- 在vueRouter中提供了router-link组件 -->
+			<!-- 组件在浏览器中会被编译成<a href=""></a> -->
+			<router-link to="/shouye">首页</router-link>
+			<router-link to="/keji">科技</router-link>
+
+			<!-- 3. 页面占位符 路由占位符 -->
+			<!-- 导航到的组件将会显示在路由占位符中 -->
+			<router-view></router-view>
+		</div>
+
+		<script src="./js/vue.js"></script>
+		<!-- 1. 导入vueRouter js库 -->
+		<script src="./js/vue-router.min.js"></script>
+
+		<script>
+			// 4. 定义vue组件 , 将导航后需要现实的内容分别定义到不同的组件中
+			var Home = {
+				template: `<h1>首页</h1>`,
+			};
+			var Keji = {
+				template: `<h1>科技</h1>`,
+			};
+
+			// 5. 定义路由对象 , 路由对象中存在一个地址和组件之间的映射表
+			const router = new VueRouter({
+				routes: [
+					// 映射表
+					// 每一个映射关系就是一个对象 , 对象中一般有path路径和component组件两个属性
+					// component组件属性不能记录组件名 , 必须是一个组件对象
+					{ path: "/shouye", component: Home },
+					{ path: "/keji", component: Keji },
+					// 路由重定向  redirect属性值是另外一个地址
+					{ path: "/", redirect: "/shouye" },
+				],
+			});
+
+			const app = new Vue({
+				el: "#app",
+				// 6. 将路由对象挂载到根组件中
+				router,
+			});
+		</script>
+	</body>
+</html>
