@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>组件化购物车</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#app {
+				width: 260px;
+				height: auto;
+				margin: 10px auto;
+			}
+			.cart-title {
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				background-color: #a5d1e2;
+			}
+			.detail,
+			.quantity,
+			.delete {
+				display: inline-block;
+			}
+			.line {
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+			}
+			.detail img {
+				width: 40px;
+				height: 40px;
+			}
+			.quantity input {
+				width: 50px;
+			}
+			.quantity span {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+			}
+			.total {
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				background-color: #ffc83a;
+			}
+			.total .btn {
+				display: inline-block;
+				width: 45px;
+				height: 40px;
+				background-color: #e55639;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+            <my-cart></my-cart>
+			<!-- <div class="cart-title">我的购物车</div>
+			<div class="cart-list">
+				<div class="line">
+					<div class="detail">
+						<img src="../img/a.jpg" alt="" />
+						<span class="name">tcl彩电</span>
+					</div>
+					<div class="quantity">
+						<span>-</span>
+						<input type="text" class="num" />
+						<span>+</span>
+					</div>
+					<div class="delete">X</div>
+				</div>
+				<div class="line">
+					<div class="detail">
+						<img src="../img/b.jpg" alt="" />
+						<span class="name">机顶盒</span>
+					</div>
+					<div class="quantity">
+						<span>-</span>
+						<input type="text" class="num" />
+						<span>+</span>
+					</div>
+					<div class="delete">X</div>
+				</div>
+			</div>
+			<div class="total">
+				<div>
+					总价<span>123</span>
+					<span class="btn">结算</span>
+				</div>
+			</div> -->
+		</div>
+        
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			const hub = new Vue();
+
+			Vue.component("cart-title", {
+				props: ["title"],
+				template: `
+                <div class="title">{{title}}</div>
+                `,
+			});
+			Vue.component("cart-list", {
+				props: ["goodslist"],
+				template: `
+                <div class="cart-list">
+                    <div class="line" v-for="(goods,index) in goodslist">
+
+					<div class="detail">
+						<img :src="goods.img" alt="" />
+						<span class="name">goods.name</span>
+					</div>
+
+					<div class="quantity">
+						<span @click='sub(index)'>-</span>
+						<input type="text" class="num" v-model='goods.quantity'/>
+						<span @click='inc(index)'>+</span>
+					</div>
+
+					<div class="delete" @click="remove(index)">X</div>
+                    </div>
+
+                </div>
+                `,
+				methods: {
+					sub(index) {
+						this.goodslist[index].quantity--;
+						// hub.$emit("goods-sub", index);
+					},
+					inc(index) {
+						this.goodslist[index].quantity++;
+						// hub.$emit("goods-inc", index);
+					},
+					remove(index) {
+						this.goodslist.splice(index, 1);
+						// hub.$emit("goods-remove", index);
+					},
+				},
+			});
+			Vue.component("cart-total", {
+				props: ["goodslist"],
+				template: `
+                <div class="total">
+                    <div>
+                        总价<span>{{calcTotal}}</span>
+                        <span class="btn" @click="over">结算</span>
+                    </div>
+			    </div>
+                `,
+				methods: {
+					over() {
+						hub.$emit("over", calcTotal);
+					},
+				},
+                computed:{
+                    calcTotal(){
+                        var total = 0;
+                        for(var i = 0 ; i < this.goodslist.length ; i++){
+                            total += this.goodslist[i].price * this.goodslist[i].quantity
+                        }
+                    }
+                }
+			});
+
+            Vue.component('my-cart',{
+                data(){
+                    return {
+                        title:'我的购物车',
+                        goodsList:[
+                            {
+                                img:'../img/a.jpg',
+                                name:'TCL彩电',
+                                price:2000,
+                                quantity:1
+                            },
+                            {
+                                img:'../img/b.jpg',
+                                name:'机顶盒',
+                                price:600,
+                                quantity:1
+                            },
+                        ]
+                    }
+                },
+                template:`<div>
+                            <cart-title :title="title"></cart-title>
+                            <cart-list :goodslist="goodsList"></cart-list>
+                            <cart-total :goodslist="goodsList"></cart-total>
+                        </div>`,
+                mounted() {
+                    // 绑定子组件触发的事件
+                    hub.$on('goods-sub',this.sub)
+                    hub.$on('goods-inc',this.inc)
+                    hub.$on('goods-remove',this.remove)
+                },
+                methods: {
+                    sub(index){
+                        this.goodsList[index].quantity--
+                    },
+                    inc(index){
+                        this.goodsList[index].quantity++
+                    },
+                    remove(index){
+                        this.goodsList.splice(index, 1);
+                    }
+                },
+            })
+
+			const app = new Vue({
+				el: "#app",
+				data: {},
+			});
+		</script>
+	</body>
+</html>

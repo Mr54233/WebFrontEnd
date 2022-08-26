@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>模拟前端路由</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 超链接: 导航 -->
+			<a href="#/shouye">首页</a>
+			<a href="#/keji">科技</a>
+			<a href="#/caijing">财经</a>
+			<a href="#/yule">娱乐</a>
+
+            <component :is="componentName"></component>
+		</div>
+
+		<script src="./js/vue.js"></script>
+
+		<script>
+			// 四个主要内容分别在四个vue组件中
+			Vue.component("shouye", {
+				template: `<h1>首页</h1>`,
+			});
+			Vue.component("keji", {
+				template: `<h1>科技</h1>`,
+			});
+			Vue.component("caijing", {
+				template: `<h1>财经</h1>`,
+			});
+			Vue.component("yule", {
+				template: `<h1>娱乐</h1>`,
+			});
+
+			const app = new Vue({
+				el: "#app",
+				data: {
+                    componentName:"shouye"
+                },
+			});
+
+            window.onhashchange = function(){
+                console.log(location.hash.substr(2));
+                app.componentName = location.hash.substr(2)
+            }
+		</script>
+	</body>
+</html>
