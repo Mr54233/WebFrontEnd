@@ -206,7 +206,7 @@ where gender=1
    delete 语句用于删除表中的行 .
 
 ```sql
-delete  from <表名> [ where <表达式> ]
+delete from <表名> [ where <表达式> ]
 ```
 
 ```sql
