@@ -65,6 +65,7 @@
 						<td>
 							<div class="custom-control custom-switch">
 								<!-- 使用 v-model 实现双向数据绑定 -->
+								<!-- id动态绑定到cb+item.id 上面 -->
 								<input
 									type="checkbox"
 									class="custom-control-input"
@@ -102,12 +103,43 @@
 			const vm = new Vue({
 				el: "#app",
 				data: {
+					// 用户输入的品牌名称
+					brand: "",
+					nextId: 4,
 					// 品牌的列表数据
 					list: [
 						{ id: 1, name: "宝马", status: true, time: new Date() },
-						{ id: 2, name: "奔驰", status: false, time: new Date() },
+						{
+							id: 2,
+							name: "奔驰",
+							status: false,
+							time: new Date(),
+						},
 						{ id: 3, name: "奥迪", status: true, time: new Date() },
 					],
+				},
+				methods: {
+					// 点击链接删除对应的品牌
+					remove(id) {
+						this.list = this.list.filter((item) => item.id !== id);
+					},
+					// 阻止表单的默认行为之后触发
+					add() {
+						if (this.brand === "") return alert("必须填写品牌名称");
+						// 如果没有被return出去应该执行添加的逻辑
+						// 1. 先把要添加的品牌对象 , 整理出来
+						const obj = {
+							id: this.nextId,
+							name: this.brand,
+							status: true,
+							time: new Date(),
+						};
+						// 2. 往this.list 数组中push步骤1中得到的对象
+						this.list.push(obj);
+						// 3. 清空this.brand 同时让 this.nextId++
+						this.brand = "";
+						this.nextId++;
+					},
 				},
 			});
 		</script>
