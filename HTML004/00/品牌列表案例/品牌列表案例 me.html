@@ -87,7 +87,7 @@
 								>
 							</div>
 						</td>
-						<td>{{ item.time }}</td>
+						<td>{{ item.time | dateFormat }}</td>
 						<td>
 							<a href="javascript:;" @click="remove(item.id)"
 								>删除</a
@@ -99,7 +99,20 @@
 		</div>
 
 		<script src="./lib/vue-2.6.12.js"></script>
+
+		<!-- 导入dayjs的库文件 , 在window全局就可以使用dayjs()方法 -->
+		<script src="./lib/dayjs.min.js"></script>
 		<script>
+			// 声明格式化时间的过滤器
+			Vue.filter('dateFormat',(time)=>{
+				// 1. 对time进行格式化处理 , 得到YYYY-MM-DD HH:mm:ss
+				// 2. 把格式化的结果 return 出去
+
+				// 直接调用dayjs() 得到的是当前日期
+				// dayjs(给定的时间) 得到指定的时间
+				return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+			})
+
 			const vm = new Vue({
 				el: "#app",
 				data: {
