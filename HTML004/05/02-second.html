@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>vue-router嵌套路由</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 2. 添加页面中的路由导航组件 -->
+			<router-link to="/bookList">图书列表</router-link>
+			<router-link to="/add">新增图书</router-link>
+
+			<!-- 3. 路由占位符 -->
+			<router-view></router-view>
+		</div>
+
+		<script src="../js/vue.js"></script>
+		<!-- 1. 导入vue-router.js库文件 -->
+		<script src="../js/vue-router.min.js"></script>
+
+		<script>
+			// 4. 编写对应组件
+			let bookList = {
+				// 4.1 在外层路由的组件的html代码中定义内层的路由导航组件
+				// 4.2 在外层路由组件中定义内层路由组件的占位符
+				template: `
+				<div>
+					<h1>图书列表组件</h1>
+
+					<router-link to="/deleteSelected">删除选中的图书</router-link>
+					<router-link to="/edit">修改选中的图书信息</router-link>
+
+					<router-view></router-view>
+				</div>
+				`,
+			};
+
+			let addBook = {
+				template: `<h1>添加图书组件</h1>`,
+			};
+
+			let deleteSelected = {
+				template: `<h1>删除选中的图书组件</h1>`,
+			};
+			let editBook = {
+				template: `<h1>编辑图书组件</h1>`,
+			};
+
+			// 5. 创建路由对象
+			const router = new VueRouter({
+				// 6. 路由关系表: 路径和组件的对应关系
+				routes: [
+					{
+						path: "/bookList",
+						component: bookList,
+						children: [
+							{
+								path: "/deleteSelected",
+								component: deleteSelected,
+							},
+							{ path: "/edit", component: editBook },
+						],
+					},
+					{ path: "/add", component: addBook },
+					{ path: "/", redirect: "/bookList" },
+				],
+			});
+
+			const app = new Vue({
+				el: "#app",
+				data: {},
+				// 6. 挂载路由
+				router,
+			});
+		</script>
+	</body>
+</html>
