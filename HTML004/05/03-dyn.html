@@ -4,13 +4,17 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>vue-router嵌套路由</title>
+		<title>vue-router动态路由</title>
 	</head>
 	<body>
 		<div id="app">
 			<!-- 2. 添加页面中的路由导航组件 -->
 			<router-link to="/bookList">图书列表</router-link>
 			<router-link to="/add">新增图书</router-link>
+
+			<router-link to="/book/1">图书1</router-link>
+			<router-link to="/book/2">图书2</router-link>
+			<router-link to="/book/3">图书3</router-link>
 
 			<!-- 3. 路由占位符 -->
 			<router-view></router-view>
@@ -48,6 +52,13 @@
 				template: `<h1>编辑图书组件</h1>`,
 			};
 
+			let bookDetail = {
+				// $route.params.id 拿到的是/book/:id的值
+				template: `
+				<h1>图书详细信息 --- 图书的id是{{$route.params.id}}</h1>
+				`,
+			};
+
 			// 5. 创建路由对象
 			const router = new VueRouter({
 				// 6. 路由关系表: 路径和组件的对应关系
@@ -66,6 +77,9 @@
 					},
 					{ path: "/add", component: addBook },
 					{ path: "/", redirect: "/bookList" },
+
+					// 动态路由 : 将变化的信息 , 定义成路由参数
+					{ path: "/book/:id", component: bookDetail },
 				],
 			});
 

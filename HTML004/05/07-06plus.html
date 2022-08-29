@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>vue-router嵌套路由</title>
+		<title>vue-router命名路由</title>
 	</head>
 	<body>
 		<div id="app">
@@ -12,8 +12,14 @@
 			<router-link to="/bookList">图书列表</router-link>
 			<router-link to="/add">新增图书</router-link>
 
+			<router-link :to="{name:'bi',params:{id:1}}">图书1</router-link>
+			<router-link :to="{name:'bi',params:{id:2}}">图书2</router-link>
+			<router-link to="/book/3">图书3</router-link>
+
 			<!-- 3. 路由占位符 -->
 			<router-view></router-view>
+
+			
 		</div>
 
 		<script src="../js/vue.js"></script>
@@ -28,13 +34,14 @@
 				template: `
 				<div>
 					<h1>图书列表组件</h1>
-
-					<router-link to="/deleteSelected">删除选中的图书</router-link>
-					<router-link to="/edit">修改选中的图书信息</router-link>
-
-					<router-view></router-view>
+					<span @click='toDetail'>图书详细信息</span>
 				</div>
 				`,
+				methods: {
+					toDetail(){
+						this.$router.push('/book/1')
+					}
+				},
 			};
 
 			let addBook = {
@@ -46,6 +53,22 @@
 			};
 			let editBook = {
 				template: `<h1>编辑图书组件</h1>`,
+			};
+
+			let bookDetail = {
+				props: ["id", "title", "price"],
+				// $route.params.id 拿到的是/book/:id的值
+				template: `
+				<div>
+					<h1>图书详细信息 --- 图书的id是{{id}} --- 图书的标题{{title}} --- 图书的价格{{price}}</h1>
+					<button @click="goBack">后退</button>
+				</div>
+				`,
+				methods:{
+					goBack(){
+						this.$router.go(-1)
+					}
+				}
 			};
 
 			// 5. 创建路由对象
@@ -66,6 +89,18 @@
 					},
 					{ path: "/add", component: addBook },
 					{ path: "/", redirect: "/bookList" },
+
+					// 动态路由 : 将变化的信息定义成路由参数
+					{
+						path: "/book/:id",
+						name: "bi",
+						component: bookDetail,
+						props: (route) => ({
+							title: "JavaScript",
+							id: route.params.id,
+							price: 100,
+						}),
+					},
 				],
 			});
 
