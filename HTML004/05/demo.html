@@ -124,19 +124,21 @@
                         <!-- 中间主体区域 -->
                         <div class="main">
                         <!-- 左侧菜单栏 -->
-                        <div class="content left">
-                            <ul>
-                            <li><router-link to="/users">用户管理</router-link></li>
-                            <li><router-link to="/rights">权限管理</router-link></li>
-                            <li><router-link to="/goods">商品管理</router-link></li>
-                            <li><router-link to="/orders">订单管理</router-link></li>
-                            <li><router-link to="/settings">系统设置</router-link></li>
-                            </ul>
-                        </div>
+							<div class="content left">
+								<ul>
+								<li><router-link to="/users">用户管理</router-link></li>
+								<li><router-link to="/rights">权限管理</router-link></li>
+								<li><router-link to="/goods">商品管理</router-link></li>
+								<li><router-link to="/orders">订单管理</router-link></li>
+								<li><router-link to="/settings">系统设置</router-link></li>
+								</ul>
+							</div>
                         <!-- 右侧内容区域 -->
-                        <div class="content right"><div class="main-content">
-                            用户管理区域
-                        </div></div>
+							<div class="content right">
+								<div class="main-content">
+									<router-view></router-view>
+								</div>
+							</div>
                         </div>
                         <!-- 尾部区域 -->
                         <footer class="footer">版权信息</footer>
@@ -162,6 +164,7 @@
                                 <th>编号</th>
                                 <th>姓名</th>
                                 <th>性别</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -169,10 +172,10 @@
                                 <td>{{user.id}}</td>
                                 <td>{{user.name}}</td>
                                 <td>{{user.gender}}</td>
+								<td>
+									<a href="JavaScript:;" @click='goUserInfo(user.id)'>详细</a>
+								</td>
                             </tr>
-                            <td>
-                                <a href="JavaScript:;" @click='goUserInfo(user.id)'>详细</a>
-                            </td>
                         </tbody>
                     </table>
                 </div>
@@ -232,7 +235,9 @@
 			const router = new VueRouter({
 				routes: [
 					{
+						path:"/",component:App,
 						children: [
+							{ path: "/", redirect:'/users' },
 							{ path: "/users", component: Users },
 							{
 								path: "/userinfo/:id",
