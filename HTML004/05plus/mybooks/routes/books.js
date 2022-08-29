@@ -39,14 +39,18 @@ route.post("/add", (req, res) => {
 			}
 		})
 		.then(function (books) {
-			books.push(book);
-			return bookdb.write(books);
+			if (books) {
+				books.push(book);
+				return bookdb.write(books);
+			}
 		})
-		.then(function () {
-			res.send({
-				status: 0,
-				message: "新增成功",
-			});
+		.then(function (result) {
+			if (result) {
+				res.send({
+					status: 0,
+					message: "新增成功",
+				});
+			}
 		});
 	// 2. 保存图书信息
 });
