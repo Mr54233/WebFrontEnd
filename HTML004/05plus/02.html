@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Promise基础使用方式</title>
+	</head>
+	<body>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+
+		<script>
+			// 1. 创建一个promise 对象
+			//  需要一个函数作为参数 , 这个函数将异步任务封装在这个函数中
+			//  这个函数可以有两个参数 , resolve , reject
+			//  resolve是异步任务成功了 , 需要回调的回调函数
+			//  reject是异步任务失败了 , 需要回调的回调函数
+			var p = new Promise(function (resolve, reject) {
+				$.get(
+					"http://localhost:3000/list",
+					function (result) {
+						if (result.status == "success") {
+							resolve(result.data);
+						} else {
+							reject(result.data);
+						}
+					}
+				);
+			});
+
+			// 2. 调用promise对象的then方法执行异步任务
+            //    传递的参数就是两个分别处理成功和失败情况的回调函数
+			p.then(
+				function (data) {
+					console.log("异步任务执行成功", data);
+				},
+				function (data) {
+					console.log("异步任务执行失败", data);
+				},
+			);
+		</script>
+	</body>
+</html>

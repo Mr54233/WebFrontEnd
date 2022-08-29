@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>使用Promise解决回调地狱</title>
+	</head>
+	<body>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+
+		<script>
+			function queryInfo(url) {
+				var p = new Promise(function (resolve) {
+					$.get(url, function (data) {
+						resolve(data);
+					});
+				});
+				return p;
+			}
+
+			queryInfo("http://localhost:3000/list")
+				.then(function (data) {
+					console.log(data);
+					return queryInfo("http://localhost:3000/adata");
+				})
+				.then(function (data) {
+					console.log(data);
+					return queryInfo("http://localhost:3000/bdata");
+				})
+				.then(function (data) {
+					console.log(data);
+				});
+		</script>
+	</body>
+</html>
