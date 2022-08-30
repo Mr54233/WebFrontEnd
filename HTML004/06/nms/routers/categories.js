@@ -44,8 +44,8 @@ route.post("/save", async (req, res) => {
 //功能：分页显示类型数据
 route.get("/page", async (req, res) => {
 	const page = req.query;
-	var curr = page.curr == "" ? 1 : Number(page.curr);
-	var limit = page.limit == "" ? 5 : Number(page.limit);
+	var curr = page.curr ? parseInt(page.curr) : 1;
+	var limit = page.limit ? parseInt(page.limit) : 5;
 
 	// 调用数据操作函数完成数据库访问
 	var cs = await db.getPage(curr, limit);
@@ -56,7 +56,7 @@ route.get("/page", async (req, res) => {
 	}
 	var total = req.session.total;
 
-	console.log("cs", cs);
+	// console.log("cs", cs);
 	if (cs) {
 		return res.send({
 			status: 0,
@@ -74,16 +74,14 @@ route.get("/page", async (req, res) => {
 
 // 根据cid 查询一条类型数据
 route.get("/getSingle", async (req, res) => {
-	const category = req.body.cid;
-	var cs = await db.getSingle(category);
-	if (cs.length > 0) {
-		return res.send(cs);
-	} else {
-		return res.json({
-			status: 1,
-			message: "未找到有效的cid",
-		});
-	}
+	var cid = parseInt(req.query.cid);
+	var category = await db.getSingle(cid);
+
+	res.json({
+		statu: 0,
+		message: "",
+		data: category[0],
+	});
 });
 
 route.get("/remove", async (req, res) => {

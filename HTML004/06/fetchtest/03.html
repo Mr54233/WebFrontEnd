@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>演练fetch API的使用</title>
+	</head>
+	<body>
+		<script>
+			// 通过fetch API 完成Ajax 请求 , 实现分页查询
+			/* fetch("http://127.0.0.1:3000/api/category/page")
+				.then((result) => {
+					return result.json();
+				})
+				.then((json) => {
+					console.log(json);
+				}); */
+
+			// 通过fetch API 完成Ajax 请求 , 实现新增类型功能
+			/* fetch("http://localhost:3000/api/category/save", {
+				method: "post",
+				body: "cname=演练fetch",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+			})
+				.then((result) => {
+					return result.json();
+				})
+				.then((json) => {
+					console.log(json);
+				}); */
+
+			// 通过fetch API 完成Ajax 请求 , 实现修改类型功能
+			// cid = 17 cname=修改好了
+			/* fetch("http://localhost:3000/api/category/save", {
+				method: "post",
+				body: "cid=17&cname=修改好了",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+			})
+				.then((result) => {
+					return result.json();
+				})
+				.then((json) => {
+					console.log(json);
+				}); */
+
+			// 通过fetch API 完成Ajax 请求 , 实现删除指定类型功能
+			/* fetch("http://localhost:3000/api/category/remove?cid=12", {
+				method: "get",
+			})
+				.then((result) => {
+					return result.json();
+				})
+				.then((json) => {
+					console.log(json);
+				}); */
+		</script>
+	</body>
+</html>
