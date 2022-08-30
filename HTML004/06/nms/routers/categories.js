@@ -23,6 +23,7 @@ route.post("/save", async (req, res) => {
 			rows = await db.insert(category);
 
 			if (rows > 0 && req.session.total) {
+				req.session.total++
 			}
 		}
 		if (rows > 0) {

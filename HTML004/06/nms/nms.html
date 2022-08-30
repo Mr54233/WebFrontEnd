@@ -151,6 +151,7 @@
 				},
 				template: `
                 <div>
+                    
                     <table>
                         <thead>
                             <tr>
@@ -165,16 +166,37 @@
                                 <td>{{category.cname}}</td>
                                 <td>
                                     <a href="JavaScript:;" @click='goEdit(category.cid)'>编辑</a>
-                                    <a href="JavaScript:;" @click=''>删除</a>
+                                    <a href="JavaScript:;" @click='remove(category.cid)'>删除</a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <button @click.prevent="goAdd">新增</button>
                 </div>
             `,
 				methods: {
 					goEdit(id) {
 						this.$router.push({ name: "ec", params: { cid: id } });
+					},
+					remove(cid) {
+						if (confirm("确认删除?")) {
+							fetch(
+								`http://localhost:3000/api/category/remove?cid=${cid}`
+							)
+								.then((result) => {
+									return result.json();
+								})
+								.then((json) => {
+									if (!json.status) {
+										this.$router.go(0);
+									} else {
+										alert("删除失败");
+									}
+								});
+						}
+					},
+					goAdd() {
+						this.$router.push({ name: "ac" });
 					},
 				},
 				mounted() {
@@ -232,7 +254,7 @@
 				},
 				methods: {
 					save() {
-                        var info = `cid=${this.category.cid}&cname=${this.category.cname}`
+						var info = `cid=${this.category.cid}&cname=${this.category.cname}`;
 						fetch("http://127.0.0.1:3000/api/category/save", {
 							method: "post",
 							body: info,
@@ -248,7 +270,49 @@
 								// // 将json对象中的data属性中的所有数据 , 赋值给模型数据
 								// this.category = json.data;
 								// console.log(this.category);
-                                this.$router.go(-1)
+								this.$router.go(-1);
+							});
+					},
+				},
+			};
+
+			const AddCategory = {
+				data() {
+					return {
+						cname: "",
+					};
+				},
+				template: `
+                <div>
+                    <form>
+                        <div class="formitem">
+                            <span>类型名称</span>
+                            <input type="text" v-model='cname' />
+                        </div>
+                        <div class="formitem">
+                            <span></span>
+                            <input type="button" value="新增" @click='save' />
+                        </div>
+                    </form>
+                </div>
+                `,
+				methods: {
+					save() {
+						var info = `cname=${this.cname}`;
+                        console.log(info);
+						fetch("http://127.0.0.1:3000/api/category/save", {
+							method: "post",
+							body: info,
+							headers: {
+								"Content-Type":
+									"application/x-www-form-urlencoded",
+							},
+						})
+							.then((result) => {
+								return result.json();
+							})
+							.then((json) => {
+								this.$router.go(-1);
 							});
 					},
 				},
@@ -266,6 +330,12 @@
 								path: "/editCategory/:cid",
 								name: "ec",
 								component: EditCategory,
+								props: true,
+							},
+							{
+								path: "/addCategory",
+								name: "ac",
+								component: AddCategory,
 								props: true,
 							},
 						],
