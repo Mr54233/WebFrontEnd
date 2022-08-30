@@ -4,6 +4,7 @@ const db = require("../database/category");
 
 const route = express.Router();
 
+// 功能：新增类型或者修改类型数据
 route.post("/save", async (req, res) => {
 	// // 接收客户端提交的数据
 	const category = req.body;
@@ -20,6 +21,9 @@ route.post("/save", async (req, res) => {
 			rows = await db.update(category);
 		} else {
 			rows = await db.insert(category);
+
+			if (rows > 0 && req.session.total) {
+			}
 		}
 		if (rows > 0) {
 			// 成功
@@ -34,6 +38,68 @@ route.post("/save", async (req, res) => {
 				message: "在更新数据的过程中发生了错误 , 请检查数据后重试",
 			});
 		}
+	}
+});
+
+//功能：分页显示类型数据
+route.get("/page", async (req, res) => {
+	const page = req.query;
+	var curr = page.curr == "" ? 1 : Number(page.curr);
+	var limit = page.limit == "" ? 5 : Number(page.limit);
+
+	// 调用数据操作函数完成数据库访问
+	var cs = await db.getPage(curr, limit);
+
+	// 如果需要提高执行效率 , 第一次获取到总记录数 , 将它保存到session中,
+	if (!req.session.total) {
+		req.session.total = await db.getTotal();
+	}
+	var total = req.session.total;
+
+	console.log("cs", cs);
+	if (cs) {
+		return res.send({
+			status: 0,
+			message: "",
+			data: cs,
+			total,
+		});
+	} else {
+		return res.json({
+			status: 1,
+			message: "报错",
+		});
+	}
+});
+
+// 根据cid 查询一条类型数据
+route.get("/getSingle", async (req, res) => {
+	const category = req.body.cid;
+	var cs = await db.getSingle(category);
+	if (cs.length > 0) {
+		return res.send(cs);
+	} else {
+		return res.json({
+			status: 1,
+			message: "未找到有效的cid",
+		});
+	}
+});
+
+route.get("/remove", async (req, res) => {
+	var cid = parseInt(req.query.cid);
+
+	var rows = await db.remove(cid);
+	if (rows > 0) {
+		return res.json({
+			status: 0,
+			message: "删除成功",
+		});
+	} else {
+		return res.json({
+			status: 1,
+			message: "删除失败",
+		});
 	}
 });
 
