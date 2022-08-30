@@ -102,6 +102,46 @@
 			th {
 				background-color: #ddd;
 			}
+
+			ul.pager li {
+				display: inline;
+			}
+
+			ul.pager {
+				display: inline-block;
+				padding: 0;
+				margin: 0;
+			}
+
+			ul.pager li a {
+				height: 20px;
+				line-height: 20px;
+				color: #000; /* 字体颜色 */
+				background-color: #fff; /* 背景颜色 */
+				float: left; /* 从左向右浮动 */
+				padding: 12px 18px; /* 内边距 */
+				margin: 9px; /* 外边距 */
+				text-decoration: none; /* 清除文字修饰 */
+				border-radius: 6.5px; /* 圆角 */
+				transition: background-color 0.3s; /* 动画变换时间 */
+			}
+
+			ul.pager li a:hover:not(.active) {
+				background-color: #cdcdcd;
+			}
+
+			ul.pager li a.active {
+				background-color: #4e6ef2;
+				color: white;
+				border: 1px solid #4e6ef2;
+			}
+
+			.bk {
+				height: 66px;
+				width: 900px;
+				background-color: #f5f5f6;
+				text-align: center;
+			}
 		</style>
 	</head>
 	<body>
@@ -118,28 +158,28 @@
 			// 封装app组件
 			const App = {
 				template: `
-                    <div>
-                        <!-- 头部区域 -->
-                        <header class="header">后台管理系统</header>
-                        <!-- 中间主体区域 -->
-                        <div class="main">
-                        <!-- 左侧菜单栏 -->
-                        <div class="content left">
-                            <ul>
-                            <li><router-link to="/categories">类型管理</router-link></li>
-                            </ul>
-                        </div>
-                        <!-- 右侧内容区域 -->
-                        <div class="content right">
-                            <div class="main-content">
-                                <router-view></router-view>
-                            </div>
-                        </div>
-                        </div>
-                        <!-- 尾部区域 -->
-                        <footer class="footer">版权信息</footer>
-                    </div>
-                    `,
+			                 <div>
+			                     <!-- 头部区域 -->
+			                     <header class="header">后台管理系统</header>
+			                     <!-- 中间主体区域 -->
+			                     <div class="main">
+			                     <!-- 左侧菜单栏 -->
+			                     <div class="content left">
+			                         <ul>
+			                         <li><router-link to="/categories">类型管理</router-link></li>
+			                         </ul>
+			                     </div>
+			                     <!-- 右侧内容区域 -->
+			                     <div class="content right">
+			                         <div class="main-content">
+			                             <router-view></router-view>
+			                         </div>
+			                     </div>
+			                     </div>
+			                     <!-- 尾部区域 -->
+			                     <footer class="footer">版权信息</footer>
+			                 </div>
+			                 `,
 			};
 
 			// 类型管理的组件 (表格方式类型数据)
@@ -150,30 +190,31 @@
 					};
 				},
 				template: `
-                <div>
-                    
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>编号</th>
-                                <th>类型名称</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="category in categories">
-                                <td>{{category.cid}}</td>
-                                <td>{{category.cname}}</td>
-                                <td>
-                                    <a href="JavaScript:;" @click='goEdit(category.cid)'>编辑</a>
-                                    <a href="JavaScript:;" @click='remove(category.cid)'>删除</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button @click.prevent="goAdd">新增</button>
-                </div>
-            `,
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>编号</th>
+                                        <th>类型名称</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="category in categories">
+                                        <td>{{category.cid}}</td>
+                                        <td>{{category.cname}}</td>
+                                        <td>
+                                            <a href="JavaScript:;" @click='goEdit(category.cid)'>编辑</a>
+                                            <a href="JavaScript:;" @click='remove(category.cid)'>删除</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <router-view></router-view>
+                            <br>
+                            <button @click.prevent="goAdd">新增</button>
+                        </div>
+                    `,
 				methods: {
 					goEdit(id) {
 						this.$router.push({ name: "ec", params: { cid: id } });
@@ -220,23 +261,23 @@
 					};
 				},
 				template: `
-                <div>
-                    <form>
-                        <div class="formitem">
-                            <span>类型编号</span>
-                            <input type="text" v-model='category.cid' />
-                        </div>
-                        <div class="formitem">
-                            <span>类型名称</span>
-                            <input type="text" v-model='category.cname' />
-                        </div>
-                        <div class="formitem">
-                            <span></span>
-                            <input type="button" value="保存" @click='save' />
-                        </div>
-                    </form>
-                </div>
-                `,
+                    <div>
+                        <form>
+                            <div class="formitem">
+                                <span>类型编号</span>
+                                <input type="text" v-model='category.cid' />
+                            </div>
+                            <div class="formitem">
+                                <span>类型名称</span>
+                                <input type="text" v-model='category.cname' />
+                            </div>
+                            <div class="formitem">
+                                <span></span>
+                                <input type="button" value="保存" @click='save' />
+                            </div>
+                        </form>
+                    </div>
+                    `,
 				mounted() {
 					// 根据cid获取到需要修改的类型数据
 					fetch(
@@ -283,23 +324,23 @@
 					};
 				},
 				template: `
-                <div>
-                    <form>
-                        <div class="formitem">
-                            <span>类型名称</span>
-                            <input type="text" v-model='cname' />
-                        </div>
-                        <div class="formitem">
-                            <span></span>
-                            <input type="button" value="新增" @click='save' />
-                        </div>
-                    </form>
-                </div>
-                `,
+                    <div>
+                        <form>
+                            <div class="formitem">
+                                <span>类型名称</span>
+                                <input type="text" v-model='cname' />
+                            </div>
+                            <div class="formitem">
+                                <span></span>
+                                <input type="button" value="新增" @click='save' />
+                            </div>
+                        </form>
+                    </div>
+                    `,
 				methods: {
 					save() {
 						var info = `cname=${this.cname}`;
-                        console.log(info);
+						console.log(info);
 						fetch("http://127.0.0.1:3000/api/category/save", {
 							method: "post",
 							body: info,
@@ -318,6 +359,48 @@
 				},
 			};
 
+			const Pager = {
+				data() {
+					return {
+						curr: 1,
+						limit: 5,
+						categories: "",
+						totalPager: "",
+					};
+				},
+				template: `
+                <ul class="pager">
+                    <li><a href="JavaScript:;" @click="front()" v-if="curr !== 1">«</a></li>
+                    <li><a href="JavaScript:;" v-for="index of totalPager" :class="{'active':(curr === index)}">{{index}}</a></li>
+                    <li><a href="JavaScript:;" @click="after()" >»</a></li>
+                    <li>总条数：{{categories.total}}</li>
+                </ul>
+                `,
+				mounted() {
+					fetch(
+						`http://127.0.0.1:3000/api/category/page?curr=${this.curr}&limit=${this.limit}`
+					)
+						.then((result) => {
+							return result.json();
+						})
+						.then((json) => {
+							this.categories = json;
+
+							this.totalPager = Math.ceil(
+								this.categories.total / 5
+							);
+						});
+				},
+				methods: {
+					front() {
+						this.curr--;
+					},
+					after() {
+						this.curr++;
+					},
+				},
+			};
+
 			const router = new VueRouter({
 				routes: [
 					{
@@ -325,7 +408,11 @@
 						component: App,
 						children: [
 							{ path: "/", redirect: "/categories" },
-							{ path: "/categories", component: Category },
+							{
+								path: "/categories",
+								component: Category,
+								children: [{ path: "/", component: Pager }],
+							},
 							{
 								path: "/editCategory/:cid",
 								name: "ec",
