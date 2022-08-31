@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>演练axios的基本使用</title>
+	</head>
+	<body>
+		<script src="../js/axios.js"></script>
+
+		<script>
+			// 使用axios发出ajax请求 , 实现获取第一页的类型数据
+			// axios.get('http://localhost:3000/api/category/page')
+			// axios.get('http://localhost:3000/api/category/page?curr=2')
+			// .then(ret=>{
+			//     console.log(ret.data);
+			// })
+
+			// 使用axios发出ajax请求 , 实现新增类型数据功能 cname='软件测试'
+			// axios.post('http://localhost:3000/api/category/save',{
+			//     cname:'软件测试'
+			// }).then(ret=>{
+			//     console.log(ret.data);
+			// })
+
+			// 使用axios发出ajax请求 , 实现修改类型数据功能 cid='17' cname='今天会下雨吗'
+			/* axios.post('http://localhost:3000/api/category/save',{
+            cid:17,
+            cname:'今天会下雨吗',
+        }).then(ret=>{
+            console.log(ret.data);
+        })
+         */
+
+			axios.interceptors.response.use(
+				function (res) {
+					// 在请求发出之前进行一些信息设置
+					console.log("拦截器中打印", res);
+					// 拦截器中需要将res数据继续向后传递 , return res
+					// 否则ajax请求的回调函数中不能获得传递过来的实参
+					return res;
+				},
+				function (err) {
+					// 处理响应的错误信息
+				}
+			);
+			// 使用axios发出ajax请求 , 实现删除类型数据功能 cid='17'
+			axios
+				.get("http://localhost:3000/api/category/remove?cid=17")
+				.then((ret) => {
+					console.log(ret.data);
+				});
+		</script>
+	</body>
+</html>
