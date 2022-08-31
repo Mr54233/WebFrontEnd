@@ -9,8 +9,8 @@
 
 <script>
 // 1.0 样式引入
-import "./css/base.css";
-import "./css/index.css";
+import "./assets/css/base.css";
+import "./assets/css/index.css";
 
 import TodoHeader from "./components/TodoHeader";
 import TodoMain from "./components/TodoMain";
