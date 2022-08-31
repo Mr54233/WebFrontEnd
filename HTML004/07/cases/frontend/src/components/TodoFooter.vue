@@ -1,21 +1,36 @@
 <template>
 	<footer class="footer">
-		<span class="todo-count">剩余<strong>数量值</strong></span>
-		<ul class="filters">
-			<li>
-				<a class="selected" href="javascript:;">全部</a>
-			</li>
-			<li>
-				<a href="javascript:;">未完成</a>
-			</li>
-			<li>
-				<a href="javascript:;">已完成</a>
-			</li>
-		</ul>
-		<button class="clear-completed">清除已完成</button>
+		<span class="todo-count"
+			>剩余<strong>{{ total }}条待办</strong></span
+		>
+
+		<button class="clear-completed" @click="remove">清除已完成待办</button>
 	</footer>
 </template>
 
 <script>
-export default {};
+import axios from "../assets/lib/axios";
+axios.defaults.baseURL = "http://localhost:3000/api/case";
+axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
+
+export default {
+	data() {
+		return {
+			total: "",
+		};
+	},
+	mounted() {
+		axios.get("/getTotal").then((ret) => {
+			this.total = ret.data.data;
+		});
+	},
+	methods: {
+		remove() {
+			axios.post("/clearCom").then((ret) => {
+				alert(ret.data.message);
+				location.reload();
+			});
+		},
+	},
+};
 </script>

@@ -43,20 +43,20 @@ function getList() {
 }
 
 // 标记事情已经完成和取消完成标记
-function markComplete(title) {
+function markComplete(id) {
 	return new Promise(function (resolve, reject) {
-		var sql1 = `select completed from cases where title=?`;
-		db.query(sql1, title, (err, result) => {
-			var com = result[0].completed;
-			var sql = `update cases set completed=? where title=?`;
-			db.query(sql, [!com, title], (err, result) => {
-				if (err) {
-					reject(err.message);
-				} else {
-					resolve(result);
-				}
-			});
+		// var sql1 = `select completed from cases where id=?`;
+		// db.query(sql1, id, (err, result) => {
+		// 	var com = result[0].completed;
+		var sql = `update cases set completed=1 and completed=0 where id=?`;
+		db.query(sql, id, (err, result) => {
+			if (err) {
+				reject(err.message);
+			} else {
+				resolve(result);
+			}
 		});
+		// });
 	});
 }
 
@@ -65,6 +65,20 @@ function clearComplete() {
 	return new Promise(function (resolve, reject) {
 		var sql = `delete from cases where completed=1`;
 		db.query(sql, (err, result) => {
+			if (err) {
+				reject(err.message);
+			} else {
+				resolve(result);
+			}
+		});
+	});
+}
+
+// 清除所有已经完成的事情
+function clearSelect(id) {
+	return new Promise(function (resolve, reject) {
+		var sql = `delete from cases where id=?`;
+		db.query(sql, id, (err, result) => {
 			if (err) {
 				reject(err.message);
 			} else {
@@ -94,5 +108,6 @@ module.exports = {
 	getList,
 	markComplete,
 	clearComplete,
+	clearSelect,
 	getTotal,
 };

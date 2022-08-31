@@ -7,6 +7,7 @@ const {
 	clearComplete,
 	getTotal,
 	getSingle,
+	clearSelect,
 } = require("../database/cases");
 
 const route = express.Router();
@@ -43,9 +44,9 @@ route.get("/getList", async (req, res) => {
 });
 
 // 标记事情已经完成和取消完成标记
-route.get("/markAsCom", async (req, res) => {
-	var title = req.query.title;
-	var markResult = await markComplete(title);
+route.post("/markAsCom", async (req, res) => {
+	var id = req.body.id;
+	var markResult = await markComplete(id);
 	if (markResult.affectedRows === 1) {
 		res.send({
 			status: 1,
@@ -60,7 +61,7 @@ route.get("/markAsCom", async (req, res) => {
 });
 
 // 清除所有已经完成的事情
-route.get("/clearCom", async (req, res) => {
+route.post("/clearCom", async (req, res) => {
 	var clearResult = await clearComplete();
 	if (clearResult.affectedRows) {
 		res.send({
@@ -70,7 +71,24 @@ route.get("/clearCom", async (req, res) => {
 	} else {
 		res.send({
 			status: 0,
-			message: "清除失败",
+			message: "没有已完成待办或者清楚失败",
+		});
+	}
+});
+
+// 删除单个待办
+route.post("/clearSelect", async (req, res) => {
+	var id = req.body.id
+	var clearResult = await clearSelect(id);
+	if (clearResult.affectedRows) {
+		res.send({
+			status: 1,
+			message: "删除成功",
+		});
+	} else {
+		res.send({
+			status: 0,
+			message: "删除失败",
 		});
 	}
 });
