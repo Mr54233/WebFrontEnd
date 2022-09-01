@@ -2,7 +2,7 @@
 	<section class="todoapp">
 		<!-- 除了驼峰, 还可以使用-转换链接 -->
 		<TodoHeader @customEvent="process"></TodoHeader>
-		<TodoMain :arr="showArr"></TodoMain>
+		<TodoMain :cases='cases'></TodoMain>
 		<TodoFooter></TodoFooter>
 	</section>
 </template>
@@ -39,7 +39,7 @@ export default {
 	mounted() {
 		axios.get("/getList").then((ret) => {
 			this.cases = ret.data;
-			console.log(this.cases);
+			// console.log(this.cases);
 		});
 	},
 };

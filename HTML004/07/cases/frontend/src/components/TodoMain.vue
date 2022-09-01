@@ -30,12 +30,10 @@ axios.defaults.baseURL = "http://localhost:3000/api/case";
 axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
 
 export default {
-	data() {
-		return {
-			cases: "",
-		};
+	props: ["cases"],
+	mounted(){
+		console.log(this.cases);
 	},
-	
 	methods: {
 		select(id) {
 			axios

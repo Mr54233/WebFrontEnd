@@ -3,5 +3,12 @@ ul {
 }
 
 ::placeholder {
-    color: red;
+	color: red;
+}
+
+.div1 {
+	width: 300px;
+	height: 200px;
+	border: 1px solid red;
+	background: url('../img/sun.jpg');
 }

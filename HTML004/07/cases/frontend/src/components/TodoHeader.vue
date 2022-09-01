@@ -9,6 +9,7 @@
 
 <script>
 export default {
+    
     methods: {
         click(){
             this.$emit("customEvent",1234)
