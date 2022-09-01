@@ -35,12 +35,7 @@ export default {
 			cases: "",
 		};
 	},
-	mounted() {
-		axios.get("/getList").then((ret) => {
-			this.cases = ret.data;
-			// console.log(this.cases);
-		});
-	},
+	
 	methods: {
 		select(id) {
 			axios
