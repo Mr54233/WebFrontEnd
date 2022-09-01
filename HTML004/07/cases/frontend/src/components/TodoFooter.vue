@@ -9,27 +9,11 @@
 </template>
 
 <script>
-import axios from "../assets/lib/axios";
-axios.defaults.baseURL = "http://localhost:3000/api/case";
-axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
-
 export default {
-	data() {
-		return {
-			total: "",
-		};
-	},
-	mounted() {
-		axios.get("/getTotal").then((ret) => {
-			this.total = ret.data.data;
-		});
-	},
+	props: ["total"],
 	methods: {
 		remove() {
-			axios.post("/clearCom").then((ret) => {
-				alert(ret.data.message);
-				location.reload();
-			});
+			this.$emit("remove");
 		},
 	},
 };

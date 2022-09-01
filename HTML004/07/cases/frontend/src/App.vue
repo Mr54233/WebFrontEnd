@@ -1,9 +1,13 @@
 <template>
 	<section class="todoapp">
 		<!-- 除了驼峰, 还可以使用-转换链接 -->
-		<TodoHeader @customEvent="process"></TodoHeader>
-		<TodoMain :cases='cases'></TodoMain>
-		<TodoFooter></TodoFooter>
+		<TodoHeader
+			:isAll="isAll"
+			@selectAll="selectAll"
+			@submitTitle="submitTitle"
+		></TodoHeader>
+		<TodoMain :cases="cases" @select="select" @destroy="destroy"></TodoMain>
+		<TodoFooter :total="total" @remove="remove"></TodoFooter>
 	</section>
 </template>
 
@@ -24,6 +28,8 @@ export default {
 	data() {
 		return {
 			cases: "",
+			total: "",
+			isAll: "",
 		};
 	},
 	components: {
@@ -31,16 +37,109 @@ export default {
 		TodoMain,
 		TodoFooter,
 	},
-	methods: {
-		process(x) {
-			console.log(x);
-		},
-	},
 	mounted() {
 		axios.get("/getList").then((ret) => {
 			this.cases = ret.data;
 			// console.log(this.cases);
+
+			var n = 0;
+			this.cases.forEach((c) => {
+				if (c.completed == 1) {
+					n++;
+				}
+			});
+
+			if (n === this.cases.length) {
+				this.isAll = 1;
+			} else {
+				this.isAll = 0;
+			}
 		});
+		axios.get("/getTotal").then((ret) => {
+			this.total = ret.data.data;
+		});
+	},
+	methods: {
+		selectAll(areAll) {
+			this.isAll = areAll;
+			console.log("APP" + areAll);
+			if (areAll === 1) {
+				console.log("markAllNot");
+				axios
+					.post("/markAllNot")
+					.then((ret) => {
+						console.log(ret.data);
+					})
+					.then(
+						this.cases.forEach((c) => {
+							c.completed = 0;
+						})
+					);
+			} else {
+				console.log("markAll");
+				axios
+					.post("/markAll")
+					.then((ret) => {
+						console.log(ret.data);
+					})
+					.then(
+						this.cases.forEach((c) => {
+							c.completed = 1;
+						})
+					);
+			}
+		},
+		select(id, index) {
+			axios
+				.post("/markAsCom", {
+					id,
+				})
+				.then((ret) => {
+					this.cases[index].completed = Number(
+						!this.cases[index].completed
+					);
+				});
+		},
+		destroy(id) {
+			if (confirm(`确认删除id为${id}的待办?`)) {
+				axios.post("/clearSelect", { id }).then((ret) => {
+					alert(ret.data.message);
+					location.reload();
+				});
+			} else {
+				alert("那就不删了");
+			}
+		},
+		remove() {
+			axios.post("/clearCom").then((ret) => {
+				alert(ret.data.message);
+				location.reload();
+			});
+		},
+		submitTitle(title) {
+			if (title.trim()) {
+				axios.post("/addList", { title }).then((ret) => {
+					if (ret.data.status) {
+						axios.get("/getList").then((ret) => {
+							this.cases = ret.data;
+							// console.log(this.cases);
+						});
+						axios.get("/getTotal").then((ret) => {
+							this.total = ret.data.data;
+						});
+					} else {
+						alert(ret.data.message);
+					}
+				});
+			} else {
+				alert("待办不能为空");
+			}
+		},
+	},
+	watch: {
+		isAll(newVal, oldVal) {
+			console.log("新旧" + newVal, oldVal);
+		},
 	},
 };
 </script>

@@ -8,6 +8,8 @@ const {
 	getTotal,
 	getSingle,
 	clearSelect,
+	markAll,
+	markAllNot,
 } = require("../database/cases");
 
 const route = express.Router();
@@ -60,6 +62,38 @@ route.post("/markAsCom", async (req, res) => {
 	}
 });
 
+// 全选
+route.post("/markAll", async (req, res) => {
+	var markResult = await markAll();
+	if (markResult.changedRows) {
+		res.send({
+			status: 1,
+			message: "标记成功",
+		});
+	} else {
+		res.send({
+			status: 0,
+			message: "标记失败",
+		});
+	}
+});
+
+// 全不选
+route.post("/markAllNot", async (req, res) => {
+	var markResult = await markAllNot();
+	if (markResult.changedRows) {
+		res.send({
+			status: 1,
+			message: "标记成功",
+		});
+	} else {
+		res.send({
+			status: 0,
+			message: "标记失败",
+		});
+	}
+});
+
 // 清除所有已经完成的事情
 route.post("/clearCom", async (req, res) => {
 	var clearResult = await clearComplete();
@@ -71,14 +105,14 @@ route.post("/clearCom", async (req, res) => {
 	} else {
 		res.send({
 			status: 0,
-			message: "没有已完成待办或者清楚失败",
+			message: "没有已完成待办或者清除失败",
 		});
 	}
 });
 
 // 删除单个待办
 route.post("/clearSelect", async (req, res) => {
-	var id = req.body.id
+	var id = req.body.id;
 	var clearResult = await clearSelect(id);
 	if (clearResult.affectedRows) {
 		res.send({
@@ -94,13 +128,13 @@ route.post("/clearSelect", async (req, res) => {
 });
 
 // 统计还有多少件没有完成的事情
-route.get('/getTotal', async (req,res)=>{
-    var totalResult = await getTotal()
-    res.send({
-        status:1,
-        message:'查询成功',
-        data:totalResult
-    })
-})
+route.get("/getTotal", async (req, res) => {
+	var totalResult = await getTotal();
+	res.send({
+		status: 1,
+		message: "查询成功",
+		data: totalResult,
+	});
+});
 
 module.exports = route;

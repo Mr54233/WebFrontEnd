@@ -45,9 +45,6 @@ function getList() {
 // 标记事情已经完成和取消完成标记
 function markComplete(id) {
 	return new Promise(function (resolve, reject) {
-		// var sql1 = `select completed from cases where id=?`;
-		// db.query(sql1, id, (err, result) => {
-		// 	var com = result[0].completed;
 		var sql = `update cases set completed=1 and completed=0 where id=?`;
 		db.query(sql, id, (err, result) => {
 			if (err) {
@@ -56,7 +53,34 @@ function markComplete(id) {
 				resolve(result);
 			}
 		});
-		// });
+	});
+}
+
+// 全选
+function markAll() {
+	return new Promise(function (resolve, reject) {
+		var sql = `update cases set completed=1`;
+		db.query(sql, (err, result) => {
+			if (err) {
+				reject(err.message);
+			} else {
+				resolve(result);
+			}
+		});
+	});
+}
+
+// 全不选
+function markAllNot() {
+	return new Promise(function (resolve, reject) {
+		var sql = `update cases set completed=0`;
+		db.query(sql, (err, result) => {
+			if (err) {
+				reject(err.message);
+			} else {
+				resolve(result);
+			}
+		});
 	});
 }
 
@@ -110,4 +134,6 @@ module.exports = {
 	clearComplete,
 	clearSelect,
 	getTotal,
+	markAll,
+	markAllNot,
 };

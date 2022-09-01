@@ -2,7 +2,7 @@
 	<ul class="todo-list">
 		<!-- completed: 完成的类名 -->
 		<li
-			v-for="caseResult in cases"
+			v-for="(caseResult,index) in cases"
 			:key="caseResult.id"
 			:class="{ completed: caseResult.completed }"
 		>
@@ -12,7 +12,7 @@
 					class="toggle"
 					type="checkbox"
 					:checked="caseResult.completed"
-					@click="select(caseResult.id)"
+					@click="select(caseResult.id,index)"
 				/>
 				<label>{{ caseResult.title }}</label>
 				<button
@@ -25,35 +25,14 @@
 </template>
 
 <script>
-import axios from "../assets/lib/axios";
-axios.defaults.baseURL = "http://localhost:3000/api/case";
-axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
-
 export default {
 	props: ["cases"],
-	mounted(){
-		console.log(this.cases);
-	},
 	methods: {
-		select(id) {
-			axios
-				.post("/markAsCom", {
-					id,
-				})
-				.then((ret) => {
-					this.cases[id - 1].completed =
-						!this.cases[id - 1].completed;
-				});
+		select(id,index) {
+			this.$emit("select",id, index);
 		},
 		destroy(id) {
-			if (confirm(`确认删除id为${id}的待办?`)) {
-				axios.post("/clearSelect", { id }).then((ret) => {
-					alert(ret.data.message);
-					location.reload();
-				});
-			} else {
-				alert("那就不删了");
-			}
+			this.$emit("destroy", id);
 		},
 	},
 };
