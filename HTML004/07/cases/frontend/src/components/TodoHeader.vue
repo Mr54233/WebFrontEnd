@@ -32,7 +32,7 @@ export default {
 
 	methods: {
 		selectAll() {
-			console.log("header" + this.isAll);
+			// console.log("header" + this.isAll);
 			// console.log(Number(this.areAll));
 			this.$emit("selectAll", Number(this.areAll));
 		},

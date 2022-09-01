@@ -62,31 +62,23 @@ export default {
 	methods: {
 		selectAll(areAll) {
 			this.isAll = areAll;
-			console.log("APP" + areAll);
+			// console.log("APP" + areAll);
 			if (areAll === 1) {
-				console.log("markAllNot");
-				axios
-					.post("/markAllNot")
-					.then((ret) => {
-						console.log(ret.data);
-					})
-					.then(
-						this.cases.forEach((c) => {
-							c.completed = 0;
-						})
-					);
+				// console.log("markAllNot");
+				axios.post("/markAllNot").then((ret) => {
+					// console.log(ret.data);
+					this.cases.forEach((c) => {
+						c.completed = 0;
+					});
+				});
 			} else {
-				console.log("markAll");
-				axios
-					.post("/markAll")
-					.then((ret) => {
-						console.log(ret.data);
-					})
-					.then(
-						this.cases.forEach((c) => {
-							c.completed = 1;
-						})
-					);
+				// console.log("markAll");
+				axios.post("/markAll").then((ret) => {
+					// console.log(ret.data);
+					this.cases.forEach((c) => {
+						c.completed = 1;
+					});
+				});
 			}
 		},
 		select(id, index) {
@@ -136,10 +128,10 @@ export default {
 			}
 		},
 	},
-	watch: {
-		isAll(newVal, oldVal) {
-			console.log("新旧" + newVal, oldVal);
-		},
-	},
+	// watch: {
+	// 	isAll(newVal, oldVal) {
+	// 		console.log("新旧" + newVal, oldVal);
+	// 	},
+	// },
 };
 </script>
