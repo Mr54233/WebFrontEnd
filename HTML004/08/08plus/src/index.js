@@ -2,6 +2,6 @@
 import $ from "jquery";
 
 $(function () {
-    $('#myul li:odd').css('backgroundColor','yellow')
+    $('#myul li:odd').css('backgroundColor','red')
     $('#myul li:even').css('backgroundColor','green')
 });
