@@ -1,3 +1,4 @@
+const path = require("path");
 module.exports = {
 	// npm i webpack webpack-cli -D
 	// mode 用来指定构建模式
@@ -5,4 +6,9 @@ module.exports = {
 	// 在 production 模式下 , webpack执行编译 , 压缩和混淆
 	// 在 development 模式下 , webpack执行编译
 	mode: "development",
+	entry: path.join(__dirname, "./src/index.js"),
+	output: {
+		path: path.join(__dirname, "./dist"),
+		filename: "bundle.js",
+	},
 };
