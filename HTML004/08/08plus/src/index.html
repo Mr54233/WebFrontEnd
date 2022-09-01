@@ -9,10 +9,12 @@
 		<!-- html页面中需要导入编译构建之后的js文件 -->
 		<!-- <script src="../dist/main.js"></script> -->
 		<!-- <script src="../dist/bundle.js"></script> -->
-        <!-- webpack-dev-server 进行打包生成的js文件放置在网站的根目录下的 -->
-		<script src="./bundle.js"></script>
+		<!-- webpack-dev-server 进行打包生成的js文件放置在网站的根目录下的 -->
+		<!-- <script src="./bundle.js"></script> -->
+		<!-- html-webpack-plugin 自动打包不需要手动导入js文件 -->
 	</head>
 	<body>
+		<input type="text" placeholder="请输入文字" />
 		<ul id="myul">
 			<li>这是第1行</li>
 			<li>这是第2行</li>
