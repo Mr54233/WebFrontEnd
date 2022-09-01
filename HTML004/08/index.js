@@ -7,6 +7,7 @@
 // import m1 from "./m1";
 import { a, c, show } from "./m1";
 
+// 导入并直接执行模块中的代码
 import "./m2";
 
 // console.log(m1);
