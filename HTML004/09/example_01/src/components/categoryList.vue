@@ -12,10 +12,10 @@
         <tr v-for="category in categories" :key="category.id">
           <td>{{ category.cid }}</td>
           <td>{{ category.cname }}</td>
-          <td>
-            <a href="JavaScript:;" @click="goEdit(category.cid)">编辑</a>
-            <a href="JavaScript:;" @click="remove(category.cid)">删除</a>
-          </td>
+          <el-row>
+            <el-button href="JavaScript:;" @click="goEdit(category.cid)" class="primary">编辑</el-button>
+            <el-button href="JavaScript:;" @click="remove(category.cid)" class="danger">删除</el-button>
+          </el-row>
         </tr>
       </tbody>
     </table>
