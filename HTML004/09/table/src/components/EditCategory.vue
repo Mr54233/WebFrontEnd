@@ -3,19 +3,15 @@
 		<form>
 			<div class="formitem">
 				<span>类型编号</span>
-				<input type="text" v-model="category.cid" />
+				<el-input v-model="category.cid" />
 			</div>
 			<div class="formitem">
 				<span>类型名称</span>
-				<input
-					type="text"
-					v-model="category.cname"
-					@keyup.enter="save"
-				/>
+				<el-input v-model="category.cname" @keyup.enter="save" />
 			</div>
 			<div class="formitem">
 				<span></span>
-				<input type="button" value="保存" @click="save" />
+				<el-button @click="save" type="success">保存</el-button>
 			</div>
 		</form>
 	</div>
