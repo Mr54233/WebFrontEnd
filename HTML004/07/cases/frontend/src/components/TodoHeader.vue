@@ -44,6 +44,7 @@ export default {
 	watch: {
 		isAll(nval, oval) {
 			this.areAll = nval === 1 ? 1 : 0;
+			// console.log("hdeader"+nval);
 		},
 	},
 };

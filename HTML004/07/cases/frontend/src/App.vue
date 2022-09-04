@@ -82,14 +82,27 @@ export default {
 			}
 		},
 		select(id, index) {
+			// console.log(this.cases[index].completed);
 			axios
 				.post("/markAsCom", {
 					id,
 				})
 				.then((ret) => {
-					this.cases[index].completed = Number(
-						!this.cases[index].completed
-					);
+					// this.cases[index].completed = Number(
+					// 	!this.cases[index].completed
+					// );
+					if (this.cases[index].completed) {
+						this.total++;
+						this.cases[index].completed = Number(
+							!this.cases[index].completed
+						);
+					} else {
+						this.total--;
+						this.cases[index].completed = Number(
+							!this.cases[index].completed
+						);
+					}
+					// console.log(this.cases[index].completed);
 				});
 		},
 		destroy(id) {
@@ -128,10 +141,32 @@ export default {
 			}
 		},
 	},
-	// watch: {
-	// 	isAll(newVal, oldVal) {
-	// 		console.log("新旧" + newVal, oldVal);
-	// 	},
-	// },
+	watch: {
+		isAll(newVal, oldVal) {
+			// console.log(newVal);
+			// console.log(oldVal);
+			// var total = this.total
+			if (newVal) {
+				// console.log("isall");
+				axios.get("/getTotal").then((ret) => {
+					this.total = ret.data.data;
+				});
+				// this.total = total
+			} else {
+				this.total = 0;
+			}
+		},
+		total(newVal, oldVal) {
+			if (newVal === 0) {
+				// console.log("全选了");
+				this.isAll = 1;
+				// console.log(this.isAll);
+			} else {
+				// console.log("非全选了");
+				// this.isAll = 0;
+				// console.log(this.isAll);
+			}
+		},
+	},
 };
 </script>
