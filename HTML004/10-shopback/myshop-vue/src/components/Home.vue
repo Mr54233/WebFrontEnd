@@ -14,15 +14,29 @@
 					background-color="#333744"
 					text-color="#fff"
 					active-text-color="#ffd04b"
+					:unique-opened="true"
 				>
 					<!-- 一级菜单区域 -->
-					<el-submenu index="1">
+					<el-submenu
+						:index="menu.id + ''"
+						v-for="menu in menulist"
+						:key="menu.id"
+					>
 						<template slot="title">
-							<i class="el-icon-location"></i>
-							<span>导航一</span>
+							<i :class="icons[menu.id]"></i>
+							<span>{{ menu.authName }}</span>
 						</template>
-						<!-- 二级菜单 -->
-						<el-menu-item index="1-1">选项1</el-menu-item>
+						<!-- 二级菜单区域 -->
+						<el-menu-item
+							:index="submenu.id + ''"
+							v-for="submenu in menu.children"
+							:key="submenu.id"
+						>
+							<template slot="title">
+								<i class="el-icon-menu"></i>
+								<span>{{ submenu.authName }}</span>
+							</template>
+						</el-menu-item>
 					</el-submenu>
 				</el-menu>
 			</el-aside>
@@ -33,8 +47,21 @@
 
 <script>
 export default {
+	// 在创建了vue对象之后 , 请求api服务器端提供的导航菜单数据
+	created() {
+		this.getMenuList();
+	},
 	data() {
-		return {};
+		return {
+			menulist: [],
+			icons: {
+				"125":"iconfont icon-users",
+				"103":"iconfont icon-tijikongjian",
+				"101":"iconfont icon-shangpin",
+				"102":"iconfont icon-danju",
+				"145":"iconfont icon-baobiao",
+            },
+		};
 	},
 	methods: {
 		// 退出登陆的处理方法
@@ -43,6 +70,15 @@ export default {
 			window.sessionStorage.clear();
 			// 2. 强制进入到登陆页面
 			this.$router.push("/");
+		},
+		// 获取导航菜单数据
+		async getMenuList() {
+			const { data: res } = await this.$http.get("menu");
+			if (res.meta.status !== 200) {
+				return this.$message.error(res.meta.message);
+			} else {
+				this.menulist = res.data;
+			}
 		},
 	},
 };
@@ -68,5 +104,8 @@ export default {
 }
 .el-main {
 	background-color: #eaedf1;
+}
+.el-submenu span{
+    
 }
 </style>

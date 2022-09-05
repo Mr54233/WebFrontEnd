@@ -47,15 +47,16 @@
                 4. 在入口文件 main.js 导入并运行 plugins/element.js
             6. Axios
                 1. 在项目管理的仪表盘上安装依赖 : axios vue-axios
-                2. 在入口文件main.js中默认导入axios
-                3. 配置axios
-                   1. 挂载vue的原型对象: 
+                2. 在入口文件 main.js 中默认导入 axios
+                3. 配置 axios
+                    1. 挂载 vue 的原型对象:
 
         3. 后台管理子系统的首页
-           1. 左边的导航菜单 , 两级菜单
+            1. 左边的导航菜单 , 两级菜单
+            2. 从 api 服务器端获取所有的左侧导航菜单数据 钩子函数
+                1. created 创建完成
+                2. mounted 挂载完成
 
 ```html
-el-form
-    el-form-item
-        el-input | el-button
+el-form el-form-item el-input | el-button
 ```
