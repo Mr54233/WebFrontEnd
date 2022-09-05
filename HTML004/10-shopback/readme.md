@@ -20,5 +20,25 @@
             1. 使用 vue-cli 脚手架创建: vue ui
                 1. babel router
             2. 将 app.vue 根组件删除掉不需要的东西
+                1. 样式代码
+                2. 页面内容
+                3. router 文件夹下的 index.js
+                    1. 不需要的组件导入语句路由
+                    2. 路由映射规则
+                4. views 文件夹
+                5. components/Helloworld.vue
         2. 用户登录
+            1. 路由守卫 : 系统中有一些路由是需要登录用户有权限才能操作的 , 为了防止用户直接在浏览器地址栏中输入地址直接进入某些功能页面 , 此时需要路由守卫
+            2. axios 第三方包: 拦截器 ,
+                1. request 拦截器
+                2. response 拦截器
+            3. 退出登录 ,
+            4. 单文件组件的结构 , template , script , style
+            5. ElementUI 的 按需导入 ,
+                1. 在项目仪表盘中安装依赖 element-ui
+                2. 在项目中添加一个文件夹: plugins / element.js 从 element-ui 中按需导出组件
+                3. 注册成全局组件:
+                    1. `Vue.use(组件名)`
+                    2. `Vue.prototype.XXX = XXX`
+                4. 在入口文件 main.js 导入并运行 plugins/element.js
         3. 后台管理子系统的首页
