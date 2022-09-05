@@ -15,7 +15,9 @@
             1. db_config 中配置的就是数据库服务器的信息 , 根据自己的运行环境来进行修改
     3. 启动 postman , 根据 api 接口文档 , 测试服务器端
 3. Vue 前端项目
+
     1. 09-05
+
         1. 创建前端项目
             1. 使用 vue-cli 脚手架创建: vue ui
                 1. babel router
@@ -28,11 +30,13 @@
                 4. views 文件夹
                 5. components/Helloworld.vue
         2. 用户登录
+
             1. 路由守卫 : 系统中有一些路由是需要登录用户有权限才能操作的 , 为了防止用户直接在浏览器地址栏中输入地址直接进入某些功能页面 , 此时需要路由守卫
             2. axios 第三方包: 拦截器 ,
                 1. request 拦截器
                 2. response 拦截器
             3. 退出登录 ,
+
             4. 单文件组件的结构 , template , script , style
             5. ElementUI 的 按需导入 ,
                 1. 在项目仪表盘中安装依赖 element-ui
@@ -41,4 +45,17 @@
                     1. `Vue.use(组件名)`
                     2. `Vue.prototype.XXX = XXX`
                 4. 在入口文件 main.js 导入并运行 plugins/element.js
+            6. Axios
+                1. 在项目管理的仪表盘上安装依赖 : axios vue-axios
+                2. 在入口文件main.js中默认导入axios
+                3. 配置axios
+                   1. 挂载vue的原型对象: 
+
         3. 后台管理子系统的首页
+           1. 左边的导航菜单 , 两级菜单
+
+```html
+el-form
+    el-form-item
+        el-input | el-button
+```

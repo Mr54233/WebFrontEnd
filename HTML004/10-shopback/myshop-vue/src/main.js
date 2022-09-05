@@ -12,7 +12,6 @@ import "./assets/css/global.css";
 
 // 导入第三方字体图标类样式
 import "./assets/fonts/iconfont.css";
-import { config } from "vue/types/umd";
 
 Vue.config.productionTip = false;
 
