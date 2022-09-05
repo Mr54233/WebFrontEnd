@@ -73,9 +73,10 @@ export default {
 		},
 		// 获取导航菜单数据
 		async getMenuList() {
-			const { data: res } = await this.$http.get("menu");
+			const { data: res } = await this.$http.get("menus");
+            // console.log(res);
 			if (res.meta.status !== 200) {
-				return this.$message.error(res.meta.message);
+				return this.$message.error("123"+res.meta.message);
 			} else {
 				this.menulist = res.data;
 			}
@@ -106,6 +107,6 @@ export default {
 	background-color: #eaedf1;
 }
 .el-submenu span{
-    
+
 }
 </style>
