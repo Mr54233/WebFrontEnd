@@ -16,20 +16,25 @@
 				<el-col :span="8">
 					<el-input
 						placeholder="请输入内容"
-						class="input-with-select"
+						v-model="queryInfo.query"
+						@keyup.enter="runQuery"
 					>
 						<el-button
 							slot="append"
 							icon="el-icon-search"
+							@click="runQuery"
 						></el-button>
 					</el-input>
 				</el-col>
 				<el-col :span="4">
-					<el-button type="primary">添加用户</el-button>
+					<el-button type="primary" @click="addDialogVisible = true"
+						>添加用户</el-button
+					>
 				</el-col>
 			</el-row>
 			<!-- 数据表格区域 -->
 			<el-table :data="userList" style="width: 100%" border stripe>
+				<el-table-column type="index" width="50"></el-table-column>
 				<el-table-column prop="username" label="姓名" width="180">
 				</el-table-column>
 				<el-table-column prop="email" label="邮箱" width="180">
@@ -39,10 +44,44 @@
 				</el-table-column>
 				<el-table-column prop="mg_state" label="状态">
 					<template slot-scope="scope">
-						<el-switch v-model="scope.row.mg_state"> </el-switch>
+						<!-- scope.row就是本行的用户对象 -->
+						<el-switch
+							v-model="scope.row.mg_state"
+							@change="setUserState(scope.row)"
+						>
+						</el-switch>
 					</template>
 				</el-table-column>
-				<el-table-column label="操作"> </el-table-column>
+				<el-table-column label="操作" width="180">
+					<template slot-scope="scope">
+						<!-- {{scope.row}} -->
+						<el-button
+							type="primary"
+							icon="el-icon-edit"
+							circle
+							size="small"
+						></el-button>
+						<el-button
+							type="danger"
+							icon="el-icon-delete"
+							circle
+							size="small"
+						></el-button>
+						<el-tooltip
+							class="item"
+							effect="dark"
+							content="分配角色"
+							placement="top"
+						>
+							<el-button
+								type="warning"
+								icon="el-icon-s-tools"
+								circle
+								size="small"
+							></el-button>
+						</el-tooltip>
+					</template>
+				</el-table-column>
 			</el-table>
 			<!-- 分页区域 -->
 			<el-pagination
@@ -56,6 +95,44 @@
 			>
 			</el-pagination>
 		</el-card>
+		<!-- 添加用户的对话框 -->
+		<el-dialog
+			title="新增用户"
+			:visible.sync="addDialogVisible"
+			width="50%"
+			:before-close="handleAddClose"
+		>
+			<!-- 对话框的主要内容 -->
+			<el-form
+				ref="addForm"
+				:model="addForm"
+				label-width="80px"
+				:rules="addFormRules"
+			>
+				<el-form-item label="用户名" prop="username">
+					<el-input v-model="addForm.username"></el-input>
+				</el-form-item>
+				<el-form-item label="密码" prop="password">
+					<el-input
+						v-model="addForm.password"
+						type="password"
+					></el-input>
+				</el-form-item>
+				<el-form-item label="邮箱" prop="email">
+					<el-input v-model="addForm.email"></el-input>
+				</el-form-item>
+				<el-form-item label="手机" prop="mobile">
+					<el-input v-model="addForm.mobile"></el-input>
+				</el-form-item>
+			</el-form>
+			<!-- 脚部两个按钮 -->
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="addDialogVisible = false">取 消</el-button>
+				<el-button type="primary" @click="addDialogVisible = false"
+					>确 定</el-button
+				>
+			</span>
+		</el-dialog>
 	</div>
 </template>
 
@@ -66,26 +143,103 @@ export default {
 		this.getUserList();
 	},
 	data() {
+		// value就是需要验证的数据 , callback就是回调函数
+		var checkEmail = (rule, value, callback) => {
+			var reg = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+			if (reg.test(value)) {
+				callback();
+			} else {
+				callback(new Error("请输入合法的邮箱地址"));
+			}
+		};
+		var checkMobile = (rule, value, callback) => {
+			var reg =
+				/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+			if (reg.test(value)) {
+				callback();
+			} else {
+				callback(new Error("请输入合法的手机号码"));
+			}
+		};
 		return {
 			userList: [],
 			total: 0,
 			queryInfo: {
-				query: "",
-				pagenum: 1,
-				pagesize: 2,
+				query: "", // 查询条件
+				pagenum: 1, // 页码
+				pagesize: 2, // 每页条数
+			},
+			addDialogVisible: true, // 控制新增用户对话框
+			addForm: {
+				username: "",
+				password: "",
+				email: "",
+				mobile: "",
+			},
+			addFormRules: {
+				username: [
+					{
+						required: true,
+						message: "请输入用户名",
+						trigger: "blur",
+					},
+					{
+						min: 3,
+						max: 10,
+						message: "用户名的长度在3到10个字符之间",
+						trigger: "blur",
+					},
+				],
+				password: [
+					{
+						required: true,
+						message: "请输入密码",
+						trigger: "blur",
+					},
+					{
+						min: 6,
+						max: 20,
+						message: "密码的长度在6到20个字符之间",
+						trigger: "blur",
+					},
+				],
+				email: [
+					{
+						required: true,
+						message: "请输入邮箱",
+						trigger: "blur",
+					},
+					{
+						validator: checkEmail,
+						trigger: 'blur',
+					},
+				],
+				mobile: [
+					{
+						required: true,
+						message: "请输入手机",
+						trigger: "blur",
+					},
+					{
+						validator: checkMobile,
+						trigger: 'blur',
+					},
+				],
 			},
 		};
 	},
 	methods: {
 		// 每页条数改变了
 		pageSizeChange(newSize) {
-			this.queryInfo.pagesize = newSize
-			this.getUserList()
+			this.queryInfo.pagesize = newSize;
+			this.getUserList();
 		},
-		// 当前页码改变了
+		// 当前页码改变了 , newPageNum 就是改变后的新页码
 		pageNumChange(newPageNum) {
-			this.queryInfo.pagenum = newPageNum
-			this.getUserList()
+			// 修改模型数据 queryInfo.pagenum
+			this.queryInfo.pagenum = newPageNum;
+			// 重新获取数据
+			this.getUserList();
 		},
 
 		async getUserList() {
@@ -102,6 +256,26 @@ export default {
 			console.log(this.total);
 			console.log(res.data);
 		},
+
+		// 执行搜索功能
+		runQuery() {
+			this.getUserList();
+		},
+
+		// 设置用户状态
+		async setUserState(user) {
+			const { data: res } = await this.$http.put(
+				`users/${user.id}/state/${user.mg_state}`
+			);
+			if (res.meta.status !== 200) {
+				user.mg_state = !user.mg_state; // 用户状态修改不成功 , 则页面上的状态要还原
+				return this.$message.error(res.meta.msgs);
+			} else {
+				return this.$message.success(res.meta.msg);
+			}
+		},
+		// 新增用户对话框关闭前
+		handleAddClose() {},
 	},
 };
 </script>

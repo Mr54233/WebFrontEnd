@@ -24,6 +24,8 @@ import {
 	TableColumn,
 	Pagination,
 	Switch,
+	Tooltip,
+	Dialog,
 } from "element-ui";
 
 Vue.use(Button);
@@ -48,3 +50,5 @@ Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Pagination);
 Vue.use(Switch);
+Vue.use(Tooltip);
+Vue.use(Dialog);
