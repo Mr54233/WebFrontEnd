@@ -60,6 +60,7 @@
 							icon="el-icon-edit"
 							circle
 							size="small"
+							@click="editUser(scope.row)"
 						></el-button>
 						<el-button
 							type="danger"
@@ -100,7 +101,7 @@
 			title="新增用户"
 			:visible.sync="addDialogVisible"
 			width="50%"
-			:before-close="handleAddClose"
+			@close="handleAddClose"
 		>
 			<!-- 对话框的主要内容 -->
 			<el-form
@@ -128,9 +129,7 @@
 			<!-- 脚部两个按钮 -->
 			<span slot="footer" class="dialog-footer">
 				<el-button @click="addDialogVisible = false">取 消</el-button>
-				<el-button type="primary" @click="addDialogVisible = false"
-					>确 定</el-button
-				>
+				<el-button type="primary" @click="addUser">确 定</el-button>
 			</span>
 		</el-dialog>
 	</div>
@@ -169,7 +168,7 @@ export default {
 				pagenum: 1, // 页码
 				pagesize: 2, // 每页条数
 			},
-			addDialogVisible: true, // 控制新增用户对话框
+			addDialogVisible: false, // 控制新增用户对话框
 			addForm: {
 				username: "",
 				password: "",
@@ -211,7 +210,7 @@ export default {
 					},
 					{
 						validator: checkEmail,
-						trigger: 'blur',
+						trigger: "blur",
 					},
 				],
 				mobile: [
@@ -222,7 +221,7 @@ export default {
 					},
 					{
 						validator: checkMobile,
-						trigger: 'blur',
+						trigger: "blur",
 					},
 				],
 			},
@@ -253,8 +252,8 @@ export default {
 			this.userList = res.data.users;
 			this.total = res.data.total;
 
-			console.log(this.total);
-			console.log(res.data);
+			// console.log(this.total);
+			// console.log(res.data);
 		},
 
 		// 执行搜索功能
@@ -275,7 +274,34 @@ export default {
 			}
 		},
 		// 新增用户对话框关闭前
-		handleAddClose() {},
+		handleAddClose() {
+			// 将新增用户的表单
+			this.$refs.addForm.resetFields();
+		},
+		// 新增用户
+		addUser() {
+			// 在通知api服务器新增用户之前 , 要进行表单验证 , 如果验证不合法就不提交
+			this.$refs.addForm.validate(async (result) => {
+				if (result) {
+					const { data: res } = await this.$http.post(
+						"users",
+						this.addForm
+					);
+					if (res.meta.status !== 201) {
+						return this.$message.error(res.meta.msg);
+					}
+					this.$message.success(res.meta.msg);
+					this.$refs.addForm.resetFields();
+					this.addDialogVisible = false;
+
+					this.getUserList();
+				}
+			});
+		},
+		// 编辑用户
+		editUser(user){
+			console.log(user);
+		},
 	},
 };
 </script>
