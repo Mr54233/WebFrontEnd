@@ -68,4 +68,4 @@ el-form el-form-item el-input | el-button
 2. 被点击的二级菜单高亮显示(刷新页面 , 被点击的二级菜单还是高亮的)
 3. 整个导航菜单被单击后 , 显示对应的组件(有路由作用)
    1. 每个导航菜单用router-link包装一下
-   2. 直接在menu里加一个router true
+   2. 直接在menu里加一个router
