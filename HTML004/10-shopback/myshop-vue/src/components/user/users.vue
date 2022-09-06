@@ -60,13 +60,14 @@
 							icon="el-icon-edit"
 							circle
 							size="small"
-							@click="editUser(scope.row)"
+							@click="showUser(scope.row)"
 						></el-button>
 						<el-button
 							type="danger"
 							icon="el-icon-delete"
 							circle
 							size="small"
+							@click="open(scope.row.id)"
 						></el-button>
 						<el-tooltip
 							class="item"
@@ -130,6 +131,37 @@
 			<span slot="footer" class="dialog-footer">
 				<el-button @click="addDialogVisible = false">取 消</el-button>
 				<el-button type="primary" @click="addUser">确 定</el-button>
+			</span>
+		</el-dialog>
+
+		<!-- 编辑用户的对话框 -->
+		<el-dialog
+			title="编辑用户"
+			:visible.sync="editDialogVisible"
+			width="50%"
+			@close="handleEditClose"
+		>
+			<!-- 对话框的主要内容 -->
+			<el-form
+				ref="editForm"
+				:model="editForm"
+				label-width="80px"
+				:rules="editFormRules"
+			>
+				<el-form-item label="用户名">
+					<el-input v-model="editForm.username" disabled></el-input>
+				</el-form-item>
+				<el-form-item label="邮箱" prop="email">
+					<el-input v-model="editForm.email"></el-input>
+				</el-form-item>
+				<el-form-item label="手机" prop="mobile">
+					<el-input v-model="editForm.mobile"></el-input>
+				</el-form-item>
+			</el-form>
+			<!-- 脚部两个按钮 -->
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="editDialogVisible = false">取 消</el-button>
+				<el-button type="primary" @click="editUser">确 定</el-button>
 			</span>
 		</el-dialog>
 	</div>
@@ -225,6 +257,37 @@ export default {
 					},
 				],
 			},
+			editDialogVisible: false, // 控制新增用户对话框
+			editForm: {
+				id: "",
+				username: "",
+				email: "",
+				mobile: "",
+			},
+			editFormRules: {
+				email: [
+					{
+						required: true,
+						message: "请输入邮箱",
+						trigger: "blur",
+					},
+					{
+						validator: checkEmail,
+						trigger: "blur",
+					},
+				],
+				mobile: [
+					{
+						required: true,
+						message: "请输入手机",
+						trigger: "blur",
+					},
+					{
+						validator: checkMobile,
+						trigger: "blur",
+					},
+				],
+			},
 		};
 	},
 	methods: {
@@ -275,7 +338,7 @@ export default {
 		},
 		// 新增用户对话框关闭前
 		handleAddClose() {
-			// 将新增用户的表单
+			// 将新增用户的表单清除
 			this.$refs.addForm.resetFields();
 		},
 		// 新增用户
@@ -298,9 +361,74 @@ export default {
 				}
 			});
 		},
+		// 编辑用户对话框关闭前
+		handleEditClose() {
+			// 将编辑用户的表单清除
+			// this.$refs.editForm.resetFields();
+			this.editDialogVisible = false;
+		},
+		// 展示用户
+		showUser(user) {
+			this.editDialogVisible = true;
+			// console.log(user);
+
+			this.editForm.id = user.id;
+			this.editForm.username = user.username;
+			this.editForm.email = user.email;
+			this.editForm.mobile = user.mobile;
+		},
 		// 编辑用户
-		editUser(user){
-			console.log(user);
+		editUser() {
+			// 在通知api服务器更新用户之前 , 要进行表单验证 , 如果验证不合法就不提交
+			this.$refs.editForm.validate(async (result) => {
+				console.log(result);
+				if (result) {
+					const { data: res } = await this.$http.put(
+						`users/${this.editForm.id}`,
+						{
+							email: this.editForm.email,
+							mobile: this.editForm.mobile,
+						}
+					);
+					if (res.meta.status !== 200) {
+						console.log(res.meta);
+						return this.$message.error(res.meta.msg);
+					}
+					this.$message.success(res.meta.msg);
+					// this.$refs.editForm.resetFields();
+					this.editDialogVisible = false;
+
+					this.getUserList();
+				}
+			});
+		},
+
+		// 打开确认删除框
+		open(id) {
+			// console.log(id);
+			this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			})
+				.then(async () => {
+					const { data: res } = await this.$http.delete(
+						`users/${id}`
+					);
+					if (res.meta.status !== 200) {
+						this.$message.error(res.meta.msg);
+					} else {
+						this.$message.success(res.meta.msg);
+						this.getUserList();
+						this.$router.go(0)
+					}
+				})
+				.catch(() => {
+					this.$message({
+						type: "info",
+						message: "那就不删了奥",
+					});
+				});
 		},
 	},
 };

@@ -26,6 +26,7 @@ import {
 	Switch,
 	Tooltip,
 	Dialog,
+	MessageBox,
 } from "element-ui";
 
 Vue.use(Button);
@@ -52,3 +53,4 @@ Vue.use(Pagination);
 Vue.use(Switch);
 Vue.use(Tooltip);
 Vue.use(Dialog);
+Vue.prototype.$confirm = MessageBox.confirm;
