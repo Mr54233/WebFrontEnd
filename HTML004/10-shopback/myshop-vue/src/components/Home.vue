@@ -7,14 +7,20 @@
 			></el-header
 		>
 		<el-container>
-			<el-aside width="200px">
+			<!-- 侧边栏宽度 -->
+			<el-aside :width="isCollapse ? '64px' : '200px'">
+				<!-- 控制收缩扩展的区域 -->
+				<div class="toggle-button" @click="toggleCollapse">|||</div>
 				<el-menu
-					default-active="2"
+					:default-active="activeIndex"
 					class="el-menu-vertical-demo"
 					background-color="#333744"
 					text-color="#fff"
-					active-text-color="#ffd04b"
+					active-text-color="#409eff"
 					:unique-opened="true"
+					:collapse="isCollapse"
+					:collapse-transition="false"
+					:router="true"
 				>
 					<!-- 一级菜单区域 -->
 					<el-submenu
@@ -28,9 +34,10 @@
 						</template>
 						<!-- 二级菜单区域 -->
 						<el-menu-item
-							:index="submenu.id + ''"
+							:index="submenu.path"
 							v-for="submenu in menu.children"
 							:key="submenu.id"
+							@click="setActiveIndex(submenu.path)"
 						>
 							<template slot="title">
 								<i class="el-icon-menu"></i>
@@ -50,17 +57,23 @@ export default {
 	// 在创建了vue对象之后 , 请求api服务器端提供的导航菜单数据
 	created() {
 		this.getMenuList();
+		// 当创建完vue实例对象 , 获取sessionStorage中的激活菜单的index
+		this.activeIndex = window.sessionStorage.getItem("activeIndex");
 	},
 	data() {
 		return {
 			menulist: [],
 			icons: {
-				"125":"iconfont icon-users",
-				"103":"iconfont icon-tijikongjian",
-				"101":"iconfont icon-shangpin",
-				"102":"iconfont icon-danju",
-				"145":"iconfont icon-baobiao",
-            },
+				125: "iconfont icon-users",
+				103: "iconfont icon-tijikongjian",
+				101: "iconfont icon-shangpin",
+				102: "iconfont icon-danju",
+				145: "iconfont icon-baobiao",
+			},
+			//控制菜单收缩和扩展的模型数据
+			isCollapse: false,
+			// 激活菜单的index
+			activeIndex: "",
 		};
 	},
 	methods: {
@@ -74,12 +87,22 @@ export default {
 		// 获取导航菜单数据
 		async getMenuList() {
 			const { data: res } = await this.$http.get("menus");
-            // console.log(res);
+			// console.log(res);
 			if (res.meta.status !== 200) {
-				return this.$message.error("123"+res.meta.message);
+				return this.$message.error("123" + res.meta.message);
 			} else {
 				this.menulist = res.data;
 			}
+		},
+		// 控制导航菜单的收缩和扩展
+		toggleCollapse() {
+			this.isCollapse = !this.isCollapse;
+		},
+		// 设置激活菜单
+		setActiveIndex(activeIndex) {
+			this.activeIndex = activeIndex;
+			// 将激活菜单的index保存到sessionStorage中
+			window.sessionStorage.setItem("activeIndex", activeIndex);
 		},
 	},
 };
@@ -106,7 +129,17 @@ export default {
 .el-main {
 	background-color: #eaedf1;
 }
-.el-submenu span{
+.el-submenu span {
+	margin-right: 10px;
+}
 
+.toggle-button {
+	background-color: #4a5064;
+	font-size: 10px;
+	line-height: 24px;
+	color: #fff;
+	text-align: center;
+	letter-spacing: 0.2rem;
+	cursor: pointer;
 }
 </style>
