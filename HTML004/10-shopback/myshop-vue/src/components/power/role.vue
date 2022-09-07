@@ -133,7 +133,14 @@
 		<!-- 分配权限对话框 -->
 		<el-dialog title="分配权限" :visible.sync="setRightVisible" width="50%">
 			<!-- 显示权限的树形控件 -->
-			<el-tree :data="rightList" :props="defaultProps" default-expand-all  show-checkbox :default-checked-keys="defaultKeys" node-key="id"></el-tree>
+			<el-tree
+				:data="rightList"
+				:props="defaultProps"
+				default-expand-all
+				show-checkbox
+				:default-checked-keys="defaultKeys"
+				node-key="id"
+			></el-tree>
 
 			<span slot="footer" class="dialog-footer">
 				<el-button @click="setRightVisible = false">取 消</el-button>
@@ -162,7 +169,7 @@ export default {
 				label: "authName",
 			},
 			// 树节点默认选中的id节点数组
-			defaultKeys:[101]
+			defaultKeys: [],
 		};
 	},
 	async created() {
@@ -184,10 +191,48 @@ export default {
 			} else {
 				this.$message.success(res.meta.msg);
 				this.rightList = res.data;
-				console.log(this.roleList);
+				// console.log(this.roleList);
 			}
+
+			// 将角色现在的所有权限添加到defaultKeys
+			this.getRightFromRole(role.children);
 			// 显示对话框
 			this.setRightVisible = true;
+		},
+		getRightFromRole(rights) {
+			// console.log("rights"+rights);
+			// 清空defaultKeys 数组
+			// this.defaultKeys = [];
+			// console.log(role);
+			// console.log(role.children);
+			// 从roles中获取权限id, 添加到defaultKeys 数组中
+
+			// role中的权限有三级 , 一级二级不能加入 , 只能加三级
+			rights.forEach((right, index) => {
+				if (!right.children) {
+					// 如果没有children 就是第三级权限 , 就加入到defaultKeys 数组中
+					this.defaultKeys.push(right.id);
+					// console.log(right.authName);
+				} else {
+					this.getRightFromRole(right.children);
+					// console.log( index , right.children);
+				}
+			});
+
+			// 第一层循环 遍历 角色的一级权限
+			// for (var i = 0; i < role.children.length; i++) {
+			// 	var p1 = role.children[i];
+			// 	// this.defaultKeys.push(p1.id);
+			// 	// 第二层循环 遍历角色的二级权限
+			// 	for (var j = 0; j < p1.children.length; j++) {
+			// 		var p2 = p1.children[j];
+			// 		// this.defaultKeys.push(p2.id);
+			// 		for (var k = 0; k < p2.children.length; k++) {
+			// 			var p3 = p2.children[k];
+			// 			this.defaultKeys.push(p3.id);
+			// 		}
+			// 	}
+			// }
 		},
 	},
 };
