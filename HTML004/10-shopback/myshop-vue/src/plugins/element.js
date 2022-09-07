@@ -27,6 +27,7 @@ import {
 	Tooltip,
 	Dialog,
 	MessageBox,
+	Tag,
 } from "element-ui";
 
 Vue.use(Button);
@@ -54,3 +55,4 @@ Vue.use(Switch);
 Vue.use(Tooltip);
 Vue.use(Dialog);
 Vue.prototype.$confirm = MessageBox.confirm;
+Vue.use(Tag);
