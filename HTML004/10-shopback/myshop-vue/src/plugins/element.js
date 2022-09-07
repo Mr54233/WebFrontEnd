@@ -1,5 +1,3 @@
-// 按需导入elementUI组件
-
 import Vue from "vue";
 import {
 	Button,
@@ -9,50 +7,85 @@ import {
 	Message,
 	Container,
 	Header,
-	Aside,
 	Main,
+	Aside,
 	Menu,
 	Submenu,
 	MenuItem,
-	MenuItemGroup,
-	Row,
-	Card,
 	Breadcrumb,
 	BreadcrumbItem,
+	Card,
+	Row,
 	Col,
 	Table,
 	TableColumn,
-	Pagination,
 	Switch,
 	Tooltip,
+	Pagination,
 	Dialog,
 	MessageBox,
 	Tag,
+	Tree,
+	Select,
+	Option,
+	Cascader,
+	Alert,
+	Tabs,
+	TabPane,
+	Steps,
+	Step,
+	Checkbox,
+	CheckboxGroup,
+	Upload,
+	Timeline,
+	TimelineItem,
+	Notification,
+	Dropdown,
+	DropdownMenu,
+	DropdownItem,
 } from "element-ui";
 
 Vue.use(Button);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
-Vue.prototype.$message = Message;
 Vue.use(Container);
 Vue.use(Header);
-Vue.use(Aside);
 Vue.use(Main);
+Vue.use(Aside);
 Vue.use(Menu);
 Vue.use(Submenu);
 Vue.use(MenuItem);
-Vue.use(MenuItemGroup);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
-Vue.use(Row);
 Vue.use(Card);
+Vue.use(Row);
 Vue.use(Col);
 Vue.use(Table);
 Vue.use(TableColumn);
-Vue.use(Pagination);
 Vue.use(Switch);
 Vue.use(Tooltip);
+Vue.use(Pagination);
 Vue.use(Dialog);
-Vue.prototype.$confirm = MessageBox.confirm;
 Vue.use(Tag);
+Vue.use(Tree);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Cascader);
+Vue.use(Alert);
+Vue.use(Tabs);
+Vue.use(TabPane);
+Vue.use(Step);
+Vue.use(Steps);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(Upload);
+Vue.use(Timeline);
+Vue.use(TimelineItem);
+Vue.use(Dropdown);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+
+Vue.prototype.$message = Message;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$notify = Notification;
