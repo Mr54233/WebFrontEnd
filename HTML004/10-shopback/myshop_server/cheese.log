@@ -101,3 +101,10 @@
 [2022-09-08T10:30:54.002] [DEBUG] cheese - null
 [2022-09-08T10:31:02.685] [DEBUG] cheese - null
 [2022-09-08T10:31:10.969] [DEBUG] cheese - null
+[2022-09-08T14:10:07.485] [DEBUG] cheese - login => username:admin,password:123456
+[2022-09-08T14:10:07.486] [DEBUG] cheese - admin
+[2022-09-08T14:10:07.493] [DEBUG] cheese - null
+[2022-09-08T14:10:07.494] [DEBUG] cheese - null
+[2022-09-08T14:48:51.114] [DEBUG] cheese - null
+[2022-09-08T14:50:38.460] [DEBUG] cheese - null
+[2022-09-08T14:50:41.589] [DEBUG] cheese - null
