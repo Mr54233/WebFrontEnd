@@ -34,9 +34,13 @@
 			</el-row>
 			<!-- 数据表格区域 -->
 			<el-table :data="goodList" style="width: 100%" border stripe>
-				<el-table-column type="expand" width="50"></el-table-column>
+				<el-table-column type="expand" width="50">
+					<template>
+						
+					</template>
+				</el-table-column>
 				<el-table-column type="index" width="50"></el-table-column>
-				<el-table-column label="商品名称" prop="goods_name"></el-table-column>
+				<el-table-column label="商品名称" prop="goods_name" width="540"></el-table-column>
 				<el-table-column label="商品价格(元)" prop="goods_price"></el-table-column>
 				<el-table-column label="商品重量(克)" prop="goods_weight"></el-table-column>
 				<el-table-column label="创建时间" prop="add_time"></el-table-column>

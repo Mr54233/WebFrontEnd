@@ -427,10 +427,10 @@ export default {
 				...this.$refs.treeRef.getCheckedKeys(), //返回目前被选中的节点的 key 所组成的数组
 				...this.$refs.treeRef.getHalfCheckedKeys(), //则返回目前半选中的节点的 key 所组成的数组
 			];
-			console.log(keys);
+			// console.log(keys);
 			// 指定一个字符串来分隔数组的每个元素。返回分割后的字符串
 			const idStr = keys.join(",");
-			console.log(idStr);
+			// console.log(idStr);
 
 			const { data: res } = await this.$http.post(
 				`roles/${this.roleId}/rights`,
