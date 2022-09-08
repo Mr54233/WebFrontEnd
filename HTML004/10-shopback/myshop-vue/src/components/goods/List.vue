@@ -27,7 +27,7 @@
 					</el-input>
 				</el-col>
 				<el-col :span="4">
-					<el-button type="primary">添加商品</el-button>
+					<el-button type="primary" @click="addGoods">添加商品</el-button>
 				</el-col>
 			</el-row>
 			<!-- 数据表格区域 -->
@@ -260,6 +260,7 @@ export default {
 
 		// 编辑用户对话框关闭前
 		handleEditClose() {
+			this.$refs.editForm.resetFields();
 			this.editDialogVisible = false;
 		},
 		// 显示编辑dialog
@@ -311,6 +312,7 @@ export default {
 						`goods/${id}`,
 						this.editForm
 					);
+					// console.log(res);
 					if (res.meta.status !== 200) {
 						this.$message.error(res.meta.msg);
 					} else {
@@ -321,6 +323,11 @@ export default {
 				}
 			});
 		},
+
+		// 添加商品
+		addGoods(){
+			this.$router.push('addGoods')
+		}
 	},
 };
 </script>
