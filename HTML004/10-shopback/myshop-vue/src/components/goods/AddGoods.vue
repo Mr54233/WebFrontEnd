@@ -6,7 +6,9 @@
 				>首页</el-breadcrumb-item
 			>
 			<el-breadcrumb-item>商品管理</el-breadcrumb-item>
-			<el-breadcrumb-item :to="{ path: '/goods' }">商品列表</el-breadcrumb-item>
+			<el-breadcrumb-item :to="{ path: '/goods' }"
+				>商品列表</el-breadcrumb-item
+			>
 			<el-breadcrumb-item>添加商品</el-breadcrumb-item>
 		</el-breadcrumb>
 
@@ -104,7 +106,36 @@ export default {
 					},
 				],
 			},
+			// 所有分类
+			cateList: [],
+			// 级联选择器的 配置选项
+			cateProps: {
+				expandTrigger: "hover", // 展开方式 , 默认click 改为hover
+				label: "cat_name", //表示看到的是那个属性
+				value: "cat_id", //代表选中的是那个值
+			},
 		};
+	},
+	created() {
+		this.getCateList();
+	},
+	methods: {
+		// 获取所有商品的分类数据
+		async getCateList() {
+			const { data: res } = await this.$http.get("categories");
+			// console.log(res);
+			if (res.meta.status != 200) {
+				return this.$message.error(
+					"获取商品分类数据失败：" + res.meta.msg
+				);
+			}
+
+			this.cateList = res.data;
+		},
+		// 改变打印
+		handleChange(value) {
+			console.log(value);
+		},
 	},
 };
 </script>

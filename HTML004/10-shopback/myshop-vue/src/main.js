@@ -2,6 +2,10 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
+import TreeTable from "vue-table-with-tree-grid";
+
+// 树形组件
+Vue.component("tree-table", TreeTable);
 
 // 导入elementUI 样式和插件
 import "element-ui/lib/theme-chalk/index.css";
