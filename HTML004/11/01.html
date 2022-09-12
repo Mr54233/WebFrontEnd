@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>数据响应式</title>
+	</head>
+	<body>
+		<script>
+			// 目标 , 实现数据响应式(对象属性拦截)
+			// 1. 使用字面量定义一个对象
+			let data = {
+				msg: "hello",
+			};
+
+			// console.log(data.msg);
+			// console.log(data["msg"]);
+
+			// data.msg = "hello world";
+
+			// console.log(data.msg);
+			// console.log(data["msg"]);
+
+			// console.log('data1',data)
+
+			var _msg = data.msg;
+			// 2. 使用Object.defineProperty() 让对象变成响应式的
+			Object.defineProperty(data, "msg", {
+				// 给data对象的msg属性添加两个方法:get和set方法
+				// get方法在读取data对象的msg属性值时 , 自动调用
+				get() {
+					// 返回某一个值
+					console.log("执行了访问data对象的msg属性值");
+					return _msg;
+				},
+				// set方法在给data对象的msg属性赋值时 , 自动调用
+				set(newVal) {
+					// newVal 就是给这个msg属性赋的最新值
+					console.log(
+						`执行了给data对象的msg属性赋值的操作:${newVal}`
+					);
+					_msg = newVal;
+				},
+			});
+
+			console.log("data2", data);
+		</script>
+	</body>
+</html>

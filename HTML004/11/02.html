@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>模型数据显示到页面中</title>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-text="msg" class="warning"></h1>
+			<p v-text="info"></p>
+            <p v-text="msg"></p>
+		</div>
+
+		<script>
+			// 目标 , 将模型数据中的值显示到页面中 , M->V
+			// 模拟v-text指令(自己整一个v-text)
+
+			var data = {
+				msg: "hello",
+				info: 123,
+			};
+
+			// 搜索管理范围中的所有的标签 ,
+			// 按照指令将对应的模型数据显示到指定的标签中
+			function compile() {
+				let app = document.querySelector("#app");
+
+				let nodes = app.childNodes;
+				// console.log(nodes);
+				Array.from(nodes).forEach((node) => {
+					// console.log(node);
+					if (node.nodeType === 1) {
+						// 拿到节点对象的所有html属性
+						let attrs = node.attributes;
+						// console.log(attrs);
+						Array.from(attrs).forEach((attr) => {
+							// console.log(attr.nodeName , attr.nodeValue);
+							if (attr.nodeName === "v-text") {
+								// 在此节点中显示对应模型数据的值
+								node.innerText = data[attr.nodeValue];
+							}
+						});
+					}
+				});
+			}
+			compile();
+		</script>
+	</body>
+</html>
