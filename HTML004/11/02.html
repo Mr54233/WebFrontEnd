@@ -10,7 +10,7 @@
 		<div id="app">
 			<h1 v-text="msg" class="warning"></h1>
 			<p v-text="info"></p>
-            <p v-text="msg"></p>
+			<p v-text="msg"></p>
 		</div>
 
 		<script>
@@ -21,6 +21,32 @@
 				msg: "hello",
 				info: 123,
 			};
+
+			// 数据响应式
+			// 对data 对象中的所有属性都定义成数据响应式的
+			Object.keys(data).forEach((Key) => {
+				// key就是data对象的某一个属性名
+                observe(data,Key,data[Key])
+			});
+
+			// 将data对象中的某个属性定义为数据响应式的
+			// data 就是需要监控的模型数据的对象
+			// key 就是模型对象的某一个属性的属性名
+			// value 就是模型对象的某一个属性的属性值
+			function observe(data, key, value) {
+				Object.defineProperty(data, key, {
+					get() {
+						console.log(`访问了data对象的${key}属性`);
+						return value;
+					},
+					set(newValue) {
+						console.log(`给data对象的${key}属性赋值为${newValue}`);
+                        value = newValue
+                        // 属性值改变了 , 就要刷新页面上的显示
+                        compile();
+					},
+				});
+			}
 
 			// 搜索管理范围中的所有的标签 ,
 			// 按照指令将对应的模型数据显示到指定的标签中
