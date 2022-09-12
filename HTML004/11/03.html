@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>页面中改模型数据</title>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-text="msg" class="warning"></h1>
+			<p v-text="info"></p>
+			<input type="text" v-model="msg" />
+		</div>
+
+		<script>
+			// 目标 , 将模型数据中的值显示到页面中 , M->V
+			// 通过页面操作来改变模型数据的值 , V -> M
+			// 模拟v-model指令(自己整一个v-model)
+
+			var data = {
+				msg: "hello",
+				info: 123,
+			};
+
+			// 数据响应式
+			// 对data 对象中的所有属性都定义成数据响应式的
+			Object.keys(data).forEach((Key) => {
+				// key就是data对象的某一个属性名
+				observe(data, Key, data[Key]);
+			});
+
+			// 将data对象中的某个属性定义为数据响应式的
+			// data 就是需要监控的模型数据的对象
+			// key 就是模型对象的某一个属性的属性名
+			// value 就是模型对象的某一个属性的属性值
+			function observe(data, key, value) {
+				Object.defineProperty(data, key, {
+					get() {
+						console.log(`访问了data对象的${key}属性`);
+						return value;
+					},
+					set(newValue) {
+						console.log(`给data对象的${key}属性赋值为${newValue}`);
+						value = newValue;
+						// 属性值改变了 , 就要刷新页面上的显示
+						compile();
+					},
+				});
+			}
+
+			// 搜索管理范围中的所有的标签 ,
+			// 按照指令将对应的模型数据显示到指定的标签中
+			function compile() {
+				let app = document.querySelector("#app");
+
+				let nodes = app.childNodes;
+				// console.log(nodes);
+				Array.from(nodes).forEach((node) => {
+					// console.log(node);
+					if (node.nodeType === 1) {
+						// 拿到节点对象的所有html属性
+						let attrs = node.attributes;
+						// console.log(attrs);
+						Array.from(attrs).forEach((attr) => {
+							// console.log(attr.nodeName , attr.nodeValue);
+							if (attr.nodeName === "v-text") {
+								// 在此节点中显示对应模型数据的值
+								node.innerText = data[attr.nodeValue];
+							}
+							// v-model
+							if (attr.nodeName === "v-model") {
+								// 在此节点中显示对应模型数据的值
+								node.value = data[attr.nodeValue];
+								// 给node节点对象定义事件处理函数
+								// 文本框的输入input 事件
+								// 修改模型数据的值
+								node.addEventListener("input", function () {
+									data[attr.nodeValue] = this.value;
+								});
+							}
+						});
+					}
+				});
+			}
+			compile();
+		</script>
+	</body>
+</html>
