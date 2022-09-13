@@ -23,6 +23,21 @@
 				info: 123,
 			};
 
+			// 发布订阅模式
+			const Dep = {
+				map: {},
+				record(name, fn) {
+					if (!this.map[name]) {
+						this.map[name] = [];
+					}
+
+					this.map[name].push(fn);
+				},
+				trigger(name) {
+					this.map[name].forEach((f) => f());
+				},
+			};
+
 			// 数据响应式
 			// 对data 对象中的所有属性都定义成数据响应式的
 			Object.keys(data).forEach((Key) => {
@@ -44,7 +59,9 @@
 						console.log(`给data对象的${key}属性赋值为${newValue}`);
 						value = newValue;
 						// 属性值改变了 , 就要刷新页面上的显示
-						compile();
+						// compile();
+						// 调用Dep中记录的对应的处理函数
+						Dep.trigger(key);
 					},
 				});
 			}
@@ -67,6 +84,11 @@
 							if (attr.nodeName === "v-text") {
 								// 在此节点中显示对应模型数据的值
 								node.innerText = data[attr.nodeValue];
+
+								// 向Dep对象中记录对应关系
+								Dep.record(attr.nodeValue, () => {
+									node.innerText = data[attr.nodeValue];
+								});
 							}
 							// v-model
 							if (attr.nodeName === "v-model") {

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			/* var map = {}; // 记录对应事件名和处理函数对应关系的对象
+
+        function record(eventName , fn){
+            if(!map[eventName]){
+                map[eventName] = [];
+            }
+
+            map[eventName].push(fn)
+        }
+
+        // 函数: 事件发生了 , 依次调用事件对应的所有处理函数
+        function trigger(eventName){
+            map[eventName].forEach(f=>f())
+        }
+
+        record('click',()=>{
+            console.log('处理函数1');
+        })
+        record('click',()=>{
+            console.log('处理函数2');
+        })
+        record('blur',()=>{
+            console.log('失去焦点了');
+        })
+
+        console.log(map);
+        trigger('blur') */
+
+			const Dep = {
+				map: {},
+				record(name, fn) {
+					if (!this.map[name]) {
+						this.map[name] = [];
+					}
+
+					this.map[name].push(fn);
+				},
+				trigger(name) {
+                    this.map[name].forEach(f=>f())
+                },
+			};
+
+            Dep.record('test',()=>{
+                console.log('test1');
+            })
+            Dep.record('test',()=>{
+                console.log('test2');
+            })
+            Dep.record('demo',()=>{
+                console.log('demo1');
+            })
+
+            Dep.trigger('test')
+            Dep.trigger('demo')
+		</script>
+	</body>
+</html>

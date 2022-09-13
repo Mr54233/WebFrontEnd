@@ -11,9 +11,23 @@
 
 		<script>
 			var btn = document.querySelector("#btn1");
-			btn.onclick = function () {
+			// 一对一
+			/* btn.onclick = function () {
                 console.log('按钮被点击了');
             };
+			btn.onclick = function () {
+                console.log('今天不算热');
+            }; */
+
+			// 一对多
+			btn.addEventListener("click", () => {
+				console.log("按钮被点击了");
+			});
+			btn.addEventListener("click", () => {
+				console.log("今天不算热");
+			});
+
+			var processors = [{ eventname: "click", fn: fn1 },{eventname:'click',fn:fn2}];
 		</script>
 	</body>
 </html>
