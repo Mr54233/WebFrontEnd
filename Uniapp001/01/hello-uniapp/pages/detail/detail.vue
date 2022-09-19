@@ -15,6 +15,9 @@
 		<view>
 			<text selectable space="nbsp">唱歌  跳舞篮球</text>
 		</view>
+		<view>
+			<text>&amp;</text>
+		</view>
 	</view>
 </template>
 
