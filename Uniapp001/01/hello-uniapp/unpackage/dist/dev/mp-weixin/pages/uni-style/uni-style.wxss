@@ -1,0 +1,12 @@
+view{
+	color: red;
+}
+.box1{
+	width: 350rpx;
+	height: 375rpx;
+	/* background-color: blue; */
+	font-size: 30rpx;
+	color: white;
+}
+
+

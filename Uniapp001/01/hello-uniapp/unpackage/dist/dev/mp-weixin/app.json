@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/uni-style/uni-style",
     "pages/message/message",
     "pages/index/index",
     "pages/contact/contact",
