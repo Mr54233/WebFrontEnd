@@ -1,10 +1,13 @@
 {
   "pages": [
-    "pages/uni-style/uni-style",
-    "pages/message/message",
     "pages/index/index",
+    "pages/navigator/navogator",
+    "pages/message/message",
+    "pages/list/list",
+    "pages/uni-style/uni-style",
     "pages/contact/contact",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/home/home"
   ],
   "subPackages": [],
   "window": {

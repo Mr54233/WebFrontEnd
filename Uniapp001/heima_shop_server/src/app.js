@@ -14,7 +14,7 @@ app.use(bodyParser({ extended: false }))
 //1.0 初始化orm
 const orm = require('orm')
 app.use(
-  orm.express('mysql://root:root@127.0.0.1:3306/dtcmsdb4', {
+  orm.express('mysql://root:admin123456@127.0.0.1:3306/hmsql', {
     define: function(db, models, next) {
       next()
     }

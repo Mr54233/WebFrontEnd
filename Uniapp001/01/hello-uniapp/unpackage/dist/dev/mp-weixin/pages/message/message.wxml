@@ -1,1 +1,1 @@
-<view>hello</view>
+<view><button type="primary" data-event-opts="{{[['tap',[['chooseimg',['$event']]]]]}}" bindtap="__e">上传图片</button><block wx:for="{{imgArr}}" wx:for-item="item" wx:for-index="__i0__"><image src="{{item}}" data-event-opts="{{[['tap',[['perviewImg',['$0'],[[['imgArr','',__i0__]]]]]]]}}" bindtap="__e"></image></block><view>微信小程序兼容</view></view>
