@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>react02</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<!-- 1. 引入标签文件 -->
+		<script src="./node_modules/react/umd/react.development.js"></script>
+		<script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+
+		<script>
+			// 2. 创建React元素
+			// 参数一：元素名称
+			// 参数二：元素属性
+			// 参数三：元素子节点
+			const title = React.createElement("h1", null, "hello world");
+
+			// 3. 渲染元素
+			// 参数一：要渲染的元素
+			// 参数二：渲染的元素位置（挂载点）
+			ReactDOM.render(title, document.getElementById("root"));
+		</script>
+	</body>
+</html>
