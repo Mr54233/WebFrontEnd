@@ -16,8 +16,13 @@
 			// 2. 创建React元素
 			// 参数一：元素名称
 			// 参数二：元素属性
-			// 参数三：元素子节点
-			const title = React.createElement("h1", null, "hello world");
+			// 参数三：元素子节点,可以嵌套生成
+			const title = React.createElement(
+				"h1",
+				null,
+				"hello world",
+				React.createElement("span", { id: "123" }, "hello span")
+			);
 
 			// 3. 渲染元素
 			// 参数一：要渲染的元素
